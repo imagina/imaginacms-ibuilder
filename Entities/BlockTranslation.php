@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BlockTranslation extends Model
 {
-    public $timestamps = false;
-    protected $fillable = [];
-    protected $table = 'ibuilder__block_translations';
+  public $timestamps = false;
+  protected $fillable = ["name"];
+  protected $table = 'ibuilder__block_translations';
 }

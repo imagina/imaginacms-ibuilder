@@ -12,9 +12,9 @@ class Block extends CrudModel
   protected $table = 'ibuilder__blocks';
   public $transformer = 'Modules\Ibuilder\Transformers\BlockTransformer';
   public $requestValidation = [
-      'create' => 'Modules\Ibuilder\Http\Requests\CreateBlockRequest',
-      'update' => 'Modules\Ibuilder\Http\Requests\UpdateBlockRequest',
-    ];
+    'create' => 'Modules\Ibuilder\Http\Requests\CreateBlockRequest',
+    'update' => 'Modules\Ibuilder\Http\Requests\UpdateBlockRequest',
+  ];
   //Instance external/internal events to dispatch with extraData
   public $dispatchesEventsWithBindings = [
     //eg. ['path' => 'path/module/event', 'extraData' => [/*...optional*/]]
@@ -25,6 +25,7 @@ class Block extends CrudModel
     'deleting' => [],
     'deleted' => []
   ];
-  public $translatedAttributes = [];
-  protected $fillable = [];
+  public $translatedAttributes = ["name"];
+  protected $fillable = ["system_name", "component_name", "attributes"];
+  protected $casts = ['attributes' => 'array'];
 }

@@ -12,9 +12,9 @@ class Template extends CrudModel
   protected $table = 'ibuilder__templates';
   public $transformer = 'Modules\Ibuilder\Transformers\TemplateTransformer';
   public $requestValidation = [
-      'create' => 'Modules\Ibuilder\Http\Requests\CreateTemplateRequest',
-      'update' => 'Modules\Ibuilder\Http\Requests\UpdateTemplateRequest',
-    ];
+    'create' => 'Modules\Ibuilder\Http\Requests\CreateTemplateRequest',
+    'update' => 'Modules\Ibuilder\Http\Requests\UpdateTemplateRequest',
+  ];
   //Instance external/internal events to dispatch with extraData
   public $dispatchesEventsWithBindings = [
     //eg. ['path' => 'path/module/event', 'extraData' => [/*...optional*/]]
@@ -25,6 +25,7 @@ class Template extends CrudModel
     'deleting' => [],
     'deleted' => []
   ];
-  public $translatedAttributes = [];
-  protected $fillable = [];
+  public $translatedAttributes = ["name"];
+  protected $fillable = ["component_name", "attributes"];
+  protected $casts = ['attributes' => 'array'];
 }
