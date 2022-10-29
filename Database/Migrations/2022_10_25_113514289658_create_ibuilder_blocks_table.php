@@ -18,6 +18,7 @@ class CreateIbuilderBlocksTable extends Migration
       // Your fields...
       $table->string('system_name');
       $table->string('component_name');
+      $table->text('entity');
       $table->text('attributes');
       // Audit fields
       $table->timestamps();

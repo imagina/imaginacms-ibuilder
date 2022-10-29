@@ -25,7 +25,14 @@ class Block extends CrudModel
     'deleting' => [],
     'deleted' => []
   ];
-  public $translatedAttributes = ["name"];
-  protected $fillable = ["system_name", "component_name", "attributes"];
-  protected $casts = ['attributes' => 'array'];
+  public $translatedAttributes = ["title"];
+  protected $fillable = ["system_name", "component_name", "entity", "attributes"];
+  protected $casts = ['entity' => 'array', 'attributes' => 'array'];
+
+  public function getEntityAttribute($value)
+  {
+    if (is_string($value)) $value = json_decode($value);
+    if (is_string($value->params)) $value->params = json_decode($value->params);
+    return $value;
+  }
 }

@@ -16,7 +16,7 @@ class CreateIbuilderBlockTranslationsTable extends Migration
       $table->engine = 'InnoDB';
       $table->increments('id');
       // Your translatable fields
-      $table->string('name');
+      $table->string('title');
       $table->integer('block_id')->unsigned();
       $table->string('locale')->index();
       $table->unique(['block_id', 'locale']);
