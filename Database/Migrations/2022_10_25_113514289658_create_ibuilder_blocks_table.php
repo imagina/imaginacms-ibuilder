@@ -17,9 +17,10 @@ class CreateIbuilderBlocksTable extends Migration
       $table->increments('id');
       // Your fields...
       $table->string('system_name');
-      $table->string('component_name');
+      $table->text('component');
       $table->text('entity');
       $table->text('attributes');
+      $table->unique(['system_name']);
       // Audit fields
       $table->timestamps();
       $table->auditStamps();

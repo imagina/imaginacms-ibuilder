@@ -7,6 +7,7 @@ use Modules\Core\Icrud\Entities\CrudModel;
 
 class Block extends CrudModel
 {
+  public $forceDeleting = true;
   use Translatable;
 
   protected $table = 'ibuilder__blocks';
@@ -26,8 +27,8 @@ class Block extends CrudModel
     'deleted' => []
   ];
   public $translatedAttributes = ["title"];
-  protected $fillable = ["system_name", "component_name", "entity", "attributes"];
-  protected $casts = ['entity' => 'array', 'attributes' => 'array'];
+  protected $fillable = ["system_name", "component", "entity", "attributes"];
+  protected $casts = ['component' => 'array', 'entity' => 'array', 'attributes' => 'array'];
 
   public function getEntityAttribute($value)
   {
