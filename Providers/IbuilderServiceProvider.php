@@ -38,7 +38,7 @@ class IbuilderServiceProvider extends ServiceProvider
 
     public function boot()
     {
-       
+
         $this->publishConfig('ibuilder', 'config');
         $this->publishConfig('ibuilder', 'crud-fields');
 
@@ -71,18 +71,6 @@ class IbuilderServiceProvider extends ServiceProvider
                 }
 
                 return new \Modules\Ibuilder\Repositories\Cache\CacheBlockDecorator($repository);
-            }
-        );
-        $this->app->bind(
-            'Modules\Ibuilder\Repositories\TemplateRepository',
-            function () {
-                $repository = new \Modules\Ibuilder\Repositories\Eloquent\EloquentTemplateRepository(new \Modules\Ibuilder\Entities\Template());
-
-                if (! config('app.cache')) {
-                    return $repository;
-                }
-
-                return new \Modules\Ibuilder\Repositories\Cache\CacheTemplateDecorator($repository);
             }
         );
 // add bindings

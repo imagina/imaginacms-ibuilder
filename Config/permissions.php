@@ -9,14 +9,6 @@ return [
         'destroy' => 'ibuilder::blocks.destroy resource',
         'restore' => 'ibuilder::blocks.restore resource',
     ],
-    'ibuilder.templates' => [
-        'manage' => 'ibuilder::templates.manage resource',
-        'index' => 'ibuilder::templates.list resource',
-        'create' => 'ibuilder::templates.create resource',
-        'edit' => 'ibuilder::templates.edit resource',
-        'destroy' => 'ibuilder::templates.destroy resource',
-        'restore' => 'ibuilder::templates.restore resource',
-    ],
 // append
 
 
