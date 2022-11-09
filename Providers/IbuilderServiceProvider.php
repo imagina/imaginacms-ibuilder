@@ -45,6 +45,8 @@ class IbuilderServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($this->getModuleConfigFilePath('ibuilder', 'settings'), "asgard.ibuilder.settings");
         $this->mergeConfigFrom($this->getModuleConfigFilePath('ibuilder', 'settings-fields'), "asgard.ibuilder.settings-fields");
         $this->mergeConfigFrom($this->getModuleConfigFilePath('ibuilder', 'permissions'), "asgard.ibuilder.permissions");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibuilder', 'cmsPages'), "asgard.ibuilder.cmsPages");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('ibuilder', 'cmsSidebar'), "asgard.ibuilder.cmsSidebar");
 
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
