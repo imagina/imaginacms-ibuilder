@@ -7,7 +7,7 @@ $router->group(['prefix' =>'/ibuilder/v1'], function (Router $router) {
       'module' => 'ibuilder',
       'prefix' => 'blocks',
       'controller' => 'BlockApiController',
-      //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
+      'middleware' => ['index' => []]
     ]);
 // append
 
