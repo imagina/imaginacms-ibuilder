@@ -16,6 +16,6 @@ class IbuilderDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        $this->call(IbuilderModuleTableSeeder::class);
     }
 }
