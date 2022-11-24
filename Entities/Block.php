@@ -1,6 +1,7 @@
 <?php
 
 namespace Modules\Ibuilder\Entities;
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 
 use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
@@ -28,5 +29,5 @@ class Block extends CrudModel
   ];
   public $translatedAttributes = ["title"];
   protected $fillable = ["system_name", "component", "entity", "attributes"];
-  protected $casts = ['component' => 'array', 'entity' => 'array', 'attributes' => 'array'];
+  protected $casts = ['component' => 'array', 'entity' => 'array', 'attributes' => AsArrayObject::class];
 }
