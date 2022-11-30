@@ -5,11 +5,12 @@ use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 
 use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
+use Modules\Media\Support\Traits\MediaRelation;
 
 class Block extends CrudModel
 {
   public $forceDeleting = true;
-  use Translatable;
+  use Translatable, MediaRelation;
 
   protected $table = 'ibuilder__blocks';
   public $transformer = 'Modules\Ibuilder\Transformers\BlockTransformer';
