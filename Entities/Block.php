@@ -1,16 +1,18 @@
 <?php
 
 namespace Modules\Ibuilder\Entities;
+
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 
 use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
 use Modules\Media\Support\Traits\MediaRelation;
+use Modules\Ifillable\Traits\isFillable;
 
 class Block extends CrudModel
 {
   public $forceDeleting = true;
-  use Translatable, MediaRelation;
+  use Translatable, MediaRelation, isFillable;
 
   protected $table = 'ibuilder__blocks';
   public $transformer = 'Modules\Ibuilder\Transformers\BlockTransformer';
