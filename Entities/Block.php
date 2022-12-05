@@ -30,7 +30,7 @@ class Block extends CrudModel
     'deleting' => [],
     'deleted' => []
   ];
-  public $translatedAttributes = ["title"];
+  public $translatedAttributes = ["internal_title"];
   protected $fillable = ["system_name", "component", "entity", "attributes"];
   protected $casts = ['component' => 'array', 'entity' => 'array', 'attributes' => AsArrayObject::class];
 }
