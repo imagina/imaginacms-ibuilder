@@ -4,7 +4,9 @@ return [
   //Media Fillables
   'mediaFillable' => [
     'block' => [
-      'mainimage' => 'single'
+      'internalimage' => 'single',
+      'mainimage' => 'single',
+      'gallery' => 'multiple'
     ],
   ],
 ];
