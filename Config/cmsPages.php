@@ -46,6 +46,21 @@ return [
         "refresh" => true,
         "breadcrumb" => ['ibuilder_cms_admin_blocks']
       ]
+    ],
+    "formUpdateClientBlock" => [
+      'viewType' => 'client',
+      "permission" => 'ibuilder.blocks.client',
+      "activated" => true,
+      "path" => '/builder/blocks/client/:id',
+      "name" => 'qbuilder.admin.client.update',
+      "page" => 'qbuilder/_pages/admin/formBlock',
+      "layout" => 'qsite/_layouts/master.vue',
+      "title" => 'ibuilder.cms.updateBlock',
+      "icon" => 'fa-light fa-square-pen',
+      "authenticated" => true,
+      "subHeader" => [
+        "refresh" => true
+      ]
     ]
   ],
   'panel' => [],
