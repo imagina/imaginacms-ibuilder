@@ -48,8 +48,6 @@ class Block extends Component
     $this->instanceBlockConfig($params);
     $this->instanceComponentType($params);
     $this->instanceComponentConfig();
-    //list($this->editLink, $this->tooltipEditLink) = getEditLink('Modules\Ibuilder\Repositories\BlockRepository');
-    //dd($this->componentType, $this->componentConfig);
   }
 
   /**
@@ -132,6 +130,8 @@ class Block extends Component
             "entity" => $block->entity,
             "attributes" => $blockAttributes
           ];
+          //Instance the block edit link
+          $this->editLink = str_replace("{blockId}", $block->id, config('asgard.ibuilder.config.urlEditBlockTheme'));
         }
       }
     }
