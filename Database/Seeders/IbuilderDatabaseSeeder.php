@@ -17,5 +17,6 @@ class IbuilderDatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call(IbuilderModuleTableSeeder::class);
+        $this->call(FixBlocksMovedSeeder::class);
     }
 }
