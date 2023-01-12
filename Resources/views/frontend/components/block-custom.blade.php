@@ -65,8 +65,15 @@
                 </div>
             </div>
         @endif
+        @if($descriptionCustom)
+            <div class="custom-description {{$orderClasses["description"] ?? 'order-5'}}">
+                <div class="description {{$descriptionClasses}}">
+                    {!! $descriptionCustom !!}
+                </div>
+            </div>
+        @endif
         @if($withButton)
-            <div class="custom-button {{$buttonAlign}} {{$orderClasses["buttom"] ?? 'order-5'}}">
+            <div class="custom-button {{$buttonAlign}} {{$orderClasses["buttom"] ?? 'order-6'}}">
                 <x-isite::button :style="$buttonLayout"
                                  :buttonClasses="$buttonLayout.' '.$buttonStyle.' '.$buttonClasses"
                                  :href="$buttonHref"

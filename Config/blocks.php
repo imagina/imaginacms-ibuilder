@@ -210,6 +210,15 @@ return [
           'rows' => 4,
         ]
       ],
+      "descriptionCustom" => [
+         "name" => "descriptionCustom",
+         "type" => "html",
+         "isTranslatable" => true,
+         "columns" => "col-12",
+         "props" => [
+            "label" => "Descripcion"
+         ]
+      ],
     ],
     "attributes" => [
       "general" => [
@@ -265,7 +274,7 @@ return [
           ],
           "orderClasses" => [
             "name" => "orderClasses",
-            "value" => ["video" => "order-0", "image" => "order-1", "title" => "order-2", "subtitle" => "order-3", "summary" => "order-4", "buttom" => "order-5"],
+            "value" => ["video" => "order-0", "image" => "order-1", "title" => "order-2", "subtitle" => "order-3", "summary" => "order-4", "description" => "order-5", "buttom" => "order-6"],
             "type" => "json",
             "columns" => "col-12",
             "props" => [
