@@ -15,7 +15,7 @@ class Block extends Component
   public $container, $id, $columns, $background, $borderForm, $display,
     $widthContainer, $heightContainer, $backgrounds, $paddingX, $paddingY, $editLink, $tooltipEditLink,
     $marginX, $marginY, $overlay, $backgroundColor, $componentIsite, $componentType, $isBlade, $view,
-    $systemName, $blockConfig, $componentConfig, $blockClasses, $blockStyle, $row;
+    $systemName, $blockConfig, $componentConfig, $blockClasses, $blockStyle, $row, $inheritContent;
 
   public function __construct(
     $container = null,
@@ -37,7 +37,8 @@ class Block extends Component
     $blockConfig = [],
     $blockClasses = "",
     $blockStyle = "",
-    $row = ""
+    $row = "",
+    $inheritContent = null
   )
   {
     //Get all params
@@ -79,6 +80,7 @@ class Block extends Component
     $this->blockClasses = $params["blockClasses"];
     $this->blockStyle = $params["blockStyle"];
     $this->row = $params["row"];
+    $this->inheritContent = $params["inheritContent"];
 
   }
 
@@ -224,9 +226,31 @@ class Block extends Component
               }
             }
             break;
+          case 'isite::item-list':
+            $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
+            break;
         }
       }
     }
+  }
+
+  /**
+   * Get the inherit content for components
+   *
+   * @return void
+   */
+  public function getInheritcontent()
+  {
+    //Return the attribute inherit content
+    if ($this->inheritContent) return $this->inheritContent;
+    //Get the entity information
+    $entity = $this->blockConfig->entity ?? null;
+    if (isset($entity->type) && isset($entity->id)) {
+      $model = app($entity->type);
+      return $model->find($entity->id);
+    }
+    //Default response
+    return null;
   }
 
   /**
