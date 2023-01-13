@@ -45,6 +45,7 @@ class BlockCustom extends Component
     public $gridGap;
     public $descriptionCustom;
     public $descriptionClasses;
+    public $includeCustom;
     public $position; /* 1 todo el linea
                          2 dos columnas izq imagen
                          3 dos columas der imagen
@@ -94,7 +95,8 @@ class BlockCustom extends Component
                                 $gridColumns = "repeat(2, minmax(0, 1fr))",
                                 $gridGap = "15px",
                                 $descriptionCustom = "",
-                                $descriptionClasses = ""
+                                $descriptionClasses = "",
+                                $includeCustom = ""
     )
     {
         $this->id = $id ?? uniqid('ac');
@@ -127,7 +129,7 @@ class BlockCustom extends Component
         $this->buttonIconPosition = $buttonIconPosition;
         $this->buttonColor = $buttonColor;
         $this->buttonLayout = $buttonLayout;
-        $this->orderClasses = !empty($orderClasses) ? $orderClasses : ["video" => "order-0", "image" => "order-1", "title" => "order-2", "subtitle" => "order-3", "summary" => "order-4", "description" => "order-5", "buttom" => "order-6"];
+        $this->orderClasses = !empty($orderClasses) ? $orderClasses : ["video" => "order-0", "image" => "order-1", "title" => "order-2", "subtitle" => "order-3", "summary" => "order-4", "description" => "order-5", "buttom" => "order-6", "include" => "order-7"];
         $this->position = $position;
         $this->mediaClasses = $mediaClasses;
         $this->contentClasses = $contentClasses;
@@ -135,6 +137,7 @@ class BlockCustom extends Component
         $this->gridGap = $gridGap;
         $this->descriptionCustom = $descriptionCustom;
         $this->descriptionClasses = $descriptionClasses;
+        $this->includeCustom = $includeCustom;
     }
 
 
