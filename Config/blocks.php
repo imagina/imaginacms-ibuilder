@@ -224,6 +224,14 @@ return [
       "general" => [
         "title" => "General",
         "fields" => [
+          "includeCustom" => [
+              "name" => "includeCustom",
+              "type" => "input",
+              "columns" => "col-12",
+              "props" => [
+                  "label" => "Include adicional",
+              ]
+          ],
           "position" => [
             "name" => "position",
             "value" => "1",
@@ -233,10 +241,10 @@ return [
               "label" => "Posicion de los elementos",
               "options" => [
                 ["label" => "Una columna", "value" => "1"],
-                ["label" => "Dos columna con imagen a la derecha", "value" => "2"],
-                ["label" => "Dos columna con imagen a la izquierda", "value" => "3"],
-                ["label" => "Dos columna con video a la derecha", "value" => "4"],
-                ["label" => "Dos columna con video a la izquierda", "value" => "5"]
+                ["label" => "Dos columnas (imagen, video a la izquierda)", "value" => "2"],
+                ["label" => "Dos columnas (imagen, video a la derecha)", "value" => "3"],
+                ["label" => "Titulo mas dos columnas (imagen, video a la izquierda)", "value" => "4"],
+                ["label" => "Titulo mas dos columnas (imagen, video a la derecha)", "value" => "5"],
               ],
             ]
           ],
