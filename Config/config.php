@@ -6,7 +6,8 @@ return [
     'block' => [
       'internalimage' => 'single',
       'mainimage' => 'single',
-      'gallery' => 'multiple'
+      'gallery' => 'multiple',
+      'blockbgimage' => 'single'
     ],
   ],
   //Url of the iadmin to manage the blocks themes for clients
