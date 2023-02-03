@@ -211,13 +211,40 @@ return [
         ]
       ],
       "descriptionCustom" => [
-         "name" => "descriptionCustom",
-         "type" => "html",
-         "isTranslatable" => true,
-         "columns" => "col-12",
-         "props" => [
-            "label" => "Descripcion"
-         ]
+        "name" => "descriptionCustom",
+        "type" => "html",
+        "isTranslatable" => true,
+        "columns" => "col-12",
+        "props" => [
+          "label" => "Descripcion"
+        ]
+      ],
+      "mainImage" => [
+        'value' => (object)['custommainimage' => null],
+        'name' => 'medias_single',
+        'type' => 'media',
+        "columns" => "col-12",
+        "isTranslatable" => false,
+        'props' => [
+          'label' => 'Imagen Principal',
+          'zone' => 'custommainimage',
+          'entity' => "Modules\Ibuilder\Entities\Block",
+          'entityId' => null
+        ]
+      ],
+      "gallery" => [
+        'value' => (object)['customgallery' => null],
+        'name' => 'medias_multi',
+        'type' => 'media',
+        "columns" => "col-12",
+        "isTranslatable" => false,
+        'props' => [
+          'label' => 'Galería',
+          'zone' => 'customgallery',
+          'maxFiles' => 12,
+          'entity' => "Modules\Ibuilder\Entities\Block",
+          'entityId' => null
+        ]
       ],
     ],
     "attributes" => [
@@ -225,12 +252,12 @@ return [
         "title" => "General",
         "fields" => [
           "includeCustom" => [
-              "name" => "includeCustom",
-              "type" => "input",
-              "columns" => "col-12",
-              "props" => [
-                  "label" => "Include adicional",
-              ]
+            "name" => "includeCustom",
+            "type" => "input",
+            "columns" => "col-12",
+            "props" => [
+              "label" => "Include adicional",
+            ]
           ],
           "position" => [
             "name" => "position",

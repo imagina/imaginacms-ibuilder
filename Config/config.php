@@ -5,9 +5,9 @@ return [
   'mediaFillable' => [
     'block' => [
       'internalimage' => 'single',
-      'mainimage' => 'single',
-      'gallery' => 'multiple',
-      'blockbgimage' => 'single'
+      'blockbgimage' => 'single',
+      'custommainimage' => 'single',
+      'customgallery' => 'multiple',
     ],
   ],
   //Url of the iadmin to manage the blocks themes for clients
