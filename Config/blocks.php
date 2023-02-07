@@ -102,30 +102,14 @@ return [
                   "type" => "number"
               ]
           ],
-          "backgrounds" => [
-          "name" => "backgrounds",
-          "type" => "json",
-          "value" => "[{'position':'',
-                        'size':'',
-                        'repeat':'',
-                        'color':'',
-                        'backgroundAttachment':''
-                      }]",
-          "props" => [
-            "label" => "datos json",
-          ]
-        ],
           */
           "overlay" => [
             "name" => "overlay",
-            "value" => false,
-            "type" => "select",
+            "value" => "",
+            "type" => "input",
+            "columns" => "col-12",
             "props" => [
-              "label" => "Opacidad",
-              "options" => [
-                ["label" => "false", "value" => false],
-                ["label" => "true", "value" => true]
-              ]
+              "label" => "Opacidad"
             ]
           ],
           "backgroundColor" => [
@@ -134,6 +118,15 @@ return [
             "type" => "input",
             "props" => [
               "label" => "Color de fondo"
+            ]
+          ],
+          "backgrounds" => [
+            "name" => "backgrounds",
+            "type" => "json",
+            "columns" => "col-12",
+            "value" => ["position" => "center", "size" => "cover", "repeat" => "no-repeat", "color" => "", "attachment" => ""],
+            "props" => [
+                "label" => "Opciones de Fondo"
             ]
           ],
           "row" => [
@@ -217,6 +210,15 @@ return [
         "columns" => "col-12",
         "props" => [
           "label" => "Descripcion"
+        ]
+      ],
+      "video" => [
+        "name" => "video",
+        "type" => "input",
+        "isTranslatable" => true,
+        "columns" => "col-12",
+        "props" => [
+            "label" => "Url del video"
         ]
       ],
       "mainImage" => [
@@ -374,14 +376,6 @@ return [
       "media" => [
         "title" => "Imagen y Video",
         "fields" => [
-          "image" => [
-            "name" => "image",
-            "type" => "input",
-            "columns" => "col-12",
-            "props" => [
-              "label" => "Url de la Imagen"
-            ]
-          ],
           "imageOnClasses" => [
             "name" => "imageOnClasses",
             "type" => "input",
@@ -404,14 +398,6 @@ return [
             "columns" => "col-12",
             "props" => [
               "label" => "Estilos adicionales (Imagen)"
-            ]
-          ],
-          "video" => [
-            "name" => "video",
-            "type" => "input",
-            "columns" => "col-12",
-            "props" => [
-              "label" => "Url del video"
             ]
           ],
           "videoResponsive" => [

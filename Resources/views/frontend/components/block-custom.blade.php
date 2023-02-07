@@ -5,8 +5,7 @@
             @if($image)
                 <div class="custom-image {{$imageOnClasses}} {{$orderClasses["image"] ?? 'order-0'}}">
                     <x-media::single-image :alt="$title ?? ''"
-                                           :title="$image"
-                                           :src="$image"
+                                           :src="$image->extraLargeThumb"
                                            :url="$buttonHref ?? null"
                                            :target="$buttonTarget"
                                            :isMedia="true"
@@ -33,8 +32,7 @@
             @if($image)
                 <div class="custom-image {{$imageOnClasses}} {{$orderClasses["image"] ?? 'order-1'}}">
                     <x-media::single-image :alt="$title ?? ''"
-                                           :title="$image"
-                                           :src="$image"
+                                           :src="$image->extraLargeThumb"
                                            :url="$buttonHref ?? null"
                                            :target="$buttonTarget"
                                            :isMedia="true"
@@ -123,8 +121,7 @@
                 @if($image)
                     <div class="custom-image {{$imageOnClasses}} {{$orderClasses["image"] ?? 'order-0'}}">
                         <x-media::single-image :alt="$title ?? ''"
-                                               :title="$image"
-                                               :src="$image"
+                                               :src="$image->extraLargeThumb"
                                                :url="$buttonHref ?? null"
                                                :target="$buttonTarget"
                                                :isMedia="true"
