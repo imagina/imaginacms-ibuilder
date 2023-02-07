@@ -116,8 +116,9 @@ return [
             "name" => "backgroundColor",
             "value" => "",
             "type" => "input",
+            "columns" => "col-12",
             "props" => [
-              "label" => "Color de fondo"
+              "label" => "Gradiente de fondo"
             ]
           ],
           "backgrounds" => [
