@@ -165,7 +165,7 @@ class Block extends Component
       $this->blockConfig->mediaFiles[$singleZone] = !$singleFile ? null : $this->transformFile($singleFile);
     }
     //Set files of media multi
-    if($mediasMulti['customgallery']!=null) {
+    if(empty($mediasMulti) || !is_null($mediasMulti['customgallery'])) {
         foreach (array_keys($mediasMulti) as $multiZone) {
             $multiFiles = $filesData->whereIn('id', $mediasMulti[$multiZone]->files);
             $this->blockConfig->mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
