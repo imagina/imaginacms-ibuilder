@@ -95,7 +95,13 @@ class Block extends Component
    */
   public function instanceBackgroundAttribute($params)
   {
-      $this->backgrounds =  json_encode($params["backgrounds"] ?? ["position" => "center", "size" => "cover", "repeat" => "no-repeat", "color" => "", "attachment" => ""]);
+    $this->backgrounds = json_encode($params["backgrounds"] ?? [
+      "position" => "center",
+      "size" => "cover",
+      "repeat" => "no-repeat",
+      "color" => "",
+      "attachment" => ""
+    ]);
   }
 
   /**
@@ -165,13 +171,11 @@ class Block extends Component
       $this->blockConfig->mediaFiles[$singleZone] = !$singleFile ? null : $this->transformFile($singleFile);
     }
     //Set files of media multi
-    if(empty($mediasMulti) || !is_null($mediasMulti['customgallery'])) {
-        foreach (array_keys($mediasMulti) as $multiZone) {
-            $multiFiles = $filesData->whereIn('id', $mediasMulti[$multiZone]->files);
-            $this->blockConfig->mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
-                return $this->transformFile($file);
-            })->toArray();
-        }
+    foreach (array_keys($mediasMulti) as $multiZone) {
+      $multiFiles = $filesData->whereIn('id', ($mediasMulti[$multiZone]->files ?? []));
+      $this->blockConfig->mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
+        return $this->transformFile($file);
+      })->toArray();
     }
     //Set blockConfig media File
     $this->blockConfig->mediaFiles = json_decode(json_encode($this->blockConfig->mediaFiles));
