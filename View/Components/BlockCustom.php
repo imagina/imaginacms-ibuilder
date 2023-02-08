@@ -46,6 +46,7 @@ class BlockCustom extends Component
     public $descriptionCustom;
     public $descriptionClasses;
     public $includeCustom;
+    public $gallery;
     public $position; /* 1 todo el linea
                          2 dos columnas izq imagen
                          3 dos columas der imagen
@@ -96,7 +97,8 @@ class BlockCustom extends Component
                                 $gridGap = "15px",
                                 $descriptionCustom = "",
                                 $descriptionClasses = "",
-                                $includeCustom = ""
+                                $includeCustom = "",
+                                $gallery = []
     )
     {
         $this->id = $id ?? uniqid('ac');
@@ -138,6 +140,7 @@ class BlockCustom extends Component
         $this->descriptionCustom = $descriptionCustom;
         $this->descriptionClasses = $descriptionClasses;
         $this->includeCustom = $includeCustom;
+        $this->gallery = $gallery;
     }
 
 

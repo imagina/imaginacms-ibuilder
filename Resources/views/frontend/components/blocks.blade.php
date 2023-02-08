@@ -29,6 +29,10 @@
             $componentName = $componentConfig["systemName"];
             $nameSpace = $componentConfig["nameSpace"];
             $attributes = $componentConfig["attributes"];
+            if($componentName=='ibuilder::block-custom')  {
+               $attributes['image'] = $blockConfig->mediaFiles->custommainimage;
+               $attributes['gallery'] = $blockConfig->mediaFiles->customgallery;
+            }
           @endphp
 
             <!--blade Component-->
@@ -67,24 +71,27 @@
         position: relative;
         @if($blockConfig->attributes->mainblock->backgroundColor)
         background: {{$blockConfig->attributes->mainblock->backgroundColor}};
+        @else
+        background-image: url({{$blockConfig->mediaFiles->blockbgimage->extraLargeThumb ?? ''}});
+        background-position: {{$blockConfig->attributes->mainblock->backgrounds->position}};
+        background-size: {{$blockConfig->attributes->mainblock->backgrounds->size}};
+        background-repeat: {{$blockConfig->attributes->mainblock->backgrounds->repeat}};
+        background-attachment: {{$blockConfig->attributes->mainblock->backgrounds->attachment}};
+        background-color: {{$blockConfig->attributes->mainblock->backgrounds->color}};
         @endif
     }
     @if($blockConfig->attributes->mainblock->blockStyle)
           {!!$blockConfig->attributes->mainblock->blockStyle!!}
     @endif
 
-    #block{{$blockConfig->attributes->mainblock->id ?? $id}} > .editLink  {
-        top: 5% !important;
-        left: 2% !important;
-    }
-
     @if(!empty($blockConfig->attributes->mainblock->overlay))
-       #overlay{{$blockConfig->attributes->mainblock->id ?? $id}} {
+    #overlay{{$blockConfig->attributes->mainblock->id ?? $id}} {
         position: absolute;
         width: 100%;
         height: 100%;
         top: 0%;
         right: 0%;
-        }
+        background: {{$blockConfig->attributes->mainblock->overlay}};
+    }
     @endif
 </style>

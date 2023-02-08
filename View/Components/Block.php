@@ -95,23 +95,7 @@ class Block extends Component
    */
   public function instanceBackgroundAttribute($params)
   {
-    $background = [];
-    foreach ($params["backgrounds"] as $feature) {
-      //validate if the position or the size is _blank
-      if (!isset($feature['position']) || empty($feature['position'])) $feature['position'] = '0% 0%';
-      if (!isset($feature['size']) || empty($feature['size'])) $feature['size'] = '0% 0%';
-      if (!isset($feature['repeat']) || empty($feature['repeat'])) $feature['repeat'] = 'no-repeat';
-      if (!isset($feature['background']) || empty($feature['background'])) $feature['background'] = '';
-      if (!isset($feature['color']) || empty($feature['color'])) $feature['color'] = '';
-      if (!isset($feature['backgroundAttachment']) || empty($feature['backgroundAttachment'])) $feature['backgroundAttachment'] = 'local';
-
-      //add to background the features of backgrounds
-      array_push($background, $feature['position'] . "/" . " " .
-        $feature['size'] . " " .
-        $feature['repeat'] . " " .
-        $feature['color'] . " " . 'url("' . $feature['background'] . '")' . " " . $feature['backgroundAttachment']);
-    }
-    $this->background = implode(",", $background);
+      $this->backgrounds =  json_encode($params["backgrounds"] ?? ["position" => "center", "size" => "cover", "repeat" => "no-repeat", "color" => "", "attachment" => ""]);
   }
 
   /**
@@ -181,11 +165,13 @@ class Block extends Component
       $this->blockConfig->mediaFiles[$singleZone] = !$singleFile ? null : $this->transformFile($singleFile);
     }
     //Set files of media multi
-    foreach (array_keys($mediasMulti) as $multiZone) {
-      $multiFiles = $filesData->whereIn('id', $mediasMulti[$multiZone]->files);
-      $this->blockConfig->mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
-        return $this->transformFile($file);
-      })->toArray();
+    if(empty($mediasMulti) || !is_null($mediasMulti['customgallery'])) {
+        foreach (array_keys($mediasMulti) as $multiZone) {
+            $multiFiles = $filesData->whereIn('id', $mediasMulti[$multiZone]->files);
+            $this->blockConfig->mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
+                return $this->transformFile($file);
+            })->toArray();
+        }
     }
     //Set blockConfig media File
     $this->blockConfig->mediaFiles = json_decode(json_encode($this->blockConfig->mediaFiles));
