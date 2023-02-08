@@ -30,8 +30,8 @@
             $nameSpace = $componentConfig["nameSpace"];
             $attributes = $componentConfig["attributes"];
             if($componentName=='ibuilder::block-custom')  {
-               $attributes['image'] = $blockConfig->mediaFiles->custommainimage;
-               $attributes['gallery'] = $blockConfig->mediaFiles->customgallery;
+               $attributes['image'] = $blockConfig->mediaFiles->custommainimage ?? null;
+               $attributes['gallery'] = $blockConfig->mediaFiles->customgallery ?? null;
             }
           @endphp
 
@@ -71,7 +71,7 @@
         position: relative;
         @if($blockConfig->attributes->mainblock->backgroundColor)
         background: {{$blockConfig->attributes->mainblock->backgroundColor}};
-        @else
+        @elseif(isset($blockConfig->attributes->mainblock->backgrounds))
         background-image: url({{$blockConfig->mediaFiles->blockbgimage->extraLargeThumb ?? ''}});
         background-position: {{$blockConfig->attributes->mainblock->backgrounds->position}};
         background-size: {{$blockConfig->attributes->mainblock->backgrounds->size}};
