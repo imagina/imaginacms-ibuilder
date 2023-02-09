@@ -224,7 +224,7 @@ return [
       ],
       "mainImage" => [
         'value' => (object)['custommainimage' => null],
-        'name' => 'medias_single',
+        'name' => 'mediasSingle',
         'type' => 'media',
         "columns" => "col-12",
         "isTranslatable" => false,
@@ -237,7 +237,7 @@ return [
       ],
       "gallery" => [
         'value' => (object)['customgallery' => null],
-        'name' => 'medias_multi',
+        'name' => 'mediasMulti',
         'type' => 'media',
         "columns" => "col-12",
         "isTranslatable" => false,
