@@ -146,8 +146,8 @@ class Block extends Component
   {
     //Instance the media attributes
     $componentAttrs = $this->blockConfig->attributes->componentAttributes;
-    $mediasSingle = (array)($componentAttrs->medias_single ?? []);
-    $mediasMulti = (array)($componentAttrs->medias_multi ?? []);
+    $mediasSingle = (array)($componentAttrs->medias_single ?? $componentAttrs->mediasSingle ?? []);
+    $mediasMulti = (array)($componentAttrs->medias_multi ?? $componentAttrs->mediasMulti ?? []);
     //Instance the blockConfigfiles
     $this->blockConfig->mediaFiles = array_merge(
       array_map(function ($zone) {
