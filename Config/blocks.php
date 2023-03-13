@@ -236,7 +236,7 @@ return [
         ]
       ],
       "gallery" => [
-        'value' => (object)['customgallery' => null],
+        'value' => (object)['customgallery' => []],
         'name' => 'mediasMulti',
         'type' => 'media',
         "columns" => "col-12",
