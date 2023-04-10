@@ -54,22 +54,6 @@ return [
                   "options" => $vAttributes["display"]
               ]
           ],
-          "widthContainer" => [
-              "name" => "widthContainer",
-              "type" => "input",
-              "props" => [
-                  "label" => "Ancho del contenedor",
-                  "type" => "number"
-              ]
-          ],
-          "heightContainer" => [
-              "name" => "heightContainer",
-              "type" => "input",
-              "props" => [
-                  "label" => "Alto del contenedor",
-                  "type" => "number"
-              ]
-          ],
           "paddingX" => [
               "name" => "paddingX",
               "type" => "input",
@@ -146,6 +130,82 @@ return [
             "columns" => "col-12",
             "props" => [
               "label" => "Columnas",
+            ]
+          ],
+          "position" => [
+            "name" => "position",
+            "value" => "relative",
+            "type" => "select",
+            "props" => [
+                "label" => "Posición",
+                "options" => [
+                    ["label" => "relative", "value" => "relative"],
+                    ["label" => "static", "value" => "static"],
+                    ["label" => "absolute", "value" => "absolute"],
+                    ["label" => "fixed", "value" => "fixed"],
+                    ["label" => "sticky", "value" => "sticky"],
+                    ["label" => "inherit", "value" => "inherit"],
+                    ["label" => "revert", "value" => "revert"],
+                    ["label" => "initial", "value" => "initial"],
+                    ["label" => "revert-layer", "value" => "revert-layer"],
+                    ["label" => "unset", "value" => "unset"],
+                ],
+            ]
+          ],
+          "zIndex" => [
+            "name" => "zIndex",
+            "value" => "",
+            "type" => "input",
+            "props" => [
+                "label" => "Orden entre elementos (z-index)"
+            ]
+          ],
+          "top" => [
+            "name" => "top",
+            "value" => "",
+            "type" => "input",
+            "props" => [
+                "label" => "Posición Superior (Top)"
+            ]
+          ],
+          "bottom" => [
+            "name" => "bottom",
+            "value" => "",
+            "type" => "input",
+            "props" => [
+                "label" => "Posición Inferior (Bottom)"
+            ]
+          ],
+          "left" => [
+            "name" => "left",
+            "value" => "",
+            "type" => "input",
+            "props" => [
+                "label" => "Posición Izquierda (Left)"
+            ]
+          ],
+          "right" => [
+            "name" => "right",
+            "value" => "",
+            "type" => "input",
+            "props" => [
+                "label" => "Posición Derecha (Right)"
+            ]
+          ],
+          "width" => [
+            "name" => "width",
+            "value" => "auto",
+            "type" => "input",
+            "props" => [
+                "label" => "Ancho del Bloque",
+            ]
+          ],
+          "height" => [
+            "name" => "height",
+            "value" => "auto",
+            "type" => "input",
+            "props" => [
+                "label" => "Alto del Bloque",
             ]
           ],
           "blockClasses" => [

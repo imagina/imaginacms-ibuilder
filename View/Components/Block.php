@@ -16,10 +16,11 @@ class Block extends Component
 {
   use MediaRelation;
 
-  public $container, $id, $columns, $background, $borderForm, $display,
-    $widthContainer, $heightContainer, $backgrounds, $paddingX, $paddingY, $editLink, $tooltipEditLink,
+  public $container, $id, $columns, $borderForm, $display,
+    $width, $height, $backgrounds, $paddingX, $paddingY, $editLink, $tooltipEditLink,
     $marginX, $marginY, $overlay, $backgroundColor, $componentIsite, $componentType, $isBlade, $view,
-    $systemName, $blockConfig, $componentConfig, $blockClasses, $blockStyle, $row, $inheritContent;
+    $systemName, $blockConfig, $componentConfig, $blockClasses, $blockStyle, $row, $inheritContent,
+    $position, $top, $left, $right, $bottom, $zIndex;
 
   public function __construct(
     $container = null,
@@ -27,8 +28,8 @@ class Block extends Component
     $columns = null,
     $borderForm = null,
     $display = null,
-    $widthContainer = "100%",
-    $heightContainer = "auto",
+    $width = "auto",
+    $height = "auto",
     $backgrounds = [],
     $paddingX = "",
     $paddingY = "",
@@ -42,7 +43,13 @@ class Block extends Component
     $blockClasses = "",
     $blockStyle = "",
     $row = "",
-    $inheritContent = null
+    $inheritContent = null,
+    $position = "relative",
+    $top = "unset",
+    $left = "unset",
+    $right = "unset",
+    $bottom = "unset",
+    $zIndex = 0
   )
   {
     //Get all params
@@ -68,8 +75,8 @@ class Block extends Component
     $this->backgrounds = $params["backgrounds"];
     $this->borderForm = $params["borderForm"];
     $this->display = $params["display"];
-    $this->widthContainer = $params["widthContainer"];
-    $this->heightContainer = $params["heightContainer"];
+    $this->width = $params["width"];
+    $this->height = $params["height"];
     $this->paddingX = $params["paddingX"];
     $this->paddingY = $params["paddingY"];
     $this->marginX = $params["marginX"];
@@ -86,6 +93,12 @@ class Block extends Component
     $this->blockStyle = $params["blockStyle"];
     $this->row = $params["row"];
     $this->inheritContent = $params["inheritContent"];
+    $this->position = $params["position"];
+    $this->top = $params["top"];
+    $this->left = $params["left"];
+    $this->right = $params["right"];
+    $this->bottom = $params["bottom"];
+    $this->zIndex = $params["zIndex"];
 
   }
 

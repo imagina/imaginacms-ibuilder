@@ -1,5 +1,15 @@
-<section id="block{{$blockConfig->attributes->mainblock->id ?? $id}}"
-         class="{{$blockConfig->attributes->mainblock->blockClasses ?? $blockClasses}}">
+@php
+    $componentName = $componentConfig["systemName"];
+    $nameSpace = $componentConfig["nameSpace"];
+    $attributes = $componentConfig["attributes"];
+    if($componentName=='ibuilder::block-custom')  {
+       $attributes['image'] = $blockConfig->mediaFiles->custommainimage ?? null;
+       $attributes['gallery'] = $blockConfig->mediaFiles->customgallery ?? null;
+    }
+    $block = $blockConfig->attributes->mainblock;
+@endphp
+<section id="block{{$block->id ?? $id}}"
+         class="{{$block->blockClasses ?? $blockClasses}}">
 
   @if($editLink)
     <x-isite::edit-link
@@ -14,28 +24,18 @@
     />
   @endif
 
-  @if($blockConfig->attributes->mainblock->overlay ?? $overlay)
+  @if($block->overlay ?? $overlay)
     <!--Overlay-->
-    <div id="overlay{{$blockConfig->attributes->mainblock->id ?? $id}}"></div>
+    <div id="overlay{{$block->id ?? $id}}"></div>
   @endif
-  <div id="container{{$blockConfig->attributes->mainblock->id ?? $id}}"
-       class="{{$blockConfig->attributes->mainblock->container ?? $container}}">
-    <div class="row {{$blockConfig->attributes->mainblock->row ?? $row}}">
-      <div class="{{$blockConfig->attributes->mainblock->columns ?? $columns}} ">
+  <div id="container{{$block->id ?? $id}}"
+       class="{{$block->container ?? $container}}">
+    <div class="row {{$block->row ?? $row}}">
+      <div class="{{$block->columns ?? $columns}} ">
 
         <!--Dynamic Component-->
-        <div id="component{{$blockConfig->attributes->mainblock->id ?? $id}}">
-          @php
-            $componentName = $componentConfig["systemName"];
-            $nameSpace = $componentConfig["nameSpace"];
-            $attributes = $componentConfig["attributes"];
-            if($componentName=='ibuilder::block-custom')  {
-               $attributes['image'] = $blockConfig->mediaFiles->custommainimage ?? null;
-               $attributes['gallery'] = $blockConfig->mediaFiles->customgallery ?? null;
-            }
-          @endphp
-
-            <!--blade Component-->
+        <div id="component{{$block->id ?? $id}}">
+          <!--blade Component-->
           @if($componentType == "blade")
             @if(!empty($nameSpace))
                 <?php
@@ -67,31 +67,39 @@
 </section>
 <style>
 
-    #block{{$blockConfig->attributes->mainblock->id ?? $id}}  {
-        position: relative;
-        @if($blockConfig->attributes->mainblock->backgroundColor)
-        background: {{$blockConfig->attributes->mainblock->backgroundColor}};
-        @elseif(isset($blockConfig->attributes->mainblock->backgrounds))
+    #block{{$block->id ?? $id}}  {
+        position: {{$block->position}};
+        top: {{$block->top}};
+        left: {{$block->left}};
+        right: {{$block->right}};
+        bottom: {{$block->bottom}};
+        z-index: {{$block->zIndex}};
+        width: {{$block->width}};
+        height: {{$block->height}};
+
+        @if($block->backgroundColor)
+        background: {{$block->backgroundColor}};
+        @elseif(isset($block->backgrounds))
         background-image: url({{$blockConfig->mediaFiles->blockbgimage->extraLargeThumb ?? ''}});
-        background-position: {{$blockConfig->attributes->mainblock->backgrounds->position}};
-        background-size: {{$blockConfig->attributes->mainblock->backgrounds->size}};
-        background-repeat: {{$blockConfig->attributes->mainblock->backgrounds->repeat}};
-        background-attachment: {{$blockConfig->attributes->mainblock->backgrounds->attachment}};
-        background-color: {{$blockConfig->attributes->mainblock->backgrounds->color}};
+        background-position: {{$block->backgrounds->position}};
+        background-size: {{$block->backgrounds->size}};
+        background-repeat: {{$block->backgrounds->repeat}};
+        background-attachment: {{$block->backgrounds->attachment}};
+        background-color: {{$block->backgrounds->color}};
         @endif
     }
-    @if($blockConfig->attributes->mainblock->blockStyle)
-          {!!$blockConfig->attributes->mainblock->blockStyle!!}
+    @if($block->blockStyle)
+          {!!$block->blockStyle!!}
     @endif
 
-    @if(!empty($blockConfig->attributes->mainblock->overlay))
-    #overlay{{$blockConfig->attributes->mainblock->id ?? $id}} {
+    @if(!empty($block->overlay))
+    #overlay{{$block->id ?? $id}} {
         position: absolute;
         width: 100%;
         height: 100%;
         top: 0%;
         right: 0%;
-        background: {{$blockConfig->attributes->mainblock->overlay}};
+        background: {{$block->overlay}};
     }
     @endif
 </style>
