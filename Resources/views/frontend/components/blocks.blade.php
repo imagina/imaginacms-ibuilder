@@ -68,14 +68,14 @@
 <style>
 
     #block{{$block->id ?? $id}}  {
-        position: {{$block->position}};
-        top: {{$block->top}};
-        left: {{$block->left}};
-        right: {{$block->right}};
-        bottom: {{$block->bottom}};
-        z-index: {{$block->zIndex}};
-        width: {{$block->width}};
-        height: {{$block->height}};
+        position: {{$block->position ?? ''}};
+        top: {{$block->top ?? ''}};
+        left: {{$block->left ?? ''}};
+        right: {{$block->right ?? ''}};
+        bottom: {{$block->bottom ?? ''}};
+        z-index: {{$block->zIndex ?? ''}};
+        width: {{$block->width ?? ''}};
+        height: {{$block->height ?? ''}};
 
         @if($block->backgroundColor)
         background: {{$block->backgroundColor}};
