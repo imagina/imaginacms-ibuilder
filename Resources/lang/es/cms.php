@@ -7,6 +7,8 @@ return [
     "adminTemplates" => "Plantillas"
   ],
   "newBlock" => "Nuevo Bloque",
-  "updateBlock" => "Actualizar Bloque"
+  "updateBlock" => "Actualizar Bloque",
+  "block" => "Bloque | Bloques",
+  "chooseBlock" => "Selecciona un Bloque"
 ];
 

@@ -7,6 +7,8 @@ return [
     "adminTemplates" => "Templates"
   ],
   "newBlock" => "New Block",
-  "updateBlock" => "Update Block"
+  "updateBlock" => "Update Block",
+  "block" => "Block | Blocks",
+  "chooseBlock" => "Choose a Block"
 ];
 
