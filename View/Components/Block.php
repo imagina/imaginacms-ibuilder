@@ -138,7 +138,8 @@ class Block extends Component
           $this->blockConfig = [
             "component" => $block->component,
             "entity" => $block->entity,
-            "attributes" => $blockAttributes
+            "attributes" => $blockAttributes,
+            "status" => $block->status
           ];
           //Instance the block edit link
           $this->editLink = str_replace("{blockId}", $block->id, config('asgard.ibuilder.config.urlEditBlockTheme'));
@@ -146,7 +147,10 @@ class Block extends Component
       }
     }
     //Parse
-    $this->blockConfig = json_decode(json_encode($this->blockConfig));
+    $this->blockConfig = json_decode(json_encode(array_merge(
+      ["status" => true],
+      $this->blockConfig
+    )));
   }
 
   /**
@@ -314,7 +318,7 @@ class Block extends Component
    */
   public function render()
   {
-    return view($this->view);
+    if($this->blockConfig->status) return view($this->view);
   }
 }
 
