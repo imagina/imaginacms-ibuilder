@@ -16,6 +16,7 @@ class Block extends CrudModel
 
   protected $table = 'ibuilder__blocks';
   public $transformer = 'Modules\Ibuilder\Transformers\BlockTransformer';
+  public $repository = 'Modules\Ibuilder\Repositories\BlockRepository';
   public $requestValidation = [
     'create' => 'Modules\Ibuilder\Http\Requests\CreateBlockRequest',
     'update' => 'Modules\Ibuilder\Http\Requests\UpdateBlockRequest',
