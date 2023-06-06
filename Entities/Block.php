@@ -16,6 +16,7 @@ class Block extends CrudModel
 
   protected $table = 'ibuilder__blocks';
   public $transformer = 'Modules\Ibuilder\Transformers\BlockTransformer';
+  public $repository = 'Modules\Ibuilder\Repositories\BlockRepository';
   public $requestValidation = [
     'create' => 'Modules\Ibuilder\Http\Requests\CreateBlockRequest',
     'update' => 'Modules\Ibuilder\Http\Requests\UpdateBlockRequest',
@@ -31,6 +32,6 @@ class Block extends CrudModel
     'deleted' => []
   ];
   public $translatedAttributes = ["internal_title"];
-  protected $fillable = ["system_name", "component", "entity", "attributes"];
+  protected $fillable = ["system_name", "status", "component", "entity", "attributes", "mobile_attributes"];
   protected $casts = ['component' => 'array', 'entity' => 'array', 'attributes' => AsArrayObject::class];
 }
