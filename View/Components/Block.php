@@ -8,7 +8,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Collective\Html\Componentable;
 use Illuminate\Support\Facades\Blade;
 use Modules\Ibuilder\Entities\Block as BlockEntity;
-use Modules\Ifillable\Transformers\FieldTransformer;
 use Modules\Media\Entities\File;
 use Modules\Media\Support\Traits\MediaRelation;
 
@@ -132,7 +131,7 @@ class Block extends Component
           //Parse block Attributes
           $blockAttributes = $block->attributes->toArray();
           //Get and add block Fields in attributes
-          $blockFields = $block->formatFillableToModel(fieldTransformer::collection($block->fields));
+          $blockFields = $block->formatFillableToModel($block->fields);
           $blockAttributes["componentAttributes"] = array_merge(($blockAttributes["componentAttributes"] ?? []), $blockFields);
           //nstance the blockConfig
           $this->blockConfig = [
