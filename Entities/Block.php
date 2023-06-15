@@ -36,7 +36,6 @@ class Block extends CrudModel
   protected $casts = [
     'component' => 'array',
     'entity' => 'array',
-    'attributes' => AsArrayObject::class,
-    'mobile_attributes' => AsArrayObject::class
+    'attributes' => AsArrayObject::class
   ];
 }
