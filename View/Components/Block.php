@@ -20,6 +20,8 @@ class Block extends Component
     $marginX, $marginY, $overlay, $backgroundColor, $componentIsite, $componentType, $isBlade, $view,
     $systemName, $blockConfig, $componentConfig, $blockClasses, $blockStyle, $row, $inheritContent,
     $position, $top, $left, $right, $bottom, $zIndex;
+  public  $animateBlockName, $animateBlockDelay, $animateBlockDuration, $animateBlockOffset,
+        $animateBlockEasing, $animateBlockOnce, $animateBlockMirror;
 
   public function __construct(
     $container = null,
@@ -48,7 +50,14 @@ class Block extends Component
     $left = "unset",
     $right = "unset",
     $bottom = "unset",
-    $zIndex = 0
+    $zIndex = 0,
+    $animateBlockName = "",
+    $animateBlockDelay = "",
+    $animateBlockDuration = "",
+    $animateBlockOffset = "",
+    $animateBlockEasing = "",
+    $animateBlockOnce = false,
+    $animateBlockMirror = false
   )
   {
     //Get all params
@@ -98,6 +107,13 @@ class Block extends Component
     $this->right = $params["right"];
     $this->bottom = $params["bottom"];
     $this->zIndex = $params["zIndex"];
+    $this->animateBlockName = $params["animateBlockName"];
+    $this->animateBlockDelay = $params["animateBlockDelay"];
+    $this->animateBlockDuration = $params["animateBlockDuration"];
+    $this->animateBlockOffset = $params["animateBlockOffset"];
+    $this->animateBlockEasing = $params["animateBlockEasing"];
+    $this->animateBlockOnce = $params["animateBlockOnce"];
+    $this->animateBlockMirror = $params["animateBlockMirror"];
 
   }
 
