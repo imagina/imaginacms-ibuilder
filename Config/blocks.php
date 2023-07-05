@@ -229,7 +229,84 @@ return [
             ]
           ],
         ]
-      ]
+      ],
+      "animationBlock" => [
+        "title" => "Animaciones de Entrada",
+        "fields" => [
+            "animateBlockName" => [
+                "name" => "animateBlockName",
+                "value" => "",
+                "type" => "select",
+                "props" => [
+                    "label" => "Animacion",
+                    "options" => $vAttributes["animationAOS"]
+                ]
+            ],
+            "animateBlockDuration" => [
+                "name" => "animateBlockDuration",
+                "type" => "input",
+                "props" => [
+                    "label" => "Duracion"
+                ],
+                "help" => [
+                    "description" => "Valores de 0 a 3000, con paso de 50ms"
+                ]
+            ],
+            "animateBlockOffset" => [
+                "name" => "animateBlockOffset",
+                "type" => "input",
+                "props" => [
+                    "label" => "Offset",
+                ],
+                "help" => [
+                    "description" => "Desplazamiento (en px) desde el punto de activación original"
+                ]
+            ],
+            "animateBlockDelay" => [
+                "name" => "animateBlockDelay",
+                "type" => "input",
+                "props" => [
+                    "label" => "Delay",
+                ],
+                "help" => [
+                    "description" => "Valores de 0 a 3000, con paso de 50ms"
+                ]
+            ],
+            "animateBlockEasing" => [
+                "name" => "animateBlockEasing",
+                "value" => "ease",
+                "type" => "select",
+                "props" => [
+                    "label" => "Easing",
+                    "options" => $vAttributes["easingAOS"]
+                ]
+            ],
+            "animateBlockOnce" => [
+                "name" => "animateBlockOnce",
+                "value" => true,
+                "type" => "select",
+                "props" => [
+                    "label" => "One",
+                    "options" => $vAttributes["booleanValidation"]
+                ],
+                "help" => [
+                    "description" => "Si la animación debe ocurrir solo una vez, mientras se desplaza hacia abajo"
+                ]
+            ],
+            "animateBlockMirror" => [
+                "name" => "animateBlockMirror",
+                "value" => true,
+                "type" => "select",
+                "props" => [
+                    "label" => "Mirror",
+                    "options" => $vAttributes["booleanValidation"]
+                ],
+                "help" => [
+                    "description" => "Si los elementos deben animarse mientras se desplazan más allá de ellos"
+                ]
+            ],
+        ]
+      ],
     ]
   ],
   "custom" => [

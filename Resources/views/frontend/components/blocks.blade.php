@@ -9,7 +9,15 @@
     $block = $blockConfig->attributes->mainblock;
 @endphp
 <section id="block{{$block->id ?? $id}}"
-         class="{{$block->blockClasses ?? $blockClasses}}">
+         class="{{$block->blockClasses ?? $blockClasses}}"
+         @if(!empty($block->animateBlockName)) data-aos="{{$block->animateBlockName}}" @endif
+         @if(!empty($block->animateBlockDelay)) data-aos-delay="{{$block->animateBlockDelay}}" @endif
+         @if(!empty($block->animateBlockDuration)) data-aos-duration="{{$block->animateBlockDuration}}" @endif
+         @if(!empty($block->animateBlockOffset)) data-aos-offset="{{$block->animateBlockOffset}}" @endif
+         @if(!empty($block->animateBlockEasing)) data-aos-easing="{{$block->animateBlockEasing}}" @endif
+         @if(!empty($block->animateBlockOnce)) data-aos-once="{{$block->animateBlockOnce}}" @endif
+         @if(!empty($block->animateBlockMirror)) data-aos-mirror="{{$block->animateBlockMirror}}" @endif
+>
 
   @if($editLink)
     <x-isite::edit-link
