@@ -307,6 +307,20 @@ return [
             ],
         ]
       ],
+      "responsive" => [
+        "title" => "Responsive Custom",
+        "fields" => [
+            "blockStyleResponsive" => [
+                "name" => "blockStyleResponsive",
+                "value" => [],
+                "type" => "json",
+                'columns' => 'col-12',
+                "props" => [
+                    "label" => "Responsive Custom"
+                ],
+            ],
+        ]
+      ],
     ]
   ],
   "custom" => [
@@ -507,6 +521,14 @@ return [
             "columns" => "col-md-5",
             "props" => [
               "label" => "Tamaño Fuente (Resumen)"
+            ]
+          ],
+          "descriptionClasses" => [
+            "name" => "descriptionClasses",
+            "type" => "input",
+            "columns" => "col-md-12",
+            "props" => [
+                "label" => "Clases (Descripción)"
             ]
           ],
         ]

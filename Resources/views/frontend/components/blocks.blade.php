@@ -6,6 +6,13 @@
        $attributes['image'] = $blockConfig->mediaFiles->custommainimage ?? null;
        $attributes['gallery'] = $blockConfig->mediaFiles->customgallery ?? null;
     }
+    if(!empty($blockConfig->mediaFiles->blockbgimage)) {
+        if(!empty($blockConfig->mediaFiles->blockbgimage->extraLargeThumb))  {
+            $blockImage = $blockConfig->mediaFiles->blockbgimage->extraLargeThumb;
+        } else {
+            $blockImage = $blockConfig->mediaFiles->blockbgimage->path;
+        }
+    }
     $block = $blockConfig->attributes->mainblock;
 @endphp
 <section id="block{{$block->id ?? $id}}"
@@ -76,19 +83,19 @@
 <style>
 
     #block{{$block->id ?? $id}}  {
-        position: {{$block->position ?? ''}};
-        top: {{$block->top ?? ''}};
-        left: {{$block->left ?? ''}};
-        right: {{$block->right ?? ''}};
-        bottom: {{$block->bottom ?? ''}};
-        z-index: {{$block->zIndex ?? ''}};
-        width: {{$block->width ?? ''}};
-        height: {{$block->height ?? ''}};
+        @if(!empty($block->position)) position: {{$block->position}}; @endif
+        @if(!empty($block->top)) top: {{$block->top}}; @endif
+        @if(!empty($block->left)) left: {{$block->left}}; @endif
+        @if(!empty($block->right)) right: {{$block->right}}; @endif
+        @if(!empty($block->bottom)) bottom: {{$block->bottom}}; @endif
+        @if(!empty($block->zIndex)) z-index: {{$block->zIndex}}; @endif
+        @if(!empty($block->width)) width: {{$block->width}}; @endif
+        @if(!empty($block->height)) height: {{$block->height}}; @endif
 
         @if($block->backgroundColor)
         background: {{$block->backgroundColor}};
         @elseif(isset($block->backgrounds))
-        background-image: url({{$blockConfig->mediaFiles->blockbgimage->extraLargeThumb ?? ''}});
+        background-image: url({{$blockImage ?? ''}});
         background-position: {{$block->backgrounds->position}};
         background-size: {{$block->backgrounds->size}};
         background-repeat: {{$block->backgrounds->repeat}};
@@ -109,5 +116,19 @@
         right: 0%;
         background: {{$block->overlay}};
     }
+    @endif
+
+    @if(!empty($block->blockStyleResponsive) && count($block->blockStyleResponsive)>0)
+    @foreach($block->blockStyleResponsive as $items)
+    @media ({{$items->media}}: {{$items->value}}) {
+    @foreach($items->class as $class)
+    #block{{$block->id ?? $id}} {{$class->name}} {
+        @foreach($class->attributes as $key => $value)
+          {{$key}}: {{$value}};
+        @endforeach
+    }
+    @endforeach
+    }
+    @endforeach
     @endif
 </style>

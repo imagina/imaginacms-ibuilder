@@ -19,7 +19,7 @@ class Block extends Component
     $width, $height, $backgrounds, $paddingX, $paddingY, $editLink, $tooltipEditLink,
     $marginX, $marginY, $overlay, $backgroundColor, $componentIsite, $componentType, $isBlade, $view,
     $systemName, $blockConfig, $componentConfig, $blockClasses, $blockStyle, $row, $inheritContent,
-    $position, $top, $left, $right, $bottom, $zIndex;
+    $position, $top, $left, $right, $bottom, $zIndex, $blockStyleResponsive;
   public  $animateBlockName, $animateBlockDelay, $animateBlockDuration, $animateBlockOffset,
         $animateBlockEasing, $animateBlockOnce, $animateBlockMirror;
 
@@ -57,7 +57,8 @@ class Block extends Component
     $animateBlockOffset = "",
     $animateBlockEasing = "",
     $animateBlockOnce = false,
-    $animateBlockMirror = false
+    $animateBlockMirror = false,
+    $blockStyleResponsive = []
   )
   {
     //Get all params
@@ -69,6 +70,7 @@ class Block extends Component
     $this->instanceBlockConfigFiles($params);
     $this->instanceComponentType($params);
     $this->instanceComponentConfig();
+
   }
 
   /**
@@ -114,7 +116,7 @@ class Block extends Component
     $this->animateBlockEasing = $params["animateBlockEasing"];
     $this->animateBlockOnce = $params["animateBlockOnce"];
     $this->animateBlockMirror = $params["animateBlockMirror"];
-
+    $this->blockStyleResponsive = $params["blockStyleResponsive"];
   }
 
   /**
