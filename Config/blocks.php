@@ -154,7 +154,6 @@ return [
           ],
           "zIndex" => [
             "name" => "zIndex",
-            "value" => "",
             "type" => "input",
             "props" => [
                 "label" => "Orden entre elementos (z-index)"
@@ -162,7 +161,6 @@ return [
           ],
           "top" => [
             "name" => "top",
-            "value" => "",
             "type" => "input",
             "props" => [
                 "label" => "Posición Superior (Top)"
@@ -170,7 +168,6 @@ return [
           ],
           "bottom" => [
             "name" => "bottom",
-            "value" => "",
             "type" => "input",
             "props" => [
                 "label" => "Posición Inferior (Bottom)"
@@ -178,7 +175,6 @@ return [
           ],
           "left" => [
             "name" => "left",
-            "value" => "",
             "type" => "input",
             "props" => [
                 "label" => "Posición Izquierda (Left)"
@@ -186,7 +182,6 @@ return [
           ],
           "right" => [
             "name" => "right",
-            "value" => "",
             "type" => "input",
             "props" => [
                 "label" => "Posición Derecha (Right)"
@@ -304,6 +299,23 @@ return [
                 "help" => [
                     "description" => "Si los elementos deben animarse mientras se desplazan más allá de ellos"
                 ]
+            ],
+        ]
+      ],
+      "responsive" => [
+        "title" => "Responsive Custom",
+        "fields" => [
+            "blockStyleResponsive" => [
+                "name" => "blockStyleResponsive",
+                "value" => [],
+                "type" => "json",
+                'columns' => 'col-12',
+                "props" => [
+                    "label" => "Responsive Custom"
+                ],
+                "help" => [
+                    "description" => "Responsive Custom"
+                ],
             ],
         ]
       ],
@@ -507,6 +519,14 @@ return [
             "columns" => "col-md-5",
             "props" => [
               "label" => "Tamaño Fuente (Resumen)"
+            ]
+          ],
+          "descriptionClasses" => [
+            "name" => "descriptionClasses",
+            "type" => "input",
+            "columns" => "col-md-12",
+            "props" => [
+                "label" => "Clases (Descripción)"
             ]
           ],
         ]
