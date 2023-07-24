@@ -313,6 +313,9 @@ return [
                 "props" => [
                     "label" => "Responsive Custom"
                 ],
+                "help" => [
+                    "description" => "Responsive Custom"
+                ],
             ],
         ]
       ],
