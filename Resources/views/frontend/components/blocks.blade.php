@@ -46,7 +46,7 @@
   <div id="container{{$block->id ?? $id}}"
        class="{{$block->container ?? $container}}">
     <div class="row {{$block->row ?? $row}}">
-      <div class="{{$block->columns ?? $columns}} {{$block->buttonAlign}} @if(empty($block->buttonPosition)) d-flex flex-column @endif">
+      <div class="{{$block->columns ?? $columns}}  @if(empty($block->buttonPosition)) d-flex flex-column @endif">
 
         <!--Dynamic Component-->
         <div id="component{{$block->id ?? $id}}" class="order-1">
