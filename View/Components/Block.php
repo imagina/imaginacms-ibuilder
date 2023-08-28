@@ -22,6 +22,9 @@ class Block extends Component
     $position, $top, $left, $right, $bottom, $zIndex, $blockStyleResponsive;
   public  $animateBlockName, $animateBlockDelay, $animateBlockDuration, $animateBlockOffset,
         $animateBlockEasing, $animateBlockOnce, $animateBlockMirror;
+  public $withButton, $buttonPosition, $buttonAlign, $buttonLayout, $buttonIcon, $buttonIconLR, $buttonIconColor,
+        $buttonIconColorHover, $buttonColor, $buttonMarginT, $buttonMarginB, $buttonSize, $buttonTextSize,
+        $buttonClasses, $buttonShadow, $buttonLabel, $buttonUrl, $buttonTarget, $buttonConfig;
 
   public function __construct(
     $container = null,
@@ -58,7 +61,26 @@ class Block extends Component
     $animateBlockEasing = "",
     $animateBlockOnce = false,
     $animateBlockMirror = false,
-    $blockStyleResponsive = []
+    $blockStyleResponsive = [],
+    $withButton = false,
+    $buttonPosition = "1",
+    $buttonAlign = "text-left",
+    $buttonLayout = "border-0",
+    $buttonIcon = " ",
+    $buttonIconColor = null,
+    $buttonIconColorHover = null,
+    $buttonIconLR = "left",
+    $buttonColor = "primary",
+    $buttonMarginT = "mt-0",
+    $buttonMarginB = "mb-0",
+    $buttonSize = "button-normal",
+    $buttonTextSize = 16,
+    $buttonClasses = "",
+    $buttonShadow = "",
+    $buttonLabel = "",
+    $buttonUrl = "",
+    $buttonTarget = "",
+    $buttonConfig = []
   )
   {
     //Get all params
@@ -117,6 +139,25 @@ class Block extends Component
     $this->animateBlockOnce = $params["animateBlockOnce"];
     $this->animateBlockMirror = $params["animateBlockMirror"];
     $this->blockStyleResponsive = $params["blockStyleResponsive"];
+    $this->withButton = $params["withButton"];
+    $this->buttonPosition = $params["buttonPosition"];
+    $this->buttonAlign = $params["buttonAlign"];
+    $this->buttonLayout = $params["buttonLayout"];
+    $this->buttonIcon = $params["buttonIcon"];
+    $this->buttonIconColor = $params["buttonIconColor"];
+    $this->buttonIconColorHover = $params["buttonIconColorHover"];
+    $this->buttonIconLR = $params["buttonIconLR"];
+    $this->buttonColor = $params["buttonColor"];
+    $this->buttonMarginT = $params["buttonMarginT"];
+    $this->buttonMarginB = $params["buttonMarginB"];
+    $this->buttonSize = $params["buttonSize"];
+    $this->buttonTextSize = $params["buttonTextSize"];
+    $this->buttonClasses = $params["buttonClasses"];
+    $this->buttonShadow = $params["buttonShadow"];
+    $this->buttonLabel = $params["buttonLabel"];
+    $this->buttonUrl = $params["buttonUrl"];
+    $this->buttonTarget = $params["buttonTarget"];
+    $this->buttonConfig = $params["buttonConfig"];
   }
 
   /**
