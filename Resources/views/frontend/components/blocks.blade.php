@@ -46,7 +46,7 @@
   <div id="container{{$block->id ?? $id}}"
        class="{{$block->container ?? $container}}">
     <div class="row {{$block->row ?? $row}}">
-      <div class="{{$block->columns ?? $columns}} {{$block->buttonPosition==0 ? 'd-flex flex-column' : ''}}">
+      <div class="{{$block->columns ?? $columns}}  @if(empty($block->buttonPosition)) d-flex flex-column @endif">
 
         <!--Dynamic Component-->
         <div id="component{{$block->id ?? $id}}" class="order-1">
@@ -77,36 +77,36 @@
           @endif
         </div>
 
-        @if($block->withButton)
-              <div class="component{{$block->id ?? $id}}-button {{$block->buttonAlign}} {{$block->buttonPosition==0 ? 'order-0' : ''}}">
-                  @if($block->buttonLabel=="")
-                      @php($labelExist = false)
-                  @else
-                      @php($labelExist = true)
-                  @endif
-                  @if($block->buttonIcon=="")
-                      @php($iconExist = false)
-                  @else
-                      @php($iconExist = true)
-                  @endif
-                  @if($block->buttonLayout=="button-custom")
-                      @php($block->buttonColor = "")
-                  @endif
-                  <x-isite::button :style="$block->buttonLayout"
-                                   :buttonClasses="$block->buttonSize.' block-button '.$block->buttonLayout.' '.$block->buttonMarginT.' '.$block->buttonMarginB.' '.$block->buttonClasses"
-                                   :label="$block->buttonLabel"
-                                   :withLabel="$labelExist"
-                                   :withIcon="$iconExist"
-                                   :iconClass="$block->buttonIcon"
-                                   :iconPosition="$block->buttonIconLR"
-                                   :color="$block->buttonColor"
-                                   :sizeLabel="$block->buttonTextSize"
-                                   :iconColor="$block->buttonIconColor ?? ''"
-                                   :target="$block->buttonTarget ?? ''"
-                                   :href="$block->buttonUrl ?? 0"
-                  />
-              </div>
-          @endif
+        @if(!empty($block->withButton) && $block->withButton)
+          <div class="component{{$block->id ?? $id}}-button {{$block->buttonAlign}} {{$block->buttonAlign}} @if(empty($block->buttonPosition)) order-0 @endif">
+              @if($block->buttonLabel=="")
+                  @php($labelExist = false)
+              @else
+                  @php($labelExist = true)
+              @endif
+              @if($block->buttonIcon=="")
+                  @php($iconExist = false)
+              @else
+                  @php($iconExist = true)
+              @endif
+              @if($block->buttonLayout=="button-custom")
+                  @php($block->buttonColor = "")
+              @endif
+              <x-isite::button :style="$block->buttonLayout"
+                               :buttonClasses="$block->buttonSize.' block-button '.$block->buttonLayout.' '.$block->buttonMarginT.' '.$block->buttonMarginB.' '.$block->buttonClasses"
+                               :label="$block->buttonLabel"
+                               :withLabel="$labelExist"
+                               :withIcon="$iconExist"
+                               :iconClass="$block->buttonIcon"
+                               :iconPosition="$block->buttonIconLR"
+                               :color="$block->buttonColor"
+                               :sizeLabel="$block->buttonTextSize"
+                               :iconColor="$block->buttonIconColor ?? ''"
+                               :target="$block->buttonTarget ?? ''"
+                               :href="$block->buttonUrl ?? 0"
+              />
+          </div>
+        @endif
 
       </div>
     </div>
@@ -164,7 +164,7 @@
     @endforeach
     @endif
 
-    @if($block->withButton)
+    @if(!empty($block->withButton) && $block->withButton)
         @if($block->buttonLayout=="button-custom")
         .component{{$block->id ?? $id}}-button .button-custom {
             @foreach($block->buttonConfig as $key => $value)
