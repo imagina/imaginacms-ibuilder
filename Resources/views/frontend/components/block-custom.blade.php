@@ -175,4 +175,22 @@
         }
     }
     @endif
+    @if($buttonLayout=="button-custom")
+    #sectionCustom{{$id}} .button-custom {
+        @foreach($buttonConfig as $key => $value)
+            @php($pos = strpos($key,'-hover'))
+            @if($pos === false)
+                {{$key}}: {{$value}};
+           @endif
+       @endforeach
+    }
+    #sectionCustom{{$id}} .button-custom:hover {
+        @foreach($buttonConfig as $key => $value)
+            @php($pos = strpos($key,'-hover'))
+            @if($pos !== false)
+                {{substr($key,0,$pos)}}: {{$value}};
+            @endif
+        @endforeach
+    }
+    @endif
 </style>
