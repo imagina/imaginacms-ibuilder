@@ -168,7 +168,7 @@
         @if($block->buttonLayout=="button-custom")
         .component{{$block->id ?? $id}}-button .button-custom {
             @foreach($block->buttonConfig as $key => $value)
-                @php($pos = strpos($key,'Hover'))
+                @php($pos = strpos($key,'-hover'))
                 @if($pos === false)
                     {{$key}}: {{$value}};
                 @endif
