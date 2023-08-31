@@ -123,16 +123,15 @@
         @if(!empty($block->zIndex)) z-index: {{$block->zIndex}}; @endif
         @if(!empty($block->width)) width: {{$block->width}}; @endif
         @if(!empty($block->height)) height: {{$block->height}}; @endif
-
         @if($block->backgroundColor)
         background: {{$block->backgroundColor}};
         @elseif(isset($block->backgrounds))
-        background-image: url({{$blockImage ?? ''}});
+        @if(!empty($blockImage)) background-image: url({{$blockImage}}); @endif
         background-position: {{$block->backgrounds->position}};
         background-size: {{$block->backgrounds->size}};
         background-repeat: {{$block->backgrounds->repeat}};
-        background-attachment: {{$block->backgrounds->attachment}};
-        background-color: {{$block->backgrounds->color}};
+        @if(!empty($block->backgrounds->attachment)) background-attachment: {{$block->backgrounds->attachment}}; @endif
+        @if(!empty($block->backgrounds->color)) background-color: {{$block->backgrounds->color}}; @endif
         @endif
     }
     @if($block->blockStyle)
@@ -165,23 +164,25 @@
     @endif
 
     @if(!empty($block->withButton) && $block->withButton)
+        @php($hover = array())
         @if($block->buttonLayout=="button-custom")
         .component{{$block->id ?? $id}}-button .button-custom {
-            @foreach($block->buttonConfig as $key => $value)
+            @foreach($buttonConfig as $key => $value)
                 @php($pos = strpos($key,'-hover'))
                 @if($pos === false)
                     {{$key}}: {{$value}};
+                @else
+                    @php($hover[substr($key,0,$pos)] = $value)
                 @endif
-            @endforeach
+           @endforeach
         }
+        @if(!empty($hover))
         .component{{$block->id ?? $id}}-button .button-custom:hover {
-        @foreach($block->buttonConfig as $key => $value)
-            @php($pos = strpos($key,'-hover'))
-            @if($pos !== false)
-                {{substr($key,0,$pos)}}: {{$value}};
-            @endif
-        @endforeach
+            @foreach ($hover as $key => $value)
+                {{$key}}: {{$value}};
+           @endforeach
         }
+        @endif
         @else
         .component{{$block->id ?? $id}}-button .button-base {
             @if(!empty($block->buttonShadow)) text-shadow: {{$block->buttonShadow}}; @endif
