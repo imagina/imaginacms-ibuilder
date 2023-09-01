@@ -396,10 +396,6 @@ return [
                     'background' => 'var(--primary)',
                     'border' => '0',
                     'transition' => '.4s',
-                    'border-radius' => '10px',
-                    'color-hover' => 'var(--primary)',
-                    'background-hover' => 'var(--white)',
-                    'border-hover' => '0',
                 ],
                 "type" => "json",
                 "columns" => "col-12",
@@ -862,6 +858,20 @@ return [
             "props" => [
               "label" => "Color",
               "options" => $vAttributes["bgColor"]
+            ]
+          ],
+          "buttonConfig" => [
+            "name" => "buttonConfig",
+            "value" => [
+                'color' => 'var(--white)',
+                'background' => 'var(--primary)',
+                'border' => '0',
+                'transition' => '.4s',
+            ],
+            "type" => "json",
+            "columns" => "col-12",
+            "props" => [
+                "label" => "Configuración de Botón Custom",
             ]
           ],
         ]
