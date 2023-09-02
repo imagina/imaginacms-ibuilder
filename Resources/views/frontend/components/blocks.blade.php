@@ -46,10 +46,10 @@
   <div id="container{{$block->id ?? $id}}"
        class="{{$block->container ?? $container}}">
     <div class="row {{$block->row ?? $row}}">
-      <div class="{{$block->columns ?? $columns}} ">
+      <div class="{{$block->columns ?? $columns}}  @if(empty($block->buttonPosition)) d-flex flex-column @endif">
 
         <!--Dynamic Component-->
-        <div id="component{{$block->id ?? $id}}">
+        <div id="component{{$block->id ?? $id}}" class="order-1">
           <!--blade Component-->
           @if($componentType == "blade")
             @if(!empty($nameSpace))
@@ -76,6 +76,38 @@
             @livewire($componentName, $attributes)
           @endif
         </div>
+
+        @if(!empty($block->withButton) && $block->withButton)
+          <div class="component{{$block->id ?? $id}}-button {{$block->buttonAlign}} {{$block->buttonAlign}} @if(empty($block->buttonPosition)) order-0 @endif">
+              @if($block->buttonLabel=="")
+                  @php($labelExist = false)
+              @else
+                  @php($labelExist = true)
+              @endif
+              @if($block->buttonIcon=="")
+                  @php($iconExist = false)
+              @else
+                  @php($iconExist = true)
+              @endif
+              @if($block->buttonLayout=="button-custom")
+                  @php($block->buttonColor = "")
+              @endif
+              <x-isite::button :style="$block->buttonLayout"
+                               :buttonClasses="$block->buttonSize.' block-button '.$block->buttonLayout.' '.$block->buttonMarginT.' '.$block->buttonMarginB.' '.$block->buttonClasses"
+                               :label="$block->buttonLabel"
+                               :withLabel="$labelExist"
+                               :withIcon="$iconExist"
+                               :iconClass="$block->buttonIcon"
+                               :iconPosition="$block->buttonIconLR"
+                               :color="$block->buttonColor"
+                               :sizeLabel="$block->buttonTextSize"
+                               :iconColor="$block->buttonIconColor ?? ''"
+                               :target="$block->buttonTarget ?? ''"
+                               :href="$block->buttonUrl ?? 0"
+              />
+          </div>
+        @endif
+
       </div>
     </div>
   </div>
@@ -91,16 +123,15 @@
         @if(!empty($block->zIndex)) z-index: {{$block->zIndex}}; @endif
         @if(!empty($block->width)) width: {{$block->width}}; @endif
         @if(!empty($block->height)) height: {{$block->height}}; @endif
-
         @if($block->backgroundColor)
         background: {{$block->backgroundColor}};
         @elseif(isset($block->backgrounds))
-        background-image: url({{$blockImage ?? ''}});
+        @if(!empty($blockImage)) background-image: url({{$blockImage}}); @endif
         background-position: {{$block->backgrounds->position}};
         background-size: {{$block->backgrounds->size}};
         background-repeat: {{$block->backgrounds->repeat}};
-        background-attachment: {{$block->backgrounds->attachment}};
-        background-color: {{$block->backgrounds->color}};
+        @if(!empty($block->backgrounds->attachment)) background-attachment: {{$block->backgrounds->attachment}}; @endif
+        @if(!empty($block->backgrounds->color)) background-color: {{$block->backgrounds->color}}; @endif
         @endif
     }
     @if($block->blockStyle)
@@ -130,5 +161,38 @@
     @endforeach
     }
     @endforeach
+    @endif
+
+    @if(!empty($block->withButton) && $block->withButton)
+        @php($hover = array())
+        @if($block->buttonLayout=="button-custom")
+        .component{{$block->id ?? $id}}-button .button-custom {
+            @foreach($buttonConfig as $key => $value)
+                @php($pos = strpos($key,'-hover'))
+                @if($pos === false)
+                    {{$key}}: {{$value}};
+                @else
+                    @php($hover[substr($key,0,$pos)] = $value)
+                @endif
+           @endforeach
+        }
+        @if(!empty($hover))
+        .component{{$block->id ?? $id}}-button .button-custom:hover {
+            @foreach ($hover as $key => $value)
+                {{$key}}: {{$value}};
+           @endforeach
+        }
+        @endif
+        @else
+        .component{{$block->id ?? $id}}-button .button-base {
+            @if(!empty($block->buttonShadow)) text-shadow: {{$block->buttonShadow}}; @endif
+            transition: .2s;
+        }
+       @endif
+       @if(!empty($block->buttonIconColorHover))
+       .component{{$block->id ?? $id}}-button .button-base:hover i {
+            color: {{$block->buttonIconColorHover}};
+       }
+       @endif
     @endif
 </style>

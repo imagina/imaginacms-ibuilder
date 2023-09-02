@@ -53,6 +53,7 @@ class BlockCustom extends Component
                          4 dos columnas izq video
                          5 dos columas der video
                        */
+    public $buttonConfig;
 
     /**
      * Create a new component instance.
@@ -98,7 +99,8 @@ class BlockCustom extends Component
                                 $descriptionCustom = "",
                                 $descriptionClasses = "",
                                 $includeCustom = "",
-                                $gallery = []
+                                $gallery = [],
+                                $buttonConfig = []
     )
     {
         $this->id = $id ?? uniqid('ac');
@@ -141,6 +143,18 @@ class BlockCustom extends Component
         $this->descriptionClasses = $descriptionClasses;
         $this->includeCustom = $includeCustom;
         $this->gallery = $gallery;
+        $this->buttonConfig = !empty($buttonConfig) ? $buttonConfig : [
+            'color' => 'var(--primary)',
+            'background' => 'var(--white)',
+            'border' => '0',
+            'box-shadow' => 'none',
+            'transition' => '.2s',
+            'border-radius' => '10px',
+            'color-hover' => 'var(--dark)',
+            'background-hover' => 'var(--secondary)',
+            'border-hover' => '0',
+            'boxShadow-hover' => 'none'
+        ];
     }
 
 
