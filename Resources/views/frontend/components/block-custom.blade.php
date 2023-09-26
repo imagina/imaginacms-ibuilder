@@ -163,7 +163,7 @@
 
 </section>
 <style>
-@if($position=="2" || $position=="3" || $position=="4" || $position=="5")
+    @if($position=="2" || $position=="3" || $position=="4" || $position=="5")
     #sectionCustom{{$id}} @if($position=="4" || $position=="5") .custom-body @endif  {
         display: grid;
         gap: {{$gridGap}};
@@ -194,5 +194,5 @@
         @endforeach
     }
     @endif
-@endif
+    @endif
 </style>
