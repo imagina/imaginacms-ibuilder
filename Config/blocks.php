@@ -19,7 +19,7 @@ return [
               "label" => "Ingresar el id",
               "type" => "text"
             ]
-          ],
+                    ],
           "container" => [
             "name" => "container",
             "type" => "select",
@@ -27,8 +27,8 @@ return [
               "label" => "Tipo de contenedor",
               "options" => $vAttributes["containers"]
             ]
-          ],
-          /*"borderForm" => [
+                    ],
+                    /*"borderForm" => [
               "name" => "borderForm",
               "value" => "rounded-0",
               "type" => "select",
@@ -95,7 +95,7 @@ return [
             "props" => [
               "label" => "Opacidad"
             ]
-          ],
+                            ],
           "backgroundColor" => [
             "name" => "backgroundColor",
             "value" => "",
@@ -104,7 +104,7 @@ return [
             "props" => [
               "label" => "Gradiente de fondo"
             ]
-          ],
+                    ],
           "backgrounds" => [
             "name" => "backgrounds",
             "type" => "json",
@@ -113,7 +113,7 @@ return [
             "props" => [
                 "label" => "Opciones de Fondo"
             ]
-          ],
+                        ],
           "row" => [
             "name" => "row",
             "value" => "justify-content-center align-items-center",
@@ -122,7 +122,7 @@ return [
             "props" => [
               "label" => "Fila (Alineación vertical y horizontal)",
             ]
-          ],
+                    ],
           "columns" => [
             "name" => "columns",
             "value" => "col-12",
@@ -131,7 +131,7 @@ return [
             "props" => [
               "label" => "Columnas",
             ]
-          ],
+                        ],
           "position" => [
             "name" => "position",
             "value" => "relative",
@@ -149,44 +149,44 @@ return [
                     ["label" => "initial", "value" => "initial"],
                     ["label" => "revert-layer", "value" => "revert-layer"],
                     ["label" => "unset", "value" => "unset"],
-                ],
+                    ],
             ]
-          ],
+                        ],
           "zIndex" => [
             "name" => "zIndex",
             "type" => "input",
             "props" => [
                 "label" => "Orden entre elementos (z-index)"
             ]
-          ],
+                    ],
           "top" => [
             "name" => "top",
             "type" => "input",
             "props" => [
                 "label" => "Posición Superior (Top)"
             ]
-          ],
+                        ],
           "bottom" => [
             "name" => "bottom",
             "type" => "input",
             "props" => [
                 "label" => "Posición Inferior (Bottom)"
             ]
-          ],
+                    ],
           "left" => [
             "name" => "left",
             "type" => "input",
             "props" => [
                 "label" => "Posición Izquierda (Left)"
             ]
-          ],
+                        ],
           "right" => [
             "name" => "right",
             "type" => "input",
             "props" => [
                 "label" => "Posición Derecha (Right)"
             ]
-          ],
+                    ],
           "width" => [
             "name" => "width",
             "value" => "auto",
@@ -194,7 +194,7 @@ return [
             "props" => [
                 "label" => "Ancho del Bloque",
             ]
-          ],
+                        ],
           "height" => [
             "name" => "height",
             "value" => "auto",
@@ -202,7 +202,7 @@ return [
             "props" => [
                 "label" => "Alto del Bloque",
             ]
-          ],
+                    ],
           "blockClasses" => [
             "name" => "blockClasses",
             "value" => "",
@@ -211,7 +211,7 @@ return [
             "props" => [
               "label" => "Bloque de Clases"
             ]
-          ],
+                        ],
           "blockStyle" => [
             "name" => "blockStyle",
             "value" => "",
@@ -219,8 +219,8 @@ return [
             "columns" => "col-12",
             "props" => [
               "label" => "Bloque de Estilos",
-              'type' => 'textarea',
-              'rows' => 10,
+                            'type' => 'textarea',
+                            'rows' => 10,
             ]
           ],
         ]
@@ -275,7 +275,7 @@ return [
                     "label" => "Alineación",
                     "options" => $vAttributes["align"]
                 ]
-            ],
+                        ],
             "buttonColor" => [
                 "name" => "buttonColor",
                 "value" => "primary",
@@ -396,7 +396,7 @@ return [
                     'background' => 'var(--primary)',
                     'border' => '0',
                     'transition' => '.4s',
-                ],
+                    ],
                 "type" => "json",
                 "columns" => "col-12",
                 "props" => [
@@ -442,11 +442,11 @@ return [
                 "type" => "input",
                 "props" => [
                     "label" => "Delay",
-                ],
+            ],
                 "help" => [
                     "description" => "Valores de 0 a 3000, con paso de 50ms"
                 ]
-            ],
+        ],
             "animateBlockEasing" => [
                 "name" => "animateBlockEasing",
                 "value" => "ease",
@@ -455,7 +455,7 @@ return [
                     "label" => "Easing",
                     "options" => $vAttributes["easingAOS"]
                 ]
-            ],
+    ],
             "animateBlockOnce" => [
                 "name" => "animateBlockOnce",
                 "value" => true,
@@ -529,10 +529,10 @@ return [
         "isTranslatable" => true,
         "props" => [
           "label" => "Texto (Resumen)",
-          'type' => 'textarea',
-          'rows' => 4,
+                    'type' => 'textarea',
+                    'rows' => 4,
         ]
-      ],
+            ],
       "descriptionCustom" => [
         "name" => "descriptionCustom",
         "type" => "html",
@@ -541,7 +541,7 @@ return [
         "props" => [
           "label" => "Descripcion"
         ]
-      ],
+            ],
       "video" => [
         "name" => "video",
         "type" => "input",
@@ -550,35 +550,35 @@ return [
         "props" => [
             "label" => "Url del video"
         ]
-      ],
+                ],
       "mainImage" => [
-        'value' => (object)['custommainimage' => null],
-        'name' => 'mediasSingle',
-        'type' => 'media',
+                'value' => (object) ['custommainimage' => null],
+                'name' => 'mediasSingle',
+                'type' => 'media',
         "columns" => "col-12",
         "isTranslatable" => false,
-        'props' => [
-          'label' => 'Imagen Principal',
-          'zone' => 'custommainimage',
-          'entity' => "Modules\Ibuilder\Entities\Block",
+                'props' => [
+                    'label' => 'Imagen Principal',
+                    'zone' => 'custommainimage',
+                    'entity' => "Modules\Ibuilder\Entities\Block",
           'entityId' => null
         ]
-      ],
+                ],
       "gallery" => [
-        'value' => (object)['customgallery' => []],
-        'name' => 'mediasMulti',
-        'type' => 'media',
+                'value' => (object) ['customgallery' => []],
+                'name' => 'mediasMulti',
+                'type' => 'media',
         "columns" => "col-12",
         "isTranslatable" => false,
-        'props' => [
-          'label' => 'Galería',
-          'zone' => 'customgallery',
-          'maxFiles' => 12,
-          'entity' => "Modules\Ibuilder\Entities\Block",
+                'props' => [
+                    'label' => 'Galería',
+                    'zone' => 'customgallery',
+                    'maxFiles' => 12,
+                    'entity' => "Modules\Ibuilder\Entities\Block",
           'entityId' => null
         ]
-      ],
-    ],
+                        ],
+                    ],
     "attributes" => [
       "general" => [
         "title" => "General",
@@ -590,7 +590,7 @@ return [
             "props" => [
               "label" => "Include adicional",
             ]
-          ],
+                    ],
           "position" => [
             "name" => "position",
             "value" => "1",
@@ -604,9 +604,9 @@ return [
                 ["label" => "Dos columnas (imagen, video a la derecha)", "value" => "3"],
                 ["label" => "Titulo mas dos columnas (imagen, video a la izquierda)", "value" => "4"],
                 ["label" => "Titulo mas dos columnas (imagen, video a la derecha)", "value" => "5"],
-              ],
+                    ],
             ]
-          ],
+                    ],
           "mediaClasses" => [
             "name" => "mediaClasses",
             "type" => "input",
@@ -614,7 +614,7 @@ return [
             "props" => [
               "label" => "Clases en Imagen o Video"
             ]
-          ],
+                    ],
           "contentClasses" => [
             "name" => "contentClasses",
             "type" => "input",
@@ -622,7 +622,7 @@ return [
             "props" => [
               "label" => "Clases en contenido"
             ]
-          ],
+                        ],
           "gridColumns" => [
             "name" => "gridColumns",
             "value" => "repeat(2, minmax(0, 1fr))",
@@ -630,7 +630,7 @@ return [
             "props" => [
               "label" => "Ancho de columnas"
             ]
-          ],
+                    ],
           "gridGap" => [
             "name" => "gridGap",
             "value" => "15px",
@@ -638,7 +638,7 @@ return [
             "props" => [
               "label" => "Espacio entre columnas"
             ]
-          ],
+                        ],
           "orderClasses" => [
             "name" => "orderClasses",
             "value" => ["video" => "order-0", "image" => "order-1", "title" => "order-2", "subtitle" => "order-3", "summary" => "order-4", "description" => "order-5", "buttom" => "order-6"],
@@ -647,7 +647,7 @@ return [
             "props" => [
               "label" => "Orden de los elementos"
             ]
-          ],
+                    ],
         ]
       ],
       "text" => [
@@ -659,8 +659,8 @@ return [
             "columns" => "col-md-7",
             "props" => [
               "label" => "Clases (titulo)"
-            ]
-          ],
+        ]
+                ],
           "titleSize" => [
             "name" => "titleSize",
             "type" => "input",
@@ -668,7 +668,7 @@ return [
             "props" => [
               "label" => "Tamaño Fuente (titulo)"
             ]
-          ],
+                        ],
           "subTitleClasses" => [
             "name" => "subTitleClasses",
             "type" => "input",
@@ -676,7 +676,7 @@ return [
             "props" => [
               "label" => "Clases (Subtitulo)"
             ]
-          ],
+                    ],
           "subTitleSize" => [
             "name" => "subTitleSize",
             "type" => "input",
@@ -684,7 +684,7 @@ return [
             "props" => [
               "label" => "Tamaño Fuente (Subtitulo)"
             ]
-          ],
+                        ],
           "summaryClasses" => [
             "name" => "summaryClasses",
             "type" => "input",
@@ -692,7 +692,7 @@ return [
             "props" => [
               "label" => "Clases (Resumen)"
             ]
-          ],
+                    ],
           "summarySize" => [
             "name" => "summarySize",
             "type" => "input",
@@ -700,7 +700,7 @@ return [
             "props" => [
               "label" => "Tamaño Fuente (Resumen)"
             ]
-          ],
+                        ],
           "descriptionClasses" => [
             "name" => "descriptionClasses",
             "type" => "input",
@@ -708,9 +708,9 @@ return [
             "props" => [
                 "label" => "Clases (Descripción)"
             ]
-          ],
+                    ],
         ]
-      ],
+                        ],
       "media" => [
         "title" => "Imagen y Video",
         "fields" => [
@@ -721,7 +721,7 @@ return [
             "props" => [
               "label" => "Clases sobre (Imagen)"
             ]
-          ],
+                    ],
           "imageInClasses" => [
             "name" => "imageInClasses",
             "type" => "input",
@@ -729,7 +729,7 @@ return [
             "props" => [
               "label" => "Clases en (Imagen)"
             ]
-          ],
+                            ],
           "imageStyles" => [
             "name" => "imageStyles",
             "type" => "input",
@@ -737,7 +737,7 @@ return [
             "props" => [
               "label" => "Estilos adicionales (Imagen)"
             ]
-          ],
+                        ],
           "videoResponsive" => [
             "name" => "videoResponsive",
             "type" => "select",
@@ -746,7 +746,7 @@ return [
               "label" => "Responsive (Video)",
               "options" => $vAttributes["embedResponsive"]
             ]
-          ],
+                    ],
           "videoClasses" => [
             "name" => "videoClasses",
             "type" => "input",
@@ -754,9 +754,9 @@ return [
             "props" => [
               "label" => "Clases (Video)"
             ]
-          ],
+                        ],
         ]
-      ],
+                    ],
       "boton" => [
         "title" => "Boton",
         "fields" => [
@@ -768,14 +768,14 @@ return [
               "label" => "Mostrar",
               "options" => $vAttributes["validation"]
             ]
-          ],
+                        ],
           "buttonLabel" => [
             "name" => "buttonLabel",
             "type" => "input",
             "props" => [
               "label" => "Texto"
             ]
-          ],
+                    ],
           "buttonSizeLabel" => [
             "name" => "buttonSizeLabel",
             "type" => "input",
@@ -783,14 +783,14 @@ return [
               "label" => "Tamaño del texto",
               "type" => "number"
             ]
-          ],
+                        ],
           "buttonIconClass" => [
             "name" => "buttonIconClass",
             "type" => "input",
             "props" => [
               "label" => "Tipo de Icono"
             ]
-          ],
+                    ],
           "buttonIconPosition" => [
             "name" => "buttonIconPosition",
             "value" => "left",
@@ -802,7 +802,7 @@ return [
                 ["label" => "Derecha", "value" => "right"]
               ]
             ]
-          ],
+                        ],
           "buttonLayout" => [
             "name" => "buttonLayout",
             "value" => "",
@@ -811,7 +811,7 @@ return [
               "label" => "Estilo de Botones",
               "options" => $vAttributes["buttonStyle"]
             ]
-          ],
+                    ],
           "buttonStyle" => [
             "name" => "buttonStyle",
             "value" => "button-normal",
@@ -820,14 +820,14 @@ return [
               "label" => "Espaciado",
               "options" => $vAttributes["buttonType"]
             ]
-          ],
+                        ],
           "buttonClasses" => [
             "name" => "buttonClasses",
             "type" => "input",
             "props" => [
               "label" => "Clases en general",
             ]
-          ],
+                    ],
           "buttonAlign" => [
             "name" => "buttonAlign",
             "type" => "select",
@@ -835,14 +835,14 @@ return [
               "label" => "Alineación",
               "options" => $vAttributes["align"]
             ]
-          ],
+                        ],
           "buttonHref" => [
             "name" => "buttonHref",
             "type" => "input",
             "props" => [
               "label" => "Enlace"
             ]
-          ],
+                    ],
           "buttonTarget" => [
             "name" => "buttonTarget",
             "type" => "select",
@@ -850,7 +850,7 @@ return [
               "label" => "Target",
               "options" => $vAttributes["target"]
             ]
-          ],
+                        ],
           "buttonColor" => [
             "name" => "buttonColor",
             "value" => "primary",
@@ -859,7 +859,7 @@ return [
               "label" => "Color",
               "options" => $vAttributes["bgColor"]
             ]
-          ],
+                    ],
           "buttonConfig" => [
             "name" => "buttonConfig",
             "value" => [
@@ -867,15 +867,15 @@ return [
                 'background' => 'var(--primary)',
                 'border' => '0',
                 'transition' => '.4s',
-            ],
+                ],
             "type" => "json",
             "columns" => "col-12",
             "props" => [
                 "label" => "Configuración de Botón Custom",
             ]
-          ],
+            ],
         ]
-      ],
+        ],
     ]
   ]
 ];
