@@ -26,6 +26,6 @@ class Layout extends CrudModel
     'deleting' => [],
     'deleted' => []
   ];
-  public $translatedAttributes = [];
+  public $translatedAttributes = ['title'];
   protected $fillable = ['system_name', 'entity_type', 'entity_id'];
 }
