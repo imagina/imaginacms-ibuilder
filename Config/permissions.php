@@ -10,7 +10,16 @@ return [
         'destroy' => 'ibuilder::blocks.destroy resource',
         'restore' => 'ibuilder::blocks.restore resource',
     ],
+    'ibuilder.layouts' => [
+        'manage' => 'ibuilder::layouts.manage resource',
+        'index' => 'ibuilder::layouts.list resource',
+        'create' => 'ibuilder::layouts.create resource',
+        'edit' => 'ibuilder::layouts.edit resource',
+        'destroy' => 'ibuilder::layouts.destroy resource',
+        'restore' => 'ibuilder::layouts.restore resource',
+    ],
 // append
+
 
 
 ];
