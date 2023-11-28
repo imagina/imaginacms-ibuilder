@@ -18,7 +18,7 @@ class CreateIbuilderLayoutsTable extends Migration
             $table->string('system_name');
             $table->string('entity_type')->nullable();
             $table->integer('entity_id')->unsigned()->nullable();
-            $table->unique(['system_name']);
+            $table->unique(['system_name', 'entity_type', 'entity_id']);
             $table->timestamps();
             $table->auditStamps();
         });

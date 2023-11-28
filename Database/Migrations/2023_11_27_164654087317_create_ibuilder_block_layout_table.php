@@ -12,7 +12,7 @@ class createIbuilderBlockLayoutTable extends Migration
      */
     public function up()
     {
-        Schema::create('ibuilder__block_layout_pivot', function (Blueprint $table) {
+        Schema::create('ibuilder__block_layout', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('layout_id')->unsigned();
