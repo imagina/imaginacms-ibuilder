@@ -35,6 +35,6 @@ class createIbuilderBlockLayoutTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ibuilder__layouts');
+        Schema::dropIfExists('ibuilder__block_layout');
     }
 }
