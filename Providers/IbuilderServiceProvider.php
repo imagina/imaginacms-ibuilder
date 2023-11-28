@@ -79,7 +79,20 @@ class IbuilderServiceProvider extends ServiceProvider
         return new \Modules\Ibuilder\Repositories\Cache\CacheBlockDecorator($repository);
       }
     );
+        $this->app->bind(
+            'Modules\Ibuilder\Repositories\LayoutRepository',
+            function () {
+                $repository = new \Modules\Ibuilder\Repositories\Eloquent\EloquentLayoutRepository(new \Modules\Ibuilder\Entities\Layout());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Ibuilder\Repositories\Cache\CacheLayoutDecorator($repository);
+            }
+        );
 // add bindings
+
 
 
   }
