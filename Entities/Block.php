@@ -32,10 +32,15 @@ class Block extends CrudModel
     'deleted' => []
   ];
   public $translatedAttributes = ["internal_title"];
-  protected $fillable = ["system_name", "status", "component", "entity", "attributes"];
+  protected $fillable = ["system_name", "status", "component", "entity", "attributes", "layout_id", "grid_position", "order"];
   protected $casts = [
     'component' => 'array',
     'entity' => 'array',
     'attributes' => AsArrayObject::class
   ];
+
+  public function layout()
+  {
+    return $this->belongsTo(Layout::class);
+  }
 }

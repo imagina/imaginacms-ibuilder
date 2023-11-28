@@ -28,4 +28,9 @@ class Layout extends CrudModel
   ];
   public $translatedAttributes = ['title'];
   protected $fillable = ['system_name', 'entity_type', 'entity_id'];
+
+  public function blocks()
+  {
+    return $this->hasMany(Block::class);
+  }
 }
