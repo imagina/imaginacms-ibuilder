@@ -32,7 +32,7 @@ class Block extends CrudModel
     'deleted' => []
   ];
   public $translatedAttributes = ["internal_title"];
-  protected $fillable = ["system_name", "status", "component", "entity", "attributes", "layout_id", "grid_position", "order"];
+  protected $fillable = ["system_name", "status", "component", "entity", "attributes", "layout_id", "grid_position", "sort_order"];
   protected $casts = [
     'component' => 'array',
     'entity' => 'array',

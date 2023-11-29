@@ -13,16 +13,13 @@ class AddNewColumnsInBlockTable extends Migration
      */
     public function up()
     {
-     
-      Schema::table('ibuilder__blocks', function (Blueprint $table) {
 
+      Schema::table('ibuilder__blocks', function (Blueprint $table) {
         $table->text('grid_position')->nullable()->after('system_name');
-        $table->integer('order')->unsigned()->nullable()->after('system_name');
+        $table->integer('sort_order')->unsigned()->nullable()->after('system_name');
         $table->integer('layout_id')->unsigned()->nullable()->after('system_name');
         $table->foreign('layout_id')->references('id')->on('ibuilder__layouts')->onDelete('cascade');
-
       });
-      
     }
 
     /**
@@ -32,16 +29,11 @@ class AddNewColumnsInBlockTable extends Migration
      */
     public function down()
     {
-
       Schema::table('ibuilder__blocks', function (Blueprint $table) {
-
         $table->dropForeign(['layout_id']);
         $table->dropColumn('layout_id');
-
         $table->dropColumn('grid_position');
-        $table->dropColumn('order');
-
+        $table->dropColumn('sort_order');
       });
-
     }
 }
