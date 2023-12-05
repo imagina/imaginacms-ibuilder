@@ -34,20 +34,11 @@ class PublicController extends BaseApiController
   public function layoutPreview($layoutId)
   {
     $repositoryLayout = app("Modules\Ibuilder\Repositories\LayoutRepository");
-    $params = [
-      'include' => ['blocks']
-    ];
+    $params = ['include' => []];
 
     $layout =  $repositoryLayout->getItem($layoutId, json_decode(json_encode($params)));
 
-    $blocks = $layout->blocks->sortBy('sort_order')->map(function($item) {
-      return [
-        "component" => $item->component ?? [],
-        "entity" => $item->entity ?? [],
-        "gridPosition" => $item->grid_position,
-        "attributes" => (array)($item->attributes ?? [])
-      ];
-    });
+    $blocks = $layout->blocksToRender;
     //Render view
     return view('ibuilder::frontend.index', compact('layout', 'blocks'));
   }
