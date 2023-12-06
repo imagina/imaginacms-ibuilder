@@ -3,6 +3,7 @@
 namespace Modules\Ibuilder\Http\Controllers\Api;
 
 use Modules\Core\Icrud\Controllers\BaseCrudController;
+use Illuminate\Http\Request;
 
 //Model
 use Modules\Ibuilder\Entities\Layout;
@@ -19,15 +20,20 @@ class LayoutApiController extends BaseCrudController
     $this->modelRepository = $modelRepository;
   }
 
-  public function layoutPreview($layoutId)
+  public function layoutPreview(Request $request, $layoutId)
   {
+    $layoutData = $request->input('layout');
     $repositoryLayout = app("Modules\Ibuilder\Repositories\LayoutRepository");
     $params = ['include' => []];
 
-    $layout = $repositoryLayout->getItem($layoutId, json_decode(json_encode($params)));
+    $layout = $layoutData ?? $repositoryLayout->getItem($layoutId, json_decode(json_encode($params)));
 
-    $blocks = $layout->blocksToRender;
-    //Render view
-    return view('ibuilder::frontend.index', compact('layout', 'blocks'));
+    if ($layout) {
+      $blocks = $layout->blocksToRender;
+      //Render view
+      return view('ibuilder::frontend.index', compact('layout', 'blocks'));
+    } else {
+      return response()->view('errors.404', [], 404);
+    }
   }
 }
