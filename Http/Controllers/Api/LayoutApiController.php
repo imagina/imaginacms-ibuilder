@@ -22,14 +22,18 @@ class LayoutApiController extends BaseCrudController
 
   public function layoutPreview(Request $request, $layoutId)
   {
-    $layoutData = $request->input('layout');
-    $repositoryLayout = app("Modules\Ibuilder\Repositories\LayoutRepository");
-    $params = ['include' => []];
+    $layoutData = $request->all();
 
-    $layout = $layoutData ?? $repositoryLayout->getItem($layoutId, json_decode(json_encode($params)));
-
-    if ($layout) {
-      $blocks = $layout->blocksToRender;
+    if ($layoutData) {
+      $layout = (object)$layoutData;
+      $blocks = collect(json_decode($layout->blocks))->sortBy('sortOrder')->map(function ($item) {
+        return [
+          "component" => $item->component ?? [],
+          "entity" => $item->entity ?? [],
+          "gridPosition" => $item->gridPosition,
+          "attributes" => (array)($item->attributes ?? [])
+        ];
+      });
       //Render view
       return view('ibuilder::frontend.index', compact('layout', 'blocks'));
     } else {
