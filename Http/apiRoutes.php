@@ -31,7 +31,7 @@ $router->group(['prefix' => '/ibuilder/v1'], function (Router $router) {
     'uses' => 'BlockApiController@blockPreview',
   ]);
 
-  $router->post("/layout/{layoutId}", [
+  $router->post("/layout/preview/{layoutId}", [
     'as' => 'ibuilder.layout.preview.post',
     'uses' => 'LayoutApiController@layoutPreview',
   ]);
