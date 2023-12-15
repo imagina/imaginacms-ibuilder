@@ -16,7 +16,9 @@ return [
   "label" => [
     "builder" => "Constructor",
     "preview" => "Vista Previa",
-    "chooseLayout" => "Escoge un Layout"
+    "chooseLayout" => "Escoge un Layout",
+    "sureChangeLayout" => "¿Deseas cambiar de layout?",
+    "descriptionSureChangeLayout" => "Estas seguro que deseas cambiar de Layout. ¿Ya confirmaste que esten todos los cambios hechos?",
   ],
 ];
 

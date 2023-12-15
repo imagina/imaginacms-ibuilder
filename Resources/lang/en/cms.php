@@ -16,7 +16,9 @@ return [
   "label" => [
     "builder" => "Builder",
     "preview" => "Preview",
-    "chooseLayout" => "Choose a layout"
+    "chooseLayout" => "Choose a layout",
+    "sureChangeLayout" => "Do you want to change the layout?",
+    "descriptionSureChangeLayout" => "Are you sure you want to change the Layout. Have you confirmed that all the changes have been made?"
   ],
 ];
 
