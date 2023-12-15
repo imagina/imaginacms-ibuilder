@@ -18,7 +18,7 @@ return [
     "preview" => "Vista Previa",
     "chooseLayout" => "Escoge un Layout",
     "sureChangeLayout" => "¿Deseas cambiar de layout?",
-    "descriptionSureChangeLayout" => "Estas seguro que deseas cambiar de Layout. ¿Ya confirmaste que esten todos los cambios hechos?",
+    "descriptionSureChangeLayout" => "Vas a cambiar de layout, si tienes cambios sin guardar se perderan",
   ],
 ];
 

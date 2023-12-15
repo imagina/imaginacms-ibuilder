@@ -18,7 +18,7 @@ return [
     "preview" => "Preview",
     "chooseLayout" => "Choose a layout",
     "sureChangeLayout" => "Do you want to change the layout?",
-    "descriptionSureChangeLayout" => "Are you sure you want to change the Layout. Have you confirmed that all the changes have been made?"
+    "descriptionSureChangeLayout" => "You are going to change the layout, if you have unsaved changes they will be lost"
   ],
 ];
 
