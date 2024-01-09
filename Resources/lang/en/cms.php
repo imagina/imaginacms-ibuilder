@@ -17,8 +17,13 @@ return [
     "builder" => "Builder",
     "preview" => "Preview",
     "chooseLayout" => "Choose a layout",
+    "newLayout" => "New Layout",
+    "updateLayout" => "Update Layout",
     "sureChangeLayout" => "Do you want to change the layout?",
-    "descriptionSureChangeLayout" => "Are you sure you want to change the Layout. Have you confirmed that all the changes have been made?"
+    "descriptionSureChangeLayout" => "You are going to change the layout, if you have unsaved changes they will be lost",
+    "blocks" => "Blocks",
+    "localBlocks" => "Locals",
+    "libraryBlocks" => "Library",
   ],
 ];
 

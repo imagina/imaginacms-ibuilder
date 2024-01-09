@@ -17,8 +17,13 @@ return [
     "builder" => "Constructor",
     "preview" => "Vista Previa",
     "chooseLayout" => "Escoge un Layout",
+    "newLayout" => "Nuevo Layout",
+    "updateLayout" => "Actualizar Layout",
     "sureChangeLayout" => "¿Deseas cambiar de layout?",
-    "descriptionSureChangeLayout" => "Estas seguro que deseas cambiar de Layout. ¿Ya confirmaste que esten todos los cambios hechos?",
+    "descriptionSureChangeLayout" => "Vas a cambiar de layout, si tienes cambios sin guardar se perderan",
+    "blocks" => "Bloques",
+    "localBlocks" => "Locales",
+    "libraryBlocks" => "Libreria",
   ],
 ];
 
