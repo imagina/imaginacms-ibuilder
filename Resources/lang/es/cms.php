@@ -20,10 +20,10 @@ return [
     "newLayout" => "Nuevo Layout",
     "updateLayout" => "Actualizar Layout",
     "sureChangeLayout" => "¿Deseas cambiar de layout?",
-    "descriptionSureChangeLayout" => "Vas a cambiar de layout, si tienes cambios sin guardar se perderan",
     "blocks" => "Bloques",
     "localBlocks" => "Locales",
     "libraryBlocks" => "Libreria",
+    "descriptionSureChangeLayout" => "Vas a cambiar de layout, si tienes cambios sin guardar se perderan",
   ],
 ];
 
