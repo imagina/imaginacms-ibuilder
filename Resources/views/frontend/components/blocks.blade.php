@@ -81,25 +81,12 @@
 
         @if(!empty($block->withButton) && $block->withButton)
           <div class="component{{$block->id ?? $id}}-button {{$block->buttonAlign}} {{$block->buttonAlign}} @if(empty($block->buttonPosition)) order-0 @endif">
-              @php($blabel="")
-              @if($attributes["buttonLabel"]=="")
-                  @if($block->buttonLabel=="")
-                      @php($labelExist = false)
-                  @else
-                      @php($blabel=$block->buttonLabel)
-                      @php($labelExist = true)
-                  @endif
-              @else
-                  @php($labelExist = true)
-                  @php($blabel=$attributes["buttonLabel"])
-              @endif
 
+              @php($blabel= $attributes["buttonLabel"] ?? $block->buttonLabel ?? "")
+              @php($labelExist = $blabel == "" ? false : true)
 
-              @if($block->buttonIcon=="")
-                  @php($iconExist = false)
-              @else
-                  @php($iconExist = true)
-              @endif
+              @php($iconExist = $block->buttonIcon == "" ? false : true)
+
               @if($block->buttonLayout=="button-custom")
                   @php($block->buttonColor = "")
               @endif
