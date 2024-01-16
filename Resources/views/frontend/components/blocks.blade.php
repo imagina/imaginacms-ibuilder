@@ -1,3 +1,4 @@
+
 @php
     $componentName = $componentConfig["systemName"];
     $nameSpace = $componentConfig["nameSpace"];
@@ -15,6 +16,7 @@
     }
     $block = $blockConfig->attributes->mainblock;
 @endphp
+
 <section id="block{{$block->id ?? $id}}"
          class="{{$block->blockClasses ?? $blockClasses}}"
          @if(!empty($block->animateBlockName)) data-aos="{{$block->animateBlockName}}" @endif
@@ -79,11 +81,20 @@
 
         @if(!empty($block->withButton) && $block->withButton)
           <div class="component{{$block->id ?? $id}}-button {{$block->buttonAlign}} {{$block->buttonAlign}} @if(empty($block->buttonPosition)) order-0 @endif">
-              @if($block->buttonLabel=="")
-                  @php($labelExist = false)
+              @php($blabel="")
+              @if($attributes["buttonLabel"]=="")
+                  @if($block->buttonLabel=="")
+                      @php($labelExist = false)
+                  @else
+                      @php($blabel=$block->buttonLabel)
+                      @php($labelExist = true)
+                  @endif
               @else
                   @php($labelExist = true)
+                  @php($blabel=$attributes["buttonLabel"])
               @endif
+
+
               @if($block->buttonIcon=="")
                   @php($iconExist = false)
               @else
@@ -92,9 +103,10 @@
               @if($block->buttonLayout=="button-custom")
                   @php($block->buttonColor = "")
               @endif
+
               <x-isite::button :style="$block->buttonLayout"
                                :buttonClasses="$block->buttonSize.' block-button '.$block->buttonLayout.' '.$block->buttonMarginT.' '.$block->buttonMarginB.' '.$block->buttonClasses"
-                               :label="$block->buttonLabel"
+                               :label="$blabel"
                                :withLabel="$labelExist"
                                :withIcon="$iconExist"
                                :iconClass="$block->buttonIcon"

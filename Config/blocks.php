@@ -371,15 +371,6 @@ return [
                     "label" => "Color icon hover",
                 ],
             ],
-            "buttonLabel" => [
-                "name" => "buttonLabel",
-                "value" => "Ver más",
-                "columns" => "col-12",
-                "type" => "input",
-                "props" => [
-                    "label" => "Texto del botón",
-                ]
-            ],
             "buttonClasses" => [
                 "name" => "buttonClasses",
                 "type" => "input",
