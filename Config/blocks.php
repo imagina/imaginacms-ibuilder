@@ -8,6 +8,17 @@ return [
     "systemName" => "x-ibuilder::block",
     "nameSpace" => "Modules\Ibuilder\View\Components\Block",
     "internal" => true,
+    "contentFields" => [
+        "buttonLabel" => [
+          "name" => "buttonLabel",
+          "value" => "",
+          "type" => "input",
+          "isTranslatable" => true,
+          "props" => [
+              "label" => "Texto del botón del bloque"
+          ]
+        ],
+    ],
     "attributes" => [
       "general" => [
         "title" => "General",
