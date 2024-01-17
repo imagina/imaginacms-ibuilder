@@ -30,9 +30,12 @@ class LayoutApiController extends BaseCrudController
         $attributes = (array)($item->attributes ?? []);
         $componentAttributes = (array)($attributes['componentAttributes'] ?? []);
 
-        // Realizar el merge solo si existe 'componentAttributes' en $attributes
+        // Perform the merge only if 'componentAttributes' exists in $attributes
         if (isset($attributes['componentAttributes'])) {
+          //Merge is done with the first level of the block
           $attributes['componentAttributes'] = (object)(array_merge($componentAttributes , (array)($item)));
+
+          //Delete all the first level data that is not useful
           unset($attributes['componentAttributes']->attributes, $attributes['componentAttributes']->gridPosition, $attributes['componentAttributes']->entity, $attributes['componentAttributes']->component);
         }
 
