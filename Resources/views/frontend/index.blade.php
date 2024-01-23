@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="home page container-fluid">
-        <div class="row">
+    <div class="home page container-fluid px-0">
+        <div class="row no-gutters">
             @foreach($blocks as $block)
                 <div class="col-12 {{ $block["gridPosition"] }}">
                     <x-ibuilder::block :blockConfig="$block"/>

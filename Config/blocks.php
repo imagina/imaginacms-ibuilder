@@ -7,6 +7,38 @@ return [
     "title" => "Bloque",
     "systemName" => "x-ibuilder::block",
     "nameSpace" => "Modules\Ibuilder\View\Components\Block",
+    "contentFields" => [
+      "blockTitle" => [
+        "name" => "blockTitle",
+        "type" => "input",
+        "colClass" => 'col-12',
+        "isTranslatable" => true,
+        "props" => [
+          "label" => "ibuilder::cms.label.title"
+        ]
+      ],
+      "blockSubtitle" => [
+        "name" => "blockSubtitle",
+        "type" => "input",
+        "colClass" => 'col-12',
+        "isTranslatable" => true,
+        "props" => [
+          "label" => "ibuilder::cms.label.subtitle"
+        ]
+      ],
+      "mediasSingle" => [
+        "name" => "mediasSingle",
+        "value" => [],
+        "type" => "media",
+        "columns" => "col-12",
+        "props" => [
+          "label" => "isite::cms.label.backgroundImage",
+          'zone' => 'blockbgimage',
+          'entity' => 'Modules\\Ibuilder\\Entities\\Block',
+          'entityId' => null,
+        ]
+      ]
+    ],
     "internal" => true,
     "attributes" => [
       "general" => [

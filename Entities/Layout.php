@@ -20,15 +20,19 @@ class Layout extends CrudModel
   //Instance external/internal events to dispatch with extraData
   public $dispatchesEventsWithBindings = [
     //eg. ['path' => 'path/module/event', 'extraData' => [/*...optional*/]]
-    'created' => [],
+    'created' => [
+      ['path' => 'Modules\Ibuilder\Events\LayoutWasCreated']
+    ],
     'creating' => [],
-    'updated' => [],
+    'updated' => [
+      ['path' => 'Modules\Ibuilder\Events\LayoutWasUpdated']
+    ],
     'updating' => [],
     'deleting' => [],
     'deleted' => []
   ];
   public $translatedAttributes = ['title'];
-  protected $fillable = ['system_name', 'entity_type', 'entity_id'];
+  protected $fillable = ['system_name', 'entity_type', 'type', 'default', 'status'];
 
   public function blocks()
   {
