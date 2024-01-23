@@ -24,6 +24,12 @@ return [
     "blocks" => "Blocks",
     "localBlocks" => "Locals",
     "libraryBlocks" => "Library",
+    "system" => "System",
+    "sortPosition" => "Sort Position",
+    "blockContent" => "Block Content",
+    "title" => "Title",
+    "subtitle" => "Subtitle",
+    "bannerMessage" => "Select a unique 'System Name' that identifies the block and then the component you want to customize...",
   ],
 ];
 

@@ -24,6 +24,12 @@ return [
     "blocks" => "Bloques",
     "localBlocks" => "Locales",
     "libraryBlocks" => "Libreria",
+    "system" => "Sistema",
+    "sortPosition" => "Posición en la Grilla",
+    "blockContent" => "Contenido del Bloque",
+    "title" => "Titulo",
+    "subtitle" => "Subtitulo",
+    "bannerMessage" => "Selecciona un 'Nombre de Sistema' unico que identifique el bloque y luego el componente que quieres perzonalizar...",
   ],
 ];
 

@@ -28,15 +28,12 @@ class LayoutApiController extends BaseCrudController
       $layout = (object)$layoutData;
       $blocks = collect(json_decode($layout->blocks))->sortBy('sortOrder')->map(function ($item) {
         $attributes = (array)($item->attributes ?? []);
-        $componentAttributes = (array)($attributes['componentAttributes'] ?? []);
 
         // Perform the merge only if 'componentAttributes' exists in $attributes
-        if (isset($attributes['componentAttributes'])) {
+        if (isset($item->fields)) {
           //Merge is done with the first level of the block
-          $attributes['componentAttributes'] = (object)(array_merge($componentAttributes , (array)($item)));
+          $attributes = array_merge($attributes , (array)($item->fields));
 
-          //Delete all the first level data that is not useful
-          unset($attributes['componentAttributes']->attributes, $attributes['componentAttributes']->gridPosition, $attributes['componentAttributes']->entity, $attributes['componentAttributes']->component);
         }
 
         return [
