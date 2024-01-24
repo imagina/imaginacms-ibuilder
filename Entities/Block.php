@@ -8,6 +8,7 @@ use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
 use Modules\Media\Support\Traits\MediaRelation;
 use Modules\Ifillable\Traits\isFillable;
+use Illuminate\Support\Str;
 
 class Block extends CrudModel
 {
@@ -42,5 +43,29 @@ class Block extends CrudModel
   public function layout()
   {
     return $this->belongsTo(Layout::class);
+  }
+
+  public function getRenderDataAttribute(){
+    $fields = $this->formatFillableToModel($this->fields);
+    $attributes = (array)(json_decode($this->attributes["attributes"]) ?? []);
+
+    //Merge fields(content-fields) into attributes
+    foreach ($attributes as $name => $value){
+      $attributes[$name] = array_merge((array)$attributes[$name], (array)($fields[$name] ?? []));
+      //Parse to camel case
+      $attrTmp = [];
+      foreach ($attributes[$name] as $key => $item) $attrTmp[Str::camel($key)] = $item;
+      $attributes[$name] = $attrTmp;
+    }
+
+    return [
+      "id" => $this->id,
+      "component" => $this->component ?? [],
+      "entity" => $this->entity ?? [],
+      "status" => $this->status,
+      "attributes" => $attributes,
+      "gridPosition" => $this->grid_position,
+      "sortOrder" => $this->sort_order,
+    ];
   }
 }

@@ -20,11 +20,11 @@ class Block extends Component
     $marginX, $marginY, $overlay, $backgroundColor, $componentIsite, $componentType, $isBlade, $view,
     $systemName, $blockConfig, $componentConfig, $blockClasses, $blockStyle, $row, $inheritContent,
     $position, $top, $left, $right, $bottom, $zIndex, $blockStyleResponsive;
-  public  $animateBlockName, $animateBlockDelay, $animateBlockDuration, $animateBlockOffset,
-        $animateBlockEasing, $animateBlockOnce, $animateBlockMirror;
+  public $animateBlockName, $animateBlockDelay, $animateBlockDuration, $animateBlockOffset,
+    $animateBlockEasing, $animateBlockOnce, $animateBlockMirror;
   public $withButton, $buttonPosition, $buttonAlign, $buttonLayout, $buttonIcon, $buttonIconLR, $buttonIconColor,
-        $buttonIconColorHover, $buttonColor, $buttonMarginT, $buttonMarginB, $buttonSize, $buttonTextSize,
-        $buttonClasses, $buttonShadow, $buttonLabel, $buttonUrl, $buttonTarget, $buttonConfig;
+    $buttonIconColorHover, $buttonColor, $buttonMarginT, $buttonMarginB, $buttonSize, $buttonTextSize,
+    $buttonClasses, $buttonShadow, $buttonLabel, $buttonUrl, $buttonTarget, $buttonConfig;
 
   public function __construct(
     $container = null,
@@ -186,22 +186,7 @@ class Block extends Component
     if (!is_array($this->blockConfig) || !count($this->blockConfig)) {
       if ($this->systemName) {
         $block = BlockEntity::where("system_name", $this->systemName)->with('fields')->first();
-        if ($block) {
-          //Parse block Attributes
-          $blockAttributes = $block->attributes->toArray();
-          //Get and add block Fields in attributes
-          $blockFields = $block->formatFillableToModel($block->fields);
-          $blockAttributes["componentAttributes"] = array_merge(($blockAttributes["componentAttributes"] ?? []), $blockFields);
-          //nstance the blockConfig
-          $this->blockConfig = [
-            "component" => $block->component,
-            "entity" => $block->entity,
-            "attributes" => $blockAttributes,
-            "status" => $block->status
-          ];
-          //Instance the block edit link
-          $this->editLink = str_replace("{blockId}", $block->id, config('asgard.ibuilder.config.urlEditBlockTheme'));
-        }
+        if ($block) $this->blockConfig = $block->renderData;
       }
     }
     //Parse
@@ -376,7 +361,7 @@ class Block extends Component
    */
   public function render()
   {
-    if($this->blockConfig->status) return view($this->view);
+    if ($this->blockConfig->status) return view($this->view);
   }
 }
 
