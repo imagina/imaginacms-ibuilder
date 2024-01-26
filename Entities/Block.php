@@ -33,7 +33,17 @@ class Block extends CrudModel
     'deleted' => []
   ];
   public $translatedAttributes = ["internal_title"];
-  protected $fillable = ["system_name", "status", "component", "entity", "attributes", "layout_id", "grid_position", "sort_order"];
+  protected $fillable = [
+    "system_name",
+    "status",
+    "component",
+    "entity",
+    "attributes",
+    "layout_id",
+    "grid_position",
+    "sort_order",
+    "mobile_attributes"
+  ];
   protected $casts = [
     'component' => 'array',
     'entity' => 'array',
@@ -45,12 +55,13 @@ class Block extends CrudModel
     return $this->belongsTo(Layout::class);
   }
 
-  public function getRenderDataAttribute(){
+  public function getRenderDataAttribute()
+  {
     $fields = $this->formatFillableToModel($this->fields);
     $attributes = (array)(json_decode($this->attributes["attributes"]) ?? []);
 
     //Merge fields(content-fields) into attributes
-    foreach ($attributes as $name => $value){
+    foreach ($attributes as $name => $value) {
       $attributes[$name] = array_merge((array)$attributes[$name], (array)($fields[$name] ?? []));
       //Parse to camel case
       $attrTmp = [];
