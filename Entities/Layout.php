@@ -20,19 +20,16 @@ class Layout extends CrudModel
   //Instance external/internal events to dispatch with extraData
   public $dispatchesEventsWithBindings = [
     //eg. ['path' => 'path/module/event', 'extraData' => [/*...optional*/]]
-    'created' => [
-      ['path' => 'Modules\Ibuilder\Events\LayoutWasCreated']
-    ],
+    'created' => [],
     'creating' => [],
-    'updated' => [
-      ['path' => 'Modules\Ibuilder\Events\LayoutWasUpdated']
-    ],
+    'updated' => [],
     'updating' => [],
     'deleting' => [],
     'deleted' => []
   ];
   public $translatedAttributes = ['title'];
   protected $fillable = ['system_name', 'entity_type', 'type', 'default', 'status'];
+  protected $singleFlaggableCombination = ['entity_type', 'type'];
 
   public function blocks()
   {
@@ -46,7 +43,7 @@ class Layout extends CrudModel
   public function getBlocksToRenderAttribute()
   {
     return $this->blocks->sortBy('sort_order')->map(function($item) {
-      return $item->renderData;
+      return $item->getRenderData();
     });
   }
 }
