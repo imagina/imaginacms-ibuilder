@@ -13,8 +13,9 @@ return [
   "layout" => "Layout | Layouts",
   "newLayout" => "Crea un nuevo Layout",
   "layouts" => "Layouts",
+  "blockEdit" => "Editar bloque",
   "label" => [
-    "builder" => "Constructor",
+    "grid" => "Grilla",
     "preview" => "Vista Previa",
     "chooseLayout" => "Escoge un Layout",
     "newLayout" => "Nuevo Layout",
@@ -30,6 +31,13 @@ return [
     "title" => "Titulo",
     "subtitle" => "Subtitulo",
     "bannerMessage" => "Selecciona un 'Nombre de Sistema' unico que identifique el bloque y luego el componente que quieres perzonalizar...",
+    "content" => "Contenido",
+    "attributes" => "Atributos",
+    "discard" => "Descartar",
+    "apply" => "Aplicar",
+    "editBlockAttributes" => "Editar los atributos del bloque",
+    "sureDiscardBlock" => "¡Detente! ¿Estás seguro de salir sin guardar tus cambios?",
+    "descriptionSureDiscardBlock" => "Antes de salir, ¿estás seguro de que has guardado tus cambios? Si sales sin hacerlo, perderás todo tu progreso. ¡Tómate un momento para asegurarte!",
   ],
 ];
 
