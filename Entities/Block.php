@@ -55,13 +55,12 @@ class Block extends CrudModel
     return $this->belongsTo(Layout::class);
   }
 
-  public function getRenderDataAttribute()
-  {
+  public function getRenderData(){
     $fields = $this->formatFillableToModel($this->fields);
     $attributes = (array)(json_decode($this->attributes["attributes"]) ?? []);
 
     //Merge fields(content-fields) into attributes
-    foreach ($attributes as $name => $value) {
+    foreach ($attributes as $name => $value){
       $attributes[$name] = array_merge((array)$attributes[$name], (array)($fields[$name] ?? []));
       //Parse to camel case
       $attrTmp = [];
