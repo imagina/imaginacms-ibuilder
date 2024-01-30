@@ -186,7 +186,7 @@ class Block extends Component
     if (!is_array($this->blockConfig) || !count($this->blockConfig)) {
       if ($this->systemName) {
         $block = BlockEntity::where("system_name", $this->systemName)->with('fields')->first();
-        if ($block) $this->blockConfig = $block->renderData;
+        if ($block) $this->blockConfig = $block->getRenderData();
       }
     }
     //Parse
