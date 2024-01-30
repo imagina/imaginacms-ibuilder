@@ -13,8 +13,9 @@ return [
   "layout" => "Layout | Layouts",
   "newLayout" => "Create New Layout",
   "layouts" => "Layouts",
+  "blockEdit" => "Block Edit",
   "label" => [
-    "builder" => "Builder",
+    "grid" => "Grid",
     "preview" => "Preview",
     "chooseLayout" => "Choose a layout",
     "newLayout" => "New Layout",
@@ -30,6 +31,13 @@ return [
     "title" => "Title",
     "subtitle" => "Subtitle",
     "bannerMessage" => "Select a unique 'System Name' that identifies the block and then the component you want to customize...",
+    "content" => "Content",
+    "attributes" => "Attributes",
+    "discard" => "Discard",
+    "apply" => "Apply",
+    "editBlockAttributes" => "Edit block attributes",
+    "sureDiscardBlock" => "Stop! Are you sure you can exit without saving your changes?",
+    "descriptionSureDiscardBlock" => "Before you exit, are you sure you've saved your changes? If you exit without doing so, you will lose all your progress. Take a moment to make sure!",
   ],
 ];
 
