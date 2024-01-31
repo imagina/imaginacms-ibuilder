@@ -36,6 +36,7 @@ class Block extends CrudModel
   protected $fillable = [
     "system_name",
     "status",
+    "parent_id",
     "component",
     "entity",
     "attributes",
