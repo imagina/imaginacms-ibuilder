@@ -190,10 +190,21 @@ class Block extends Component
       }
     }
     //Parse
-    $this->blockConfig = json_decode(json_encode(array_merge(
-      ["status" => true],
-      $this->blockConfig
-    )));
+    $blockConfig = json_decode(json_encode(array_merge(["status" => true], $this->blockConfig)));
+
+    //Validate default blockConfig
+    $this->validateBlockConfig($blockConfig->attributes);
+    $this->validateBlockConfig($blockConfig->attributes->componentAttributes);
+    $this->validateBlockConfig($blockConfig->attributes->mainblock);
+
+    //Set blockConfig
+    $this->blockConfig = $blockConfig;
+  }
+
+  // Validate and set default attributes
+  public function validateBlockConfig(&$property, $defaultValue = null)
+  {
+    if (!isset($property) || is_array($property)) $property = $defaultValue ?? (object)[];
   }
 
   /**
