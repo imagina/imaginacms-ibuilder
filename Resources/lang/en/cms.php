@@ -36,8 +36,8 @@ return [
     "discard" => "Discard",
     "apply" => "Apply",
     "editBlockAttributes" => "Edit block attributes",
-    "sureDiscardBlock" => "Stop! Are you sure you can exit without saving your changes?",
-    "descriptionSureDiscardBlock" => "Before you exit, are you sure you've saved your changes? If you exit without doing so, you will lose all your progress. Take a moment to make sure!",
+    "sureDiscardBlock" => "Have you saved your changes?",
+    "descriptionSureDiscardBlock" => "If you continue with this action, you will lose all your progress. Take a moment to make sure!",
   ],
 ];
 
