@@ -7,23 +7,31 @@ $router->group(['prefix' => '/ibuilder/v1'], function (Router $router) {
     'module' => 'ibuilder',
     'prefix' => 'blocks',
     'controller' => 'BlockApiController',
-    'middleware' => ['index' => [], 'show' => []]
+    'middleware' => ['index' => [], 'show' => []],
+    'customRoutes' => [ // Include custom routes if needed
+      [
+        'method' => 'put', // get,post,put....
+        'path' => '/bulk/update', // Route Path
+        'uses' => 'bulkUpdate', //Name of the controller method to use
+        //'middleware' => [] // if not set up middleware, auth:api will be the default
+      ]
+    ]
   ]);
 
   $router->apiCrud([
-  'module' => 'ibuilder',
-  'prefix' => 'layouts',
-  'controller' => 'LayoutApiController',
-  //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []],
-  // 'customRoutes' => [ // Include custom routes if needed
-  //  [
-  //    'method' => 'post', // get,post,put....
-  //    'path' => '/some-path', // Route Path
-  //    'uses' => 'ControllerMethodName', //Name of the controller method to use
-  //    'middleware' => [] // if not set up middleware, auth:api will be the default
-  //  ]
-  // ]
-]);
+    'module' => 'ibuilder',
+    'prefix' => 'layouts',
+    'controller' => 'LayoutApiController',
+    //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []],
+    // 'customRoutes' => [ // Include custom routes if needed
+    //  [
+    //    'method' => 'post', // get,post,put....
+    //    'path' => '/some-path', // Route Path
+    //    'uses' => 'ControllerMethodName', //Name of the controller method to use
+    //    'middleware' => [] // if not set up middleware, auth:api will be the default
+    //  ]
+    // ]
+  ]);
 // append
 
   $router->post("/block/preview", [
