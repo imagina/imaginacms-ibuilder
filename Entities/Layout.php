@@ -40,7 +40,7 @@ class Layout extends CrudModel
    * Order and transform thje
    * @return mixed
    */
-  public function getBlocksToRenderAttribute()
+  public function getBlocksToRender()
   {
     return $this->blocks->sortBy('sort_order')->map(function($item) {
       return $item->getRenderData();

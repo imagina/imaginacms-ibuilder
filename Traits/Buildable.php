@@ -32,7 +32,7 @@ trait Buildable
     $layout = $this->layout;
 
     if($layout && $layout->id) {
-      $blocks = $layout->blocksToRender;
+      $blocks = $layout->blocksToRender();
       return view('ibuilder::frontend.index', compact('layout', 'blocks'));
     }
 
