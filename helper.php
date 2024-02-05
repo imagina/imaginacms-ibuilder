@@ -3,16 +3,24 @@
 use Illuminate\Http\Request;
 
 if (!function_exists('mapBlockToRender')) {
-  function mapBlockToRender($data, $fields = null)
+  function mapBlockToRender($data, $useFields = false)
   {
     $data = convertObjectValuesToArray($data);
     $locale = locale();//Get current locale
+    $fields = [];
+
+    //Instance blockfields
+    if ($useFields && isset($data['fields'])) {
+      foreach ($data['fields'] as $field) $fields[$field['name']] = $field['value'];
+    } else {//Instance default fields from locale
+      $fields = $data[$locale] ?? [];
+    }
 
     //Parse data
     $component = convertObjectValuesToArray(is_string($data['component']) ? json_decode($data['component']) : $data['component']);
     $entity = convertObjectValuesToArray(is_string($data['entity']) ? json_decode($data['entity']) : $data['entity']);
     $attributes = convertObjectValuesToArray(is_string($data['attributes']) ? json_decode($data['attributes']) : $data['attributes']);
-    $fields = convertObjectValuesToArray($fields ?? (is_string($data[$locale]) ? json_decode($data[$locale]) : $data[$locale]));
+    $fields = convertObjectValuesToArray(is_string($fields) ? json_decode($fields) : $fields);
 
     //Merge fields into attributes
     foreach ($fields as $fieldName => $field) {
@@ -24,9 +32,9 @@ if (!function_exists('mapBlockToRender')) {
     $response = [
       "id" => $data["id"],
       "status" => $data["status"],
-      "gridPosition" => $data["gridPosition"],
-      "sortOrder" => $data["sortOrder"],
-      "parentId" => $data["parentId"],
+      "gridPosition" => $data["gridPosition"] ?? $data["grid_position"],
+      "sortOrder" => $data["sortOrder"] ?? $data["sort_order"],
+      "parentId" => $data["parentId"] ?? $data["parent_id"],
       "component" => $component,
       "entity" => $entity,
       "attributes" => $attributes,
@@ -38,16 +46,26 @@ if (!function_exists('mapBlockToRender')) {
 }
 
 if (!function_exists('orderBlocksToRender')) {
-  function orderBlocksToRender($blocks, $parentId = 0)
+  function orderBlocksToRender($blocks, $useFields = false)
+  {
+    //Sort and map blocks
+    $blocks = collect($blocks)->map(function ($block) use ($useFields) {
+      return mapBlockToRender($block, $useFields);
+    })->sortBy('sortOrder')->toArray();
+
+    //build tree and response
+    return buildNestedBlocks($blocks);
+  }
+}
+
+if (!function_exists('buildNestedBlocks')) {
+  function buildNestedBlocks($blocks, $parentId = 0)
   {
     $tree = [];
-    $blocks = collect($blocks)->sortBy('sortOrder')->map(function ($block) use($parentId) {
-      return !$parentId ? mapBlockToRender($block) : $block;
-    })->toArray();
 
     foreach ($blocks as $block) {
       if ($block['parentId'] == $parentId) {
-        $block['attributes']['children'] = orderBlocksToRender($blocks, $block['id']);
+        $block['attributes']['children'] = buildNestedBlocks($blocks, $block['id']);
         $tree[] = $block;
       }
     }

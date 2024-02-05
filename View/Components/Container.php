@@ -32,7 +32,7 @@ class Container extends Component
    */
   public function render()
   {
-    if ($this->blockConfig->status) return view($this->view);
+    return view($this->view);
   }
 }
 

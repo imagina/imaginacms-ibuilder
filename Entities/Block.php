@@ -50,33 +50,15 @@ class Block extends CrudModel
     'entity' => 'array',
     'attributes' => AsArrayObject::class
   ];
+  protected $with = ['fields'];
 
   public function layout()
   {
     return $this->belongsTo(Layout::class);
   }
 
-  public function getRenderData(){
-    $fields = $this->formatFillableToModel($this->fields);
-    $attributes = (array)(json_decode($this->attributes["attributes"]) ?? []);
-
-    //Merge fields(content-fields) into attributes
-    foreach ($attributes as $name => $value){
-      $attributes[$name] = array_merge((array)$attributes[$name], (array)($fields[$name] ?? []));
-      //Parse to camel case
-      $attrTmp = [];
-      foreach ($attributes[$name] as $key => $item) $attrTmp[Str::camel($key)] = $item;
-      $attributes[$name] = $attrTmp;
-    }
-
-    return [
-      "id" => $this->id,
-      "component" => $this->component ?? [],
-      "entity" => $this->entity ?? [],
-      "status" => $this->status,
-      "attributes" => $attributes,
-      "gridPosition" => $this->grid_position,
-      "sortOrder" => $this->sort_order,
-    ];
+  public function getRenderData()
+  {
+    return mapBlockToRender($this->toArray(), true);
   }
 }
