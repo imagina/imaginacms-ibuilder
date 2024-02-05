@@ -25,14 +25,10 @@ class BlockApiController extends BaseCrudController
    */
   public function blockPreview(Request $request)
   {
-    $params = $request->all();
+    $blockData = $request->all();
 
     //Instance the blockConfig
-    $blockConfig = [
-      "component" => json_decode($params['component'] ?? "[]"),
-      "entity" => json_decode($params['entity'] ?? "[]"),
-      "attributes" => json_decode($params['attributes'] ?? "[]")
-    ];
+    $blockConfig = mapBlockToRender($blockData);
 
     //Render view
     return view('ibuilder::frontend.blocks', compact('blockConfig'));
