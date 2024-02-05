@@ -38,6 +38,8 @@ return [
     "editBlockAttributes" => "Edit block attributes",
     "sureDiscardBlock" => "Have you saved your changes?",
     "descriptionSureDiscardBlock" => "If you continue with this action, you will lose all your progress. Take a moment to make sure!",
+    "sureRefreshLayout" => "Do you want to reload the layouts?",
+    "descriptionSureRefreshLayout" => "Be careful! If you have unsaved changes, they will be lost when you refresh",
   ],
 ];
 
