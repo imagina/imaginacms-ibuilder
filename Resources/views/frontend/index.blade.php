@@ -4,7 +4,7 @@
     <div class="home page container-fluid px-0">
         <div class="row no-gutters">
             @foreach($blocks as $block)
-                <div class="col-12 {{ $block["gridPosition"] }}">
+                <div class="{{ $block["gridPosition"] }}">
                     <x-ibuilder::block :blockConfig="$block"/>
                 </div>
             @endforeach
