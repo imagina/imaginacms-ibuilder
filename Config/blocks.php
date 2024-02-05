@@ -553,6 +553,22 @@ return [
             "label" => "Url del video"
         ]
       ],
+      "buttonLabel" => [
+            "name" => "buttonLabel",
+            "isTranslatable" => true,
+            "type" => "input",
+            "props" => [
+                "label" => "Texto del Boton Custom"
+            ]
+        ],
+      "buttonHref" => [
+            "name" => "buttonHref",
+            "isTranslatable" => true,
+            "type" => "input",
+            "props" => [
+                "label" => "Enlace del Boton Custom"
+            ]
+        ],
       "mainImage" => [
         'value' => (object)['custommainimage' => null],
         'name' => 'mediasSingle',
@@ -771,13 +787,6 @@ return [
               "options" => $vAttributes["validation"]
             ]
           ],
-          "buttonLabel" => [
-            "name" => "buttonLabel",
-            "type" => "input",
-            "props" => [
-              "label" => "Texto"
-            ]
-          ],
           "buttonSizeLabel" => [
             "name" => "buttonSizeLabel",
             "type" => "input",
@@ -836,13 +845,6 @@ return [
             "props" => [
               "label" => "Alineación",
               "options" => $vAttributes["align"]
-            ]
-          ],
-          "buttonHref" => [
-            "name" => "buttonHref",
-            "type" => "input",
-            "props" => [
-              "label" => "Enlace"
             ]
           ],
           "buttonTarget" => [
