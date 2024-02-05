@@ -13,9 +13,9 @@ class Layout extends CrudModel
   public $transformer = 'Modules\Ibuilder\Transformers\LayoutTransformer';
   public $repository = 'Modules\Ibuilder\Repositories\LayoutRepository';
   public $requestValidation = [
-      'create' => 'Modules\Ibuilder\Http\Requests\CreateLayoutRequest',
-      'update' => 'Modules\Ibuilder\Http\Requests\UpdateLayoutRequest',
-    ];
+    'create' => 'Modules\Ibuilder\Http\Requests\CreateLayoutRequest',
+    'update' => 'Modules\Ibuilder\Http\Requests\UpdateLayoutRequest',
+  ];
   protected $with = ['blocks.fields'];
   //Instance external/internal events to dispatch with extraData
   public $dispatchesEventsWithBindings = [
@@ -42,8 +42,6 @@ class Layout extends CrudModel
    */
   public function getBlocksToRender()
   {
-    return $this->blocks->sortBy('sort_order')->map(function($item) {
-      return $item->getRenderData();
-    });
+    return orderBlocksToRender($this->blocks->toArray(), true);
   }
 }
