@@ -36,8 +36,10 @@ return [
     "discard" => "Descartar",
     "apply" => "Aplicar",
     "editBlockAttributes" => "Editar los atributos del bloque",
-    "sureDiscardBlock" => "¡Detente! ¿Estás seguro de salir sin guardar tus cambios?",
-    "descriptionSureDiscardBlock" => "Antes de salir, ¿estás seguro de que has guardado tus cambios? Si sales sin hacerlo, perderás todo tu progreso. ¡Tómate un momento para asegurarte!",
+    "sureDiscardBlock" => "¿Has guardado tus cambios?",
+    "descriptionSureDiscardBlock" => "Si continuas con esta acción, perderás todo tu progreso. ¡Tómate un momento para asegurarte!",
+    "sureRefreshLayout" => "¿Deseas volver a cargar los layouts?",
+    "descriptionSureRefreshLayout" => "¡Ten cuidado! Si tienes cambios sin guardar, se perderán al refrescar",
   ],
 ];
 

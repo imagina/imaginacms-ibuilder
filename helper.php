@@ -32,9 +32,10 @@ if (!function_exists('mapBlockToRender')) {
     $response = [
       "id" => $data["id"],
       "status" => $data["status"],
+      "systemName" => $data["system_name"],
       "gridPosition" => $data["gridPosition"] ?? $data["grid_position"] ?? '',
       "sortOrder" => $data["sortOrder"] ?? $data["sort_order"],
-      "parentId" => $data["parentId"] ?? $data["parent_id"],
+      "parentSystemName" => $data["parentSystemName"] ?? $data["parent_system_name"] ?? null,
       "component" => $component,
       "entity" => $entity,
       "attributes" => $attributes,
@@ -59,13 +60,14 @@ if (!function_exists('orderBlocksToRender')) {
 }
 
 if (!function_exists('buildNestedBlocks')) {
-  function buildNestedBlocks($blocks, $parentId = 0)
+  function buildNestedBlocks($blocks, $parent = null)
   {
     $tree = [];
 
     foreach ($blocks as $block) {
-      if ($block['parentId'] == $parentId) {
-        $block['attributes']['children'] = buildNestedBlocks($blocks, $block['id']);
+      $parentSystemName = $block['parentSystemName'] ?? $block['parent_system_name'] ?? null;
+      if ($parentSystemName == $parent) {
+        $block['attributes']['children'] = buildNestedBlocks($blocks, $block['systemName'] ?? $block['system_name']);
         $tree[] = $block;
       }
     }

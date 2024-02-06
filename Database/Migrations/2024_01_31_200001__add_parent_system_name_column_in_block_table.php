@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddParentIdColumnInBlockTable extends Migration
+class AddParentSystemNameColumnInBlockTable extends Migration
 {
   /**
    * Run the migrations.
@@ -15,7 +15,7 @@ class AddParentIdColumnInBlockTable extends Migration
   {
 
     Schema::table('ibuilder__blocks', function (Blueprint $table) {
-      $table->integer('parent_id')->nullable()->default(0)->after('layout_id');
+      $table->string('parent_system_name')->nullable()->after('layout_id');
     });
   }
 
@@ -27,7 +27,7 @@ class AddParentIdColumnInBlockTable extends Migration
   public function down()
   {
     Schema::table('ibuilder__blocks', function (Blueprint $table) {
-      $table->dropColumn('parent_id');
+      $table->dropColumn('parent_system_name');
     });
   }
 }

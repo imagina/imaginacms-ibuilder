@@ -18,7 +18,7 @@ class MigrateBlockFieldsToV2 extends Seeder
   {
     Model::unguard();
     //Names that will be ignored in the field
-    $ignoreAttributes = ["mobile_attributes", "medias_multi", "medias_single"];
+    $ignoreAttributes = ["mobile_attributes", "medias_multi", "medias_single", "mobileAttributes"];
     //Fields that appear in Block Component
     $blockComponentAttributes = ["block_subtitle", "block_title"];
     //Names that will be placed by default
