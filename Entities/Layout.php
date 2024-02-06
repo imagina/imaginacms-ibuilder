@@ -4,10 +4,11 @@ namespace Modules\Ibuilder\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
+use Modules\Media\Support\Traits\MediaRelation;
 
 class Layout extends CrudModel
 {
-  use Translatable;
+  use Translatable, MediaRelation;
 
   protected $table = 'ibuilder__layouts';
   public $transformer = 'Modules\Ibuilder\Transformers\LayoutTransformer';

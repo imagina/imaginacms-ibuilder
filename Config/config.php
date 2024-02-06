@@ -3,6 +3,9 @@
 return [
   //Media Fillables
   'mediaFillable' => [
+    'layout' => [
+      'internalimage' => 'single'
+    ],
     'block' => [
       'internalimage' => 'single',
       'blockbgimage' => 'single',
