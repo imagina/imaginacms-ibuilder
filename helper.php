@@ -32,7 +32,7 @@ if (!function_exists('mapBlockToRender')) {
     $response = [
       "id" => $data["id"],
       "status" => $data["status"],
-      "systemName" => $data["system_name"],
+      "systemName" => $data["system_name"] ?? $data["systemName"],
       "gridPosition" => $data["gridPosition"] ?? $data["grid_position"] ?? '',
       "sortOrder" => $data["sortOrder"] ?? $data["sort_order"],
       "parentSystemName" => $data["parentSystemName"] ?? $data["parent_system_name"] ?? null,
