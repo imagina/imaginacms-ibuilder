@@ -49,4 +49,20 @@ class BlockApiController extends BaseCrudController
     //Return response
     return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
   }
+
+  public function bulkCreate(Request $request)
+  {
+    \DB::beginTransaction();
+    try {
+      $blocks = $request->input('attributes');//Get blocks data
+      $this->modelRepository->bulkCreate($blocks);//Bulk update
+      \DB::commit(); //Commit to Data Base
+    } catch (\Exception $e) {
+      \DB::rollback();//Rollback to Data Base
+      $status = $this->getStatusError($e->getCode());
+      $response = ["messages" => [["message" => $e->getMessage(), "type" => "error"]]];
+    }
+    //Return response
+    return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+  }
 }

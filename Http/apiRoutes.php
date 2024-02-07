@@ -14,6 +14,12 @@ $router->group(['prefix' => '/ibuilder/v1'], function (Router $router) {
         'path' => '/bulk/update', // Route Path
         'uses' => 'bulkUpdate', //Name of the controller method to use
         //'middleware' => [] // if not set up middleware, auth:api will be the default
+      ],
+      [
+        'method' => 'post', // get,post,put....
+        'path' => '/bulk/create', // Route Path
+        'uses' => 'bulkCreate', //Name of the controller method to use
+        //'middleware' => [] // if not set up middleware, auth:api will be the default
       ]
     ]
   ]);
