@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('isite::frontend.layouts.blank')
 
 @section('content')
     <div class="home page container-fluid px-0">
