@@ -17,7 +17,7 @@ class Layout extends CrudModel
     'create' => 'Modules\Ibuilder\Http\Requests\CreateLayoutRequest',
     'update' => 'Modules\Ibuilder\Http\Requests\UpdateLayoutRequest',
   ];
-  protected $with = ['blocks.fields'];
+  protected $with = ['blocks.fields', 'blocks.files'];
   //Instance external/internal events to dispatch with extraData
   public $dispatchesEventsWithBindings = [
     //eg. ['path' => 'path/module/event', 'extraData' => [/*...optional*/]]
@@ -43,6 +43,6 @@ class Layout extends CrudModel
    */
   public function getBlocksToRender()
   {
-    return orderBlocksToRender($this->blocks->toArray(), true);
+    return orderBlocksToRender(blocksToArray($this->blocks), false);
   }
 }

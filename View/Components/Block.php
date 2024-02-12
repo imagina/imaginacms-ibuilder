@@ -215,42 +215,42 @@ class Block extends Component
    */
   public function instanceBlockConfigFiles($params)
   {
-    //Instance the media attributes
-    $componentAttrs = $this->blockConfig->attributes->componentAttributes;
-    $mediasSingle = (array)($componentAttrs->medias_single ?? $componentAttrs->mediasSingle ?? []);
-    $mediasMulti = (array)($componentAttrs->medias_multi ?? $componentAttrs->mediasMulti ?? []);
-    //Instance the blockConfigfiles
-    $this->blockConfig->mediaFiles = array_merge(
-      array_map(function ($zone) {
-        return null;
-      }, $mediasSingle),
-      array_map(function ($zone) {
-        return null;
-      }, $mediasMulti)
-    );
-    //Instance the files ID
-    $filesId = array_values($mediasSingle);
-    //Merge the multi files ID
-    foreach ($mediasMulti as $zone) {
-      $filesId = array_merge($filesId, ((array)($zone))["files"] ?? []);
+    if (!isset($this->blockConfig->mediaFiles)) {
+      //Instance the media attributes
+      $mediasSingle = (array)($this->blockConfig->mediasSingle ?? []);
+      $mediasMulti = (array)($this->blockConfig->mediasMulti ?? []);
+      //Instance the blockConfigfiles zones by default
+      $mediaFiles = array_merge(
+        array_map(function ($zone) {
+          return null;
+        }, $mediasSingle),
+        array_map(function ($zone) {
+          return null;
+        }, $mediasMulti)
+      );
+      //Instance the files ID
+      $filesId = array_values($mediasSingle);
+      //Merge the multi files ID
+      foreach ($mediasMulti as $zone) {
+        $filesId = array_merge($filesId, ((array)($zone))["files"] ?? []);
+      }
+      //Request the fiels
+      $filesData = File::whereIn('id', $filesId)->get();
+      //Set files of media single
+      foreach (array_keys($mediasSingle) as $singleZone) {
+        $singleFile = $filesData->where('id', $mediasSingle[$singleZone])->first();
+        $mediaFiles[$singleZone] = !$singleFile ? null : $this->transformFile($singleFile);
+      }
+      //Set files of media multi
+      foreach (array_keys($mediasMulti) as $multiZone) {
+        $multiFiles = $filesData->whereIn('id', ($mediasMulti[$multiZone]->files ?? []));
+        $mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
+          return $this->transformFile($file);
+        })->toArray();
+      }
+      //Set blockConfig media File
+      $this->blockConfig->mediaFiles = json_decode(json_encode($mediaFiles));
     }
-    //Request the fiels
-    $filesData = File::whereIn('id', $filesId)->get();
-    //Set files of media single
-    foreach (array_keys($mediasSingle) as $singleZone) {
-      $singleFile = $filesData->where('id', $mediasSingle[$singleZone])->first();
-      $this->blockConfig->mediaFiles[$singleZone] = !$singleFile ? null : $this->transformFile($singleFile);
-    }
-    //Set files of media multi
-    foreach (array_keys($mediasMulti) as $multiZone) {
-      $multiFiles = $filesData->whereIn('id', ($mediasMulti[$multiZone]->files ?? []));
-      $this->blockConfig->mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
-        return $this->transformFile($file);
-      })->toArray();
-    }
-    //Set blockConfig media File
-    $this->blockConfig->mediaFiles = json_decode(json_encode($this->blockConfig->mediaFiles));
-    $this->blockConfig->attributes->componentAttributes->mediaFiles = $this->blockConfig->mediaFiles;
   }
 
   /**

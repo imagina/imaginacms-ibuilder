@@ -59,6 +59,6 @@ class Block extends CrudModel
 
   public function getRenderData()
   {
-    return mapBlockToRender($this->toArray(), true);
+    return mapBlockToRender(blocksToArray([$this])[0], false);
   }
 }

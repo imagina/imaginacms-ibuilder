@@ -3,14 +3,17 @@
 use Illuminate\Http\Request;
 
 if (!function_exists('mapBlockToRender')) {
-  function mapBlockToRender($data, $useFields = false)
+  function mapBlockToRender($data, $isPreview = true)
   {
-    $data = convertObjectValuesToArray($data);
     $locale = locale();//Get current locale
     $fields = [];
+    $data = convertObjectValuesToArray($data);
+    //Map optional items
+    $data['mediasSingle'] = $data['mediasSingle'] ?? [];
+    $data['mediasMulti'] = $data['mediasMulti'] ?? [];
 
     //Instance blockfields
-    if ($useFields && isset($data['fields'])) {
+    if (!$isPreview && isset($data['fields'])) {
       foreach ($data['fields'] as $field) $fields[$field['name']] = $field['value'];
     } else {//Instance default fields from locale
       $fields = $data[$locale] ?? [];
@@ -21,11 +24,13 @@ if (!function_exists('mapBlockToRender')) {
     $entity = convertObjectValuesToArray(is_string($data['entity']) ? json_decode($data['entity']) : $data['entity']);
     $attributes = convertObjectValuesToArray(is_string($data['attributes']) ? json_decode($data['attributes']) : $data['attributes']);
     $fields = convertObjectValuesToArray(is_string($fields) ? json_decode($fields) : $fields);
+    $mediaSingle = convertObjectValuesToArray(is_string($data['mediasSingle']) ? json_decode($data['mediasSingle']) : $data['mediasSingle']);
+    $mediasMulti = convertObjectValuesToArray(is_string($data['mediasMulti']) ? json_decode($data['mediasMulti']) : $data['mediasMulti']);
 
     //Merge fields into attributes
     foreach ($fields as $fieldName => $field) {
       if (is_string($field)) $attributes[$fieldName] = $fieldName;
-      else if(!is_null($field)) $attributes[$fieldName] = array_merge(($attributes[$fieldName] ?? []), $field);
+      else if (!is_null($field)) $attributes[$fieldName] = array_merge(($attributes[$fieldName] ?? []), $field);
     }
 
     //Instance the response
@@ -38,8 +43,18 @@ if (!function_exists('mapBlockToRender')) {
       "parentSystemName" => $data["parentSystemName"] ?? $data["parent_system_name"] ?? null,
       "component" => $component,
       "entity" => $entity,
-      "attributes" => $attributes,
+      "attributes" => $attributes
     ];
+
+    //Added media files for preview as mediaSingle and mediasMulti
+    if ($isPreview) {
+      $response["mediasSingle"] = $mediaSingle;
+      $response["mediasMulti"] = $mediasMulti;
+    } else {// Put mediaFiles only with ID NOT allow default images
+      foreach (($data['mediaFiles'] ?? []) as $zone => $file) {
+        if (isset($file['id']) && $file['id']) $response["mediaFiles"][$zone] = $file;
+      }
+    }
 
     //Response
     return $response;
@@ -47,11 +62,11 @@ if (!function_exists('mapBlockToRender')) {
 }
 
 if (!function_exists('orderBlocksToRender')) {
-  function orderBlocksToRender($blocks, $useFields = false)
+  function orderBlocksToRender($blocks, $isPreview = false)
   {
     //Sort and map blocks
-    $blocks = collect($blocks)->map(function ($block) use ($useFields) {
-      return mapBlockToRender($block, $useFields);
+    $blocks = collect($blocks)->map(function ($block) use ($isPreview) {
+      return mapBlockToRender($block, $isPreview);
     })->sortBy('sortOrder')->toArray();
 
     //build tree and response
@@ -73,5 +88,23 @@ if (!function_exists('buildNestedBlocks')) {
     }
 
     return $tree;
+  }
+}
+
+if (!function_exists('BlocksToArray')) {
+  function blocksToArray($blocks)
+  {
+    $response = [];
+
+    //Parse To array the blocks and include relations data if needed
+    foreach ($blocks as $block) {
+      $response[] = array_merge(
+        $block->toArray(), [
+        "mediaFiles" => $block->mediaFiles()
+      ]);
+    }
+
+    //Response
+    return $response;
   }
 }
