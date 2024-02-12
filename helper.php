@@ -25,7 +25,7 @@ if (!function_exists('mapBlockToRender')) {
     //Merge fields into attributes
     foreach ($fields as $fieldName => $field) {
       if (is_string($field)) $attributes[$fieldName] = $fieldName;
-      else $attributes[$fieldName] = array_merge(($attributes[$fieldName] ?? []), $field);
+      else if(!is_null($field)) $attributes[$fieldName] = array_merge(($attributes[$fieldName] ?? []), $field);
     }
 
     //Instance the response

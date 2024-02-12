@@ -41,5 +41,10 @@ return [
     "sureRefreshLayout" => "Do you want to reload the layouts?",
     "descriptionSureRefreshLayout" => "Be careful! If you have unsaved changes, they will be lost when you refresh",
   ],
+  "form" => [
+    "layoutEntityType" => "Defines the context or category to which the layout belongs",
+    "layoutType" => "Specifies the presentation type within the selected entity",
+    "layoutDefault" => "Indicates whether the layout is set as default for the corresponding entity and type"
+  ],
 ];
 
