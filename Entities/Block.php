@@ -50,7 +50,7 @@ class Block extends CrudModel
     'entity' => 'array',
     'attributes' => AsArrayObject::class
   ];
-  protected $with = ['fields'];
+  protected $with = ['fields', 'files'];
 
   public function layout()
   {
