@@ -916,8 +916,8 @@ return [
     "nameSpace" => "Modules\Ibuilder\View\Components\Container",
     "allowChildren" => true,
     "contentFields" => [
-        "backgroundsImg" => [
-            'value' => (object)['backgroundsImg' => null],
+        "backgroundImg" => [
+            'value' => (object)['backgroundImg' => null],
             'name' => 'mediasSingle',
             "type" => "media",
             "columns" => "col-12",
