@@ -915,6 +915,20 @@ return [
     "systemName" => "x-ibuilder::container",
     "nameSpace" => "Modules\Ibuilder\View\Components\Container",
     "allowChildren" => true,
+    "contentFields" => [
+        "backgroundImg" => [
+            'value' => (object)['backgroundImg' => null],
+            'name' => 'mediasSingle',
+            "type" => "media",
+            "columns" => "col-12",
+            "props" => [
+                "label" => "isite::cms.label.backgroundImage",
+                'zone' => 'backgroundimg',
+                'entity' => 'Modules\\Ibuilder\\Entities\\Block',
+                'entityId' => null,
+            ]
+        ]
+    ],
     "attributes" => [
       "general" => [
         "title" => "General",
@@ -926,7 +940,55 @@ return [
               "label" => "Ingresar el id",
               "type" => "text"
             ]
-          ]
+          ],
+          "containerBlock" => [
+            "name" => "containerBlock",
+            "type" => "select",
+            "props" => [
+                "label" => "Tipo de contenedor",
+                "options" => $vAttributes["containers"]
+            ]
+          ],
+          "row" => [
+            "name" => "row",
+            "type" => "input",
+            "columns" => "col-12",
+            "props" => [
+                "label" => "Fila",
+                "type" => "text"
+            ]
+          ],
+          "backgroundGeneral" => [
+            "name" => "backgroundGeneral",
+            "value" => "",
+            "type" => "input",
+            "columns" => "col-12",
+            "props" => [
+                "label" => "Gradiente de fondo"
+            ]
+          ],
+          "styleContainer" => [
+            "name" => "styleContainer",
+            "type" => "input",
+            "columns" => "col-12",
+            "props" => [
+                "label" => "Estilos generales",
+                'type' => 'textarea',
+                'rows' => 5,
+            ],
+            "help" => [
+                "description" => "Permite agregar estilos al contenedor",
+            ]
+          ],
+          "backgrounds" => [
+            "name" => "backgrounds",
+            "type" => "json",
+            "columns" => "col-12",
+            "value" => ["position" => "center", "size" => "cover", "repeat" => "no-repeat", "color" => "", "attachment" => ""],
+            "props" => [
+                "label" => "Opciones de Fondo"
+            ]
+          ],
         ]
       ]
     ]

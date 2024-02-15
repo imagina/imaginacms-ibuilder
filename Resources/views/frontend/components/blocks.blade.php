@@ -6,6 +6,9 @@
        $attributes['image'] = $blockConfig->mediaFiles->custommainimage ?? null;
        $attributes['gallery'] = $blockConfig->mediaFiles->customgallery ?? null;
     }
+    if($componentName=='x-ibuilder::container')  {
+     $attributes['backgroundImg'] = $blockConfig->mediaFiles->backgroundimg ?? null;
+    }
     if(!empty($blockConfig->mediaFiles->blockbgimage)) {
         if(!empty($blockConfig->mediaFiles->blockbgimage->extraLargeThumb))  {
             $blockImage = $blockConfig->mediaFiles->blockbgimage->extraLargeThumb;
@@ -44,9 +47,9 @@
     <div id="overlay{{$block->id ?? $id}}"></div>
   @endif
   <div id="container{{$block->id ?? $id}}"
-       class="{{$block->container ?? $container}}">
+       class="{{$block->container ?? $container ?? 'overflow-hidden'}}">
     <div class="row {{$block->row ?? $row}}">
-      <div class="{{$block->columns ?? $columns}}  @if(empty($block->buttonPosition)) d-flex flex-column @endif">
+      <div class="{{$block->columns ?? $columns ?? 'col-12' }}  @if(empty($block->buttonPosition)) d-flex flex-column @endif">
 
         <!--Dynamic Component-->
         <div id="component{{$block->id ?? $id}}" class="order-1">

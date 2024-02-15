@@ -11,6 +11,7 @@ return [
       'blockbgimage' => 'single',
       'custommainimage' => 'single',
       'customgallery' => 'multiple',
+      'backgroundimg'  => 'single',
     ],
   ],
   //Url of the iadmin to manage the blocks themes for clients
