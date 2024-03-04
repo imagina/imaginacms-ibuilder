@@ -2,12 +2,10 @@
 
 namespace Modules\Ibuilder\Entities;
 
-use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
 
 class Buildable extends CrudModel
 {
-  use Translatable;
 
   protected $table = 'ibuilder__buildables';
   public $transformer = 'Modules\Ibuilder\Transformers\BuildableTransformer';
@@ -26,7 +24,6 @@ class Buildable extends CrudModel
     'deleting' => [],
     'deleted' => []
   ];
-  public $translatedAttributes = [];
   protected $fillable = [
     'layout_id',
     'entity_type',

@@ -17,8 +17,8 @@ class CreateIbuilderBuildablesTable extends Migration
             $table->increments('id');
             // Your fields...
             $table->integer('layout_id')->unsigned()->nullable();
-            $table->string('entity_type')->nullable();
-            $table->integer('entity_id')->unsigned()->nullable();
+            $table->string('entity_type');
+            $table->integer('entity_id')->unsigned();
             $table->string('type')->nullable();
             $table->unique(['entity_type', 'entity_id']);
             $table->foreign('layout_id')->references('id')->on('ibuilder__layouts')->onDelete('cascade');
