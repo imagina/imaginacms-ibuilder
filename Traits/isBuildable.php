@@ -38,20 +38,19 @@ trait isBuildable
    */
   public function getLayout()
   {
+    //Validate if exist buildable
+    if (!$this->buildable) return null;
     // Check if the buildable entity has a layout defined, and return it if found.
-    if(optional($this->buildable)->layout) return optional($this->buildable)->layout;
-
-
-    $type = optional($this->buildable)->type;
+    if ($this->buildable->layout) return $this->buildable->layout;
+    //Search the default layout
     $layoutRepositoy = app("Modules\Ibuilder\Repositories\LayoutRepository");
     $params = json_decode(json_encode([
       "filter" => [
         "field" => "entity_type",
-        "type" => $type,
+        "type" => $this->buildable->type,
         "default" => 1
       ]
     ]));
-
     // Fetch the layout from the repository based on the type of the buildable entity.
     return $layoutRepositoy->getItem($this->getMorphClass(), $params);
   }
@@ -69,8 +68,8 @@ trait isBuildable
     $layout = $this->getLayout();
 
     if ($layout && $layout->id) {
-      $useLayout = 'layouts.master';
       $blocks = $layout->getBlocksToRender();
+      $useLayout = 'layouts.master';
       return view('ibuilder::frontend.index', compact('layout', 'blocks', 'useLayout'));
     }
 
@@ -101,7 +100,6 @@ trait isBuildable
         ['layout_id' => $data["layout_id"], 'type' => $data["type"]]
       );
     }
-
   }
 
   /**
