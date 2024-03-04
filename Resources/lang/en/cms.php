@@ -44,7 +44,8 @@ return [
   "form" => [
     "layoutEntityType" => "Defines the context or category to which the layout belongs",
     "layoutType" => "Specifies the presentation type within the selected entity",
-    "layoutDefault" => "Indicates whether the layout is set as default for the corresponding entity and type"
+    "layoutDefault" => "Indicates whether the layout is set as default for the corresponding entity and type",
+    "layout" => "Builder Layout"
   ],
 ];
 
