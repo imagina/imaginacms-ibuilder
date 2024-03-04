@@ -59,8 +59,9 @@ trait isBuildable
     $layout = $this->layout();
 
     if ($layout && $layout->id) {
+      $useLayout = 'layouts.master';
       $blocks = $layout->getBlocksToRender();
-      return view('ibuilder::frontend.index', compact('layout', 'blocks'));
+      return view('ibuilder::frontend.index', compact('layout', 'blocks', 'useLayout'));
     }
 
     if ($callback && is_callable($callback)) {
