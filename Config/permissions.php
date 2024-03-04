@@ -18,7 +18,16 @@ return [
         'destroy' => 'ibuilder::layouts.destroy resource',
         'restore' => 'ibuilder::layouts.restore resource',
     ],
+    'ibuilder.buildables' => [
+        'manage' => 'ibuilder::buildables.manage resource',
+        'index' => 'ibuilder::buildables.list resource',
+        'create' => 'ibuilder::buildables.create resource',
+        'edit' => 'ibuilder::buildables.edit resource',
+        'destroy' => 'ibuilder::buildables.destroy resource',
+        'restore' => 'ibuilder::buildables.restore resource',
+    ],
 // append
+
 
 
 

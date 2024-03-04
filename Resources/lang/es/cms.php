@@ -44,7 +44,8 @@ return [
   "form" => [
     "layoutEntityType" => "Define el contexto o categoría al que pertenece el layout",
     "layoutType" => "Especifica el tipo de presentación dentro de la entidad seleccionada",
-    "layoutDefault" => "Indica si el layout se establece como predeterminado para la entidad y el tipo correspondiente"
+    "layoutDefault" => "Indica si el layout se establece como predeterminado para la entidad y el tipo correspondiente",
+    "layout" => "Builder Layout"
   ],
 ];
 
