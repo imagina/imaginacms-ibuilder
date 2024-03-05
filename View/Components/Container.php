@@ -7,16 +7,18 @@ use Illuminate\View\Component;
 class Container extends Component
 {
   public $view, $id, $children, $containerBlock, $row, $backgrounds, $backgroundImg,
-         $backgroundGeneral, $styleContainer;
+         $backgroundGeneral, $styleContainer, $scriptContainer;
 
   public function __construct($id = null,
                               $children = [],
-                              $containerBlock = 'overflow-hidden',
+                              $containerBlock = '',
                               $row = '',
                               $backgrounds = [],
                               $backgroundImg = '',
                               $backgroundGeneral = '',
-                              $styleContainer = null)
+                              $styleContainer = null,
+                              $scriptContainer = null
+  )
   {
     $params = get_defined_vars();//Get all params
     $this->instanceGeneralAttributes($params);//Init
@@ -37,6 +39,7 @@ class Container extends Component
     $this->backgroundGeneral = $params["backgroundGeneral"];
     $this->styleContainer = $params["styleContainer"];
     $this->backgroundImg = $this->backgroundImage($params["backgroundImg"]);
+    $this->scriptContainer = $params["scriptContainer"];
   }
 
   /**

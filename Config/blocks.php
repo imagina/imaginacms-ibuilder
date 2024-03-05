@@ -989,6 +989,16 @@ return [
                 "label" => "Opciones de Fondo"
             ]
           ],
+          "scriptContainer" => [
+            "name" => "scriptContainer",
+            "type" => "input",
+            "columns" => "col-12",
+            "props" => [
+                "label" => "Script",
+                'type' => 'textarea',
+                'rows' => 10,
+            ],
+          ],
         ]
       ]
     ]

@@ -7,7 +7,7 @@
         <div class="row {{$row}}">
             @foreach($children as $block)
                 <div class="{{ $block["gridPosition"] }}">
-                    <x-ibuilder::block :blockConfig="$block"/>
+                    <x-ibuilder::block :blockConfig="$block" container="" row="mx-0 d-block" columns="" />
                 </div>
             @endforeach
         </div>
@@ -30,3 +30,11 @@
         @endif
     }
 </style>
+@if(!empty($scriptContainer))
+@section('scripts')
+    @parent
+    <script type="text/javascript">
+    {!!$scriptContainer!!}
+    </script>
+@stop
+@endif
