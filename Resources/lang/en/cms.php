@@ -40,6 +40,7 @@ return [
     "descriptionSureDiscardBlock" => "If you continue with this action, you will lose all your progress. Take a moment to make sure!",
     "sureRefreshLayout" => "Do you want to reload the layouts?",
     "descriptionSureRefreshLayout" => "Be careful! If you have unsaved changes, they will be lost when you refresh",
+    "administrator" => "Administrator"
   ],
   "form" => [
     "layoutEntityType" => "Defines the context or category to which the layout belongs",
