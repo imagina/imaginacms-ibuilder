@@ -28,7 +28,7 @@ $router->group(['prefix' => '/ibuilder/v1'], function (Router $router) {
     'module' => 'ibuilder',
     'prefix' => 'layouts',
     'controller' => 'LayoutApiController',
-    //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []],
+    'middleware' => ['index' => [], 'show' => []],
     // 'customRoutes' => [ // Include custom routes if needed
     //  [
     //    'method' => 'post', // get,post,put....
