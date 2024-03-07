@@ -40,7 +40,9 @@ return [
     "descriptionSureDiscardBlock" => "Si continuas con esta acción, perderás todo tu progreso. ¡Tómate un momento para asegurarte!",
     "sureRefreshLayout" => "¿Deseas volver a cargar los layouts?",
     "descriptionSureRefreshLayout" => "¡Ten cuidado! Si tienes cambios sin guardar, se perderán al refrescar",
-    "administrator" => "Administrador"
+    "administrator" => "Ir al administrador",
+    "sureChangeView" => "¿Está seguro de esta acción?",
+    "chooseBlock" => "Escoge un Bloque",
   ],
   "form" => [
     "layoutEntityType" => "Define el contexto o categoría al que pertenece el layout",
