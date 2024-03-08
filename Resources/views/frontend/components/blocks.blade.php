@@ -1,3 +1,4 @@
+
 @php
     $componentName = $componentConfig["systemName"];
     $nameSpace = $componentConfig["nameSpace"];
@@ -18,6 +19,7 @@
     }
     $block = $blockConfig->attributes->mainblock;
 @endphp
+
 <section id="block{{$block->id ?? $id}}"
          class="{{$block->blockClasses ?? $blockClasses}}"
          @if(!empty($block->animateBlockName)) data-aos="{{$block->animateBlockName}}" @endif
@@ -82,22 +84,24 @@
 
         @if(!empty($block->withButton) && $block->withButton)
           <div class="component{{$block->id ?? $id}}-button {{$block->buttonAlign}} {{$block->buttonAlign}} @if(empty($block->buttonPosition)) order-0 @endif">
-              @if($block->buttonLabel=="")
-                  @php($labelExist = false)
-              @else
-                  @php($labelExist = true)
-              @endif
-              @if($block->buttonIcon=="")
-                  @php($iconExist = false)
-              @else
-                  @php($iconExist = true)
-              @endif
+
+              @php
+                  $attributeLabel = isset($attributes["buttonLabel"]) && !empty($attributes["buttonLabel"]) ? $attributes["buttonLabel"] : null;
+                  $contentLabel = isset($block->buttonLabel) && !empty($block->buttonLabel) ? $block->buttonLabel : null;
+
+                  $blabel= $attributeLabel ?? $contentLabel ?? "";
+                  $labelExist = !empty($blabel);
+              @endphp
+
+              @php($iconExist = $block->buttonIcon == "" ? false : true)
+
               @if($block->buttonLayout=="button-custom")
                   @php($block->buttonColor = "")
               @endif
+
               <x-isite::button :style="$block->buttonLayout"
                                :buttonClasses="$block->buttonSize.' block-button '.$block->buttonLayout.' '.$block->buttonMarginT.' '.$block->buttonMarginB.' '.$block->buttonClasses"
-                               :label="$block->buttonLabel"
+                               :label="$blabel"
                                :withLabel="$labelExist"
                                :withIcon="$iconExist"
                                :iconClass="$block->buttonIcon"

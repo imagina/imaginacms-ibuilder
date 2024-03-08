@@ -7,6 +7,7 @@ return [
     "title" => "Bloque",
     "systemName" => "x-ibuilder::block",
     "nameSpace" => "Modules\Ibuilder\View\Components\Block",
+    "internal" => true,
     "contentFields" => [
       "blockTitle" => [
         "name" => "blockTitle",
@@ -37,9 +38,17 @@ return [
           'entity' => 'Modules\\Ibuilder\\Entities\\Block',
           'entityId' => null,
         ]
-      ]
+      ],
+      "buttonLabel" => [
+        "name" => "buttonLabel",
+        "value" => "",
+        "type" => "input",
+        "isTranslatable" => true,
+        "props" => [
+            "label" => "Texto del botón del bloque"
+        ]
+      ],
     ],
-    "internal" => true,
     "attributes" => [
       "general" => [
         "title" => "General",
@@ -143,7 +152,7 @@ return [
             "columns" => "col-12",
             "value" => ["position" => "center", "size" => "cover", "repeat" => "no-repeat", "color" => "", "attachment" => ""],
             "props" => [
-              "label" => "Opciones de Fondo"
+                "label" => "Opciones de Fondo"
             ]
           ],
           "row" => [
@@ -169,54 +178,54 @@ return [
             "value" => "relative",
             "type" => "select",
             "props" => [
-              "label" => "Posición",
-              "options" => [
-                ["label" => "relative", "value" => "relative"],
-                ["label" => "static", "value" => "static"],
-                ["label" => "absolute", "value" => "absolute"],
-                ["label" => "fixed", "value" => "fixed"],
-                ["label" => "sticky", "value" => "sticky"],
-                ["label" => "inherit", "value" => "inherit"],
-                ["label" => "revert", "value" => "revert"],
-                ["label" => "initial", "value" => "initial"],
-                ["label" => "revert-layer", "value" => "revert-layer"],
-                ["label" => "unset", "value" => "unset"],
-              ],
+                "label" => "Posición",
+                "options" => [
+                    ["label" => "relative", "value" => "relative"],
+                    ["label" => "static", "value" => "static"],
+                    ["label" => "absolute", "value" => "absolute"],
+                    ["label" => "fixed", "value" => "fixed"],
+                    ["label" => "sticky", "value" => "sticky"],
+                    ["label" => "inherit", "value" => "inherit"],
+                    ["label" => "revert", "value" => "revert"],
+                    ["label" => "initial", "value" => "initial"],
+                    ["label" => "revert-layer", "value" => "revert-layer"],
+                    ["label" => "unset", "value" => "unset"],
+                ],
             ]
           ],
           "zIndex" => [
             "name" => "zIndex",
             "type" => "input",
             "props" => [
-              "label" => "Orden entre elementos (z-index)"
+                "label" => "Orden entre elementos (z-index)"
             ]
           ],
           "top" => [
             "name" => "top",
             "type" => "input",
             "props" => [
-              "label" => "Posición Superior (Top)"
+                "label" => "Posición Superior (Top)"
             ]
           ],
           "bottom" => [
             "name" => "bottom",
             "type" => "input",
             "props" => [
-              "label" => "Posición Inferior (Bottom)"
+                "label" => "Posición Inferior (Bottom)"
             ]
           ],
           "left" => [
             "name" => "left",
             "type" => "input",
             "props" => [
-              "label" => "Posición Izquierda (Left)"
+                "label" => "Posición Izquierda (Left)"
             ]
           ],
           "right" => [
             "name" => "right",
             "type" => "input",
             "props" => [
-              "label" => "Posición Derecha (Right)"
+                "label" => "Posición Derecha (Right)"
             ]
           ],
           "width" => [
@@ -224,7 +233,7 @@ return [
             "value" => "auto",
             "type" => "input",
             "props" => [
-              "label" => "Ancho del Bloque",
+                "label" => "Ancho del Bloque",
             ]
           ],
           "height" => [
@@ -232,7 +241,7 @@ return [
             "value" => "auto",
             "type" => "input",
             "props" => [
-              "label" => "Alto del Bloque",
+                "label" => "Alto del Bloque",
             ]
           ],
           "blockClasses" => [
@@ -260,275 +269,266 @@ return [
       "boton" => [
         "title" => "Botón",
         "fields" => [
-          "withButton" => [
-            "name" => "withButton",
-            "value" => "0",
-            "type" => "select",
-            "props" => [
-              "label" => "Mostrar",
-              "options" => $vAttributes["validation"]
-            ]
-          ],
-          "buttonPosition" => [
-            "name" => "buttonPosition",
-            "value" => "1",
-            "type" => "select",
-            "props" => [
-              "label" => "Posicion",
-              "options" => [
-                ["label" => "Arriba", "value" => "0"],
-                ["label" => "Abajo", "value" => "1"],
-              ],
-            ]
-          ],
-          "buttonLayout" => [
-            "name" => "buttonLayout",
-            "value" => "",
-            "type" => "select",
-            "props" => [
-              "label" => "Estilo de Botones",
-              "options" => $vAttributes["buttonStyle"]
-            ]
-          ],
-          "buttonSize" => [
-            "name" => "buttonSize",
-            "value" => "button-normal",
-            "type" => "select",
-            "props" => [
-              "label" => "Espaciado",
-              "options" => $vAttributes["buttonType"]
-            ]
-          ],
-          "buttonAlign" => [
-            "name" => "buttonAlign",
-            "value" => "text-center",
-            "type" => "select",
-            "props" => [
-              "label" => "Alineación",
-              "options" => $vAttributes["align"]
-            ]
-          ],
-          "buttonColor" => [
-            "name" => "buttonColor",
-            "value" => "primary",
-            "type" => "select",
-            "props" => [
-              "label" => "Color",
-              "options" => $vAttributes["bgColor"]
-            ]
-          ],
-          "buttonTextSize" => [
-            "name" => "buttonTextSize",
-            "value" => "16",
-            "type" => "input",
-            "props" => [
-              "label" => "Tamaño del texto",
-              "type" => "number"
-            ]
-          ],
-          "buttonMarginT" => [
-            "name" => "buttonMarginT",
-            "value" => "mt-0",
-            "type" => "select",
-            "props" => [
-              "label" => "Margen superior",
-              "options" => $vAttributes["marginT"]
-            ]
-          ],
-          "buttonMarginB" => [
-            "name" => "buttonMarginB",
-            "value" => "mb-3",
-            "type" => "select",
-            "props" => [
-              "label" => "Margen Inferior",
-              "options" => $vAttributes["marginB"]
-            ]
-          ],
-          "buttonShadow" => [
-            "name" => "buttonShadow",
-            "type" => "input",
-            "value" => "",
-            "props" => [
-              "label" => "Sombra de texto",
-            ]
-          ],
-          "buttonUrl" => [
-            "name" => "buttonUrl",
-            "type" => "input",
-            "value" => "",
-            "props" => [
-              "label" => "url",
-            ]
-          ],
-          "buttonTarget" => [
-            "name" => "buttonTarget",
-            "value" => "_self",
-            "type" => "select",
-            "props" => [
-              "label" => "Target",
-              "options" => $vAttributes["target"]
-            ]
-          ],
-          "buttonIcon" => [
-            "name" => "buttonIcon",
-            "value" => "",
-            "type" => "input",
-            "props" => [
-              "label" => "Icono"
-            ]
-          ],
-          "buttonIconLR" => [
-            "name" => "buttonIconLR",
-            "value" => "left",
-            "type" => "select",
-            "props" => [
-              "label" => "Posición del icono",
-              "options" => [
-                ["label" => "Izquierda", "value" => "left"],
-                ["label" => "Derecha", "value" => "right"]
-              ]
-            ]
-          ],
-          "buttonIconColor" => [
-            "name" => "buttonIconColor",
-            "type" => "input",
-            "props" => [
-              "label" => "Color icon",
+            "withButton" => [
+                "name" => "withButton",
+                "value" => "0",
+                "type" => "select",
+                "props" => [
+                    "label" => "Mostrar",
+                    "options" => $vAttributes["validation"]
+                ]
             ],
-          ],
-          "buttonIconColorHover" => [
-            "name" => "buttonIconColorHover",
-            "type" => "input",
-            "props" => [
-              "label" => "Color icon hover",
+            "buttonPosition" => [
+                "name" => "buttonPosition",
+                "value" => "1",
+                "type" => "select",
+                "props" => [
+                    "label" => "Posicion",
+                    "options" => [
+                        ["label" => "Arriba", "value" => "0"],
+                        ["label" => "Abajo", "value" => "1"],
+                    ],
+                ]
             ],
-          ],
-          "buttonLabel" => [
-            "name" => "buttonLabel",
-            "value" => "Ver más",
-            "columns" => "col-12",
-            "type" => "input",
-            "props" => [
-              "label" => "Texto del botón",
-            ]
-          ],
-          "buttonClasses" => [
-            "name" => "buttonClasses",
-            "type" => "input",
-            "value" => "",
-            "columns" => "col-12",
-            "props" => [
-              "label" => "Clases generales",
-            ]
-          ],
-          "buttonConfig" => [
-            "name" => "buttonConfig",
-            "value" => [
-              'color' => 'var(--white)',
-              'background' => 'var(--primary)',
-              'border' => '0',
-              'transition' => '.4s',
+            "buttonLayout" => [
+                "name" => "buttonLayout",
+                "value" => "",
+                "type" => "select",
+                "props" => [
+                    "label" => "Estilo de Botones",
+                    "options" => $vAttributes["buttonStyle"]
+                ]
             ],
-            "type" => "json",
-            "columns" => "col-12",
-            "props" => [
-              "label" => "Configuración de Botón Custom",
-            ]
-          ],
+            "buttonSize" => [
+                "name" => "buttonSize",
+                "value" => "button-normal",
+                "type" => "select",
+                "props" => [
+                    "label" => "Espaciado",
+                    "options" => $vAttributes["buttonType"]
+                ]
+            ],
+            "buttonAlign" => [
+                "name" => "buttonAlign",
+                "value" => "text-center",
+                "type" => "select",
+                "props" => [
+                    "label" => "Alineación",
+                    "options" => $vAttributes["align"]
+                ]
+            ],
+            "buttonColor" => [
+                "name" => "buttonColor",
+                "value" => "primary",
+                "type" => "select",
+                "props" => [
+                    "label" => "Color",
+                    "options" => $vAttributes["bgColor"]
+                ]
+            ],
+            "buttonTextSize" => [
+                "name" => "buttonTextSize",
+                "value" => "16",
+                "type" => "input",
+                "props" => [
+                    "label" => "Tamaño del texto",
+                    "type" => "number"
+                ]
+            ],
+            "buttonMarginT" => [
+                "name" => "buttonMarginT",
+                "value" => "mt-0",
+                "type" => "select",
+                "props" => [
+                    "label" => "Margen superior",
+                    "options" => $vAttributes["marginT"]
+                ]
+            ],
+            "buttonMarginB" => [
+                "name" => "buttonMarginB",
+                "value" => "mb-3",
+                "type" => "select",
+                "props" => [
+                    "label" => "Margen Inferior",
+                    "options" => $vAttributes["marginB"]
+                ]
+            ],
+            "buttonShadow" => [
+                "name" => "buttonShadow",
+                "type" => "input",
+                "value" => "",
+                "props" => [
+                    "label" => "Sombra de texto",
+                ]
+            ],
+            "buttonUrl" => [
+                "name" => "buttonUrl",
+                "type" => "input",
+                "value" => "",
+                "props" => [
+                    "label" => "url",
+                ]
+            ],
+            "buttonTarget" => [
+                "name" => "buttonTarget",
+                "value" => "_self",
+                "type" => "select",
+                "props" => [
+                    "label" => "Target",
+                    "options" => $vAttributes["target"]
+                ]
+            ],
+            "buttonIcon" => [
+                "name" => "buttonIcon",
+                "value" => "",
+                "type" => "input",
+                "props" => [
+                    "label" => "Icono"
+                ]
+            ],
+            "buttonIconLR" => [
+                "name" => "buttonIconLR",
+                "value" => "left",
+                "type" => "select",
+                "props" => [
+                    "label" => "Posición del icono",
+                    "options" => [
+                        ["label" => "Izquierda", "value" => "left"],
+                        ["label" => "Derecha", "value" => "right"]
+                    ]
+                ]
+            ],
+            "buttonIconColor" => [
+                "name" => "buttonIconColor",
+                "type" => "input",
+                "props" => [
+                    "label" => "Color icon",
+                ],
+            ],
+            "buttonIconColorHover" => [
+                "name" => "buttonIconColorHover",
+                "type" => "input",
+                "props" => [
+                    "label" => "Color icon hover",
+                ],
+            ],
+            "buttonClasses" => [
+                "name" => "buttonClasses",
+                "type" => "input",
+                "value" => "",
+                "columns" => "col-12",
+                "props" => [
+                    "label" => "Clases generales",
+                ]
+            ],
+            "buttonConfig" => [
+                "name" => "buttonConfig",
+                "value" => [
+                    'color' => 'var(--white)',
+                    'background' => 'var(--primary)',
+                    'border' => '0',
+                    'transition' => '.4s',
+                ],
+                "type" => "json",
+                "columns" => "col-12",
+                "props" => [
+                    "label" => "Configuración de Botón Custom",
+                ]
+            ],
         ]
       ],
       "animationBlock" => [
         "title" => "Animaciones de Entrada",
         "fields" => [
-          "animateBlockName" => [
-            "name" => "animateBlockName",
-            "value" => "",
-            "type" => "select",
-            "props" => [
-              "label" => "Animacion",
-              "options" => $vAttributes["animationAOS"]
-            ]
-          ],
-          "animateBlockDuration" => [
-            "name" => "animateBlockDuration",
-            "type" => "input",
-            "props" => [
-              "label" => "Duracion"
+            "animateBlockName" => [
+                "name" => "animateBlockName",
+                "value" => "",
+                "type" => "select",
+                "props" => [
+                    "label" => "Animacion",
+                    "options" => $vAttributes["animationAOS"]
+                ]
             ],
-            "help" => [
-              "description" => "Valores de 0 a 3000, con paso de 50ms"
-            ]
-          ],
-          "animateBlockOffset" => [
-            "name" => "animateBlockOffset",
-            "type" => "input",
-            "props" => [
-              "label" => "Offset",
+            "animateBlockDuration" => [
+                "name" => "animateBlockDuration",
+                "type" => "input",
+                "props" => [
+                    "label" => "Duracion"
+                ],
+                "help" => [
+                    "description" => "Valores de 0 a 3000, con paso de 50ms"
+                ]
             ],
-            "help" => [
-              "description" => "Desplazamiento (en px) desde el punto de activación original"
-            ]
-          ],
-          "animateBlockDelay" => [
-            "name" => "animateBlockDelay",
-            "type" => "input",
-            "props" => [
-              "label" => "Delay",
+            "animateBlockOffset" => [
+                "name" => "animateBlockOffset",
+                "type" => "input",
+                "props" => [
+                    "label" => "Offset",
+                ],
+                "help" => [
+                    "description" => "Desplazamiento (en px) desde el punto de activación original"
+                ]
             ],
-            "help" => [
-              "description" => "Valores de 0 a 3000, con paso de 50ms"
-            ]
-          ],
-          "animateBlockEasing" => [
-            "name" => "animateBlockEasing",
-            "value" => "ease",
-            "type" => "select",
-            "props" => [
-              "label" => "Easing",
-              "options" => $vAttributes["easingAOS"]
-            ]
-          ],
-          "animateBlockOnce" => [
-            "name" => "animateBlockOnce",
-            "value" => true,
-            "type" => "select",
-            "props" => [
-              "label" => "One",
-              "options" => $vAttributes["booleanValidation"]
+            "animateBlockDelay" => [
+                "name" => "animateBlockDelay",
+                "type" => "input",
+                "props" => [
+                    "label" => "Delay",
+                ],
+                "help" => [
+                    "description" => "Valores de 0 a 3000, con paso de 50ms"
+                ]
             ],
-            "help" => [
-              "description" => "Si la animación debe ocurrir solo una vez, mientras se desplaza hacia abajo"
-            ]
-          ],
-          "animateBlockMirror" => [
-            "name" => "animateBlockMirror",
-            "value" => true,
-            "type" => "select",
-            "props" => [
-              "label" => "Mirror",
-              "options" => $vAttributes["booleanValidation"]
+            "animateBlockEasing" => [
+                "name" => "animateBlockEasing",
+                "value" => "ease",
+                "type" => "select",
+                "props" => [
+                    "label" => "Easing",
+                    "options" => $vAttributes["easingAOS"]
+                ]
             ],
-            "help" => [
-              "description" => "Si los elementos deben animarse mientras se desplazan más allá de ellos"
-            ]
-          ],
+            "animateBlockOnce" => [
+                "name" => "animateBlockOnce",
+                "value" => true,
+                "type" => "select",
+                "props" => [
+                    "label" => "One",
+                    "options" => $vAttributes["booleanValidation"]
+                ],
+                "help" => [
+                    "description" => "Si la animación debe ocurrir solo una vez, mientras se desplaza hacia abajo"
+                ]
+            ],
+            "animateBlockMirror" => [
+                "name" => "animateBlockMirror",
+                "value" => true,
+                "type" => "select",
+                "props" => [
+                    "label" => "Mirror",
+                    "options" => $vAttributes["booleanValidation"]
+                ],
+                "help" => [
+                    "description" => "Si los elementos deben animarse mientras se desplazan más allá de ellos"
+                ]
+            ],
         ]
       ],
       "responsive" => [
         "title" => "Responsive Custom",
         "fields" => [
-          "blockStyleResponsive" => [
-            "name" => "blockStyleResponsive",
-            "value" => [],
-            "type" => "json",
-            'columns' => 'col-12',
-            "props" => [
-              "label" => "Responsive Custom"
+            "blockStyleResponsive" => [
+                "name" => "blockStyleResponsive",
+                "value" => [],
+                "type" => "json",
+                'columns' => 'col-12',
+                "props" => [
+                    "label" => "Responsive Custom"
+                ],
+                "help" => [
+                    "description" => "Responsive Custom"
+                ],
             ],
-            "help" => [
-              "description" => "Responsive Custom"
-            ],
-          ],
         ]
       ],
     ]
@@ -580,9 +580,25 @@ return [
         "isTranslatable" => true,
         "columns" => "col-12",
         "props" => [
-          "label" => "Url del video"
+            "label" => "Url del video"
         ]
       ],
+      "buttonLabel" => [
+            "name" => "buttonLabel",
+            "isTranslatable" => true,
+            "type" => "input",
+            "props" => [
+                "label" => "Texto del Boton Custom"
+            ]
+        ],
+      "buttonHref" => [
+            "name" => "buttonHref",
+            "isTranslatable" => true,
+            "type" => "input",
+            "props" => [
+                "label" => "Enlace del Boton Custom"
+            ]
+        ],
       "mainImage" => [
         'value' => (object)['custommainimage' => null],
         'name' => 'mediasSingle',
@@ -738,7 +754,7 @@ return [
             "type" => "input",
             "columns" => "col-md-12",
             "props" => [
-              "label" => "Clases (Descripción)"
+                "label" => "Clases (Descripción)"
             ]
           ],
         ]
@@ -801,13 +817,6 @@ return [
               "options" => $vAttributes["validation"]
             ]
           ],
-          "buttonLabel" => [
-            "name" => "buttonLabel",
-            "type" => "input",
-            "props" => [
-              "label" => "Texto"
-            ]
-          ],
           "buttonSizeLabel" => [
             "name" => "buttonSizeLabel",
             "type" => "input",
@@ -868,13 +877,6 @@ return [
               "options" => $vAttributes["align"]
             ]
           ],
-          "buttonHref" => [
-            "name" => "buttonHref",
-            "type" => "input",
-            "props" => [
-              "label" => "Enlace"
-            ]
-          ],
           "buttonTarget" => [
             "name" => "buttonTarget",
             "type" => "select",
@@ -895,15 +897,15 @@ return [
           "buttonConfig" => [
             "name" => "buttonConfig",
             "value" => [
-              'color' => 'var(--white)',
-              'background' => 'var(--primary)',
-              'border' => '0',
-              'transition' => '.4s',
+                'color' => 'var(--white)',
+                'background' => 'var(--primary)',
+                'border' => '0',
+                'transition' => '.4s',
             ],
             "type" => "json",
             "columns" => "col-12",
             "props" => [
-              "label" => "Configuración de Botón Custom",
+                "label" => "Configuración de Botón Custom",
             ]
           ],
         ]
