@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 if (!function_exists('mapBlockToRender')) {
   function mapBlockToRender($data, $isPreview = true)
   {
@@ -38,8 +36,8 @@ if (!function_exists('mapBlockToRender')) {
       "id" => $data["id"],
       "status" => $data["status"],
       "systemName" => $data["system_name"] ?? $data["systemName"],
-      "gridPosition" => $data["gridPosition"] ?? $data["grid_position"] ?? '',
-      "sortOrder" => $data["sortOrder"] ?? $data["sort_order"],
+      "gridPosition" => $data["gridPosition"] ?? $data["grid_position"] ?? 'col-12',
+      "sortOrder" => $data["sortOrder"] ?? $data["sort_order"] ?? 0,
       "parentSystemName" => $data["parentSystemName"] ?? $data["parent_system_name"] ?? null,
       "component" => $component,
       "entity" => $entity,
@@ -98,9 +96,14 @@ if (!function_exists('BlocksToArray')) {
 
     //Parse To array the blocks and include relations data if needed
     foreach ($blocks as $block) {
+      $hasPivot = $block->relationLoaded('pivot');
       $response[] = array_merge(
         $block->toArray(), [
-        "mediaFiles" => $block->mediaFiles()
+        "mediaFiles" => $block->mediaFiles(),
+        "layout_id" => $hasPivot ? $block->pivot->layout_id : 0,
+        "sort_order" => $hasPivot ? $block->pivot->sort_order : 0,
+        "parent_system_name" => $hasPivot ? $block->pivot->parent_system_name : 0,
+        "grid_position" => $hasPivot ? $block->pivot->grid_position : 0
       ]);
     }
 

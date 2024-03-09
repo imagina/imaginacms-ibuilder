@@ -36,25 +36,23 @@ class Block extends CrudModel
   protected $fillable = [
     "system_name",
     "status",
-    "parent_system_name",
     "component",
     "entity",
-    "attributes",
-    "layout_id",
-    "grid_position",
-    "sort_order",
-    "mobile_attributes"
+    "attributes"
   ];
   protected $casts = [
     'component' => 'array',
     'entity' => 'array',
     'attributes' => AsArrayObject::class
   ];
+  public $modelRelations = [
+    'layouts' => 'belongsToMany'
+  ];
   protected $with = ['fields', 'files'];
 
-  public function layout()
+  public function layouts()
   {
-    return $this->belongsTo(Layout::class);
+    return $this->belongsToMany(Layout::class, 'ibuilder__layout_blocks');
   }
 
   public function getRenderData()
