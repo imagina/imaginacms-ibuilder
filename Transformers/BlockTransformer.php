@@ -14,15 +14,15 @@ class BlockTransformer extends CrudResource
   public function modelAttributes($request)
   {
     return [
-      'sortOrder' => $this->whenPivotLoaded('ibuilder__layout_blocks', function () {
-        return $this->pivot->sort_order;
-      }),
-      'parentSystemName' => $this->whenPivotLoaded('ibuilder__layout_blocks', function () {
-        return $this->pivot->parent_system_name;
-      }),
-      'gridPosition' => $this->whenPivotLoaded('ibuilder__layout_blocks', function () {
-        return $this->pivot->grid_position;
-      })
+//      'sortOrder' => $this->whenPivotLoaded('ibuilder__layout_blocks', function () {
+//        return $this->pivot->sort_order;
+//      }),
+//      'parentSystemName' => $this->whenPivotLoaded('ibuilder__layout_blocks', function () {
+//        return $this->pivot->parent_system_name;
+//      }),
+//      'gridPosition' => $this->whenPivotLoaded('ibuilder__layout_blocks', function () {
+//        return $this->pivot->grid_position;
+//      })
     ];
   }
 }

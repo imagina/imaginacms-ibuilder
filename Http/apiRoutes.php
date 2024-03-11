@@ -56,14 +56,14 @@ $router->group(['prefix' => '/ibuilder/v1'], function (Router $router) {
     'prefix' => 'layout-blocks',
     'controller' => 'LayoutBlockApiController',
     //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []],
-    // 'customRoutes' => [ // Include custom routes if needed
-    //  [
-    //    'method' => 'post', // get,post,put....
-    //    'path' => '/some-path', // Route Path
-    //    'uses' => 'ControllerMethodName', //Name of the controller method to use
-    //    'middleware' => [] // if not set up middleware, auth:api will be the default
-    //  ]
-    // ]
+    'customRoutes' => [ // Include custom routes if needed
+      [
+        'method' => 'put', // get,post,put....
+        'path' => '/bulk/update', // Route Path
+        'uses' => 'bulkUpdate', //Name of the controller method to use
+        //'middleware' => [] // if not set up middleware, auth:api will be the default
+      ]
+    ],
   ]);
 // append
 

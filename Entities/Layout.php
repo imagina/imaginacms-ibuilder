@@ -35,7 +35,7 @@ class Layout extends CrudModel
   public function blocks()
   {
     return $this->belongsToMany(Block::class, 'ibuilder__layout_blocks')
-      ->withPivot('sort_order', 'parent_system_name', 'grid_position');
+      ->withPivot('id', 'sort_order', 'parent_system_name', 'grid_position');
   }
 
   /**
