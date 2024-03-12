@@ -44,7 +44,7 @@ return [
     "sureChangeView" => "¿Está seguro de esta acción?",
     "chooseBlock" => "Escoge un Bloque",
     "clone" => "Clonar",
-    "related" => "Relacionar",
+    "relate" => "Relacionar",
   ],
   "form" => [
     "layoutEntityType" => "Define el contexto o categoría al que pertenece el layout",
