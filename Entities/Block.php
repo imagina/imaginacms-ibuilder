@@ -8,7 +8,6 @@ use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
 use Modules\Media\Support\Traits\MediaRelation;
 use Modules\Ifillable\Traits\isFillable;
-use Illuminate\Support\Str;
 
 class Block extends CrudModel
 {
