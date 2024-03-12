@@ -43,6 +43,8 @@ return [
     "administrator" => "Go to administrator",
     "sureChangeView" => "Are you sure about this action?",
     "chooseBlock" => "Choose a Block",
+    "clone" => "Clone",
+    "related" => "Related",
   ],
   "form" => [
     "layoutEntityType" => "Defines the context or category to which the layout belongs",

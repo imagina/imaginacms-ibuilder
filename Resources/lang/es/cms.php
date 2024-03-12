@@ -43,6 +43,8 @@ return [
     "administrator" => "Ir al administrador",
     "sureChangeView" => "¿Está seguro de esta acción?",
     "chooseBlock" => "Escoge un Bloque",
+    "clone" => "Clonar",
+    "related" => "Relacionar",
   ],
   "form" => [
     "layoutEntityType" => "Define el contexto o categoría al que pertenece el layout",
