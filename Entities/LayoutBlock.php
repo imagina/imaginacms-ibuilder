@@ -6,6 +6,7 @@ use Modules\Core\Icrud\Entities\CrudModel;
 
 class LayoutBlock extends CrudModel
 {
+  public $forceDeleting = true;
   protected $table = 'ibuilder__layout_blocks';
   public $transformer = 'Modules\Ibuilder\Transformers\LayoutBlockTransformer';
   public $repository = 'Modules\Ibuilder\Repositories\LayoutBlockRepository';
