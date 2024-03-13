@@ -7,6 +7,9 @@
        $attributes['image'] = $blockConfig->mediaFiles->custommainimage ?? null;
        $attributes['gallery'] = $blockConfig->mediaFiles->customgallery ?? null;
     }
+    if($componentName=='x-ibuilder::container')  {
+     $attributes['backgroundImg'] = $blockConfig->mediaFiles->backgroundimg ?? null;
+    }
     if(!empty($blockConfig->mediaFiles->blockbgimage)) {
         if(!empty($blockConfig->mediaFiles->blockbgimage->extraLargeThumb))  {
             $blockImage = $blockConfig->mediaFiles->blockbgimage->extraLargeThumb;
@@ -46,9 +49,9 @@
     <div id="overlay{{$block->id ?? $id}}"></div>
   @endif
   <div id="container{{$block->id ?? $id}}"
-       class="{{$block->container ?? $container}}">
+       class="{{$block->container ?? $container ?? 'overflow-hidden'}}">
     <div class="row {{$block->row ?? $row}}">
-      <div class="{{$block->columns ?? $columns}}  @if(empty($block->buttonPosition)) d-flex flex-column @endif">
+      <div class="{{$block->columns ?? $columns ?? 'col-12' }}  @if(empty($block->buttonPosition)) d-flex flex-column @endif">
 
         <!--Dynamic Component-->
         <div id="component{{$block->id ?? $id}}" class="order-1">
@@ -127,8 +130,7 @@
         @if(!empty($block->zIndex)) z-index: {{$block->zIndex}}; @endif
         @if(!empty($block->width)) width: {{$block->width}}; @endif
         @if(!empty($block->height)) height: {{$block->height}}; @endif
-        @if($block->backgroundColor)
-        background: {{$block->backgroundColor}};
+        @if(isset($block->backgroundColor)) background: {{$block->backgroundColor}};
         @elseif(isset($block->backgrounds))
         @if(!empty($blockImage)) background-image: url({{$blockImage}}); @endif
         background-position: {{$block->backgrounds->position}};
@@ -138,7 +140,7 @@
         @if(!empty($block->backgrounds->color)) background-color: {{$block->backgrounds->color}}; @endif
         @endif
     }
-    @if($block->blockStyle)
+    @if(isset($block->blockStyle))
           {!!$block->blockStyle!!}
     @endif
 

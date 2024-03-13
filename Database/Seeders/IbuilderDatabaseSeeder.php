@@ -18,7 +18,7 @@ class IbuilderDatabaseSeeder extends Seeder
     Model::unguard();
     ProcessSeeds::dispatch([
       "baseClass" => "\Modules\Ibuilder\Database\Seeders",
-      "seeds" => ["IbuilderModuleTableSeeder", "FixBlocksMovedSeeder"]
+      "seeds" => ["IbuilderModuleTableSeeder", "FixBlocksMovedSeeder", "MigrateBlockFieldsToV2", "MigrateLayoutIdFromBlockToPivot"]
     ]);
   }
 }

@@ -32,10 +32,30 @@ class Block extends CrudModel
     'deleted' => []
   ];
   public $translatedAttributes = ["internal_title"];
-  protected $fillable = ["system_name", "status", "component", "entity", "attributes"];
+  protected $fillable = [
+    "system_name",
+    "status",
+    "component",
+    "entity",
+    "attributes"
+  ];
   protected $casts = [
     'component' => 'array',
     'entity' => 'array',
     'attributes' => AsArrayObject::class
   ];
+  public $modelRelations = [
+    'layouts' => 'belongsToMany'
+  ];
+  protected $with = ['fields', 'files'];
+
+  public function layouts()
+  {
+    return $this->belongsToMany(Layout::class, 'ibuilder__layout_blocks');
+  }
+
+  public function getRenderData()
+  {
+    return mapBlockToRender(blocksToArray([$this])[0], false);
+  }
 }
