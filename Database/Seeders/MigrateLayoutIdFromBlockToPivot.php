@@ -25,15 +25,17 @@ class MigrateLayoutIdFromBlockToPivot extends Seeder
 
       // Create entries in ibuilder_layout_blocks
       foreach ($blocks as $block) {
-        \DB::table('ibuilder__layout_blocks')->insert([
-          'layout_id' => $block->layout_id,
-          'block_id' => $block->id,
-          'sort_order' => $block->sort_order,
-          'parent_system_name' => $block->parent_system_name,
-          'grid_position' => $block->grid_position,
-          'created_at' => new \DateTime(),
-          'updated_at' => new \DateTime()
-        ]);
+        if($block->layout_id) {
+          \DB::table('ibuilder__layout_blocks')->insert([
+            'layout_id' => $block->layout_id,
+            'block_id' => $block->id,
+            'sort_order' => $block->sort_order,
+            'parent_system_name' => $block->parent_system_name,
+            'grid_position' => $block->grid_position,
+            'created_at' => new \DateTime(),
+            'updated_at' => new \DateTime()
+          ]);
+        }
       }
 
       // Remove uneeded columns from blocks
