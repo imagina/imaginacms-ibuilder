@@ -130,7 +130,7 @@
         @if(!empty($block->zIndex)) z-index: {{$block->zIndex}}; @endif
         @if(!empty($block->width)) width: {{$block->width}}; @endif
         @if(!empty($block->height)) height: {{$block->height}}; @endif
-        @if(isset($block->backgroundColor)) background: {{$block->backgroundColor}};
+        @if(!empty($block->backgroundColor)) background: {{$block->backgroundColor}};
         @elseif(isset($block->backgrounds))
         @if(!empty($blockImage)) background-image: url({{$blockImage}}); @endif
         background-position: {{$block->backgrounds->position}};
