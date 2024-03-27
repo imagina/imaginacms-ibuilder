@@ -118,7 +118,7 @@ class BlockCustom extends Component
         $this->imageOnClasses = $imageOnClasses;
         $this->imageInClasses = $imageInClasses;
         $this->imageStyles = $imageStyles;
-        $this->video = $video;
+        $this->video = $this->instanceVideo($video);
         $this->videoClasses = $videoClasses;
         $this->videoResponsive = $videoResponsive;
         $this->withButton = $withButton;
@@ -157,6 +157,19 @@ class BlockCustom extends Component
         ];
     }
 
+    public function instanceVideo($urlVideo)
+    {
+        $exists = strpos($urlVideo, 'youtube');
+        if($exists !== false) {
+            $query = parse_url($urlVideo, PHP_URL_QUERY);
+            parse_str($query, $params);
+            if(isset($params['v'])){
+                $youtubeId = $params['v'];
+                $urlVideo = 'https://www.youtube.com/embed/'.$youtubeId;
+            }
+        }
+        return $urlVideo;
+    }
 
     /**
      * Get the view / contents that represent the component.

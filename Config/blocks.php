@@ -9,7 +9,7 @@ return [
     "nameSpace" => "Modules\Ibuilder\View\Components\Block",
     "internal" => true,
     "contentFields" => [
-      "blockTitle" => [
+      /*"blockTitle" => [
         "name" => "blockTitle",
         "type" => "input",
         "colClass" => 'col-12',
@@ -26,7 +26,7 @@ return [
         "props" => [
           "label" => "ibuilder::cms.label.subtitle"
         ]
-      ],
+      ],*/
       "mediasSingle" => [
         "name" => "mediasSingle",
         "value" => [],
@@ -541,6 +541,7 @@ return [
       "titleCustom" => [
         "name" => "titleCustom",
         "type" => "input",
+        "columns" => "col-12",
         "isTranslatable" => true,
         "props" => [
           "label" => "Texto (titulo)"
@@ -549,6 +550,7 @@ return [
       "subTitleCustom" => [
         "name" => "subTitleCustom",
         "type" => "input",
+        "columns" => "col-12",
         "isTranslatable" => true,
         "props" => [
           "label" => "Texto (Subtitulo)"
