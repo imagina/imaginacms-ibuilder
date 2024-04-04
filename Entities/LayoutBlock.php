@@ -29,6 +29,7 @@ class LayoutBlock extends CrudModel
     'block_id',
     'sort_order',
     'parent_system_name',
-    'grid_position'
+    'grid_position',
+    'system_name'
   ];
 }

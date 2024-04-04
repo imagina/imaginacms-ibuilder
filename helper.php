@@ -103,7 +103,8 @@ if (!function_exists('BlocksToArray')) {
         "layout_id" => $hasPivot ? $block->pivot->layout_id : 0,
         "sort_order" => $hasPivot ? $block->pivot->sort_order : 0,
         "parent_system_name" => $hasPivot ? $block->pivot->parent_system_name : 0,
-        "grid_position" => $hasPivot ? $block->pivot->grid_position : 0
+        "grid_position" => $hasPivot ? $block->pivot->grid_position : 0,
+        "system_name" => $hasPivot ? $block->pivot->system_name : $block->system_name
       ]);
     }
 
