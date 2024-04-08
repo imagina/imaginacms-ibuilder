@@ -2,84 +2,31 @@
 
 namespace Modules\Ibuilder\View\Components;
 
-use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Collective\Html\Componentable;
+use Illuminate\Support\Facades\Blade;
 use Modules\Ibuilder\Entities\Block as BlockEntity;
-use Modules\Ifillable\Transformers\FieldTransformer;
 use Modules\Media\Entities\File;
 use Modules\Media\Support\Traits\MediaRelation;
 
 class Block extends Component
 {
-    use MediaRelation;
+  use MediaRelation;
 
-    public $container;
+  public $container, $id, $columns, $borderForm, $display,
+    $width, $height, $backgrounds, $paddingX, $paddingY, $editLink, $tooltipEditLink,
+    $marginX, $marginY, $overlay, $backgroundColor, $componentIsite, $componentType, $isBlade, $view,
+    $systemName, $blockConfig, $componentConfig, $blockClasses, $blockStyle, $row, $inheritContent,
+    $position, $top, $left, $right, $bottom, $zIndex, $blockStyleResponsive;
+  public  $animateBlockName, $animateBlockDelay, $animateBlockDuration, $animateBlockOffset,
+        $animateBlockEasing, $animateBlockOnce, $animateBlockMirror;
+  public $withButton, $buttonPosition, $buttonAlign, $buttonLayout, $buttonIcon, $buttonIconLR, $buttonIconColor,
+        $buttonIconColorHover, $buttonColor, $buttonMarginT, $buttonMarginB, $buttonSize, $buttonTextSize,
+        $buttonClasses, $buttonShadow, $buttonLabel, $buttonUrl, $buttonTarget, $buttonConfig;
 
-    public $id;
-
-    public $columns;
-
-    public $borderForm;
-
-    public $display;
-
-    public $width;
-
-    public $height;
-
-    public $backgrounds;
-
-    public $paddingX;
-
-    public $paddingY;
-
-    public $editLink;
-
-    public $tooltipEditLink;
-
-    public $marginX;
-
-    public $marginY;
-
-    public $overlay;
-
-    public $backgroundColor;
-
-    public $componentIsite;
-
-    public $componentType;
-
-    public $isBlade;
-
-    public $view;
-
-    public $systemName;
-
-    public $blockConfig;
-
-    public $componentConfig;
-
-    public $blockClasses;
-
-    public $blockStyle;
-
-    public $row;
-
-    public $inheritContent;
-
-    public $position;
-
-    public $top;
-
-    public $left;
-
-    public $right;
-
-    public $bottom;
-
-    public $zIndex;
-
-    public function __construct(
+  public function __construct(
     $container = null,
     $id = null,
     $columns = null,
