@@ -1,3 +1,4 @@
+
 @php
     $componentName = $componentConfig["systemName"];
     $nameSpace = $componentConfig["nameSpace"];
@@ -5,6 +6,9 @@
     if($componentName=='ibuilder::block-custom')  {
        $attributes['image'] = $blockConfig->mediaFiles->custommainimage ?? null;
        $attributes['gallery'] = $blockConfig->mediaFiles->customgallery ?? null;
+    }
+    if($componentName=='x-ibuilder::container')  {
+     $attributes['backgroundImg'] = $blockConfig->mediaFiles->backgroundimg ?? null;
     }
     if(!empty($blockConfig->mediaFiles->blockbgimage)) {
         if(!empty($blockConfig->mediaFiles->blockbgimage->extraLargeThumb))  {
@@ -15,6 +19,7 @@
     }
     $block = $blockConfig->attributes->mainblock;
 @endphp
+
 <section id="block{{$block->id ?? $id}}"
          class="{{$block->blockClasses ?? $blockClasses}}"
          @if(!empty($block->animateBlockName)) data-aos="{{$block->animateBlockName}}" @endif
@@ -44,9 +49,9 @@
     <div id="overlay{{$block->id ?? $id}}"></div>
   @endif
   <div id="container{{$block->id ?? $id}}"
-       class="{{$block->container ?? $container}}">
+       class="{{$block->container ?? $container ?? 'overflow-hidden'}}">
     <div class="row {{$block->row ?? $row}}">
-      <div class="{{$block->columns ?? $columns}}  @if(empty($block->buttonPosition)) d-flex flex-column @endif">
+      <div class="{{$block->columns ?? $columns ?? 'col-12' }}  @if(empty($block->buttonPosition)) d-flex flex-column @endif">
 
         <!--Dynamic Component-->
         <div id="component{{$block->id ?? $id}}" class="order-1">
@@ -56,15 +61,15 @@
                 <?php
                 $hash = sha1($nameSpace);
                 if (isset($component)) {
-                  $__componentOriginal{$hash} = $component;
+                  $__componentOriginal[$hash] = $component;
                 }
                 $component = $__env->getContainer()->make($nameSpace, $attributes ?? []);
                 $component->withName($componentName);
                 if ($component->shouldRender()):
                   $__env->startComponent($component->resolveView(), $component->data());
-                  if (isset($__componentOriginal{$hash})):
-                    $component = $__componentOriginal{$hash};
-                    unset($__componentOriginal{$hash});
+                  if (isset($__componentOriginal[$hash])):
+                    $component = $__componentOriginal[$hash];
+                    unset($__componentOriginal[$hash]);
                   endif;
                   echo $__env->renderComponent();
                 endif;
@@ -79,22 +84,24 @@
 
         @if(!empty($block->withButton) && $block->withButton)
           <div class="component{{$block->id ?? $id}}-button {{$block->buttonAlign}} {{$block->buttonAlign}} @if(empty($block->buttonPosition)) order-0 @endif">
-              @if($block->buttonLabel=="")
-                  @php($labelExist = false)
-              @else
-                  @php($labelExist = true)
-              @endif
-              @if($block->buttonIcon=="")
-                  @php($iconExist = false)
-              @else
-                  @php($iconExist = true)
-              @endif
+
+              @php
+                  $attributeLabel = isset($attributes["buttonLabel"]) && !empty($attributes["buttonLabel"]) ? $attributes["buttonLabel"] : null;
+                  $contentLabel = isset($block->buttonLabel) && !empty($block->buttonLabel) ? $block->buttonLabel : null;
+
+                  $blabel= $attributeLabel ?? $contentLabel ?? "";
+                  $labelExist = !empty($blabel);
+              @endphp
+
+              @php($iconExist = $block->buttonIcon == "" ? false : true)
+
               @if($block->buttonLayout=="button-custom")
                   @php($block->buttonColor = "")
               @endif
+
               <x-isite::button :style="$block->buttonLayout"
                                :buttonClasses="$block->buttonSize.' block-button '.$block->buttonLayout.' '.$block->buttonMarginT.' '.$block->buttonMarginB.' '.$block->buttonClasses"
-                               :label="$block->buttonLabel"
+                               :label="$blabel"
                                :withLabel="$labelExist"
                                :withIcon="$iconExist"
                                :iconClass="$block->buttonIcon"
@@ -123,8 +130,7 @@
         @if(!empty($block->zIndex)) z-index: {{$block->zIndex}}; @endif
         @if(!empty($block->width)) width: {{$block->width}}; @endif
         @if(!empty($block->height)) height: {{$block->height}}; @endif
-        @if($block->backgroundColor)
-        background: {{$block->backgroundColor}};
+        @if(!empty($block->backgroundColor)) background: {{$block->backgroundColor}};
         @elseif(isset($block->backgrounds))
         @if(!empty($blockImage)) background-image: url({{$blockImage}}); @endif
         background-position: {{$block->backgrounds->position}};
@@ -134,7 +140,7 @@
         @if(!empty($block->backgrounds->color)) background-color: {{$block->backgrounds->color}}; @endif
         @endif
     }
-    @if($block->blockStyle)
+    @if(isset($block->blockStyle))
           {!!$block->blockStyle!!}
     @endif
 
