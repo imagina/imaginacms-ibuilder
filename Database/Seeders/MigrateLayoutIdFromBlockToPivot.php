@@ -48,5 +48,12 @@ class MigrateLayoutIdFromBlockToPivot extends Seeder
         $table->dropColumn('mobile_attributes');
       });
     }
+
+    if(Schema::hasColumn('ibuilder__blocks', 'mobile_attributes')) {
+      // Remove uneeded columns from blocks
+      Schema::table('ibuilder__blocks', function ($table) {;
+        $table->dropColumn('mobile_attributes');
+      });
+    }
   }
 }
