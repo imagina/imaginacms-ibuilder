@@ -62,7 +62,7 @@ trait isBuildable
    * rendered view. If no valid layout is found, it either executes a callback
    * function if provided or returns a 404 error response.
    */
-  public function renderLayout($callback = null)
+  public function renderLayout($callback = null, $viewParams = [])
   {
     // Retrieve the layout associated with the buildable entity.
     $layout = $this->getLayout();
@@ -70,7 +70,7 @@ trait isBuildable
     if ($layout && $layout->id) {
       $blocks = $layout->getBlocksToRender();
       $useLayout = 'layouts.master';
-      return view('ibuilder::frontend.index', compact('layout', 'blocks', 'useLayout'));
+      return view('ibuilder::frontend.index', compact('layout', 'blocks', 'useLayout', 'viewParams'));
     }
 
     // If a callback function is provided and is callable, execute it.

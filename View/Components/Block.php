@@ -24,7 +24,7 @@ class Block extends Component
     $animateBlockEasing, $animateBlockOnce, $animateBlockMirror;
   public $withButton, $buttonPosition, $buttonAlign, $buttonLayout, $buttonIcon, $buttonIconLR, $buttonIconColor,
     $buttonIconColorHover, $buttonColor, $buttonMarginT, $buttonMarginB, $buttonSize, $buttonTextSize,
-    $buttonClasses, $buttonShadow, $buttonLabel, $buttonUrl, $buttonTarget, $buttonConfig;
+    $buttonClasses, $buttonShadow, $buttonLabel, $buttonUrl, $buttonTarget, $buttonConfig, $viewParams;
 
   public function __construct(
     $container = null,
@@ -80,7 +80,8 @@ class Block extends Component
     $buttonLabel = "",
     $buttonUrl = "",
     $buttonTarget = "",
-    $buttonConfig = []
+    $buttonConfig = [],
+    $viewParams = []
   )
   {
     //Get all params
@@ -158,6 +159,7 @@ class Block extends Component
     $this->buttonUrl = $params["buttonUrl"];
     $this->buttonTarget = $params["buttonTarget"];
     $this->buttonConfig = $params["buttonConfig"];
+    $this->viewParams = $params["viewParams"];
   }
 
   /**
@@ -304,6 +306,7 @@ class Block extends Component
           $this->componentConfig["attributes"][$name] = json_decode(json_encode($attr), true);
         }
       }
+      $this->componentConfig["attributes"]["viewParams"] = $this->viewParams;
       //Set the entity attributes by component
       $entity = $this->blockConfig->entity ?? null;
       if ($entity) {
