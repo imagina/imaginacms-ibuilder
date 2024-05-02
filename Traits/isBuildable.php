@@ -27,7 +27,7 @@ trait isBuildable
   public function buildable()
   {
     // Define and return the morphOne relationship
-    return $this->morphOne(Buildable::class, 'entity')->with('layout');
+    return $this->morphOne(Buildable::class, 'entity');
   }
 
   /**
