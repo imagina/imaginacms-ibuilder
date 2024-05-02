@@ -41,7 +41,8 @@ if (!function_exists('mapBlockToRender')) {
       "parentSystemName" => $data["parentSystemName"] ?? $data["parent_system_name"] ?? null,
       "component" => $component,
       "entity" => $entity,
-      "attributes" => $attributes
+      "attributes" => $attributes,
+      "mediaFiles" => $data["mediaFiles"] ?? []
     ];
 
     //Added media files for preview as mediaSingle and mediasMulti

@@ -47,7 +47,7 @@ class Block extends CrudModel
   public $modelRelations = [
     'layouts' => 'belongsToMany'
   ];
-  protected $with = ['fields', 'files'];
+  protected $with = ['fields', 'files', 'translations'];
 
   public function layouts()
   {
