@@ -7,7 +7,6 @@ use Illuminate\View\Component;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Collective\Html\Componentable;
 use Illuminate\Support\Facades\Blade;
-use Modules\Ibuilder\Entities\Block as BlockEntity;
 use Modules\Media\Entities\File;
 use Modules\Media\Support\Traits\MediaRelation;
 
@@ -24,7 +23,7 @@ class Block extends Component
     $animateBlockEasing, $animateBlockOnce, $animateBlockMirror;
   public $withButton, $buttonPosition, $buttonAlign, $buttonLayout, $buttonIcon, $buttonIconLR, $buttonIconColor,
     $buttonIconColorHover, $buttonColor, $buttonMarginT, $buttonMarginB, $buttonSize, $buttonTextSize,
-    $buttonClasses, $buttonShadow, $buttonLabel, $buttonUrl, $buttonTarget, $buttonConfig, $viewParams;
+    $buttonClasses, $buttonShadow, $buttonLabel, $buttonUrl, $buttonTarget, $buttonConfig, $viewParams, $blockRepository;
 
   public function __construct(
     $container = null,
@@ -84,6 +83,7 @@ class Block extends Component
     $viewParams = []
   )
   {
+    $this->blockRepository = app('Modules\Ibuilder\Repositories\BlockRepository');
     //Get all params
     $params = get_defined_vars();
     //Init
@@ -187,7 +187,9 @@ class Block extends Component
     //If not get blockConfig then search by systemName
     if (!is_array($this->blockConfig) || !count($this->blockConfig)) {
       if ($this->systemName) {
-        $block = BlockEntity::where("system_name", $this->systemName)->with('fields')->first();
+        $block = $this->blockRepository->getItem($this->systemName, json_decode(json_encode([
+          'filter' => ['field' => 'system_name']
+        ])));
         if ($block) $this->blockConfig = $block->getRenderData();
       }
     }

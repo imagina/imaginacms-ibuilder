@@ -3,7 +3,6 @@
 namespace Modules\Ibuilder\Traits;
 
 use Illuminate\Support\Str;
-use Modules\Ibuilder\Entities\Layout;
 use Modules\Ibuilder\Entities\Buildable;
 
 trait isBuildable
