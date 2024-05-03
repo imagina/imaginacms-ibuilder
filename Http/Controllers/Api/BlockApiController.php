@@ -25,16 +25,44 @@ class BlockApiController extends BaseCrudController
      */
     public function blockPreview(Request $request)
     {
-        $params = $request->all();
+      $blockData = $request->all();
 
-        //Instance the blockConfig
-        $blockConfig = [
-            'component' => json_decode($params['component'] ?? '[]'),
-            'entity' => json_decode($params['entity'] ?? '[]'),
-            'attributes' => json_decode($params['attributes'] ?? '[]'),
-        ];
+      //Instance the blockConfig
+      $blockConfig = mapBlockToRender($blockData);
 
-        //Render view
-        return view('ibuilder::frontend.blocks', compact('blockConfig'));
+      //Render view
+      return view('ibuilder::frontend.blocks', compact('blockConfig'));
+    }
+
+    public function bulkUpdate(Request $request)
+    {
+      \DB::beginTransaction();
+      try {
+        $blocks = $request->input('attributes');//Get blocks data
+        $this->modelRepository->bulkUpdate($blocks);//Bulk update
+        \DB::commit(); //Commit to Data Base
+      } catch (\Exception $e) {
+        \DB::rollback();//Rollback to Data Base
+        $status = $this->getStatusError($e->getCode());
+        $response = ["messages" => [["message" => $e->getMessage(), "type" => "error"]]];
+      }
+      //Return response
+      return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
+    }
+
+    public function bulkCreate(Request $request)
+    {
+      \DB::beginTransaction();
+      try {
+        $blocks = $request->input('attributes');//Get blocks data
+        $this->modelRepository->bulkCreate($blocks);//Bulk update
+        \DB::commit(); //Commit to Data Base
+      } catch (\Exception $e) {
+        \DB::rollback();//Rollback to Data Base
+        $status = $this->getStatusError($e->getCode());
+        $response = ["messages" => [["message" => $e->getMessage(), "type" => "error"]]];
+      }
+      //Return response
+      return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
     }
 }

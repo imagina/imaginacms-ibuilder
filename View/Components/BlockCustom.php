@@ -170,7 +170,7 @@ class BlockCustom extends Component
         $this->buttonIconPosition = $buttonIconPosition;
         $this->buttonColor = $buttonColor;
         $this->buttonLayout = $buttonLayout;
-        $this->orderClasses = ! empty($orderClasses) ? $orderClasses : ['video' => 'order-0', 'image' => 'order-1', 'title' => 'order-2', 'subtitle' => 'order-3', 'summary' => 'order-4', 'description' => 'order-5', 'buttom' => 'order-6', 'include' => 'order-7'];
+        $this->orderClasses = !empty($orderClasses) ? $orderClasses : ["video" => "order-0", "image" => "order-1", "title" => "order-2", "subtitle" => "order-3", "summary" => "order-4", "description" => "order-5", "buttom" => "order-6", "include" => "order-7"];
         $this->position = $position;
         $this->mediaClasses = $mediaClasses;
         $this->contentClasses = $contentClasses;
