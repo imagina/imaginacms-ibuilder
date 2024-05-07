@@ -2,7 +2,7 @@
     @if($position=="1" || $position=="2" || $position=="3")
         @if($position=="2" || $position=="3")
         <div class="custom-media {{$mediaClasses}} @if($position=="3") order-1 @endif">
-            @if($image)
+            @if($image && strpos($image->relativePath, 'default.jpg') == false)
                 <div class="custom-image {{$imageOnClasses}} {{$orderClasses["image"] ?? 'order-0'}}">
                     <x-media::single-image :alt="$title ?? ''"
                                            :src="$image->extraLargeThumb"
@@ -29,7 +29,7 @@
         @endif
         <div class="custom-contents d-flex flex-column {{$contentClasses}}">
         @if($position=="1")
-            @if($image)
+            @if($image && strpos($image->relativePath, 'default.jpg') == false)
                 <div class="custom-image {{$imageOnClasses}} {{$orderClasses["image"] ?? 'order-1'}}">
                     <x-media::single-image :alt="$title ?? ''"
                                            :src="$image->extraLargeThumb"
@@ -118,7 +118,7 @@
         </div>
         <div class="custom-body">
             <div class="custom-media d-flex flex-column {{$mediaClasses}} @if($position=="5") order-1 @endif">
-                @if($image)
+                @if($image && strpos($image->relativePath, 'default.jpg') == false)
                     <div class="custom-image {{$imageOnClasses}} {{$orderClasses["image"] ?? 'order-0'}}">
                         <x-media::single-image :alt="$title ?? ''"
                                                :src="$image->extraLargeThumb"
