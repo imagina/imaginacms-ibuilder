@@ -20,7 +20,7 @@
     $block = $blockConfig->attributes->mainblock;
 @endphp
 
-<section id="block{{$block->id ?? $id}}"
+<section id="block{{$block->id ?? $id}}" data-block-id="{{$blockConfig->id}}" data-mainblock-id="{{$block->id ?? $id}}
          class="{{$block->blockClasses ?? $blockClasses}}"
          @if(!empty($block->animateBlockName)) data-aos="{{$block->animateBlockName}}" @endif
          @if(!empty($block->animateBlockDelay)) data-aos-delay="{{$block->animateBlockDelay}}" @endif
