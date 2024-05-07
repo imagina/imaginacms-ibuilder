@@ -10,7 +10,7 @@
     if($componentName=='x-ibuilder::container')  {
      $attributes['backgroundImg'] = $blockConfig->mediaFiles->backgroundimg ?? null;
     }
-    if(!empty($blockConfig->mediaFiles->blockbgimage)) {
+    if(!empty($blockConfig->mediaFiles->blockbgimage) && strpos($blockConfig->mediaFiles->blockbgimage->relativePath, 'default.jpg') == false) {
         if(!empty($blockConfig->mediaFiles->blockbgimage->extraLargeThumb))  {
             $blockImage = $blockConfig->mediaFiles->blockbgimage->extraLargeThumb;
         } else {
