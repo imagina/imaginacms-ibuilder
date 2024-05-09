@@ -43,9 +43,19 @@ return [
         "name" => "buttonLabel",
         "value" => "",
         "type" => "input",
+        "colClass" => 'col-12',
         "isTranslatable" => true,
         "props" => [
           "label" => "Texto del botón del bloque"
+        ]
+      ],
+      "buttonUrl" => [
+        "name" => "buttonUrl",
+        "type" => "input",
+        "value" => "",
+        "colClass" => 'col-12',
+        "props" => [
+            "label" => "Enlace del botón (bloque)",
         ]
       ],
     ],
@@ -361,14 +371,6 @@ return [
               "label" => "Sombra de texto",
             ]
           ],
-          "buttonUrl" => [
-            "name" => "buttonUrl",
-            "type" => "input",
-            "value" => "",
-            "props" => [
-              "label" => "url",
-            ]
-          ],
           "buttonTarget" => [
             "name" => "buttonTarget",
             "value" => "_self",
@@ -541,6 +543,7 @@ return [
       "titleCustom" => [
         "name" => "titleCustom",
         "type" => "input",
+        "colClass" => 'col-12',
         "isTranslatable" => true,
         "props" => [
           "label" => "Texto (titulo)"
@@ -549,6 +552,7 @@ return [
       "subTitleCustom" => [
         "name" => "subTitleCustom",
         "type" => "input",
+        "colClass" => 'col-12',
         "isTranslatable" => true,
         "props" => [
           "label" => "Texto (Subtitulo)"
@@ -586,17 +590,19 @@ return [
       "buttonLabel" => [
         "name" => "buttonLabel",
         "isTranslatable" => true,
+        "colClass" => 'col-12',
         "type" => "input",
         "props" => [
-          "label" => "Texto del Boton Custom"
+          "label" => "Texto del Botón Custom"
         ]
       ],
       "buttonHref" => [
         "name" => "buttonHref",
         "isTranslatable" => true,
         "type" => "input",
+        "colClass" => 'col-12',
         "props" => [
-          "label" => "Enlace del Boton Custom"
+          "label" => "Enlace del Botón Custom"
         ]
       ],
       "mainImage" => [
@@ -645,7 +651,7 @@ return [
             "type" => "select",
             "columns" => "col-12",
             "props" => [
-              "label" => "Posicion de los elementos",
+              "label" => "Posición de los elementos",
               "options" => [
                 ["label" => "Una columna", "value" => "1"],
                 ["label" => "Dos columnas (imagen, video a la izquierda)", "value" => "2"],
