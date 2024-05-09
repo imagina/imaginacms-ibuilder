@@ -54,6 +54,7 @@ return [
         "type" => "input",
         "value" => "",
         "colClass" => 'col-12',
+        "isTranslatable" => true,
         "props" => [
             "label" => "Enlace del botón (bloque)",
         ]
