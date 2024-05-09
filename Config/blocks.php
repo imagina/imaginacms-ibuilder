@@ -42,10 +42,20 @@ return [
       "buttonLabel" => [
         "name" => "buttonLabel",
         "value" => "",
+        "colClass" => 'col-12',
         "type" => "input",
         "isTranslatable" => true,
         "props" => [
-            "label" => "Texto del botón del bloque"
+            "label" => "Texto del botón (bloque)"
+        ]
+      ],
+      "buttonUrl" => [
+        "name" => "buttonUrl",
+        "type" => "input",
+        "value" => "",
+        "colClass" => 'col-12',
+        "props" => [
+            "label" => "Enlace del botón (bloque)",
         ]
       ],
     ],
@@ -361,14 +371,6 @@ return [
                     "label" => "Sombra de texto",
                 ]
             ],
-            "buttonUrl" => [
-                "name" => "buttonUrl",
-                "type" => "input",
-                "value" => "",
-                "props" => [
-                    "label" => "url",
-                ]
-            ],
             "buttonTarget" => [
                 "name" => "buttonTarget",
                 "value" => "_self",
@@ -541,6 +543,7 @@ return [
       "titleCustom" => [
         "name" => "titleCustom",
         "type" => "input",
+        "colClass" => 'col-12',
         "isTranslatable" => true,
         "props" => [
           "label" => "Texto (titulo)"
@@ -549,6 +552,7 @@ return [
       "subTitleCustom" => [
         "name" => "subTitleCustom",
         "type" => "input",
+        "colClass" => 'col-12',
         "isTranslatable" => true,
         "props" => [
           "label" => "Texto (Subtitulo)"
@@ -584,21 +588,23 @@ return [
         ]
       ],
       "buttonLabel" => [
-            "name" => "buttonLabel",
-            "isTranslatable" => true,
-            "type" => "input",
-            "props" => [
-                "label" => "Texto del Boton Custom"
-            ]
-        ],
+        "name" => "buttonLabel",
+        "isTranslatable" => true,
+        "type" => "input",
+        "colClass" => 'col-12',
+        "props" => [
+            "label" => "Texto del Boton Custom"
+        ]
+      ],
       "buttonHref" => [
-            "name" => "buttonHref",
-            "isTranslatable" => true,
-            "type" => "input",
-            "props" => [
-                "label" => "Enlace del Boton Custom"
-            ]
-        ],
+        "name" => "buttonHref",
+        "isTranslatable" => true,
+        "type" => "input",
+        "colClass" => 'col-12',
+        "props" => [
+            "label" => "Enlace del Boton Custom"
+        ]
+      ],
       "mainImage" => [
         'value' => (object)['custommainimage' => null],
         'name' => 'mediasSingle',
