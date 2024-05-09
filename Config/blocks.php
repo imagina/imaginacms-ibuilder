@@ -53,6 +53,7 @@ return [
         "name" => "buttonUrl",
         "type" => "input",
         "value" => "",
+        "isTranslatable" => true,
         "colClass" => 'col-12',
         "props" => [
             "label" => "Enlace del botón (bloque)",
