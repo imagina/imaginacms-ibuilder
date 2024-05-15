@@ -18,7 +18,7 @@
         @if(isset($backgroundGeneral) && !empty($backgroundGeneral))
             background: {{$backgroundGeneral}};
         @else
-            @if(!empty($backgroundImg)) background-image: url({{$backgroundImg}}); @endif
+            @if(!empty($backgroundImg) && strpos($backgroundImg, 'default.jpg') == false) background-image: url({{$backgroundImg}}); @endif
             @if(!empty($backgrounds['position'])) background-position: {{$backgrounds['position']}}; @endif
             @if(!empty($backgrounds['size'])) background-size: {{$backgrounds['size']}}; @endif
             @if(!empty($backgrounds['repeat'])) background-repeat: {{$backgrounds['repeat']}}; @endif
