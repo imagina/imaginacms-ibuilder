@@ -36,6 +36,10 @@ return new class extends Migration
    */
   public function down()
   {
-    Schema::dropIfExists('ibuilder__layoutblocks');
+    Schema::table('ibuilder__layout_blocks', function (Blueprint $table) {
+      $table->dropForeign(['layout_id']);
+      $table->dropForeign(['block_id']);
+    });
+    Schema::dropIfExists('ibuilder__layout_blocks');
   }
 };

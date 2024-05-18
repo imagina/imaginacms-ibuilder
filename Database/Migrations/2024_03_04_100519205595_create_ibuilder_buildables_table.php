@@ -35,6 +35,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ibuilder__buildables');
+      Schema::table('ibuilder__buildables', function (Blueprint $table) {
+        $table->dropForeign(['layout_id']);
+
+      });
+      Schema::dropIfExists('ibuilder__buildables');
     }
 };
