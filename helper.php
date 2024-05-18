@@ -90,22 +90,29 @@ if (!function_exists('buildNestedBlocks')) {
 }
 
 if (!function_exists('BlocksToArray')) {
-  function blocksToArray($blocks)
+  function blocksToArray($blocks, $localPreview = false)
   {
     $response = [];
 
     //Parse To array the blocks and include relations data if needed
     foreach ($blocks as $block) {
-      $hasPivot = $block->relationLoaded('pivot');
-      $response[] = array_merge(
-        $block->toArray(), [
-        "mediaFiles" => $block->mediaFiles(),
-        "layout_id" => $hasPivot ? $block->pivot->layout_id : 0,
-        "sort_order" => $hasPivot ? $block->pivot->sort_order : 0,
-        "parent_system_name" => $hasPivot ? $block->pivot->parent_system_name : 0,
-        "grid_position" => $hasPivot ? $block->pivot->grid_position : 0,
-        "system_name" => $hasPivot ? $block->pivot->system_name : $block->system_name
-      ]);
+      $hasPivot = $localPreview ? isset($block->pivot) : $block->relationLoaded('pivot');
+
+      // Prepare the data to be merged, retrieving information from the pivot if it exists
+      $mergeData = [
+        "layout_id" => $hasPivot ? $block->pivot->layout_id ?? $block->pivot->layoutId : 0,
+        "sort_order" => $hasPivot ? $block->pivot->sort_order ?? $block->pivot->sortOrder : 0,
+        "parent_system_name" => $hasPivot ? $block->pivot->parent_system_name ?? $block->pivot->parentSystemName : 0,
+        "grid_position" => $hasPivot ? $block->pivot->grid_position ?? $block->pivot->gridPosition : 0,
+        "system_name" => $hasPivot ? $block->pivot->system_name ?? $block->pivot->systemName : $block->system_name ?? $block->systemName
+      ];
+
+      // If not a local preview, add associated media files to the data
+      if(!$localPreview) $mergeData["mediaFiles"] = $block->mediaFiles();
+
+      // Convert the block to an array
+      $blockData = $localPreview ? (array)$block : $block->toArray();
+      $response[] = array_merge($blockData, $mergeData);
     }
 
     //Response
