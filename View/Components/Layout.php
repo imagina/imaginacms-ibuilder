@@ -9,10 +9,10 @@ class Layout extends Component
   public $view, $layout, $id, $alternativeView, $entityType, $type;
 
   public function __construct(
-    $id = null,
-    $alternativeView = null,
     $entityType,
-    $type
+    $type,
+    $id = null,
+    $alternativeView = null
   )
   {
     $params = get_defined_vars();//Get all params
