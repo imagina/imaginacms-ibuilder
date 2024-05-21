@@ -19,11 +19,11 @@ class Block extends Component
     $marginX, $marginY, $overlay, $backgroundColor, $componentIsite, $componentType, $isBlade, $view,
     $systemName, $blockConfig, $componentConfig, $blockClasses, $blockStyle, $row, $inheritContent,
     $position, $top, $left, $right, $bottom, $zIndex, $blockStyleResponsive;
-  public  $animateBlockName, $animateBlockDelay, $animateBlockDuration, $animateBlockOffset,
-        $animateBlockEasing, $animateBlockOnce, $animateBlockMirror;
+  public $animateBlockName, $animateBlockDelay, $animateBlockDuration, $animateBlockOffset,
+    $animateBlockEasing, $animateBlockOnce, $animateBlockMirror;
   public $withButton, $buttonPosition, $buttonAlign, $buttonLayout, $buttonIcon, $buttonIconLR, $buttonIconColor,
-        $buttonIconColorHover, $buttonColor, $buttonMarginT, $buttonMarginB, $buttonSize, $buttonTextSize,
-        $buttonClasses, $buttonShadow, $buttonLabel, $buttonUrl, $buttonTarget, $buttonConfig, $viewParams;
+    $buttonIconColorHover, $buttonColor, $buttonMarginT, $buttonMarginB, $buttonSize, $buttonTextSize,
+    $buttonClasses, $buttonShadow, $buttonLabel, $buttonUrl, $buttonTarget, $buttonConfig, $viewParams, $blockRepository;
 
   public function __construct(
     $container = null,
@@ -83,23 +83,23 @@ class Block extends Component
     $viewParams = []
   )
   {
-        $this->blockRepository = app('Modules\Ibuilder\Repositories\BlockRepository');
-        //Get all params
-        $params = get_defined_vars();
-        //Init
-        $this->instanceGeneralAttributes($params);
-        $this->instanceBackgroundAttribute($params);
-        $this->instanceBlockConfig($params);
-        $this->instanceBlockConfigFiles($params);
-        $this->instanceComponentType($params);
-        $this->instanceComponentConfig();
-    }
+    $this->blockRepository = app('Modules\Ibuilder\Repositories\BlockRepository');
+    //Get all params
+    $params = get_defined_vars();
+    //Init
+    $this->instanceGeneralAttributes($params);
+    $this->instanceBackgroundAttribute($params);
+    $this->instanceBlockConfig($params);
+    $this->instanceBlockConfigFiles($params);
+    $this->instanceComponentType($params);
+    $this->instanceComponentConfig();
+  }
 
-    /**
-     * Instance the component attributes
-     */
-    public function instanceGeneralAttributes($params)
-    {
+  /**
+   * Instance the component attributes
+   */
+  public function instanceGeneralAttributes($params)
+  {
     $this->id = $params["id"] ?? uniqid();
     $this->container = $params["container"];
     $this->columns = $params["columns"];
@@ -160,221 +160,221 @@ class Block extends Component
     $this->viewParams = $params["viewParams"];
   }
 
-    /**
-     * Instance the Background attribute
-     */
-    public function instanceBackgroundAttribute($params)
-    {
+  /**
+   * Instance the Background attribute
+   */
+  public function instanceBackgroundAttribute($params)
+  {
     $this->backgrounds = json_encode($params["backgrounds"] ?? [
-      "position" => "center",
-      "size" => "cover",
-      "repeat" => "no-repeat",
-      "color" => "",
-      "attachment" => ""
-        ]);
-    }
+        "position" => "center",
+        "size" => "cover",
+        "repeat" => "no-repeat",
+        "color" => "",
+        "attachment" => ""
+      ]);
+  }
 
-    /**
-     * Instance the block config
-     */
-    public function instanceBlockConfig($params)
-    {
-        //If not get blockConfig then search by systemName
-        if (!is_array($this->blockConfig) || !count($this->blockConfig)) {
-            if ($this->systemName) {
-              $block = $this->blockRepository->getItem($this->systemName, json_decode(json_encode([
-                  'filter' => ['field' => 'system_name']
-                ])));
+  /**
+   * Instance the block config
+   */
+  public function instanceBlockConfig($params)
+  {
+    //If not get blockConfig then search by systemName
+    if (!is_array($this->blockConfig) || !count($this->blockConfig)) {
+      if ($this->systemName) {
+        $block = $this->blockRepository->getItem($this->systemName, json_decode(json_encode([
+          'filter' => ['field' => 'system_name']
+        ])));
 
-              if ($block) $this->blockConfig = $block->getRenderData();
-        }
-      }
-      //Parse
-      $blockConfig = json_decode(json_encode(array_merge(["status" => true], $this->blockConfig)));
-
-      //Validate default blockConfig
-      $this->validateBlockConfig($blockConfig->attributes);
-      $this->validateBlockConfig($blockConfig->attributes->componentAttributes);
-      $this->validateBlockConfig($blockConfig->attributes->mainblock);
-
-      //Set blockConfig
-      $this->blockConfig = $blockConfig;
-    }
-
-    // Validate and set default attributes
-    public function validateBlockConfig(&$property, $defaultValue = null)
-    {
-      if (!isset($property) || is_array($property)) $property = $defaultValue ?? (object)[];
-    }
-
-    /**
-     * Instance the Media files related to the block
-     */
-    public function instanceBlockConfigFiles($params)
-    {
-      if (!isset($this->blockConfig->mediaFiles)) {
-        //Instance the media attributes
-        $mediasSingle = (array)($this->blockConfig->mediasSingle ?? []);
-        $mediasMulti = (array)($this->blockConfig->mediasMulti ?? []);
-        //Instance the blockConfigfiles zones by default
-        $mediaFiles = array_merge(
-          array_map(function ($zone) {
-            return null;
-          }, $mediasSingle),
-          array_map(function ($zone) {
-            return null;
-          }, $mediasMulti)
-        );
-        //Instance the files ID
-        $filesId = array_values($mediasSingle);
-        //Merge the multi files ID
-        foreach ($mediasMulti as $zone) {
-          $filesId = array_merge($filesId, ((array)($zone))['files'] ?? []);
-        }
-        //Request the fiels
-        $filesData = File::whereIn('id', $filesId)->get();
-        //Set files of media single
-        foreach (array_keys($mediasSingle) as $singleZone) {
-          $singleFile = $filesData->where('id', $mediasSingle[$singleZone])->first();
-          $mediaFiles[$singleZone] = !$singleFile ? null : $this->transformFile($singleFile);
-        }
-        //Set files of media multi
-        foreach (array_keys($mediasMulti) as $multiZone) {
-          $multiFiles = $filesData->whereIn('id', ($mediasMulti[$multiZone]->files ?? []));
-          $mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
-            return $this->transformFile($file);
-          })->toArray();
-        }
-        //Set blockConfig media File
-        $this->blockConfig->mediaFiles = json_decode(json_encode($mediaFiles));
+        if ($block) $this->blockConfig = $block->getRenderData();
       }
     }
+    //Parse
+    $blockConfig = json_decode(json_encode(array_merge(["status" => true], $this->blockConfig)));
 
-    /**
-     * Validate and instance if the dynamic component is Liveware or Blade
-     */
-    public function instanceComponentType($params)
-    {
-        $systemName = $this->blockConfig->component->systemName ?? null;
-        $nameSpace = $this->blockConfig->component->nameSpace ?? null;
+    //Validate default blockConfig
+    $this->validateBlockConfig($blockConfig->attributes);
+    $this->validateBlockConfig($blockConfig->attributes->componentAttributes);
+    $this->validateBlockConfig($blockConfig->attributes->mainblock);
 
-        //Validate the parameters
-        if ($systemName) {
-            //Validate if the component is Blade
-            if ($nameSpace && class_exists($nameSpace)) {
-                $this->componentType = 'blade';
-            }
-            //Validate if the component is liveware
-            if (!$this->componentType) {
-                try {
-                    $finder = app('Livewire\LivewireManager');
-                    $lwClass = $finder->getClass($systemName);
-                    $this->blockConfig->component->nameSpace = $lwClass;
-                    $this->componentType = 'livewire';
-                } catch (\Exception $e) {
-                }
-            }
-        }
-        //Error view
-        if (!$this->componentType) {
-            $this->view = 'ibuilder::frontend.components.blocks-error';
-        }
+    //Set blockConfig
+    $this->blockConfig = $blockConfig;
+  }
+
+  // Validate and set default attributes
+  public function validateBlockConfig(&$property, $defaultValue = null)
+  {
+    if (!isset($property) || is_array($property)) $property = $defaultValue ?? (object)[];
+  }
+
+  /**
+   * Instance the Media files related to the block
+   */
+  public function instanceBlockConfigFiles($params)
+  {
+    if (!isset($this->blockConfig->mediaFiles)) {
+      //Instance the media attributes
+      $mediasSingle = (array)($this->blockConfig->mediasSingle ?? []);
+      $mediasMulti = (array)($this->blockConfig->mediasMulti ?? []);
+      //Instance the blockConfigfiles zones by default
+      $mediaFiles = array_merge(
+        array_map(function ($zone) {
+          return null;
+        }, $mediasSingle),
+        array_map(function ($zone) {
+          return null;
+        }, $mediasMulti)
+      );
+      //Instance the files ID
+      $filesId = array_values($mediasSingle);
+      //Merge the multi files ID
+      foreach ($mediasMulti as $zone) {
+        $filesId = array_merge($filesId, ((array)($zone))['files'] ?? []);
+      }
+      //Request the fiels
+      $filesData = File::whereIn('id', $filesId)->get();
+      //Set files of media single
+      foreach (array_keys($mediasSingle) as $singleZone) {
+        $singleFile = $filesData->where('id', $mediasSingle[$singleZone])->first();
+        $mediaFiles[$singleZone] = !$singleFile ? null : $this->transformFile($singleFile);
+      }
+      //Set files of media multi
+      foreach (array_keys($mediasMulti) as $multiZone) {
+        $multiFiles = $filesData->whereIn('id', ($mediasMulti[$multiZone]->files ?? []));
+        $mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
+          return $this->transformFile($file);
+        })->toArray();
+      }
+      //Set blockConfig media File
+      $this->blockConfig->mediaFiles = json_decode(json_encode($mediaFiles));
     }
+  }
 
-    /**
-     * Instance the component config
-     */
-    public function instanceComponentConfig()
-    {
-        if ($this->componentType) {
-            //Instance the default config
-            $this->componentConfig = [
-                'systemName' => $this->blockConfig->component->systemName ?? null,
-                'nameSpace' => $this->blockConfig->component->nameSpace ?? null,
-                'attributes' => [],
-            ];
-            //Instance the default Attributes by component
-            $attributes = $this->blockConfig->attributes ?? [];
-            //Set component attirbutes
-            $this->componentConfig['attributes'] = json_decode(json_encode($attributes->componentAttributes ?? []), true);
-            //Set child Attributes
-            foreach ($attributes as $name => $attr) {
-                if (!in_array($name, ['componentAttributes', 'blockAttributes'])) {
-                    $this->componentConfig['attributes'][$name] = json_decode(json_encode($attr), true);
-                }
+  /**
+   * Validate and instance if the dynamic component is Liveware or Blade
+   */
+  public function instanceComponentType($params)
+  {
+    $systemName = $this->blockConfig->component->systemName ?? null;
+    $nameSpace = $this->blockConfig->component->nameSpace ?? null;
+
+    //Validate the parameters
+    if ($systemName) {
+      //Validate if the component is Blade
+      if ($nameSpace && class_exists($nameSpace)) {
+        $this->componentType = 'blade';
+      }
+      //Validate if the component is liveware
+      if (!$this->componentType) {
+        try {
+          $finder = app('Livewire\LivewireManager');
+          $lwClass = $finder->getClass($systemName);
+          $this->blockConfig->component->nameSpace = $lwClass;
+          $this->componentType = 'livewire';
+        } catch (\Exception $e) {
+        }
+      }
+    }
+    //Error view
+    if (!$this->componentType) {
+      $this->view = 'ibuilder::frontend.components.blocks-error';
+    }
+  }
+
+  /**
+   * Instance the component config
+   */
+  public function instanceComponentConfig()
+  {
+    if ($this->componentType) {
+      //Instance the default config
+      $this->componentConfig = [
+        'systemName' => $this->blockConfig->component->systemName ?? null,
+        'nameSpace' => $this->blockConfig->component->nameSpace ?? null,
+        'attributes' => [],
+      ];
+      //Instance the default Attributes by component
+      $attributes = $this->blockConfig->attributes ?? [];
+      //Set component attirbutes
+      $this->componentConfig['attributes'] = json_decode(json_encode($attributes->componentAttributes ?? []), true);
+      //Set child Attributes
+      foreach ($attributes as $name => $attr) {
+        if (!in_array($name, ['componentAttributes', 'blockAttributes'])) {
+          $this->componentConfig['attributes'][$name] = json_decode(json_encode($attr), true);
+        }
+      }
+      $this->componentConfig['attributes']['viewParams'] = $this->viewParams;
+      //Set the entity attributes by component
+      $entity = $this->blockConfig->entity ?? null;
+      if ($entity) {
+        switch ($this->blockConfig->component->systemName) {
+          case 'isite::carousel.owl-carousel':
+            $this->componentConfig['attributes']['repository'] = $entity->type;
+            $this->componentConfig['attributes']['params'] = json_decode(json_encode($entity->params), true);
+            //Replace the itemComponentAttributes for IcommerceItem
+            if ($entity->type == "Modules\Icommerce\Repositories\ProductRepository") {
+              if (isset($this->componentConfig['attributes']['productItemComponentAttributes'])) {
+                $this->componentConfig['attributes']['itemComponentAttributes'] = $this->componentConfig['attributes']['productItemComponentAttributes'];
+                unset($this->componentConfig['attributes']['productItemComponentAttributes']);
+              }
             }
-            $this->componentConfig['attributes']['viewParams'] = $this->viewParams;
-            //Set the entity attributes by component
-            $entity = $this->blockConfig->entity ?? null;
-            if ($entity) {
-                switch ($this->blockConfig->component->systemName) {
-                    case 'isite::carousel.owl-carousel':
-                        $this->componentConfig['attributes']['repository'] = $entity->type;
-                        $this->componentConfig['attributes']['params'] = json_decode(json_encode($entity->params), true);
-                        //Replace the itemComponentAttributes for IcommerceItem
-                        if ($entity->type == "Modules\Icommerce\Repositories\ProductRepository") {
-                            if (isset($this->componentConfig['attributes']['productItemComponentAttributes'])) {
-                                $this->componentConfig['attributes']['itemComponentAttributes'] = $this->componentConfig['attributes']['productItemComponentAttributes'];
-                                unset($this->componentConfig['attributes']['productItemComponentAttributes']);
-                            }
-                        }
-                        break;
-                    case 'slider::slider.Owl':
-                        $this->componentConfig['attributes']['id'] = $entity->id;
-                        break;
-                    case 'isite::items-list':
-                        $entityTypeExploded = explode('\\', str_replace('/', '\\', $entity->type));
-                        $this->componentConfig['attributes']['moduleName'] = $entityTypeExploded[1];
-                        $this->componentConfig['attributes']['entityName'] = $entityTypeExploded[3];
-                        break;
-                    case 'isite::lists':
-                        $this->componentConfig['attributes']['repository'] = $entity->type;
-                        $this->componentConfig['attributes']['params'] = json_decode(json_encode($entity->params), true);
-                        // Replace the itemComponentAttributes for IcommerceItem
-                        if ($entity->type == "Modules\Icommerce\Repositories\ProductRepository") {
-                            if (isset($this->componentConfig['attributes']['productItemComponentAttributes'])) {
-                                $this->componentConfig['attributes']['itemComponentAttributes'] = $this->componentConfig['attributes']['productItemComponentAttributes'];
-                                unset($this->componentConfig['attributes']['productItemComponentAttributes']);
-                            }
-                        }
-                        break;
-                    case 'isite::item-list':
-                        $this->componentConfig['attributes']['item'] = $this->getInheritcontent($entity);
-                        break;
-                }
+            break;
+          case 'slider::slider.Owl':
+            $this->componentConfig['attributes']['id'] = $entity->id;
+            break;
+          case 'isite::items-list':
+            $entityTypeExploded = explode('\\', str_replace('/', '\\', $entity->type));
+            $this->componentConfig['attributes']['moduleName'] = $entityTypeExploded[1];
+            $this->componentConfig['attributes']['entityName'] = $entityTypeExploded[3];
+            break;
+          case 'isite::lists':
+            $this->componentConfig['attributes']['repository'] = $entity->type;
+            $this->componentConfig['attributes']['params'] = json_decode(json_encode($entity->params), true);
+            // Replace the itemComponentAttributes for IcommerceItem
+            if ($entity->type == "Modules\Icommerce\Repositories\ProductRepository") {
+              if (isset($this->componentConfig['attributes']['productItemComponentAttributes'])) {
+                $this->componentConfig['attributes']['itemComponentAttributes'] = $this->componentConfig['attributes']['productItemComponentAttributes'];
+                unset($this->componentConfig['attributes']['productItemComponentAttributes']);
+              }
             }
+            break;
+          case 'isite::item-list':
+            $this->componentConfig['attributes']['item'] = $this->getInheritcontent($entity);
+            break;
         }
+      }
     }
+  }
 
-    /**
-     * Get the inherit content for components
-     */
-    public function getInheritcontent()
-    {
-        //Return the attribute inherit content
-        if ($this->inheritContent) {
-            return $this->inheritContent;
-        }
-        //Get the entity information
-        $entity = $this->blockConfig->entity ?? null;
-        if (isset($entity->type) && isset($entity->id)) {
-            $model = app($entity->type);
-
-            return $model->find($entity->id);
-        }
-        //Default response
-        return null;
+  /**
+   * Get the inherit content for components
+   */
+  public function getInheritcontent()
+  {
+    //Return the attribute inherit content
+    if ($this->inheritContent) {
+      return $this->inheritContent;
     }
+    //Get the entity information
+    $entity = $this->blockConfig->entity ?? null;
+    if (isset($entity->type) && isset($entity->id)) {
+      $model = app($entity->type);
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
-     */
-    public function render()
-    {
-        if ($this->blockConfig->status) {
-            return view($this->view);
-        }
+      return $model->find($entity->id);
     }
+    //Default response
+    return null;
+  }
+
+  /**
+   * Get the view / contents that represent the component.
+   *
+   * @return \Illuminate\View\View|string
+   */
+  public function render()
+  {
+    if ($this->blockConfig->status) {
+      return view($this->view);
+    }
+  }
 }

@@ -49,10 +49,10 @@ class Container extends Component
   public function backgroundImage($paramsImage)
   {
     $image = "";
-    if(!empty($paramsImage)){
-      if (!empty($paramsImage->mimeType) && $paramsImage->mimeType=="image/svg+xml") {
+    if (!empty($paramsImage)) {
+      if (!empty($paramsImage->mimeType) && $paramsImage->mimeType == "image/svg+xml") {
         $image = $paramsImage->path;
-      } elseif(!empty($paramsImage->extraLargeThumb)) {
+      } elseif (!empty($paramsImage->extraLargeThumb)) {
         $image = $paramsImage->extraLargeThumb;
       }
     }
