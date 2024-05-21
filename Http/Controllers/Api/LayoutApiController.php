@@ -25,7 +25,7 @@ class LayoutApiController extends BaseCrudController
     $layoutData = $request->all();
     if ($layoutData) {
       $layout = (object)$layoutData;
-      $blocks = orderBlocksToRender(json_decode($layoutData["blocks"]));
+      $blocks = orderBlocksToRender(blocksToArray(json_decode($layoutData["blocks"]), true));
       //Render view
       return view('ibuilder::frontend.index', compact('layout', 'blocks'));
     } else {
