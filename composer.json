@@ -5,7 +5,7 @@
   "license": "MIT",
   "require": {
     "php": "^8.1",
-    "imagina/core-module": "v10.x-dev"
+    "imagina/core-module": "^10.0"
   },
   "require-dev": {
     "orchestra/testbench": "^8.5",
