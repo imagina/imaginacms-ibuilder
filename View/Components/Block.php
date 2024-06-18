@@ -166,12 +166,12 @@ class Block extends Component
   public function instanceBackgroundAttribute($params)
   {
     $this->backgrounds = json_encode($params["backgrounds"] ?? [
-        "position" => "center",
-        "size" => "cover",
-        "repeat" => "no-repeat",
-        "color" => "",
-        "attachment" => ""
-      ]);
+      "position" => "center",
+      "size" => "cover",
+      "repeat" => "no-repeat",
+      "color" => "",
+      "attachment" => ""
+    ]);
   }
 
   /**
@@ -225,25 +225,27 @@ class Block extends Component
           return null;
         }, $mediasMulti)
       );
-      //Instance the files ID
-      $filesId = array_values($mediasSingle);
-      //Merge the multi files ID
-      foreach ($mediasMulti as $zone) {
-        $filesId = array_merge($filesId, ((array)($zone))['files'] ?? []);
-      }
-      //Request the fiels
-      $filesData = File::whereIn('id', $filesId)->get();
-      //Set files of media single
-      foreach (array_keys($mediasSingle) as $singleZone) {
-        $singleFile = $filesData->where('id', $mediasSingle[$singleZone])->first();
-        $mediaFiles[$singleZone] = !$singleFile ? null : $this->transformFile($singleFile);
-      }
-      //Set files of media multi
-      foreach (array_keys($mediasMulti) as $multiZone) {
-        $multiFiles = $filesData->whereIn('id', ($mediasMulti[$multiZone]->files ?? []));
-        $mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
-          return $this->transformFile($file);
-        })->toArray();
+      if (count($mediaFiles)) {
+        //Instance the files ID
+        $filesId = array_values($mediasSingle);
+        //Merge the multi files ID
+        foreach ($mediasMulti as $zone) {
+          $filesId = array_merge($filesId, ((array)($zone))['files'] ?? []);
+        }
+        //Request the fiels
+        $filesData = File::whereIn('id', $filesId)->get();
+        //Set files of media single
+        foreach (array_keys($mediasSingle) as $singleZone) {
+          $singleFile = $filesData->where('id', $mediasSingle[$singleZone])->first();
+          $mediaFiles[$singleZone] = !$singleFile ? null : $this->transformFile($singleFile);
+        }
+        //Set files of media multi
+        foreach (array_keys($mediasMulti) as $multiZone) {
+          $multiFiles = $filesData->whereIn('id', ($mediasMulti[$multiZone]->files ?? []));
+          $mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
+            return $this->transformFile($file);
+          })->toArray();
+        }
       }
       //Set blockConfig media File
       $this->blockConfig->mediaFiles = json_decode(json_encode($mediaFiles));
