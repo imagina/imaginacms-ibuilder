@@ -52,4 +52,5 @@ return [
       'layoutDefault' => 'Indicates whether the layout is set as default for the corresponding entity and type',
       'layout' => 'Builder Layout'
     ],
+    "useViewParams" => "Use view params",
 ];

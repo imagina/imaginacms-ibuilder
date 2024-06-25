@@ -305,7 +305,9 @@ class Block extends Component
           $this->componentConfig['attributes'][$name] = json_decode(json_encode($attr), true);
         }
       }
-      $this->componentConfig['attributes']['viewParams'] = $this->viewParams;
+      //Add viewParams
+      $useViewParams = (int)($this->blockConfig->entity->useViewParams ?? '0');
+      if ($useViewParams) $this->componentConfig["attributes"]["viewParams"] = $this->viewParams;
       //Set the entity attributes by component
       $entity = $this->blockConfig->entity ?? null;
       if ($entity) {
@@ -342,6 +344,9 @@ class Block extends Component
             break;
           case 'isite::item-list':
             $this->componentConfig['attributes']['item'] = $this->getInheritcontent($entity);
+            break;
+          case 'isite::custom-content':
+            $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
             break;
         }
       }
