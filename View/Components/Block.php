@@ -199,6 +199,9 @@ class Block extends Component
 
     //Set blockConfig
     $this->blockConfig = $blockConfig;
+
+    //Instance the block edit link
+    if ($blockConfig->id) $this->editLink = str_replace("{blockId}", $blockConfig->id, config('asgard.ibuilder.config.urlEditBlockTheme'));
   }
 
   // Validate and set default attributes
