@@ -35,7 +35,7 @@
     <x-isite::edit-link
       link="{{$editLink}}"
       tooltip="{{$tooltipEditLink}}"
-      icon="fas fa-palette"
+      icon="fas fa-edit"
       bottom="0"
       left="20px !important"
       top="unset !important"

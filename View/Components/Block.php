@@ -193,6 +193,7 @@ class Block extends Component
         if ($block) $this->blockConfig = $block->getRenderData();
       }
     }
+
     //Parse
     $blockConfig = json_decode(json_encode(array_merge(["status" => true], $this->blockConfig)));
 
@@ -203,6 +204,9 @@ class Block extends Component
 
     //Set blockConfig
     $this->blockConfig = $blockConfig;
+
+    //Instance the block edit link
+    if ($blockConfig->id) $this->editLink = str_replace("{blockId}", $blockConfig->id, config('asgard.ibuilder.config.urlEditBlockTheme'));
   }
 
   // Validate and set default attributes
