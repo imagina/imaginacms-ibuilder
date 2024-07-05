@@ -351,6 +351,9 @@ class Block extends Component
           case 'isite::custom-content':
             $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
             break;
+          case 'ibuilder::breadcrumb-custom':
+            $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
+            break;
         }
       }
     }
