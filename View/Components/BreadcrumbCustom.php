@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 class BreadcrumbCustom extends Component
 {
     public $item;
+    public $viewParams;
     public $sectionClass;
     public $sectionStyle;
     public $breadcrumbClass;
@@ -41,7 +42,8 @@ class BreadcrumbCustom extends Component
    *
    * @return void
    */
-  public function __construct($item = null,
+  public function __construct($item = [],
+                              $viewParams = [],
                               $sectionClass = "",
                               $sectionStyle = "",
                               $breadcrumbClass = "bg-transparent px-0 mb-0",
@@ -100,7 +102,7 @@ class BreadcrumbCustom extends Component
       $this->imageObjectPosicion = $imageObjectPosicion;
       $this->imageAspectRatio = $imageAspectRatio;
       $this->imageAspectRatioMobile = $imageAspectRatioMobile;
-      $this->getItem($item);
+      $this->getItem($item,$viewParams);
   }
 
   /**
@@ -108,9 +110,23 @@ class BreadcrumbCustom extends Component
   *
   * @return item
   */
-  public function getItem($item)
+  public function getItem($item,$params)
   {
-    $this->item = $item;
+      if(!empty($params)) {
+          if(!empty($params['post'])) {
+              $this->item = $params['post'];
+          }
+          if(!empty($params['posts'])) {
+              $this->item = $params['category'];
+          }
+          if(!empty($params['page'])) {
+              $this->item = $params['page'];
+          }
+      }
+      else {
+          $this->item = $item;
+      }
+
   }
   
   /**
