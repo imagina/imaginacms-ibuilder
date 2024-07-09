@@ -5,7 +5,7 @@
             <div class="{{$row}}">
                 <div class="{{$col}}">
                     <nav aria-label="breadcrumb">
-                        @include('ibuilder::frontend.components.breadcrumb.partials.breadcrumb')
+                        @include('ibuilder::frontend.components.breadcrumb-custom.partials.breadcrumb')
                     </nav>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                         @endif
                         @if($breadcrumbPosition==2)
                         <nav aria-label="breadcrumb">
-                            @include('ibuilder::frontend.components.breadcrumb.partials.breadcrumb')
+                            @include('ibuilder::frontend.components.breadcrumb-custom.partials.breadcrumb')
                         </nav>
                         @endif
                         @if($titlePosition==1&&$withTitle)
