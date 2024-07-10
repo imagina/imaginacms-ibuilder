@@ -507,13 +507,13 @@ class ContentCustom extends Component
   {
 
       if(!empty($params)) {
-        if(!empty($params['post'])) {
+        if(isset($params['post'])) {
             $this->item = $params['post'];
         }
-        if(!empty($params['posts'])) {
+        if(isset($params['posts'])) {
             $this->item = $params['category'];
         }
-        if(!empty($params['page'])) {
+        if(isset($params['page'])) {
             $this->item = $params['page'];
         }
       }
