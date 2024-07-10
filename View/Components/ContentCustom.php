@@ -7,6 +7,7 @@ class ContentCustom extends Component
 {
     public $id;
     public $item;
+    public $viewParams;
     public $row;
     public $withTitle;
     public $titleClass;
@@ -169,7 +170,8 @@ class ContentCustom extends Component
    * @return void
    */
   public function __construct($id = null,
-                              $item = null,
+                              $item = [],
+                              $viewParams = [],
                               $row = "row",
                               $withTitle = 1,
                               $titleClass = "",
@@ -465,7 +467,7 @@ class ContentCustom extends Component
       $this->itemListLateralTake = $itemListLateralTake;
       $this->itemListLateralCol = $itemListLateralCol;
       $this->withListMain = $withListMain;
-      $this->getItem($item,$withFilterCategory,$withCarousel,$withListLateral);
+      $this->getItem($item,$viewParams,$withFilterCategory,$withCarousel,$withListLateral);
 
       if(!empty($bodyExtra)){
           if (strpos($bodyExtra, ',') !== false) {
@@ -501,10 +503,25 @@ class ContentCustom extends Component
   *
   * @return item
   */
-  public function getItem($item,$withFilterCategory,$withCarousel,$withListLateral)
+  public function getItem($item,$params,$withFilterCategory,$withCarousel,$withListLateral)
   {
-      $this->item = $item;
-      switch ($item->entity) {
+
+      if(!empty($params)) {
+        if(isset($params['post'])) {
+            $this->item = $params['post'];
+        }
+        if(isset($params['posts'])) {
+            $this->item = $params['category'];
+        }
+        if(isset($params['page'])) {
+            $this->item = $params['page'];
+        }
+      }
+      else {
+          $this->item = $item;
+      }
+
+      switch ($this->item->entity) {
           case 'Modules\Page\Entities\Page':
               $this->typeContent = 'page';
               $this->view = "ibuilder::frontend.components.content-custom.page.index";
@@ -518,7 +535,7 @@ class ContentCustom extends Component
               $this->withFilterCategory = $withFilterCategory ?? true;
               $this->withCarousel = $withCarousel ?? true;
               $this->withListLateral = $withListLateral ?? true;
-              $this->filterBlog = ['category' => $item->category->id,'exclude'=>$item->id];
+              $this->filterBlog = ['category' => $this->item->category->id,'exclude'=>$this->item->id];
               break;
           case 'Modules\Iblog\Entities\Category':
               $this->typeContent = 'category';
@@ -526,7 +543,7 @@ class ContentCustom extends Component
               $this->withFilterCategory = $withFilterCategory ?? true;
               $this->withCarousel = $withCarousel ?? true;
               $this->withListLateral = $withListLateral ?? true;
-              $this->filterBlog = ['category' => $item->id ?? null];
+              $this->filterBlog = ['category' => $this->item->id ?? null];
               break;
       }
   }
