@@ -206,8 +206,8 @@ class Block extends Component
 
     //Set blockConfig
     $this->blockConfig = $blockConfig;
-    //Set useViewParams
-    $this->useViewParams = (int)($this->blockConfig->entity->useViewParams ?? '0');
+    //Set useViewParams if indicator enable and the prop has data
+    $this->useViewParams = !count($this->viewParams) ? 0 : (int)($this->blockConfig->entity->useViewParams ?? '0');
 
     //Instance the block edit link
     if ($blockConfig->id) $this->editLink = str_replace("{blockId}", $blockConfig->id, config('asgard.ibuilder.config.urlEditBlockTheme'));
