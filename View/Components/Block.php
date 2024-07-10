@@ -24,6 +24,7 @@ class Block extends Component
   public $withButton, $buttonPosition, $buttonAlign, $buttonLayout, $buttonIcon, $buttonIconLR, $buttonIconColor,
     $buttonIconColorHover, $buttonColor, $buttonMarginT, $buttonMarginB, $buttonSize, $buttonTextSize,
     $buttonClasses, $buttonShadow, $buttonLabel, $buttonUrl, $buttonTarget, $buttonConfig, $viewParams, $blockRepository;
+  public $useViewParams;
 
   public function __construct(
     $container = null,
@@ -159,6 +160,7 @@ class Block extends Component
     $this->buttonUrl = $params["buttonUrl"];
     $this->buttonTarget = $params["buttonTarget"];
     $this->buttonConfig = $params["buttonConfig"];
+    $this->useViewParams = 0;
     $this->viewParams = $params["viewParams"];
   }
 
@@ -204,6 +206,8 @@ class Block extends Component
 
     //Set blockConfig
     $this->blockConfig = $blockConfig;
+    //Set useViewParams
+    $this->useViewParams = (int)($this->blockConfig->entity->useViewParams ?? '0');
 
     //Instance the block edit link
     if ($blockConfig->id) $this->editLink = str_replace("{blockId}", $blockConfig->id, config('asgard.ibuilder.config.urlEditBlockTheme'));
@@ -313,8 +317,7 @@ class Block extends Component
         }
       }
       //Add viewParams
-      $useViewParams = (int)($this->blockConfig->entity->useViewParams ?? '0');
-      if ($useViewParams) $this->componentConfig["attributes"]["viewParams"] = $this->viewParams;
+      if ($this->useViewParams) $this->componentConfig["attributes"]["viewParams"] = $this->viewParams;
       //Set the entity attributes by component
       $entity = $this->blockConfig->entity ?? null;
       if ($entity) {
@@ -355,6 +358,12 @@ class Block extends Component
           case 'isite::custom-content':
             $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
             break;
+          case 'ibuilder::breadcrumb-custom':
+            $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
+            break;
+          case 'ibuilder::content-custom':
+            $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
+            break;
         }
       }
     }
@@ -371,7 +380,7 @@ class Block extends Component
     if ($this->inheritContent) return $this->inheritContent;
     //Get the entity information
     $entity = $this->blockConfig->entity ?? null;
-    if (isset($entity->type) && isset($entity->id)) {
+    if (!$this->useViewParams && isset($entity->type) && isset($entity->id)) {
       $model = app($entity->type);
       return $model->find($entity->id);
     }
