@@ -276,7 +276,7 @@ class Block extends Component
       //Validate if the component is liveware
       if (!$this->componentType) {
         try {
-          $finder = app('Livewire\LivewireManager');
+          $finder = app('Livewire\Mechanisms\ComponentRegistry');
           $lwClass = $finder->getClass($systemName);
           $this->blockConfig->component->nameSpace = $lwClass;
           $this->componentType = 'livewire';
