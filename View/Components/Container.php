@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 class Container extends Component
 {
   public $view, $id, $children, $containerBlock, $row, $backgrounds, $backgroundImg,
-    $backgroundGeneral, $styleContainer, $scriptContainer;
+    $backgroundGeneral, $styleContainer, $scriptContainer, $viewParams;
 
   public function __construct($id = null,
                               $children = [],
@@ -17,7 +17,8 @@ class Container extends Component
                               $backgroundImg = '',
                               $backgroundGeneral = '',
                               $styleContainer = null,
-                              $scriptContainer = null
+                              $scriptContainer = null,
+                              $viewParams = []
   )
   {
     $params = get_defined_vars();//Get all params
@@ -40,6 +41,7 @@ class Container extends Component
     $this->styleContainer = $params["styleContainer"];
     $this->backgroundImg = $this->backgroundImage($params["backgroundImg"]);
     $this->scriptContainer = $params["scriptContainer"];
+    $this->viewParams = $params["viewParams"];
   }
 
   /**
