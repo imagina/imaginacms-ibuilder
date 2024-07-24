@@ -1672,6 +1672,14 @@ return [
                         ]
                     ]
                 ],
+                "imageZone" => [
+                    "name" => "imageZone",
+                    "type" => "input",
+                    "value" => "mainimage",
+                    "props" => [
+                        "label" => "Zona"
+                    ]
+                ],
                 "imageAspectRatio" => [
                     "name" => "imageAspectRatio",
                     "value" => "4/3",
@@ -2085,7 +2093,7 @@ return [
             "fields" => [
                 "withVideoExternal" => [
                     "name" => "withVideoExternal",
-                    "value" => "0",
+                    "value" => "3",
                     "type" => "select",
                     "props" => [
                         "label" => "Mostrar Imagen",

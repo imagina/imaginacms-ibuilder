@@ -5,6 +5,7 @@
                 :title="$item->title ?? $item->name ?? ''"
                 :isMedia="true"
                 width="100%"
+                :zone="$imageZone ?? 'mainimage'"
                 :withVideoControls="$videoControls" :loopVideo="$videoLoop"
                 :autoplayVideo="$videoAutoplay" :mutedVideo="$videoMuted"
                 :mediaFiles="$item->mediaFiles() ?? null"

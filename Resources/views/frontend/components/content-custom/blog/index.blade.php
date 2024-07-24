@@ -37,6 +37,7 @@
                     @endif
 
                     @if($withListMain && $typeContent=='category')
+                        <div class="{{$orderClasses["list"] ?? 'col-12 order-0'}} custom-list">
                         <livewire:isite::items-list
                                 moduleName="Iblog"
                                 itemComponentName="isite::item-list"
@@ -55,6 +56,7 @@
                                 :params="['filter' => ['category' => $item->id ?? null],'take'=> $itemListTake]"
                                 :responsiveTopContent="['mobile'=>false,'desktop'=>false]"
                         />
+                        </div>
                     @endif
 
                     @if($typeContent=='post')
