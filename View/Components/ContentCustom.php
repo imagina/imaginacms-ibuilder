@@ -27,6 +27,7 @@ class ContentCustom extends Component
     public $imageObjectPosicion;
     public $imageAspectRatio;
     public $imageAspectRatioCustom;
+    public $imageZone;
 
     public $withMedia;
     public $withBody;
@@ -190,11 +191,12 @@ class ContentCustom extends Component
                               $imageObjectPosicion = "",
                               $imageAspectRatio = "21/5",
                               $imageAspectRatioCustom = "",
+                              $imageZone="mainimage",
                               $withMedia = 1,
                               $withBody = 1,
                               $withGallery = 1,
-                              $withBodyExtra = 1,
-                              $withVideoExternal = 1,
+                              $withBodyExtra = 3,
+                              $withVideoExternal = 3,
                               $withShare = true,
                               $orderClasses = [],
                               $orderSidebar = [],
@@ -326,6 +328,7 @@ class ContentCustom extends Component
       $this->imageObjectPosicion = $imageObjectPosicion;
       $this->imageAspectRatio = $imageAspectRatio;
       $this->imageAspectRatioCustom = $imageAspectRatioCustom;
+      $this->imageZone = $imageZone;
       $this->withMedia = $withMedia;
       $this->withBody = $withBody;
       $this->withGallery = $withGallery;
