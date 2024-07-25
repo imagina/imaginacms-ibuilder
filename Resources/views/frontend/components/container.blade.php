@@ -7,7 +7,7 @@
         <div class="row {{$row}}">
             @foreach($children as $block)
                 <div class="{{ $block["gridPosition"] }}">
-                    <x-ibuilder::block :blockConfig="$block" container="" row="mx-0 d-block" columns="" />
+                    <x-ibuilder::block :blockConfig="$block" :viewParams="$viewParams" container="" row="mx-0 d-block" columns="" />
                 </div>
             @endforeach
         </div>

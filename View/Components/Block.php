@@ -312,8 +312,11 @@ class Block extends Component
           $this->componentConfig['attributes'][$name] = json_decode(json_encode($attr), true);
         }
       }
+      $systemName = $this->blockConfig->component->systemName;
+      //Check if add View Params
+      $shouldAddViewParams = $this->useViewParams || $systemName == 'x-ibuilder::container';
       //Add viewParams
-      if ($this->useViewParams) $this->componentConfig["attributes"]["viewParams"] = $this->viewParams;
+      if ($shouldAddViewParams) $this->componentConfig["attributes"]["viewParams"] = $this->viewParams;
       //Set the entity attributes by component
       $entity = $this->blockConfig->entity ?? null;
       if ($entity) {
