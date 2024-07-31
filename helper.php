@@ -34,6 +34,7 @@ if (!function_exists('mapBlockToRender')) {
     //Instance the response
     $response = [
       "id" => $data["id"],
+      "internalTitle" => $data["internal_title"] ?? '',
       "status" => $data["status"],
       "systemName" => $data["system_name"] ?? $data["systemName"],
       "gridPosition" => $data["gridPosition"] ?? $data["grid_position"] ?? 'col-12',

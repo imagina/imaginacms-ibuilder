@@ -38,8 +38,9 @@ class PublicController extends BaseApiController
 
     $layout = $repositoryLayout->getItem($layoutId, json_decode(json_encode($params)));
     $blocks = $layout->getBlocksToRender();
+    $isDemoLayout = true;
 
     //Render view
-    return view('ibuilder::frontend.index', compact('layout', 'blocks'));
+    return view('ibuilder::frontend.index', compact('layout', 'blocks', 'isDemoLayout'));
   }
 }
