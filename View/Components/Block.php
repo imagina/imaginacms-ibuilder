@@ -206,6 +206,7 @@ class Block extends Component
 
     //Set blockConfig
     $this->blockConfig = $blockConfig;
+
     //Set useViewParams if indicator enable and the prop has data
     $this->useViewParams = !count($this->viewParams) ? 0 : (int)($this->blockConfig->entity->useViewParams ?? '0');
 
@@ -240,25 +241,27 @@ class Block extends Component
           return null;
         }, $mediasMulti)
       );
-      //Instance the files ID
-      $filesId = array_values($mediasSingle);
-      //Merge the multi files ID
-      foreach ($mediasMulti as $zone) {
-        $filesId = array_merge($filesId, ((array)($zone))["files"] ?? []);
-      }
-      //Request the fiels
-      $filesData = File::whereIn('id', $filesId)->get();
-      //Set files of media single
-      foreach (array_keys($mediasSingle) as $singleZone) {
-        $singleFile = $filesData->where('id', $mediasSingle[$singleZone])->first();
-        $mediaFiles[$singleZone] = !$singleFile ? null : $this->transformFile($singleFile);
-      }
-      //Set files of media multi
-      foreach (array_keys($mediasMulti) as $multiZone) {
-        $multiFiles = $filesData->whereIn('id', ($mediasMulti[$multiZone]->files ?? []));
-        $mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
-          return $this->transformFile($file);
-        })->toArray();
+      if (count($mediaFiles)) {
+        //Instance the files ID
+        $filesId = array_values($mediasSingle);
+        //Merge the multi files ID
+        foreach ($mediasMulti as $zone) {
+          $filesId = array_merge($filesId, ((array)($zone))['files'] ?? []);
+        }
+        //Request the fiels
+        $filesData = File::whereIn('id', $filesId)->get();
+        //Set files of media single
+        foreach (array_keys($mediasSingle) as $singleZone) {
+          $singleFile = $filesData->where('id', $mediasSingle[$singleZone])->first();
+          $mediaFiles[$singleZone] = !$singleFile ? null : $this->transformFile($singleFile);
+        }
+        //Set files of media multi
+        foreach (array_keys($mediasMulti) as $multiZone) {
+          $multiFiles = $filesData->whereIn('id', ($mediasMulti[$multiZone]->files ?? []));
+          $mediaFiles[$multiZone] = !$multiFiles->count() ? [] : $multiFiles->map(function ($file, $keyFile) {
+            return $this->transformFile($file);
+          })->toArray();
+        }
       }
       //Set blockConfig media File
       $this->blockConfig->mediaFiles = json_decode(json_encode($mediaFiles));
@@ -277,7 +280,9 @@ class Block extends Component
     //Validate the parameters
     if ($systemName) {
       //Validate if the component is Blade
-      if ($nameSpace && class_exists($nameSpace)) $this->componentType = "blade";
+      if ($nameSpace && class_exists($nameSpace)) {
+        $this->componentType = 'blade';
+      }
       //Validate if the component is liveware
       if (!$this->componentType) {
         try {
@@ -290,7 +295,9 @@ class Block extends Component
       }
     }
     //Error view
-    if (!$this->componentType) $this->view = "ibuilder::frontend.components.blocks-error";
+    if (!$this->componentType) {
+      $this->view = 'ibuilder::frontend.components.blocks-error';
+    }
   }
 
   /**
@@ -316,8 +323,11 @@ class Block extends Component
           $this->componentConfig["attributes"][$name] = json_decode(json_encode($attr), true);
         }
       }
+      $systemName = $this->blockConfig->component->systemName;
+      //Check if add View Params
+      $shouldAddViewParams = $this->useViewParams || $systemName == 'x-ibuilder::container';
       //Add viewParams
-      if ($this->useViewParams) $this->componentConfig["attributes"]["viewParams"] = $this->viewParams;
+      if ($shouldAddViewParams) $this->componentConfig["attributes"]["viewParams"] = $this->viewParams;
       //Set the entity attributes by component
       $entity = $this->blockConfig->entity ?? null;
       if ($entity) {
@@ -377,7 +387,9 @@ class Block extends Component
   public function getInheritcontent()
   {
     //Return the attribute inherit content
-    if ($this->inheritContent) return $this->inheritContent;
+    if ($this->inheritContent) {
+      return $this->inheritContent;
+    }
     //Get the entity information
     $entity = $this->blockConfig->entity ?? null;
     if (!$this->useViewParams && isset($entity->type) && isset($entity->id)) {
@@ -395,7 +407,9 @@ class Block extends Component
    */
   public function render()
   {
-    if ($this->blockConfig->status) return view($this->view);
+    if ($this->blockConfig->status) {
+      return view($this->view);
+    }
   }
 }
 

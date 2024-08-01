@@ -1012,4 +1012,1775 @@ return [
       ]
     ]
   ],
+  "breadcrumb" => [
+    "title" => "Breadcrumb Custom",
+    "systemName" => "ibuilder::breadcrumb-custom",
+    "nameSpace" => "Modules\Ibuilder\View\Components\BreadcrumbCustom",
+    "useViewParams" => true,
+    "content" => [
+        [
+            "label" => "Page",
+            "value" => "Modules\Page\Entities\Page",
+            "loadOptions" => [
+                "apiRoute" => "apiRoutes.qpage.pages"
+            ]
+        ],
+        [
+            "label" => "Posts",
+            "value" => "Modules\Iblog\Entities\Post",
+            "loadOptions" => [
+                "apiRoute" => "apiRoutes.qblog.posts"
+            ]
+        ],
+        [
+            "label" => "Categories",
+            "value" => "Modules\Iblog\Entities\Category",
+            "loadOptions" => [
+                "apiRoute" => "apiRoutes.qblog.categories"
+            ]
+        ],
+    ],
+    "attributes" => [
+        "general" => [
+            "title" => "General",
+            "fields" => [
+                "sectionClass" => [
+                    "name" => "sectionClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clase general",
+                    ],
+                ],
+                "sectionStyle" => [
+                    "name" => "sectionStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos general",
+                        'type' => 'textarea',
+                        'rows' => 4,
+                    ],
+                ],
+                "container" => [
+                    "name" => "container",
+                    "value" => "container",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Tipo de contenedor",
+                        "options" => $vAttributes["containers"]
+                    ]
+                ],
+                "containerClass" => [
+                    "name" => "containerClass",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Clase Container",
+                    ],
+                ],
+                "row" => [
+                    "name" => "row",
+                    "value" => "row align-items-center",
+                    "columns" => "col-12",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Fila",
+                    ],
+                ],
+                "col" => [
+                    "name" => "col",
+                    "value" => "col-auto",
+                    "columns" => "col-12",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Columna",
+                    ],
+                ],
+                "icon" => [
+                    "name" => "icon",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Caracter",
+                        "help" => [
+                            "description" => "Ejemplo / > < *",
+                        ]
+                    ],
+                ],
+                "iconFont" => [
+                    "name" => "iconFont",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Icono Font",
+                    ],
+                    "help" => [
+                        "description" => "Icon Font tiene prioridad, colocar el codigo unicode sin el '\'",
+                    ]
+                ],
+                "breadcrumbPosition" => [
+                    "name" => "breadcrumbPosition",
+                    "value" => "0",
+                    "columns" => "col-12",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Posición del breadcrumb",
+                        "options" => [
+                            ["label" => "Arriba de la imagen", "value" => "0"],
+                            ["label" => "Debajo de la imagen", "value" => "1"],
+                            ["label" => "Dentro de la imagen", "value" => "2"],
+                        ]
+                    ]
+                ],
+                "breadcrumbClass" => [
+                    "name" => "breadcrumbClass",
+                    "type" => "input",
+                    "value" => "bg-transparent px-0 mb-0",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases breadcrumb",
+                    ],
+                ],
+                "breadcrumbFontSize" => [
+                    "name" => "breadcrumbFontSize",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Tamaño de fuente",
+                        "type" => "number"
+                    ]
+                ],
+                "breadcrumbColor" => [
+                    "name" => "breadcrumbColor",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Color",
+                    ]
+                ],
+                "breadcrumbStyle" => [
+                    "name" => "breadcrumbStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos breadcrumb",
+                        'type' => 'textarea',
+                        'rows' => 5,
+                    ],
+                ],
+            ]
+        ],
+        "title" => [
+            "title" => "Titulo",
+            "fields" => [
+                "withTitle" => [
+                    "name" => "withTitle",
+                    "value" => "0",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar Titulo",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "fontSizeTitle" => [
+                    "name" => "fontSizeTitle",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Tamaño de fuente",
+                        "type" => "number"
+                    ]
+                ],
+                "colorTitleByClass" => [
+                    "name" => "colorTitleByClass",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Color Class",
+                        "options" => $vAttributes["textColors"]
+                    ]
+                ],
+                "colorTitle" => [
+                    "name" => "colorTitle",
+                    "type" => "inputColor",
+                    "props" => [
+                        "label" => "Color Custom",
+                    ],
+                    "help" => [
+                        "description" => "Selecciona el color Custom en Color Class para activarlo",
+                    ]
+                ],
+                "titlePosition" => [
+                    "name" => "titlePosition",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Posición",
+                        "options" => [
+                            ["label" => "Debajo", "value" => "1"],
+                            ["label" => "Arriba", "value" => "2"],
+                        ],
+                    ],
+                    "help" => [
+                        "description" => "Funciona cuando el breadcrumb esta dentro de la imagen",
+                    ]
+                ],
+                "titleClass" => [
+                    "name" => "titleClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases",
+                    ],
+                ],
+                "titleStyle" => [
+                    "name" => "titleStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos",
+                        'type' => 'textarea',
+                        'rows' => 5,
+                    ],
+                    "help" => [
+                        "description" => "Permite agregar estilos adicionales en titulo",
+                    ]
+                ],
+            ]
+        ],
+        "image" => [
+            "title" => "Imagen",
+            "fields" => [
+                "withImage" => [
+                    "name" => "withImage",
+                    "value" => "0",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar Imagen",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "overlary" => [
+                    "name" => "overlay",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Overlay",
+                    ],
+                ],
+                "imageAspectRatio" => [
+                    "name" => "imageAspectRatio",
+                    "value" => "21/5",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Aspect Ratio",
+                        "options" => $vAttributes["imageAspect"]
+                    ]
+                ],
+                "imageAspectRatioMobile" => [
+                    "name" => "imageAspectRatioMobile",
+                    "value" => "16/9",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Aspect Ratio Mobile",
+                        "options" => $vAttributes["imageAspect"]
+                    ]
+                ],
+                "imageObjectFit" => [
+                    "name" => "imageObjectFit",
+                    "value" => "cover",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Object fit",
+                        "options" => $vAttributes["imageObject"]
+                    ]
+                ],
+                "imageObjectPosicion" => [
+                    "name" => "imageObjectPosicion",
+                    "value" => "center",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Object fit Position",
+                    ],
+                    "help" => [
+                        "description" => "Ejemplo de valores: top, bottom, left, right, center, 25% 75%, 1cm 2cm, bottom 10px right 20px",
+                    ]
+                ],
+                "imageClass" => [
+                    "name" => "imageClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases",
+                    ],
+                ],
+                "imageStyle" => [
+                    "name" => "imageStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos",
+                        'type' => 'textarea',
+                        'rows' => 5,
+                    ],
+                ],
+            ]
+        ],
+    ]
+  ],
+  "contentCustom" => [
+    "title" => "Contenido Custom",
+    "systemName" => "ibuilder::content-custom",
+    "nameSpace" => "Modules\Ibuilder\View\Components\ContentCustom",
+    "useViewParams" => true,
+    "content" => [
+        [
+            "label" => "Page",
+            "value" => "Modules\Page\Entities\Page",
+            "loadOptions" => [
+                "apiRoute" => "apiRoutes.qpage.pages"
+            ]
+        ],
+        [
+            "label" => "Posts",
+            "value" => "Modules\Iblog\Entities\Post",
+            "loadOptions" => [
+                "apiRoute" => "apiRoutes.qblog.posts"
+            ]
+        ],
+        [
+            "label" => "Categories",
+            "value" => "Modules\Iblog\Entities\Category",
+            "loadOptions" => [
+                "apiRoute" => "apiRoutes.qblog.categories"
+            ]
+        ],
+    ],
+    "childBlocks" => [
+        "itemListAttr" => "isite::item-list",
+    ],
+    "contentFields" => [
+        "filtersTitle" => [
+            "name" => "filtersTitle",
+            "type" => "input",
+            "columns" => "col-12",
+            "isTranslatable" => true,
+            "props" => [
+                "label" => "Titulo del filtro de categorias (Blog)",
+            ]
+        ],
+        "itemListTitle" => [
+            "name" => "itemListTitle",
+            "type" => "input",
+            "columns" => "col-12",
+            "isTranslatable" => true,
+            "props" => [
+                "label" => "Titulo de los Elementos (itemList)",
+            ],
+            "help" => [
+                "description" => "ItemList principal (Blog)",
+            ]
+        ],
+        "itemListLabelButton" => [
+            "name" => "itemListLabelButton",
+            "type" => "input",
+            "columns" => "col-12",
+            "isTranslatable" => true,
+            "props" => [
+                "label" => "Texto del boton del elemento",
+            ]
+        ],
+        "itemListLateralTitle" => [
+            "name" => "itemListLateralTitle",
+            "type" => "input",
+            "columns" => "col-12",
+            "isTranslatable" => true,
+            "props" => [
+                "label" => "Titulo de la lista lateral (Blog)",
+            ]
+        ],
+        "carouselTitle" => [
+            "name" => "carouselTitle",
+            "type" => "input",
+            "columns" => "col-12",
+            "isTranslatable" => true,
+            "props" => [
+                "label" => "Titulo del Carousel (Blog)",
+            ]
+        ],
+    ],
+    "attributes" => [
+        "general" => [
+            "title" => "General",
+            "fields" => [
+                "row" => [
+                    "name" => "row",
+                    "value" => "row",
+                    "columns" => "col-12",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Fila",
+                    ],
+                ],
+                "orderClasses" => [
+                    "name" => "orderClasses",
+                    "value" => ["list" => "col-12 order-0", "title" => "col-12 order-0", "media" => "col-12 order-1",
+                        "body" => "col-12 order-2", "gallery" => "col-12 order-3", "bodyExtra" => "col-12 order-4",
+                        "videoExternal" => "col-12 order-5", "share" => "col-12 order-6", "summary" => "col-12 order-7",
+                        "category" => "col-12 order-8", "date" => "col-12 order-9", "user" => "col-12 order-10"],
+                    "type" => "json",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Orden de los elementos"
+                    ]
+                ],
+                "bodyContentInside" => [
+                    "name" => "bodyContentInside",
+                    "columns" => "col-12",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Clases contenido dentro de la descripción",
+                    ],
+                    "help" => [
+                        "description" => "Clases que engloban los componentes cuando se encuentran dentro de la descripción",
+                    ]
+                ],
+                "orderSidebar" => [
+                    "name" => "orderSidebar",
+                    "value" => ["sidebar" => "col-md-4 pr-lg-5 pb-5", "content" => "col-md-8 pb-5", "content-row" => "row", "extra" => "col-12 pb-5"],
+                    "type" => "json",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Orden de los elementos extra para el blog"
+                    ]
+                ],
+            ]
+        ],
+        "title" => [
+            "title" => "Titulo",
+            "fields" => [
+                "withTitle" => [
+                    "name" => "withTitle",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar Titulo",
+                        "options" => [
+                            ["label" => "Si", "value" => "1"],
+                            ["label" => "Si (en la descripción)", "value" => "2"],
+                            ["label" => "No", "value" => "3"],
+                        ]
+                    ]
+                ],
+                "titleFontSize" => [
+                    "name" => "titleFontSize",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Tamaño de fuente",
+                        "type" => "number"
+                    ]
+                ],
+                "titleLetterSpacing" => [
+                    "name" => "titleLetterSpacing",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Espacio entre letras",
+                        "type" => "number"
+                    ]
+                ],
+                "titleAlign" => [
+                    "name" => "titleAlign",
+                    "value" => "text-left",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Alineación",
+                        "options" => $vAttributes["textAlign"]
+                    ]
+                ],
+                "titleColorByClass" => [
+                    "name" => "titleColorByClass",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Color Class",
+                        "options" => $vAttributes["textColors"]
+                    ]
+                ],
+                "titleColor" => [
+                    "name" => "titleColor",
+                    "type" => "inputColor",
+                    "props" => [
+                        "label" => "Color Custom",
+                    ],
+                    "help" => [
+                        "description" => "Selecciona el color Custom en Color Class para activarlo",
+                    ]
+                ],
+                "titleIcon" => [
+                    "name" => "titleIcon",
+                    "value" => "",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Icono",
+                    ]
+                ],
+                "titleIconPosition" => [
+                    "name" => "titleIconPosition",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Posición del icono",
+                        "options" => [
+                            ["label" => "Izquierda", "value" => "1"],
+                            ["label" => "Derecha", "value" => "2"],
+                            ["label" => "Arriba", "value" => "3"],
+                            ["label" => "Abajo", "value" => "4"],
+                        ],
+                    ]
+                ],
+                "titleIconStyle" => [
+                    "name" => "titleIconStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos del icono",
+                        'type' => 'textarea',
+                        'rows' => 5,
+                    ],
+                    "help" => [
+                        "description" => "Permite agregar estilos adicionales en el icono",
+                    ]
+                ],
+                "titleClass" => [
+                    "name" => "titleClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases del titulo",
+                    ],
+                ],
+                "titleStyle" => [
+                    "name" => "titleStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos del titulo",
+                        'type' => 'textarea',
+                        'rows' => 8,
+                    ],
+                    "help" => [
+                        "description" => "Permite agregar estilos adicionales en titulo",
+                    ]
+                ],
+                "withLineTitle" => [
+                    "name" => "withLineTitle",
+                    "value" => "0",
+                    "type" => "select",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Linea",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "lineTitleConfig" => [
+                    "name" => "lineTitleConfig",
+                    "value" => ['background' => 'var(--primary)','height' => '2px','width' => '10%','margin' => '0 auto'],
+                    "type" => "json",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Configuración de Línea",
+                    ]
+                ],
+            ]
+        ],
+        "body" => [
+            "title" => "Descripción",
+            "fields" => [
+                "withBody" => [
+                    "name" => "withBody",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "bodyFontSize" => [
+                    "name" => "bodyFontSize",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Tamaño de fuente",
+                        "type" => "number"
+                    ]
+                ],
+                "bodyAlign" => [
+                    "name" => "bodyAlign",
+                    "value" => "text-justify",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Alineación",
+                        "options" => $vAttributes["textAlign"]
+                    ]
+                ],
+                "bodyColorByClass" => [
+                    "name" => "bodyColorByClass",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Color Class",
+                        "options" => $vAttributes["textColors"]
+                    ]
+                ],
+                "bodyColor" => [
+                    "name" => "bodyColor",
+                    "type" => "inputColor",
+                    "props" => [
+                        "label" => "Color Custom",
+                    ],
+                    "help" => [
+                        "description" => "Selecciona el color Custom en Color Class para activarlo",
+                    ]
+                ],
+                "bodyClass" => [
+                    "name" => "bodyClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases",
+                    ],
+                ],
+                "bodyStyle" => [
+                    "name" => "bodyStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos",
+                        'type' => 'textarea',
+                        'rows' => 5,
+                    ],
+                    "help" => [
+                        "description" => "Permite agregar estilos adicionales en la descripción",
+                    ]
+                ],
+            ]
+        ],
+        "media" => [
+            "title" => "Imagen o Video",
+            "fields" => [
+                "withMedia" => [
+                    "name" => "withMedia",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar",
+                        "options" => [
+                            ["label" => "Si", "value" => "1"],
+                            ["label" => "Si (en la descripción)", "value" => "2"],
+                            ["label" => "No", "value" => "3"],
+                        ]
+                    ]
+                ],
+                "imageZone" => [
+                    "name" => "imageZone",
+                    "type" => "input",
+                    "value" => "mainimage",
+                    "props" => [
+                        "label" => "Zona"
+                    ]
+                ],
+                "imageAspectRatio" => [
+                    "name" => "imageAspectRatio",
+                    "value" => "4/3",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Aspect Ratio",
+                        "options" =>  [
+                            ["label" => "auto", "value" => "auto"],
+                            ["label" => "1/1", "value" => "1/1"],
+                            ["label" => "4/3", "value" => "4/3"],
+                            ["label" => "4/5", "value" => "4/5"],
+                            ["label" => "16/9", "value" => "16/9"],
+                            ["label" => "21/9", "value" => "21/9"],
+                            ["label" => "21/5", "value" => "21/5"],
+                            ["label" => "5/4", "value" => "5/4"],
+                            ["label" => "custom", "value" => "aspect-custom"],
+                        ]
+                    ]
+                ],
+                "imageAspectRatioCustom" => [
+                    "name" => "imageAspectRatioCustom",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Aspect Ratio Custom",
+                    ]
+                ],
+                "imageObjectFit" => [
+                    "name" => "imageObjectFit",
+                    "value" => "cover",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Object fit",
+                        "options" => $vAttributes["imageObject"]
+                    ]
+                ],
+                "imageObjectPosicion" => [
+                    "name" => "imageObjectPosicion",
+                    "value" => "center",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Object fit Position",
+                    ],
+                    "help" => [
+                        "description" => "Ejemplo de valores: top, bottom, left, right, center, 25% 75%, 1cm 2cm, bottom 10px right 20px",
+                    ]
+                ],
+                "imageClass" => [
+                    "name" => "imageClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases",
+                    ],
+                ],
+                "imageStyle" => [
+                    "name" => "imageStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos",
+                        'type' => 'textarea',
+                        'rows' => 5,
+                    ],
+                ],
+                "videoLoop" => [
+                    "name" => "videoLoop",
+                    "value" => "0",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Loop",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "videoAutoplay" => [
+                    "name" => "videoAutoplay",
+                    "value" => "0",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Autoplay",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "videoMuted" => [
+                    "name" => "videoMuted",
+                    "value" => "0",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Muted",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "videoControls" => [
+                    "name" => "videoControls",
+                    "value" => "0",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Controls",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+            ]
+        ],
+        "gallery" => [
+            "title" => "Galeria",
+            "fields" => [
+                "withGallery" => [
+                    "name" => "withGallery",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar",
+                        "options" => [
+                            ["label" => "Si", "value" => "1"],
+                            ["label" => "Si (en la descripción)", "value" => "2"],
+                            ["label" => "No", "value" => "3"],
+                        ]
+                    ]
+                ],
+                "galleryLayout" => [
+                    "name" => "galleryLayout",
+                    "value" => "gallery-layout-1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Layout",
+                        "options" => [
+                            ["label" => "Layout 1 (Básico)", "value" => "gallery-layout-1"],
+                            ["label" => "Layout 2 (Columnas 3 2)", "value" => "gallery-layout-2"],
+                            ["label" => "Layout 3 (Masonry)", "value" => "gallery-layout-3"],
+                            ["label" => "Layout 4 (Principal y 3 pequeñas)", "value" => "gallery-layout-4"],
+                            ["label" => "Layout 5 (3 pequeñas y principal)", "value" => "gallery-layout-5"],
+                            ["label" => "Layout 6 (3 columnas con aumento)", "value" => "gallery-layout-6"],
+                            ["label" => "Layout 7 (Vertical)", "value" => "gallery-layout-7"]
+                        ]
+                    ]
+                ],
+                "galleryResponsive" => [
+                    "name" => "galleryResponsive",
+                    "value" => [0 => ["items" => 1], 640 => ["items" => 2], 992 => ["items" => 4]],
+                    "type" => "json",
+                    'columns' => 'col-12',
+                    "props" => [
+                        "label" => "Responsive"
+                    ]
+                ],
+                "galleryNav" => [
+                    "name" => "galleryNav",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar (nav)",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "galleryNavSize" => [
+                    "name" => "galleryNavSize",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Tamaño (Nav)",
+                        "input" => "number"
+                    ]
+                ],
+                "galleryNavColor" => [
+                    "name" => "galleryNavColor",
+                    "value" => "var(--dark)",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Color (Nav)",
+                    ]
+                ],
+                "galleryNavColorHover" => [
+                    "name" => "galleryNavColorHover",
+                    "value" => "var(--primary)",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Color Hover (nav)",
+                    ]
+                ],
+                "galleryNavIcons" => [
+                    "name" => "galleryNavIcons",
+                    "columns" => "col-12",
+                    "value" => "fa fa-arrow-left,fa fa-arrow-right",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Navs Icons",
+                    ],
+                    "help" => [
+                        "description" => "Cuando el layout es el 7 las flechas son 'fa fa-angle-up,fa fa-angle-down'",
+                    ]
+
+                ],
+                "galleryNavPosition" => [
+                    "name" => "galleryNavPosition",
+                    "columns" => "col-12",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Navs Position",
+                        "options" => [
+                            ["label" => "Centrado Abajo", "value" => "1"],
+                            ["label" => "Izquierda Abajo", "value" => "2"],
+                            ["label" => "Derecha Abajo", "value" => "3"],
+                            ["label" => "Lateral", "value" => "4"],
+                            ["label" => "Centrado Arriba", "value" => "5"],
+                            ["label" => "Izquierda Arriba", "value" => "6"],
+                            ["label" => "Derecha Arriba", "value" => "7"]
+                        ]
+                    ],
+                    "help" => [
+                        "description" => "Solo funciona para el layout 1",
+                    ]
+
+                ],
+                "galleryDots" => [
+                    "name" => "galleryDots",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar (dots)",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "galleryDotsStyle" => [
+                    "name" => "galleryDotsStyle",
+                    "value" => "dots-circular",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Estilos (dots)",
+                        "options" => $vAttributes["dotStyle"]
+                    ]
+                ],
+                "galleryDotsStyleColor" => [
+                    "name" => "galleryDotsStyleColor",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Color (dots)",
+                        "options" => $vAttributes["bgColor"]
+                    ]
+                ],
+                "galleryDotsSize" => [
+                    "name" => "galleryDotsSize",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Tamaño (dots)",
+                        "input" => "number"
+                    ]
+                ],
+                "galleryAspectRatio" => [
+                    "name" => "galleryAspectRatio",
+                    "value" => "1/1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Aspect Ratio",
+                        "options" =>  [
+                            ["label" => "auto", "value" => "auto"],
+                            ["label" => "1/1", "value" => "1/1"],
+                            ["label" => "4/3", "value" => "4/3"],
+                            ["label" => "4/5", "value" => "4/5"],
+                            ["label" => "16/9", "value" => "16/9"],
+                            ["label" => "21/9", "value" => "21/9"],
+                            ["label" => "21/5", "value" => "21/5"],
+                            ["label" => "5/4", "value" => "5/4"],
+                            ["label" => "custom", "value" => "aspect-custom"],
+                        ]
+                    ]
+                ],
+                "galleryAspectRatioCustom" => [
+                    "name" => "galleryAspectRatioCustom",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Aspect Ratio Custom",
+                    ]
+                ],
+                "galleryObjectFit" => [
+                    "name" => "galleryObjectFit",
+                    "value" => "cover",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Object fit",
+                        "options" => $vAttributes["imageObject"]
+                    ]
+                ],
+                "galleryObjectPosicion" => [
+                    "name" => "galleryObjectPosicion",
+                    "value" => "center",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Object fit Position",
+                    ],
+                    "help" => [
+                        "description" => "Ejemplo de valores: top, bottom, left, right, center, 25% 75%, 1cm 2cm, bottom 10px right 20px",
+                    ]
+                ],
+                "galleryClass" => [
+                    "name" => "galleryClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases Gallery",
+                    ],
+                ],
+                "galleryStyle" => [
+                    "name" => "galleryStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos Gallery",
+                        'type' => 'textarea',
+                        'rows' => 5,
+                    ],
+                ],
+            ]
+        ],
+        "bodyExtra" => [
+            "title" => "Descripción Extra",
+            "fields" => [
+                "withBodyExtra" => [
+                    "name" => "withBodyExtra",
+                    "value" => "3",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar",
+                        "options" => [
+                            ["label" => "Si", "value" => "1"],
+                            ["label" => "Si (en la descripción)", "value" => "2"],
+                            ["label" => "No", "value" => "3"],
+                        ]
+                        //"options" => $vAttributes["validation"]
+                    ]
+                ],
+                "bodyExtra" => [
+                    "name" => "bodyExtra",
+                    "columns" => "col-12",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Campo Falso de Texto",
+                    ],
+                    "help" => [
+                        "description" => "Escribir el nombre del campo y si hay mas de uno separar por coma (,)",
+                    ],
+                ],
+                "bodyExtraFontSize" => [
+                    "name" => "bodyExtraFontSize",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Tamaño de fuente",
+                        "type" => "number"
+                    ]
+                ],
+                "bodyExtraAlign" => [
+                    "name" => "bodyExtraAlign",
+                    "value" => "text-justify",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Alineación",
+                        "options" => $vAttributes["textAlign"]
+                    ]
+                ],
+                "bodyExtraColorByClass" => [
+                    "name" => "bodyExtraColorByClass",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Color Class",
+                        "options" => $vAttributes["textColors"]
+                    ]
+                ],
+                "bodyExtraColor" => [
+                    "name" => "bodyExtraColor",
+                    "type" => "inputColor",
+                    "props" => [
+                        "label" => "Color Custom",
+                    ],
+                    "help" => [
+                        "description" => "Selecciona el color Custom en Color Class para activarlo",
+                    ]
+                ],
+                "bodyExtraClass" => [
+                    "name" => "bodyExtraClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases",
+                    ],
+                ],
+                "bodyExtraStyle" => [
+                    "name" => "bodyExtraStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos",
+                        'type' => 'textarea',
+                        'rows' => 5,
+                    ],
+                    "help" => [
+                        "description" => "Permite agregar estilos adicionales en la descripción",
+                    ]
+                ],
+                "bodyExtraMiniClass" => [
+                    "name" => "bodyExtraMiniClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases de cada campo falso de texto",
+                    ],
+                    "help" => [
+                        "description" => "Utilizar especialmente si hay mas de un campo de texto",
+                    ]
+                ],
+            ]
+        ],
+        "video" => [
+            "title" => "Video Externo (Youtube)",
+            "fields" => [
+                "withVideoExternal" => [
+                    "name" => "withVideoExternal",
+                    "value" => "3",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar Imagen",
+                        "options" => [
+                            ["label" => "Si", "value" => "1"],
+                            ["label" => "Si (en la descripción)", "value" => "2"],
+                            ["label" => "No", "value" => "3"],
+                        ]
+                    ]
+                ],
+                "videoExternal" => [
+                    "name" => "videoExternal",
+                    "columns" => "col-12",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Campo Falso de Video",
+                    ],
+                    "help" => [
+                        "description" => "Escribir el nombre del campo y si hay mas de uno separar por coma (,)",
+                    ],
+                ],
+                "videoExternalResponsive" => [
+                    "name" => "videoExternalResponsive",
+                    "type" => "select",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Responsive (Video)",
+                        "options" => $vAttributes["embedResponsive"]
+                    ]
+                ],
+                "videoExternalWidth" => [
+                    "name" => "videoExternalWidth",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Ancho (Formato Libre)",
+                    ],
+                ],
+                "videoExternalHeight" => [
+                    "name" => "videoExternalHeight",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Alto (Formato Libre)",
+                    ],
+                ],
+                "videoExternalClass" => [
+                    "name" => "videoExternalClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases",
+                    ],
+                ],
+                "videoExternalStyle" => [
+                    "name" => "videoExternalStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos",
+                        'type' => 'textarea',
+                        'rows' => 5,
+                    ],
+                ],
+                "videoExternalMiniClass" => [
+                    "name" => "videoExternalMiniClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases de cada campo falso de video",
+                    ],
+                    "help" => [
+                        "description" => "Utilizar especialmente si hay mas de un campo de video",
+                    ]
+                ],
+            ]
+        ],
+        "filters" => [
+            "title" => "Filtros (Category - Post)",
+            "fields" => [
+                "withListMain" => [
+                    "name" => "withListMain",
+                    "value" => null,
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar Lista Principal Categoria",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "withFilterCategory" => [
+                    "name" => "withFilterCategory",
+                    "value" => null,
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar Filtro Categoria",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "filters" => [
+                    "name" => "filters",
+                    "value" => ['name' => 'categories',
+                        'typeTitle' => 'titleOfTheConfig',
+                        'status' => true,
+                        'isExpanded' => true,
+                        'type' => 'tree',
+                        'repository' => 'Modules\Iblog\Repositories\CategoryRepository',
+                        'entityClass' => 'Modules\Iblog\Entities\Category',
+                        'params' => ['filter' => ['internal' => false]],
+                        'emitTo' => false,
+                        'repoAction' => null,
+                        'repoAttribute' => null,
+                        'listener' => null,
+                        'layout' => 'default',
+                        'classes' => 'col-12'],
+                    "type" => "json",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Filtro de categoria",
+                    ]
+                ],
+                "filtersStyle" => [
+                    "name" => "filtersStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos filters",
+                        'type' => 'textarea',
+                        'rows' => 8,
+                    ],
+                    "help" => [
+                        "description" => "Permite agregar estilos adicionales en el category",
+                    ]
+                ],
+                "itemListType" => [
+                    "name" => "itemListType",
+                    "value" => "Post",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Tipo",
+                        "options" => [
+                            ["label" => "Post", "value" => "Post"],
+                            ["label" => "Category", "value" => "Category"],
+                        ]
+                    ]
+                ],
+                "itemListTake" => [
+                    "name" => "itemListTake",
+                    "value" => "8",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Número de elementos",
+                        "type" => "number",
+                    ]
+                ],
+                "itemListCol" => [
+                    "name" => "itemListCol",
+                    "value" => "col-12 col-md-6 col-lg-4 mb-3",
+                    "columns" => "col-12",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Columna de elementos",
+                    ]
+                ],
+                "itemListPag" => [
+                    "name" => "itemListPag",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar Paginación",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "itemListPagType" => [
+                    "name" => "itemListPagType",
+                    "value" => "normal",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Tipo",
+                        "options" => [
+                            ["label" => "Normal", "value" => "normal"],
+                            ["label" => "LoadMore", "value" => "loadMore"],
+                            ["label" => "InfiniteScroll", "value" => "infiniteScroll"],
+                        ]
+                    ]
+                ],
+                "itemListPagStyle" => [
+                    "name" => "itemListPagStyle",
+                    "value" => ["color" => "var(--dark)",
+                        "size" => "12",
+                        "width" => "30",
+                        "height" => "30",
+                        "radius" => "50%",
+                        "backgroundActivo" => "var(--primary)",
+                        "backgroundInactivo" => "transparent",
+                        "colorHover" => "var(--light)",
+                        "colorActivo" => "#ffffff",
+                        "backgroundHover" => "var(--light)",
+                        "margin" => "0"],
+                    "type" => "json",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilo del Paginador"
+                    ]
+                ],
+                "itemListPagStyleGeneral" => [
+                    "name" => "itemListPagStyleGeneral",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilo libre del Paginador",
+                        'type' => 'textarea',
+                        'rows' => 5,
+                    ],
+                    "help" => [
+                        "description" => "Permite agregar estilos adicionales al paginador",
+                    ]
+                ],
+                "withListLateral" => [
+                    "name" => "withListLateral",
+                    "value" => null,
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar Lista Latetal",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "itemListLateralAttr" => [
+                    "name" => "itemListLateralAttr",
+                    "value" => ['withViewMoreButton'=>false,
+                        'withCategory'=>false,
+                        'withSummary'=>false,
+                        'withCreatedDate'=>true,
+                        'layout'=>'item-list-layout-7',
+                        'imageAspect'=>'4/3',
+                        'imageObject'=>'cover',
+                        'withTitle'=>true,
+                        'titleTextSize'=>'14',
+                        'titleTextSizeMobile'=>'14',
+                        'titleTextWeight'=>'font-weight-bold',
+                        'formatCreatedDate'=>'d \d\e M, Y',
+                        'createdDateAlign'=>'text-left',
+                        'createdDateTextSize'=>'11',
+                        'createdDateTextWeight'=>'font-weight-normal',
+                        'imagePosition'=>'2',
+                        'imagePositionVertical'=>'align-self-star',
+                        'contentPositionVertical'=>'align-self-star',
+                        'columnLeft'=>'col-lg-5',
+                        'columnRight'=>'col-lg-7 pl-lg-3',
+                        'contentMarginInsideX'=>'mx-0',
+                        'titleColor'=>'text-dark',
+                        'createdDateColor'=>'text-dark',
+                        'titleMarginT'=>'mt-2 mt-lg-0',
+                        'titleMarginB'=>'mb-0 mb-md-2',
+                        'createdDateMarginT'=>'mt-1',
+                        'createdDateMarginB'=>'mb-1',
+                        'contentPaddingLeft'=>'0',
+                        'contentPaddingRight'=>'0',
+                        'titleHeight'=>35],
+                    "type" => "json",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Atributos items  (Lista)"
+                    ]
+                ],
+                "itemListLateralType" => [
+                    "name" => "itemListLateralType",
+                    "value" => "Post",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Tipo  (Lista)",
+                        "options" => [
+                            ["label" => "Post", "value" => "Post"],
+                            ["label" => "Category", "value" => "Category"],
+                        ]
+                    ]
+                ],
+                "itemListLateralTake" => [
+                    "name" => "itemListLateralTake",
+                    "value" => "3",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Número de elementos (Lista)",
+                        "type" => "number",
+                    ]
+                ],
+                "itemListLateralCol" => [
+                    "name" => "itemListLateralCol",
+                    "value" => "col-12 mb-4",
+                    "columns" => "col-12",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Columna de elementos (Lista)",
+                    ]
+                ],
+                "withCarousel" => [
+                    "name" => "withCarousel",
+                    "value" => null,
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar Carousel",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "carouselAttr" => [
+                    "name" => "carouselAttr",
+                    "value" => ["take" => "20",
+                        "margin" => "20",
+                        "loops" => false,
+                        "dots" => false,
+                        "titleClasses" => "",
+                        "dotsStyle" => "",
+                        "dotsStyleColor" => "",
+                        "dotsSize" => "",
+                        "mediaImage" => "mainimage",
+                        "autoplay" => false,
+                        "responsive" => [300 => ['items' =>  1],700 => ['items' =>  2], 1024 => ['items' => 3]],
+                        "center" => false,
+                        "stagePadding" => "0",],
+                    "type" => "json",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Atributos Carousel"
+                    ],
+                ],
+                "carouselItems" => [
+                    "name" => "carouselItems",
+                    "value" => [],
+                    "type" => "json",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Atributos items Carousel"
+                    ]
+                ],
+            ]
+        ],
+        "post" => [
+            "title" => "Elementos extra del Post",
+            "fields" => [
+                "withSummary" => [
+                    "name" => "withSummary",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar (Resumen)",
+                        "options" => [
+                            ["label" => "Si", "value" => "1"],
+                            ["label" => "Si (en la descripción)", "value" => "2"],
+                            ["label" => "No", "value" => "3"],
+                        ]
+                    ]
+                ],
+                "summaryFontSize" => [
+                    "name" => "summaryFontSize",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Tamaño de fuente (Resumen)",
+                        "type" => "number"
+                    ]
+                ],
+                "summaryAlign" => [
+                    "name" => "summaryAlign",
+                    "value" => "text-left",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Alineación (Resumen)",
+                        "options" => $vAttributes["textAlign"]
+                    ]
+                ],
+                "summaryLetterSpacing" => [
+                    "name" => "summaryLetterSpacing",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Espacio entre letras (Resumen)",
+                        "type" => "number"
+                    ]
+                ],
+                "summaryColorByClass" => [
+                    "name" => "summaryColorByClass",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Color Class (Resumen)",
+                        "options" => $vAttributes["textColors"]
+                    ]
+                ],
+                "summaryColor" => [
+                    "name" => "summaryColor",
+                    "type" => "inputColor",
+                    "props" => [
+                        "label" => "Color Custom (Resumen)",
+                    ],
+                    "help" => [
+                        "description" => "Selecciona el color Custom en Color Class para activarlo",
+                    ]
+                ],
+                "summaryClass" => [
+                    "name" => "summaryClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases (Resumen)",
+                    ],
+                ],
+                "summaryStyle" => [
+                    "name" => "summaryStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos (Resumen)",
+                        'type' => 'textarea',
+                        'rows' => 8,
+                    ],
+                    "help" => [
+                        "description" => "Permite agregar estilos adicionales en el resumen",
+                    ]
+                ],
+                "withCategory" => [
+                    "name" => "withCategory",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar (Category)",
+                        "options" => [
+                            ["label" => "Si", "value" => "1"],
+                            ["label" => "Si (en la descripción)", "value" => "2"],
+                            ["label" => "No", "value" => "3"],
+                        ]
+                    ]
+                ],
+                "categoryFontSize" => [
+                    "name" => "categoryFontSize",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Tamaño de fuente (Category)",
+                        "type" => "number"
+                    ]
+                ],
+                "categoryAlign" => [
+                    "name" => "categoryAlign",
+                    "value" => "text-left",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Alineación (Category)",
+                        "options" => $vAttributes["textAlign"]
+                    ]
+                ],
+                "categoryLetterSpacing" => [
+                    "name" => "categoryLetterSpacing",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Espacio entre letras (Category)",
+                        "type" => "number"
+                    ]
+                ],
+                "categoryColorByClass" => [
+                    "name" => "categoryColorByClass",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Color Class (Category)",
+                        "options" => $vAttributes["textColors"]
+                    ]
+                ],
+                "categoryColor" => [
+                    "name" => "categoryColor",
+                    "type" => "inputColor",
+                    "props" => [
+                        "label" => "Color Custom (Category)",
+                    ],
+                    "help" => [
+                        "description" => "Selecciona el color Custom en Color Class para activarlo",
+                    ]
+                ],
+                "categoryClass" => [
+                    "name" => "categoryClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases (Category)",
+                    ],
+                ],
+                "categoryStyle" => [
+                    "name" => "categoryStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos (Category)",
+                        'type' => 'textarea',
+                        'rows' => 8,
+                    ],
+                    "help" => [
+                        "description" => "Permite agregar estilos adicionales en el category",
+                    ]
+                ],
+                "withDate" => [
+                    "name" => "withDate",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar (Fecha)",
+                        "options" => [
+                            ["label" => "Si", "value" => "1"],
+                            ["label" => "Si (en la descripción)", "value" => "2"],
+                            ["label" => "No", "value" => "3"],
+                        ]
+                    ]
+                ],
+                "dateFontSize" => [
+                    "name" => "dateFontSize",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Tamaño de fuente (Fecha)",
+                        "type" => "number"
+                    ]
+                ],
+                "dateAlign" => [
+                    "name" => "dateAlign",
+                    "value" => "text-left",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Alineación (Fecha)",
+                        "options" => $vAttributes["textAlign"]
+                    ]
+                ],
+                "formatCreatedDate" => [
+                    "name" => "formatCreatedDate",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Formato (Fecha)",
+                        "options" => $vAttributes["formatCreatedDate"]
+                    ]
+                ],
+                "dateColorByClass" => [
+                    "name" => "dateColorByClass",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Color Class (Fecha)",
+                        "options" => $vAttributes["textColors"]
+                    ]
+                ],
+                "dateColor" => [
+                    "name" => "dateColor",
+                    "type" => "inputColor",
+                    "props" => [
+                        "label" => "Color Custom (Fecha)",
+                    ],
+                    "help" => [
+                        "description" => "Selecciona el color Custom en Color Class para activarlo",
+                    ]
+                ],
+                "dateClass" => [
+                    "name" => "dateClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases (Fecha)",
+                    ],
+                ],
+                "dateStyle" => [
+                    "name" => "dateStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos (Fecha)",
+                        'type' => 'textarea',
+                        'rows' => 8,
+                    ],
+                    "help" => [
+                        "description" => "Permite agregar estilos adicionales en el fecha",
+                    ]
+                ],
+                "withUser" => [
+                    "name" => "withUser",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar (Usuario)",
+                        "options" => [
+                            ["label" => "Si", "value" => "1"],
+                            ["label" => "Si (en la descripción)", "value" => "2"],
+                            ["label" => "No", "value" => "3"],
+                        ]
+                    ]
+                ],
+                "userFontSize" => [
+                    "name" => "userFontSize",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Tamaño de fuente (Usuario)",
+                        "type" => "number"
+                    ]
+                ],
+                "userAlign" => [
+                    "name" => "userAlign",
+                    "value" => "text-left",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Alineación (Usuario)",
+                        "options" => $vAttributes["textAlign"]
+                    ]
+                ],
+                "userLetterSpacing" => [
+                    "name" => "userLetterSpacing",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Espacio entre letras (Usuario)",
+                        "type" => "number"
+                    ]
+                ],
+                "userColorByClass" => [
+                    "name" => "userColorByClass",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Color Class (Usuario)",
+                        "options" => $vAttributes["textColors"]
+                    ]
+                ],
+                "userColor" => [
+                    "name" => "userColor",
+                    "type" => "inputColor",
+                    "props" => [
+                        "label" => "Color Custom (Usuario)",
+                    ],
+                    "help" => [
+                        "description" => "Selecciona el color Custom en Color Class para activarlo",
+                    ]
+                ],
+                "userClass" => [
+                    "name" => "userClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases (Usuario)",
+                    ],
+                ],
+                "userStyle" => [
+                    "name" => "userStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos (Usuario)",
+                        'type' => 'textarea',
+                        'rows' => 8,
+                    ],
+                    "help" => [
+                        "description" => "Permite agregar estilos adicionales en el usuario",
+                    ]
+                ],
+
+            ]
+        ],
+        "share" => [
+            "title" => "Compartir",
+            "fields" => [
+                "withBody" => [
+                    "name" => "withShare",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Mostrar",
+                        "options" => $vAttributes["validation"]
+                    ]
+                ],
+                "shareFontClass" => [
+                    "name" => "shareFontClass",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Tamaño de fuente",
+                        "type" => "number"
+                    ]
+                ],
+                "shareClass" => [
+                    "name" => "shareClass",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Clases",
+                    ],
+                ],
+                "shareStyle" => [
+                    "name" => "shareStyle",
+                    "type" => "input",
+                    "columns" => "col-12",
+                    "props" => [
+                        "label" => "Estilos",
+                        'type' => 'textarea',
+                        'rows' => 5,
+                    ],
+                ],
+            ]
+        ],
+    ]
+  ],
 ];
