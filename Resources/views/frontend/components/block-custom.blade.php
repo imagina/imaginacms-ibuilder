@@ -15,9 +15,7 @@
             @endif
             @if($video)
                 <div class="custom-video {{$videoClasses}} {{$orderClasses["video"] ?? 'order-0'}}">
-                    <div class="embed-responsive {{$videoResponsive}}">
-                        <iframe class="embed-responsive-item video" src="{{$video}}"></iframe>
-                    </div>
+                    @include('ibuilder::frontend.partials.video-youtube')
                 </div>
             @endif
             @if($includeCustom)
@@ -42,9 +40,7 @@
             @endif
             @if($video)
                 <div class="custom-video {{$videoClasses}} {{$orderClasses["video"] ?? 'order-0'}}">
-                    <div class="embed-responsive {{$videoResponsive}}">
-                        <iframe class="embed-responsive-item video" src="{{$video}}"></iframe>
-                    </div>
+                    @include('ibuilder::frontend.partials.video-youtube')
                 </div>
             @endif
             @if($includeCustom)
@@ -131,9 +127,7 @@
                 @endif
                 @if($video)
                     <div class="custom-video {{$videoClasses}} {{$orderClasses["video"] ?? 'order-0'}}">
-                        <div class="embed-responsive {{$videoResponsive}}">
-                            <iframe class="embed-responsive-item video" src="{{$video}}"></iframe>
-                        </div>
+                        @include('ibuilder::frontend.partials.video-youtube')
                     </div>
                 @endif
                 @if($includeCustom)
