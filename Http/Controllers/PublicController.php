@@ -34,11 +34,12 @@ class PublicController extends BaseApiController
       $params = ['include' => []];
 
       $layout = $repositoryLayout->getItem($layoutId, json_decode(json_encode($params)));
+      $isDemoLayout = true;
 
       if ($layout) {
         $blocks = $layout->getBlocksToRender();
         //Render view
-        return view('ibuilder::frontend.index', compact('layout', 'blocks'));
+        return view('ibuilder::frontend.index', compact('layout', 'blocks', 'isDemoLayout'));
       } else {
         return response()->view('errors.404', [], 404);
       }
