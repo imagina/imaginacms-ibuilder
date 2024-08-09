@@ -288,7 +288,7 @@ class ContentCustom extends Component
                               $itemListLabelButton = '',
                               $itemListTake = 8,
                               $itemListCol = "col-12 col-md-6 col-lg-4 mb-3",
-                              $itemListFilter = "",
+                              $itemListFilter = "category",
                               $itemListPag = true,
                               $itemListPagType = "normal",
                               $itemListPagStyle = [],
