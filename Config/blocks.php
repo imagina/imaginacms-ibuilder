@@ -1219,6 +1219,21 @@ return [
                         "description" => "Funciona cuando el breadcrumb esta dentro de la imagen",
                     ]
                 ],
+                "titleType" => [
+                    "name" => "titleType",
+                    "value" => "1",
+                    "type" => "select",
+                    "props" => [
+                        "label" => "Contenido del titulo",
+                        "options" => [
+                            ["label" => "Post", "value" => "1"],
+                            ["label" => "Categoria Principal", "value" => "2"],
+                        ],
+                    ],
+                    "help" => [
+                        "description" => "Solo en caso de post",
+                    ]
+                ],
                 "titleClass" => [
                     "name" => "titleClass",
                     "type" => "input",
@@ -2235,6 +2250,14 @@ return [
                             ["label" => "Post", "value" => "Post"],
                             ["label" => "Category", "value" => "Category"],
                         ]
+                    ]
+                ],
+                "itemListFilter" => [
+                    "name" => "itemListFilter",
+                    "value" => "category",
+                    "type" => "input",
+                    "props" => [
+                        "label" => "Filtro (category,parent_id)",
                     ]
                 ],
                 "itemListTake" => [

@@ -36,6 +36,8 @@ class BreadcrumbCustom extends Component
     public $icon;
     public $iconFont;
     public $breadcrumbPosition;
+    public $typeContent;
+    public $titleType; // 1 nombre actual , 2 categoria (Solo en post)
 
   /**
    * Create a new component instance.
@@ -71,7 +73,8 @@ class BreadcrumbCustom extends Component
                               $imageObjectFit = "cover",
                               $imageObjectPosicion = "",
                               $imageAspectRatio = "21/5",
-                              $imageAspectRatioMobile = "16/9"
+                              $imageAspectRatioMobile = "16/9",
+                              $titleType = 1
   )
   {
       $this->sectionClass = $sectionClass;
@@ -102,6 +105,7 @@ class BreadcrumbCustom extends Component
       $this->imageObjectPosicion = $imageObjectPosicion;
       $this->imageAspectRatio = $imageAspectRatio;
       $this->imageAspectRatioMobile = $imageAspectRatioMobile;
+      $this->titleType = $titleType;
       $this->getItem($item,$viewParams);
   }
 
@@ -125,6 +129,18 @@ class BreadcrumbCustom extends Component
       }
       else {
           $this->item = $item;
+      }
+
+      switch ($this->item->entity) {
+          case 'Modules\Page\Entities\Page':
+              $this->typeContent = 'page';
+              break;
+          case 'Modules\Iblog\Entities\Post':
+              $this->typeContent = 'post';
+              break;
+          case 'Modules\Iblog\Entities\Category':
+              $this->typeContent = 'category';
+              break;
       }
 
   }

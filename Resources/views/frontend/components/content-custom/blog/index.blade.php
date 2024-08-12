@@ -53,7 +53,7 @@
                                 :title="$itemListTitle"
                                 :pagination="[ 'show' => $itemListPag, 'type' => $itemListPagType]"
                                 :showTitle="!empty($itemListTitle) ? true : false"
-                                :params="['filter' => ['category' => $item->id ?? null],'take'=> $itemListTake]"
+                                :params="['filter' => [$itemListFilter => $item->id ?? null],'take'=> $itemListTake]"
                                 :responsiveTopContent="['mobile'=>false,'desktop'=>false]"
                         />
                         </div>
