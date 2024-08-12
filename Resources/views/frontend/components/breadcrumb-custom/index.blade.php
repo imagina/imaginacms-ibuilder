@@ -17,7 +17,13 @@
                 <div class="h-100 {{$row}}">
                     <div class="{{$col}}">
                         @if($titlePosition==2&&$withTitle)
-                            <div class="title-section {{$colorTitleByClass}} {{$titleClass}}">{{$item->title}}</div>
+                            <div class="title-section {{$colorTitleByClass}} {{$titleClass}}">
+                                @if($typeContent=='post' && $titleType==2)
+                                    {{$item->category->title}}
+                                @else
+                                    {{$item->title}}
+                                @endif
+                            </div>
                         @endif
                         @if($breadcrumbPosition==2)
                         <nav aria-label="breadcrumb">
@@ -25,7 +31,13 @@
                         </nav>
                         @endif
                         @if($titlePosition==1&&$withTitle)
-                        <div class="title-section  {{$colorTitleByClass}} {{$titleClass}}">{{$item->title}}</div>
+                        <div class="title-section  {{$colorTitleByClass}} {{$titleClass}}">
+                            @if($typeContent=='post' && $titleType==2)
+                                {{$item->category->title}}
+                            @else
+                                {{$item->title}}
+                            @endif
+                        </div>
                         @endif
                     </div>
                 </div>
