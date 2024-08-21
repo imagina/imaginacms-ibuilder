@@ -27,6 +27,9 @@
                 </div>
 
                 <div class="body {{$bodyColorByClass}} {{$bodyAlign}} {{$bodyClass}}">
+                  @if($withTitle==4)
+                    @include('ibuilder::frontend.components.content-custom.partials.title')
+                  @endif
                     {!! $item->body ?? $item->description ?? $item->custom_html ?? '' !!}
                 </div>
             </div>

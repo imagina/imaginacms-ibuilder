@@ -1476,8 +1476,9 @@ return [
                         "label" => "Mostrar Titulo",
                         "options" => [
                             ["label" => "Si", "value" => "1"],
-                            ["label" => "Si (en la descripción)", "value" => "2"],
+                            ["label" => "Si (Arriba de la Imagen)", "value" => "2"],
                             ["label" => "No", "value" => "3"],
+                            ["label" => "Si (En la Descripcion)", "value" => "4"],
                         ]
                     ]
                 ],
