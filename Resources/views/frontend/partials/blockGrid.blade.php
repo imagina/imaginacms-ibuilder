@@ -5,7 +5,7 @@
 @endphp
 <!-- Template to render the block GRID -->
 <{{ $tag }} class="container-fluid px-0">
-  <div class="row no-gutters">
+  <div class="row no-gutters g-0">
     @foreach($blocks as $block)
       <div class="{{ $block["gridPosition"] }}">
         <!-- Block Title (Demo)-->
