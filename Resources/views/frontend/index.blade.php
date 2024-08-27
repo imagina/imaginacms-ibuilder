@@ -1,8 +1,8 @@
 @extends($useLayout ?? 'isite::frontend.layouts.blank')
 
 @section('meta')
-  @if(isset($viewParams['viewIbuilderMetaTags']))
-    @include($viewParams['viewIbuilderMetaTags'], $viewParams)
+  @if(isset($viewParams['IbuilderLayoutMetaTags']))
+    @include($viewParams['IbuilderLayoutMetaTags'], $viewParams)
   @endif
 @endsection
 
