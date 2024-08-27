@@ -1,5 +1,11 @@
 @extends($useLayout ?? 'isite::frontend.layouts.blank')
 
+@section('meta')
+  @if(isset($viewParams['IbuilderLayoutMetaTags']))
+    @include($viewParams['IbuilderLayoutMetaTags'], $viewParams)
+  @endif
+@endsection
+
 @section('content')
   @include('ibuilder::frontend.partials.blockGrid')
 @stop
