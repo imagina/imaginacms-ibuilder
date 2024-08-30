@@ -56,6 +56,7 @@ $router->group(['prefix' => '/ibuilder/v1'], function (Router $router) {
     'module' => 'ibuilder',
     'prefix' => 'layout-blocks',
     'controller' => 'LayoutBlockApiController',
+    'permission' => 'ibuilder.layoutblocks',
     'middleware' => ['index' => [], 'show' => []],
     'customRoutes' => [ // Include custom routes if needed
       [
