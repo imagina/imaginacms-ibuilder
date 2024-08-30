@@ -41,6 +41,7 @@ $router->group(['prefix' => '/ibuilder/v1'], function (Router $router) {
     'module' => 'ibuilder',
     'prefix' => 'buildables',
     'controller' => 'BuildableApiController',
+    'middleware' => ['index' => [], 'show' => []],
     //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []],
     // 'customRoutes' => [ // Include custom routes if needed
     //  [
@@ -55,7 +56,7 @@ $router->group(['prefix' => '/ibuilder/v1'], function (Router $router) {
     'module' => 'ibuilder',
     'prefix' => 'layout-blocks',
     'controller' => 'LayoutBlockApiController',
-    //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []],
+    'middleware' => ['index' => [], 'show' => []],
     'customRoutes' => [ // Include custom routes if needed
       [
         'method' => 'put', // get,post,put....
