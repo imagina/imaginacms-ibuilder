@@ -11,6 +11,7 @@ class CacheBlockDecorator extends BaseCacheCrudDecorator implements BlockReposit
     {
         parent::__construct();
         $this->entityName = 'ibuilder.blocks';
+        $this->tags = ['ibuilder.layouts', 'ibuilder.layoutblocks'];
         $this->repository = $block;
     }
 }
