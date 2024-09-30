@@ -32,26 +32,16 @@
 >
 
   @if($editLink)
-{{--    <x-isite::edit-link--}}
-{{--      link="{{$editLink}}"--}}
-{{--      tooltip="{{$tooltipEditLink}}"--}}
-{{--      icon="fas fa-edit"--}}
-{{--      bottom="0"--}}
-{{--      left="20px !important"--}}
-{{--      top="unset !important"--}}
-{{--      right="unset !important"--}}
-{{--      bgColor="#c700db"--}}
-{{--    />--}}
-        @livewire('isite::edit-link', [
-        'link' => "{{$editLink}}",
-        'tooltip' => "{{$tooltipEditLink}}",
-        'icon' => "fas fa-edit",
-        'bottom' => "0",
-        'left' => "20px !important",
-        'top' => "unset !important",
-        'right' => "unset !important",
-        'bgColor' => "#c700db",
-        ])
+    <x-isite::edit-link
+      link="{{$editLink}}"
+      tooltip="{{$tooltipEditLink}}"
+      icon="fas fa-edit"
+      bottom="0"
+      left="20px !important"
+      top="unset !important"
+      right="unset !important"
+      bgColor="#c700db"
+    />
   @endif
 
   @if($block->overlay ?? $overlay)
