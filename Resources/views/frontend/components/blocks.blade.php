@@ -33,7 +33,7 @@
 >
 
   @if($editLink)
-    <livewire:isite::edit-link
+    <x-isite::edit-link
       link="{{$editLink}}"
       tooltip="{{$tooltipEditLink}}"
       icon="fas fa-edit"
