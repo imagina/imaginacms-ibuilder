@@ -8,4 +8,7 @@ class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
     ];
+    public function register()
+    {
+    }
 }
