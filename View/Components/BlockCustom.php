@@ -7,6 +7,8 @@ use Illuminate\View\Component;
 class BlockCustom extends Component
 {
   public $id;
+  public $item;
+  public $viewParams;
   public $iconColor;
   public $titleCustom;
   public $titleClasses;
@@ -59,6 +61,8 @@ class BlockCustom extends Component
    * @return void
    */
   public function __construct($id = null,
+                              $item = [],
+                              $viewParams = [],
                               $iconColor = 'currentcolor',
                               $titleCustom = '',
                               $titleClasses = '',
@@ -153,8 +157,46 @@ class BlockCustom extends Component
       'border-hover' => '0',
       'boxShadow-hover' => 'none'
     ];
+    $this->getItem($item,$viewParams);
   }
 
+  /**
+   * Get the inherit content for page blog (post,category)
+   *
+   * @return item
+   */
+  public function getItem($item,$params)
+  {
+    if(!empty($params)) {
+      if(isset($params['post'])) {
+        $this->item = $params['post'];
+      }
+      if(isset($params['posts'])) {
+        $this->item = $params['category'];
+      }
+      if(isset($params['page'])) {
+        $this->item = $params['page'];
+      }
+    }
+    else {
+      $this->item = $item;
+    }
+//    dd($this->item);
+
+    if(!empty($this->item->entity)){
+      switch ($this->item->entity) {
+        case 'Modules\Page\Entities\Page':
+          $this->typeContent = 'page';
+          break;
+        case 'Modules\Iblog\Entities\Post':
+          $this->typeContent = 'post';
+          break;
+        case 'Modules\Iblog\Entities\Category':
+          $this->typeContent = 'category';
+          break;
+      }
+    }
+  }
   /**
    * Get the view / contents that represent the component.
    *
