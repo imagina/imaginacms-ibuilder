@@ -37,16 +37,28 @@ trait isBuildable
    */
   public function getLayout()
   {
+    $layoutType = null;
     //Validate if exist buildable
-    if (!$this->buildable) return null;
-    // Check if the buildable entity has a layout defined, and return it if found.
-    if ($this->buildable->layout) return $this->buildable->layout;
+    if ($this->buildable) {
+      // Check if the buildable entity has a layout defined, and return it if found.
+      if ($this->buildable->layout) return $this->buildable->layout;
+      else $layoutType = $this->buildable->type;
+    } else {
+      $namespaceParts = explode('\\', get_class($this));
+      $moduleName = strtolower($namespaceParts[1]);
+      $entityClass = get_class($this);
+      $layoutConfig = config("asgard.{$moduleName}.config.builder.layout", []);
+      $defaultType = collect($layoutConfig)->firstWhere('entity.value', $entityClass);
+      $layoutType = $defaultType['defaultType'] ?? "general";
+    }
+    //Response
+    if (!$layoutType) return null;
     //Search the default layout
     $layoutRepositoy = app("Modules\Ibuilder\Repositories\LayoutRepository");
     $params = json_decode(json_encode([
       "filter" => [
         "field" => "entity_type",
-        "type" => $this->buildable->type,
+        "type" => $layoutType,
         "default" => 1
       ]
     ]));
@@ -92,12 +104,19 @@ trait isBuildable
   {
     // Extract the data related to the buildable entity from the parameters.
     $data = $params["data"]["buildable"] ?? null;
-    if ($data && $data['layout_id'] && $data["type"]) {
+    if ($data) {
       // Update or create a new Buildable model instance with the provided data.
-      Buildable::updateOrCreate(
-        ['entity_type' => $this->getMorphClass(), 'entity_id' => $this->id],
-        ['layout_id' => $data["layout_id"], 'type' => $data["type"]]
-      );
+      if ($data['layout_id'] && $data["type"]) {
+        Buildable::updateOrCreate(
+          ['entity_type' => $this->getMorphClass(), 'entity_id' => $this->id],
+          ['layout_id' => $data["layout_id"], 'type' => $data["type"]]
+        );
+      }
+      //Remove the buildable
+      if (is_null($data['layout_id'])) {
+        Buildable::where('entity_type', $this->getMorphClass())
+          ->where('entity_id', $this->id)->forceDelete();
+      }
     }
   }
 
