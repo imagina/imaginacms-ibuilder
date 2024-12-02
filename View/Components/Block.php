@@ -32,21 +32,21 @@ class Block extends Component
     $columns = null,
     $borderForm = null,
     $display = null,
-    $width = "auto",
-    $height = "auto",
+    $width = 'auto',
+    $height = 'auto',
     $backgrounds = [],
-    $paddingX = "",
-    $paddingY = "",
-    $marginX = "auto",
-    $marginY = "auto",
+    $paddingX = '',
+    $paddingY = '',
+    $marginX = 'auto',
+    $marginY = 'auto',
     $overlay = null,
-    $backgroundColor = "",
-    $componentIsite = "",
+    $backgroundColor = '',
+    $componentIsite = '',
     $systemName = null,
     $blockConfig = [],
-    $blockClasses = "",
-    $blockStyle = "",
-    $row = "",
+    $blockClasses = '',
+    $blockStyle = '',
+    $row = '',
     $inheritContent = null,
     $position = "relative",
     $top = "unset",
@@ -94,12 +94,10 @@ class Block extends Component
     $this->instanceBlockConfigFiles($params);
     $this->instanceComponentType($params);
     $this->instanceComponentConfig();
-
   }
 
   /**
    * Instance the component attributes
-   * @return void
    */
   public function instanceGeneralAttributes($params)
   {
@@ -166,7 +164,6 @@ class Block extends Component
 
   /**
    * Instance the Background attribute
-   * @return void
    */
   public function instanceBackgroundAttribute($params)
   {
@@ -181,8 +178,6 @@ class Block extends Component
 
   /**
    * Instance the block config
-   * @param $params
-   * @return void
    */
   public function instanceBlockConfig($params)
   {
@@ -192,10 +187,10 @@ class Block extends Component
         $block = $this->blockRepository->getItem($this->systemName, json_decode(json_encode([
           'filter' => ['field' => 'system_name']
         ])));
+
         if ($block) $this->blockConfig = $block->getRenderData();
       }
     }
-
     //Parse
     $blockConfig = json_decode(json_encode(array_merge(["status" => true], $this->blockConfig)));
 
@@ -206,7 +201,6 @@ class Block extends Component
 
     //Set blockConfig
     $this->blockConfig = $blockConfig;
-
     //Set useViewParams if indicator enable and the prop has data
     $this->useViewParams = !count($this->viewParams) ? 0 : (int)($this->blockConfig->entity->useViewParams ?? '0');
 
@@ -222,9 +216,6 @@ class Block extends Component
 
   /**
    * Instance the Media files related to the block
-   *
-   * @param $params
-   * @return void
    */
   public function instanceBlockConfigFiles($params)
   {
@@ -270,7 +261,6 @@ class Block extends Component
 
   /**
    * Validate and instance if the dynamic component is Liveware or Blade
-   * @return void
    */
   public function instanceComponentType($params)
   {
@@ -289,7 +279,7 @@ class Block extends Component
           $finder = app('Livewire\LivewireManager');
           $lwClass = $finder->getClass($systemName);
           $this->blockConfig->component->nameSpace = $lwClass;
-          $this->componentType = "livewire";
+          $this->componentType = 'livewire';
         } catch (\Exception $e) {
         }
       }
@@ -302,25 +292,24 @@ class Block extends Component
 
   /**
    * Instance the component config
-   * @return void
    */
   public function instanceComponentConfig()
   {
     if ($this->componentType) {
       //Instance the default config
       $this->componentConfig = [
-        "systemName" => $this->blockConfig->component->systemName ?? null,
-        "nameSpace" => $this->blockConfig->component->nameSpace ?? null,
-        "attributes" => []
+        'systemName' => $this->blockConfig->component->systemName ?? null,
+        'nameSpace' => $this->blockConfig->component->nameSpace ?? null,
+        'attributes' => [],
       ];
       //Instance the default Attributes by component
       $attributes = $this->blockConfig->attributes ?? [];
       //Set component attirbutes
-      $this->componentConfig["attributes"] = json_decode(json_encode($attributes->componentAttributes ?? []), true);
+      $this->componentConfig['attributes'] = json_decode(json_encode($attributes->componentAttributes ?? []), true);
       //Set child Attributes
       foreach ($attributes as $name => $attr) {
-        if (!in_array($name, ["componentAttributes", "blockAttributes"])) {
-          $this->componentConfig["attributes"][$name] = json_decode(json_encode($attr), true);
+        if (!in_array($name, ['componentAttributes', 'blockAttributes'])) {
+          $this->componentConfig['attributes'][$name] = json_decode(json_encode($attr), true);
         }
       }
       $systemName = $this->blockConfig->component->systemName;
@@ -333,37 +322,37 @@ class Block extends Component
       if ($entity) {
         switch ($this->blockConfig->component->systemName) {
           case 'isite::carousel.owl-carousel':
-            $this->componentConfig["attributes"]["repository"] = $entity->type;
-            $this->componentConfig["attributes"]["params"] = json_decode(json_encode($entity->params), true);
+            $this->componentConfig['attributes']['repository'] = $entity->type;
+            $this->componentConfig['attributes']['params'] = json_decode(json_encode($entity->params), true);
             //Replace the itemComponentAttributes for IcommerceItem
             if ($entity->type == "Modules\Icommerce\Repositories\ProductRepository") {
-              if (isset($this->componentConfig["attributes"]["productItemComponentAttributes"])) {
-                $this->componentConfig["attributes"]["itemComponentAttributes"] = $this->componentConfig["attributes"]["productItemComponentAttributes"];
-                unset($this->componentConfig["attributes"]["productItemComponentAttributes"]);
+              if (isset($this->componentConfig['attributes']['productItemComponentAttributes'])) {
+                $this->componentConfig['attributes']['itemComponentAttributes'] = $this->componentConfig['attributes']['productItemComponentAttributes'];
+                unset($this->componentConfig['attributes']['productItemComponentAttributes']);
               }
             }
             break;
           case 'slider::slider.Owl':
-            $this->componentConfig["attributes"]["id"] = $entity->id;
+            $this->componentConfig['attributes']['id'] = $entity->id;
             break;
           case 'isite::items-list':
-            $entityTypeExploded = explode("\\", str_replace("/", "\\", $entity->type));
-            $this->componentConfig["attributes"]["moduleName"] = $entityTypeExploded[1];
-            $this->componentConfig["attributes"]["entityName"] = $entityTypeExploded[3];
+            $entityTypeExploded = explode('\\', str_replace('/', '\\', $entity->type));
+            $this->componentConfig['attributes']['moduleName'] = $entityTypeExploded[1];
+            $this->componentConfig['attributes']['entityName'] = $entityTypeExploded[3];
             break;
           case 'isite::lists':
-            $this->componentConfig["attributes"]["repository"] = $entity->type;
-            $this->componentConfig["attributes"]["params"] = json_decode(json_encode($entity->params), true);
+            $this->componentConfig['attributes']['repository'] = $entity->type;
+            $this->componentConfig['attributes']['params'] = json_decode(json_encode($entity->params), true);
             // Replace the itemComponentAttributes for IcommerceItem
             if ($entity->type == "Modules\Icommerce\Repositories\ProductRepository") {
-              if (isset($this->componentConfig["attributes"]["productItemComponentAttributes"])) {
-                $this->componentConfig["attributes"]["itemComponentAttributes"] = $this->componentConfig["attributes"]["productItemComponentAttributes"];
-                unset($this->componentConfig["attributes"]["productItemComponentAttributes"]);
+              if (isset($this->componentConfig['attributes']['productItemComponentAttributes'])) {
+                $this->componentConfig['attributes']['itemComponentAttributes'] = $this->componentConfig['attributes']['productItemComponentAttributes'];
+                unset($this->componentConfig['attributes']['productItemComponentAttributes']);
               }
             }
             break;
           case 'isite::item-list':
-            $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
+            $this->componentConfig['attributes']['item'] = $this->getInheritcontent($entity);
             break;
           case 'isite::custom-content':
             $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
@@ -374,6 +363,12 @@ class Block extends Component
           case 'ibuilder::content-custom':
             $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
             break;
+          case 'ibuilder::block-custom':
+            $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
+            break;
+          case 'ibuilder::lw-content-custom':
+              $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
+          break;
         }
       }
     }
@@ -381,8 +376,6 @@ class Block extends Component
 
   /**
    * Get the inherit content for components
-   *
-   * @return void
    */
   public function getInheritcontent()
   {
@@ -394,6 +387,7 @@ class Block extends Component
     $entity = $this->blockConfig->entity ?? null;
     if (!$this->useViewParams && isset($entity->type) && isset($entity->id)) {
       $model = app($entity->type);
+
       return $model->find($entity->id);
     }
     //Default response
@@ -412,4 +406,3 @@ class Block extends Component
     }
   }
 }
-
