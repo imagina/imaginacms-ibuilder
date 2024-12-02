@@ -11,7 +11,6 @@ class BreadcrumbCustom extends Component
     public $sectionClass;
     public $sectionStyle;
     public $breadcrumbClass;
-    public $breadcrumbOnlyMainCategory;
     public $breadcrumbStyle;
     public $breadcrumbFontSize;
     public $breadcrumbColor;
@@ -49,7 +48,6 @@ class BreadcrumbCustom extends Component
                               $viewParams = [],
                               $sectionClass = "",
                               $sectionStyle = "",
-                              $breadcrumbOnlyMainCategory = 1,
                               $breadcrumbClass = "bg-transparent px-0 mb-0",
                               $breadcrumbStyle = "",
                               $breadcrumbFontSize = 16,
@@ -81,7 +79,6 @@ class BreadcrumbCustom extends Component
   {
       $this->sectionClass = $sectionClass;
       $this->sectionStyle = $sectionStyle;
-      $this->breadcrumbOnlyMainCategory = $breadcrumbOnlyMainCategory;
       $this->breadcrumbClass = $breadcrumbClass;
       $this->breadcrumbStyle = $breadcrumbStyle;
       $this->breadcrumbFontSize = $breadcrumbFontSize;
