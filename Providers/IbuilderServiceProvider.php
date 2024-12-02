@@ -47,6 +47,7 @@ class IbuilderServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
         $this->registerComponents();
+        $this->registerComponentsLivewire();
     }
 
     /**
@@ -117,5 +118,13 @@ class IbuilderServiceProvider extends ServiceProvider
     private function registerComponents()
     {
         Blade::componentNamespace("Modules\Ibuilder\View\Components", 'ibuilder');
+    }
+
+    /**
+     * Register components Livewire
+     */
+    private function registerComponentsLivewire()
+    {
+        Livewire::component('ibuilder::lw-content-custom', \Modules\Ibuilder\Http\Livewire\LWContentCustom::class);
     }
 }

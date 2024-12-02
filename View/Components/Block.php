@@ -366,6 +366,9 @@ class Block extends Component
           case 'ibuilder::block-custom':
             $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
             break;
+          case 'ibuilder::lw-content-custom':
+            $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
+            break;
         }
       }
     }
