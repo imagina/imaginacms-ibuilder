@@ -20,7 +20,7 @@
             @endif
             @if($includeCustom)
                 <div class="custom-include {{$orderClasses["include"] ?? 'order-0'}}">
-                    @include($includeCustom)
+                  @include($includeCustom, $item)
                 </div>
             @endif
         </div>
@@ -45,7 +45,7 @@
             @endif
             @if($includeCustom)
                 <div class="custom-include {{$orderClasses["include"] ?? 'order-7'}}">
-                    @include($includeCustom)
+                  @include($includeCustom, $item)
                 </div>
             @endif
         @endif
@@ -132,7 +132,7 @@
                 @endif
                 @if($includeCustom)
                     <div class="custom-include {{$orderClasses["include"] ?? 'order-0'}}">
-                        @include($includeCustom)
+                      @include($includeCustom, $item)
                     </div>
                 @endif
             </div>

@@ -18,16 +18,19 @@
                     @if($withGallery==2)
                             @include('ibuilder::frontend.components.content-custom.partials.gallery')
                     @endif
-                    @if($withBodyExtra==2 && !is_null($bodyExtra))
-                            @include('ibuilder::frontend.components.content-custom.partials.body-extra')
-                    @endif
                     @if($withVideoExternal==2 && !empty($videoExternal))
                             @include('ibuilder::frontend.components.content-custom.partials.video-extra')
                     @endif
                 </div>
 
                 <div class="body {{$bodyColorByClass}} {{$bodyAlign}} {{$bodyClass}}">
+                  @if($withTitle==4)
+                    @include('ibuilder::frontend.components.content-custom.partials.title')
+                  @endif
                     {!! $item->body ?? $item->description ?? $item->custom_html ?? '' !!}
+                   @if($withBodyExtra==2 && !is_null($bodyExtra))
+                    @include('ibuilder::frontend.components.content-custom.partials.body-extra')
+                   @endif
                 </div>
             </div>
         @endif

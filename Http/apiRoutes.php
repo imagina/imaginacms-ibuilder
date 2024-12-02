@@ -35,13 +35,15 @@ Route::prefix('/ibuilder/v1')->group(function (Router $router) {
       'module' => 'ibuilder',
       'prefix' => 'buildables',
       'controller' => 'BuildableApiController',
+      'middleware' => ['index' => [], 'show' => []],
     ]);
 
     $router->apiCrud([
       'module' => 'ibuilder',
       'prefix' => 'layout-blocks',
       'controller' => 'LayoutBlockApiController',
-      //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []],
+      'permission' => 'ibuilder.layoutblocks',
+      'middleware' => ['index' => [], 'show' => []],
       'customRoutes' => [
         [
           'method' => 'put',

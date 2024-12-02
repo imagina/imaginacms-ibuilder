@@ -34,6 +34,7 @@ if (!function_exists('mapBlockToRender')) {
     //Instance the response
     $response = [
       "id" => $data["id"],
+      "internalTitle" => $data["internal_title"] ?? '',
       "status" => $data["status"],
       "systemName" => $data["system_name"] ?? $data["systemName"],
       "gridPosition" => $data["gridPosition"] ?? $data["grid_position"] ?? 'col-12',
@@ -41,7 +42,8 @@ if (!function_exists('mapBlockToRender')) {
       "parentSystemName" => $data["parentSystemName"] ?? $data["parent_system_name"] ?? null,
       "component" => $component,
       "entity" => $entity,
-      "attributes" => $attributes
+      "attributes" => $attributes,
+      "mediaFiles" => $data["mediaFiles"] ?? []
     ];
 
     //Added media files for preview as mediaSingle and mediasMulti
