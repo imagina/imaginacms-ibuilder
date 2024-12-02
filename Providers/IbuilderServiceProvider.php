@@ -8,6 +8,7 @@ use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Ibuilder\Listeners\RegisterIbuilderSidebar;
+use Livewire\Livewire;
 
 class IbuilderServiceProvider extends ServiceProvider
 {
