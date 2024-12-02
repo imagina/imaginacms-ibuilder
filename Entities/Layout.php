@@ -46,4 +46,16 @@ class Layout extends CrudModel
   {
     return orderBlocksToRender(blocksToArray($this->blocks), false);
   }
+
+  public function getCacheClearableData()
+  {
+    $response = [];
+
+    //if a header or footer layout is created or updated, clear all response cache
+    if ($this->entity_type == "Modules\\Ibuilder\\Entities\\Layout" && in_array($this->type, ['header', 'footer'])) {
+      $response['allResponseCache'] = true;
+    }
+
+    return $response;
+  }
 }

@@ -11,6 +11,7 @@ class CacheLayoutBlockDecorator extends BaseCacheCrudDecorator implements Layout
     {
         parent::__construct();
         $this->entityName = 'ibuilder.layoutblocks';
+        $this->tags = 'ibuilder.layouts';
         $this->repository = $layoutblock;
     }
 }

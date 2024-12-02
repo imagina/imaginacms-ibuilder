@@ -92,7 +92,7 @@ trait isBuildable
   {
     // Extract the data related to the buildable entity from the parameters.
     $data = $params["data"]["buildable"] ?? null;
-    if ($data) {
+    if ($data && $data['layout_id'] && $data["type"]) {
       // Update or create a new Buildable model instance with the provided data.
       Buildable::updateOrCreate(
         ['entity_type' => $this->getMorphClass(), 'entity_id' => $this->id],
