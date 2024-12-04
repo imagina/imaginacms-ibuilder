@@ -3469,6 +3469,51 @@ return [
                           "description" => "Ejemplo de valores: top, bottom, left, right, center, 25% 75%, 1cm 2cm, bottom 10px right 20px",
                       ]
                   ],
+                  "galleryAutoPlay" => [
+                      "name" => "galleryAutoPlay",
+                      "value" => "0",
+                      "type" => "select",
+                      "props" => [
+                          "label" => "AutoPlay (video)",
+                          "options" => $vAttributes["validation"]
+                      ]
+                  ],
+                  "galleryFancybox" => [
+                      "name" => "galleryFancybox",
+                      "value" => "0",
+                      "type" => "select",
+                      "props" => [
+                          "label" => "Fancybox (video)",
+                          "options" => $vAttributes["validation"]
+                      ]
+                  ],
+                  "galleryLoop" => [
+                      "name" => "galleryLoop (video)",
+                      "value" => "0",
+                      "type" => "select",
+                      "props" => [
+                          "label" => "Loop",
+                          "options" => $vAttributes["validation"]
+                      ]
+                  ],
+                  "galleryMuted" => [
+                      "name" => "galleryMuted",
+                      "value" => "1",
+                      "type" => "select",
+                      "props" => [
+                          "label" => "Muted (video)",
+                          "options" => $vAttributes["validation"]
+                      ]
+                  ],
+                  "galleryControls" => [
+                      "name" => "galleryControls",
+                      "value" => "1",
+                      "type" => "select",
+                      "props" => [
+                          "label" => "Controls (video)",
+                          "options" => $vAttributes["validation"]
+                      ]
+                  ],
                   "galleryClass" => [
                       "name" => "galleryClass",
                       "type" => "input",
