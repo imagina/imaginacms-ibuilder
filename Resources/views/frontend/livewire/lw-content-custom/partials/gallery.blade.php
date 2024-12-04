@@ -11,6 +11,11 @@
                 :nav="$galleryNav"
                 :navText="$navText"
                 :zones="[$galleryZone]"
+                :autoplayVideo="$galleryAutoPlay"
+                :dataFancybox="$galleryFancybox"
+                :loopVideo="$galleryLoop"
+                :mutedVideo="$galleryMuted"
+                :controlsVideo="$galleryControls"
                 :mediaFiles="$item->mediaFiles()" />
     </div>
 </div>
