@@ -74,6 +74,11 @@ class LWContentCustom extends Component
     public $galleryAspectRatio;
     public $galleryAspectRatioCustom;
     public $galleryZone;
+    public $galleryAutoPlay;
+    public $galleryFancybox;
+    public $galleryLoop;
+    public $galleryMuted;
+    public $galleryControls;
 
     public $bodyExtra;
     public $bodyExtraClass;
@@ -234,6 +239,11 @@ class LWContentCustom extends Component
                           $galleryAspectRatio = "1/1",
                           $galleryAspectRatioCustom = "",
                           $galleryZone = "gallery",
+                          $galleryAutoPlay = false,
+                          $galleryFancybox = false,
+                          $galleryLoop = false,
+                          $galleryMuted = true,
+                          $galleryControls = true,
                           $bodyExtra = "",
                           $bodyExtraClass = "",
                           $bodyExtraStyle = null,
@@ -380,6 +390,11 @@ class LWContentCustom extends Component
         $this->galleryNavColor = $galleryNavColor;
         $this->galleryNavColorHover = $galleryNavColorHover;
         $this->galleryNavPosition = $galleryNavPosition;
+        $this->galleryAutoPlay = $galleryAutoPlay;
+        $this->galleryFancybox = $galleryFancybox;
+        $this->galleryLoop = $galleryLoop;
+        $this->galleryMuted = $galleryMuted;
+        $this->galleryControls = $galleryControls;
         $this->bodyClass = $bodyClass;
         $this->bodyStyle = $bodyStyle;
         $this->bodyFontSize = $bodyFontSize;
@@ -621,7 +636,9 @@ class LWContentCustom extends Component
                 $this->itemListType = 'Ad';
                 $this->itemListFilter = 'ad';
                 $this->itemListLateralType = 'ad';
-                $this->filterBlog = [];
+                $cate = [];
+                foreach ($this->item->categories as $c) { $cate[] = $c->id; }
+                $this->filterBlog = ['category' => [$cate]];
                 break;
             case 'Modules\Iad\Entities\Category':
                 $this->typeContent = 'category';
@@ -629,6 +646,7 @@ class LWContentCustom extends Component
                 $this->withFilterCategory = $withFilterCategory ?? true;
                 $this->withCarousel = $withCarousel ?? true;
                 $this->withListLateral = $withListLateral ?? true;
+                $this->filterBlog = ['category' => $this->item->id,'exclude'=>$this->item->id];
                 break;
         }
     }
