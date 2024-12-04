@@ -1,5 +1,5 @@
 <style>
-@if($withTitle)
+@if($withTitle !== 3)
     #{{$id}} .custom-item-title .title {
        @if($titleColorByClass=="text-custom")  color: {{$titleColor}}; @endif
        font-size: {{$titleFontSize}}px;
@@ -46,7 +46,7 @@
 }
 @endif
 
-@if($withGallery)
+@if($withGallery !== 3)
     #{{$id}} .custom-item-gallery .gallery {
         @if(!empty($galleryStyle))
         {!!$galleryStyle!!}
@@ -226,7 +226,13 @@
 }
 @endif
 
-@if($withVideoExternal && !empty($videoExternalStyle))
+@if($withBodyExtra !== 3 && !empty($bodyExtraStyle))
+#{{$customId}} .custom-item-body-extra .body-extra {
+ {!!$bodyExtraStyle!!}
+}
+@endif
+
+@if($withVideoExternal !== 3 && !empty($videoExternalStyle))
 #{{$id}} .custom-item-video-external .video-external {
  {!!$videoExternalStyle!!}
 }
@@ -274,6 +280,34 @@
 @if(!empty($filtersStyle))
 #{{$id}} .filters {
  {!!$filtersStyle!!}
+}
+@endif
+@if(!empty($categoryStyle) || ($categoryFontSize))
+#{{$id}} .item-category .category {
+ @if($categoryColorByClass=="text-custom")  color: {{$categoryColor}}; @endif
+ font-size: {{$categoryFontSize}}px;
+ {!!$categoryStyle!!}
+}
+@endif
+@if(!empty($dateStyle) || ($dateFontSize))
+#{{$id}} .item-date .date {
+ @if($dateColorByClass=="text-custom")  color: {{$dateColor}}; @endif
+ font-size: {{$dateFontSize}}px;
+ {!!$dateStyle!!}
+}
+@endif
+@if(!empty($userStyle) || ($userFontSize))
+#{{$id}} .item-user .user {
+ @if($userColorByClass=="text-custom")  color: {{$userColor}}; @endif
+ font-size: {{$userFontSize}}px;
+ {!!$userStyle!!}
+}
+@endif
+@if(!empty($summaryStyle) || ($summaryFontSize))
+#{{$id}} .item-summary .summary {
+ @if($summaryColorByClass=="text-custom")  color: {{$summaryColor}}; @endif
+ font-size: {{$summaryFontSize}}px;
+ {!!$summaryStyle!!}
 }
 @endif
 </style>
