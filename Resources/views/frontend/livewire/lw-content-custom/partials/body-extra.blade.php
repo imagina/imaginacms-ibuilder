@@ -2,8 +2,9 @@
     <div class="body-extra {{$bodyExtraColorByClass}} {{$bodyExtraAlign}} {{$bodyExtraClass}}">
         @foreach($bodyExtra as $extra)
             <div class="body-extra-mini {{$bodyExtraMiniClass}}">
-                {!! $item->options->{$extra} ?? '' !!}
+                {!! $item->options->{$extra} ?? $item->options[$extra] ?? '' !!}
             </div>
         @endforeach
     </div>
 </div>
+

@@ -1,5 +1,5 @@
 <style>
-@if($withTitle)
+@if($withTitle !== 3)
     #{{$customId}} .custom-item-title .title {
        @if($titleColorByClass=="text-custom")  color: {{$titleColor}}; @endif
        font-size: {{$titleFontSize}}px;
@@ -24,7 +24,7 @@
     @endif
 @endif
 
-@if($withMedia)
+@if($withMedia !== 3)
 #{{$customId}} .custom-item-image .img-style,
 #{{$customId}} .custom-item-image .cover-img {
      object-fit: {{$imageObjectFit}};
@@ -46,7 +46,7 @@
 }
 @endif
 
-@if($withGallery)
+@if($withGallery !== 3)
     #{{$customId}} .custom-item-gallery .gallery {
         @if(!empty($galleryStyle))
         {!!$galleryStyle!!}
@@ -226,13 +226,19 @@
 }
 @endif
 
-@if($withVideoExternal && !empty($videoExternalStyle))
+@if($withBodyExtra!== 3 && !empty($bodyExtraStyle))
+#{{$customId}} .custom-item-body-extra .body-extra {
+ {!!$bodyExtraStyle!!}
+}
+@endif
+
+@if($withVideoExternal!== 3 && !empty($videoExternalStyle))
 #{{$customId}} .custom-item-video-external .video-external {
  {!!$videoExternalStyle!!}
 }
 @endif
 
-@if(empty($itemListTitle))
+@if(!$itemListTitlePage)
 #{{$customId}} .custom-page-content .items-list .top-content {
      display: none;
 }
