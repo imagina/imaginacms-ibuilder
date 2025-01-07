@@ -8,6 +8,7 @@ use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Ibuilder\Listeners\RegisterIbuilderSidebar;
+use Livewire\Livewire;
 
 class IbuilderServiceProvider extends ServiceProvider
 {
@@ -47,6 +48,7 @@ class IbuilderServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
         $this->registerComponents();
+        $this->registerComponentsLivewire();
     }
 
     /**
@@ -117,5 +119,13 @@ class IbuilderServiceProvider extends ServiceProvider
     private function registerComponents()
     {
         Blade::componentNamespace("Modules\Ibuilder\View\Components", 'ibuilder');
+    }
+
+    /**
+     * Register components Livewire
+     */
+    private function registerComponentsLivewire()
+    {
+        Livewire::component('ibuilder::lw-content-custom', \Modules\Ibuilder\Http\Livewire\LWContentCustom::class);
     }
 }

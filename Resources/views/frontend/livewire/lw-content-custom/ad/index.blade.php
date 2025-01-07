@@ -1,17 +1,18 @@
 @if(!is_null($item))
-    <section id="{{$id}}" class="custom-content">
-        <div class="custom-content-row {{$row}}">
+<section id="{{ $customId }}" class="custom-content">
+    <div class="custom-content-row {{$row}}">
 
             <div class="custom-page-sidebar {{$orderSidebar["sidebar"]}}">
+
                 @if($withFilterCategory)
                     <livewire:isite::filters :filters="['categories' => $filters]"/>
                 @endif
-
+{{--
                 @if($withListLateral)
                     <div class="list-lateral">
                         <h4 class="{{$itemListLateralTitleClass}}">{{trans($itemListLateralTitle)}}</h4>
                         <livewire:isite::items-list
-                                moduleName="Iblog"
+                                moduleName="Iad"
                                 itemComponentName="isite::item-list"
                                 itemComponentNamespace="Modules\Isite\View\Components\ItemList"
                                 :configLayoutIndex="['default' => 'one', 'options' => [ 'one' => [
@@ -27,19 +28,34 @@
                                 :responsiveTopContent="['mobile'=>false,'desktop'=>false]"
                         />
                     </div>
-                @endif
+                @endif --}}
             </div>
             <div class="custom-page-content {{$orderSidebar["content"]}}">
                 <div class="custom-page-content-row {{$orderSidebar["content-row"]}}">
 
                     @if($withTitle==1)
-                        @include('ibuilder::frontend.components.content-custom.partials.title')
+                        @include('ibuilder::frontend.livewire.lw-content-custom.partials.title')
                     @endif
 
                     @if($withListMain && $typeContent=='category')
                         <div class="{{$orderClasses["list"] ?? 'col-12 order-0'}} custom-list">
-                        <livewire:isite::items-list
-                                moduleName="Iblog"
+
+                            <div class="custom-list-top-content">
+                                <div class="row justify-content-between align-items-center">
+                                    @if($itemListTitlePage)
+                                    <div class="col-auto custom-list-title">
+                                        <{{$itemListTitleH}} class="custom-list-title-text {{$itemListTitleClass}}">{{ empty($itemListTitle) ? $item->title ?? $item->name ?? '' : $itemListTitle}}</{{$itemListTitleH}}>
+                                    </div>
+                                    @endif
+                                    @if($itemListPagOrderByOn)
+                                    <div class="col-auto filter-order">
+                                        <livewire:isite::filter-order-by key="filter-order-by" :config="$itemListPagOrderBy"/>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <livewire:isite::items-list
+                                moduleName="Iad"
                                 itemComponentName="isite::item-list"
                                 itemComponentNamespace="Modules\Isite\View\Components\ItemList"
                                 :configLayoutIndex="['default' => 'one', 'options' => [
@@ -50,24 +66,27 @@
                                                                 'status' => true], ], ]"
                                 :itemComponentAttributes="$itemListAttr"
                                 :entityName="$itemListType"
-                                :title="$itemListTitle"
                                 :pagination="[ 'show' => $itemListPag, 'type' => $itemListPagType]"
-                                :showTitle="!empty($itemListTitle) ? true : false"
+                                :showTitle="false"
                                 :params="['filter' => [$itemListFilter => $item->id ?? null],'take'=> $itemListTake]"
                                 :responsiveTopContent="['mobile'=>false,'desktop'=>false]"
+
                         />
                         </div>
                     @endif
 
-                    @if($typeContent=='post')
+                    @if($typeContent=='ad')
+                        @if($withCategory==1)
+                            @include('ibuilder::frontend.livewire.lw-content-custom.partials.category')
+                        @endif
                         @if($withSummary==1)
-                            @include('ibuilder::frontend.components.content-custom.partials.summary')
+                            @include('ibuilder::frontend.livewire.lw-content-custom.partials.summary')
                         @endif
                         @if($withDate==1)
-                            @include('ibuilder::frontend.components.content-custom.partials.date')
+                            @include('ibuilder::frontend.livewire.lw-content-custom.partials.date')
                         @endif
                         @if($withUser==1)
-                            @include('ibuilder::frontend.components.content-custom.partials.user')
+                            @include('ibuilder::frontend.livewire.lw-content-custom.partials.user')
                         @endif
                     @endif
 
@@ -75,54 +94,53 @@
                         <div class="{{$orderClasses["body"] ?? 'order-2'}} custom-item-body">
                             <div class="body-content {{$bodyContentInside}}">
                                 @if($withTitle==2)
-                                    @include('ibuilder::frontend.components.content-custom.partials.title')
+                                    @include('ibuilder::frontend.livewire.lw-content-custom.partials.title')
                                 @endif
-                                @if($typeContent=='post')
+                                @if($typeContent=='ad')
+                                    @if($withCategory==2)
+                                        @include('ibuilder::frontend.livewire.lw-content-custom.partials.category')
+                                    @endif
                                     @if($withSummary==2)
-                                        @include('ibuilder::frontend.components.content-custom.partials.summary')
+                                        @include('ibuilder::frontend.livewire.lw-content-custom.partials.summary')
                                     @endif
                                     @if($withDate==2)
-                                        @include('ibuilder::frontend.components.content-custom.partials.date')
+                                        @include('ibuilder::frontend.livewire.lw-content-custom.partials.date')
                                     @endif
                                     @if($withUser==2)
-                                        @include('ibuilder::frontend.components.content-custom.partials.user')
+                                        @include('ibuilder::frontend.livewire.lw-content-custom.partials.user')
                                     @endif
                                 @endif
                                 @if($withMedia==2)
-                                    @include('ibuilder::frontend.components.content-custom.partials.media')
+                                    @include('ibuilder::frontend.livewire.lw-content-custom.partials.media')
                                 @endif
                                 @if($withGallery==2)
-                                    @include('ibuilder::frontend.components.content-custom.partials.gallery')
+                                    @include('ibuilder::frontend.livewire.lw-content-custom.partials.gallery')
+                                @endif
+                                @if($withBodyExtra==2 && !is_null($bodyExtra))
+                                    @include('ibuilder::frontend.livewire.lw-content-custom.partials.body-extra')
                                 @endif
                                 @if($withVideoExternal==2 && !empty($videoExternal))
-                                    @include('ibuilder::frontend.components.content-custom.partials.video-extra')
+                                    @include('ibuilder::frontend.livewire.lw-content-custom.partials.video-extra')
                                 @endif
                             </div>
 
                             <div class="body {{$bodyColorByClass}} {{$bodyAlign}} {{$bodyClass}}">
-                              @if($withTitle==4)
-                                @include('ibuilder::frontend.components.content-custom.partials.title')
-                              @endif
                                 {!! $item->body ?? $item->description ?? $item->custom_html ?? '' !!}
-
-                                @if($withBodyExtra==2 && !is_null($bodyExtra))
-                                  @include('ibuilder::frontend.components.content-custom.partials.body-extra')
-                                @endif
                             </div>
                         </div>
                     @endif
 
                     @if($withMedia==1)
-                        @include('ibuilder::frontend.components.content-custom.partials.media')
+                        @include('ibuilder::frontend.livewire.lw-content-custom.partials.media')
                     @endif
                     @if($withGallery==1)
-                        @include('ibuilder::frontend.components.content-custom.partials.gallery')
+                        @include('ibuilder::frontend.livewire.lw-content-custom.partials.gallery')
                     @endif
                     @if($withBodyExtra==1 && !is_null($bodyExtra))
-                        @include('ibuilder::frontend.components.content-custom.partials.body-extra')
+                        @include('ibuilder::frontend.livewire.lw-content-custom.partials.body-extra')
                     @endif
                     @if($withVideoExternal==1 && !empty($videoExternal))
-                        @include('ibuilder::frontend.components.content-custom.partials.video-extra')
+                        @include('ibuilder::frontend.livewire.lw-content-custom.partials.video-extra')
                     @endif
 
                     @if($withShare)
@@ -144,22 +162,15 @@
             <div class="custom-page-extra {{$orderSidebar["extra"] ?? 'col-12 pb-5'}}">
                 @if($withCarousel)
                     <x-isite::carousel.owl-carousel
-                            id="{{$id}}Articles"
+                            id="Articles{{$customId}}"
                             title="{{trans($carouselTitle)}}"
                             :owlTitleClasses="$carouselAttr['titleClasses'] ?? ''"
                             :dotsStyle="$carouselAttr['dotsStyle'] ?? ''"
                             :dotsStyleColor="$carouselAttr['dotsStyleColor'] ?? ''"
                             :dotsSize="$carouselAttr['dotsSize'] ?? ''"
                             :center="$carouselAttr['center'] ?? false"
-                            :nav="$carouselAttr['nav'] ?? false"
-                            :navIcon="$carouselAttr['navIcon'] ?? 'fa fa-arrow'"
-                            :navPosition="$carouselAttr['navPosition'] ?? 'bottom'"
-                            :navSizeLabel="$carouselAttr['navSizeLabel'] ?? '15'"
-                            :navSizeButton="$carouselAttr['navSizeButton'] ?? '30'"
-                            :navStyleButton="$carouselAttr['navStyleButton'] ?? ''"
-                            :navColor="$carouselAttr['navColor'] ?? 'var(--primary)'"
                             :stagePadding="$carouselAttr['stagePadding'] ?? 0"
-                            repository="Modules\Iblog\Repositories\PostRepository"
+                            repository="Modules\Iad\Repositories\AdRepository"
                             :params="['take' => $carouselAttr['take'] ?? 20,'filter' => $filterBlog]"
                             :margin="$carouselAttr['margin'] ?? 25"
                             :loops="$carouselAttr['loops'] ?? false"
@@ -172,8 +183,8 @@
                 @endif
             </div>
         </div>
-    </section>
-    @include('ibuilder::frontend.components.content-custom.partials.style')
+    @include('ibuilder::frontend.livewire.lw-content-custom.partials.style')
+</section>
 @section("scripts")
     @parent
     <script defer type="text/javascript"
