@@ -38,10 +38,23 @@ class PublicController extends BaseApiController
 
       if ($layout) {
         $blocks = $layout->getBlocksToRender();
+        $options = (array) ($layout->options ?? []);
+        $header = $this->getBlocksFromLayout($options['headerLaoyutId'] ?? null, $repositoryLayout, $params);
+        $footer = $this->getBlocksFromLayout($options['footerLaoyutId'] ?? null, $repositoryLayout, $params);
         //Render view
-        return view('ibuilder::frontend.index', compact('layout', 'blocks', 'isDemoLayout'));
+        return view('ibuilder::frontend.index', compact('layout', 'blocks', 'isDemoLayout', 'header', 'footer'));
       } else {
         return response()->view('errors.404', [], 404);
       }
+    }
+
+    private function getBlocksFromLayout(?int $layoutId, $repositoryLayout, array $params): ?array
+    {
+      if (!$layoutId) {
+        return null;
+      }
+
+      $layout = $repositoryLayout->getItem($layoutId, json_decode(json_encode($params)));
+      return $layout ? $layout->getBlocksToRender() : null;
     }
 }

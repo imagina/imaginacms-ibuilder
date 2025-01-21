@@ -7,7 +7,13 @@
 @endsection
 
 @section('content')
+  @if(isset($header))
+    @include('ibuilder::frontend.partials.blockGrid', ['blocks' => $header])
+  @endif
   @include('ibuilder::frontend.partials.blockGrid')
+  @if(isset($footer))
+    @include('ibuilder::frontend.partials.blockGrid', ['blocks' => $footer])
+  @endif
 @stop
 
 @section("scripts")

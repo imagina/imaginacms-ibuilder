@@ -29,8 +29,12 @@ class Layout extends CrudModel
     'deleted' => []
   ];
   public $translatedAttributes = ['title'];
-  protected $fillable = ['system_name', 'entity_type', 'type', 'default', 'status'];
+  protected $fillable = ['system_name', 'entity_type', 'type', 'default', 'status', 'options'];
   protected $singleFlaggableCombination = ['entity_type', 'type'];
+
+  protected $casts = [
+    'options' => 'array'
+  ];
 
   public function blocks()
   {
