@@ -52,6 +52,8 @@ return [
       'layoutDefault' => 'Indica si el layout se establece como predeterminado para la entidad y el tipo correspondiente',
       'layout' => 'Builder Layout',
       'entityType' => 'Tipo de entidad',
+      'header' => 'Header',
+      'footer' => 'Footer'
     ],
     "useViewParams" => "Usar los parametros de la vista"
 ];
