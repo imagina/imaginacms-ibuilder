@@ -28,15 +28,16 @@ class PublicController extends BaseApiController
         return view('ibuilder::frontend.blocks', compact('blockConfig'));
     }
 
-    public function layoutPreview($layoutId)
+    public function layoutPreview($layoutId, Request $request)
     {
+      $requestParams = $request->all();
       $repositoryLayout = app("Modules\Ibuilder\Repositories\LayoutRepository");
       $params = ['include' => []];
-
       $layout = $repositoryLayout->getItem($layoutId, json_decode(json_encode($params)));
-      $isDemoLayout = true;
 
       if ($layout) {
+        $isDemoLayout = $requestParams["isClientDemo"] ?? true;
+        $isDemoLayout = $isDemoLayout == '0' ? false : (bool) $isDemoLayout;
         $blocks = $layout->getBlocksToRender();
         $options = (array) ($layout->options ?? []);
         $header = $this->getBlocksFromLayout($options['headerLaoyutId'] ?? null, $repositoryLayout, $params);
