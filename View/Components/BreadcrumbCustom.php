@@ -40,6 +40,10 @@ class BreadcrumbCustom extends Component
     public $typeContent;
     public $titleType; // 1 nombre actual , 2 categoria (Solo en post)
 
+    public $videoLoop;
+    public $videoAutoplay;
+    public $videoMuted;
+    public $videoControls;
   /**
    * Create a new component instance.
    *
@@ -76,7 +80,11 @@ class BreadcrumbCustom extends Component
                               $imageObjectPosicion = "",
                               $imageAspectRatio = "21/5",
                               $imageAspectRatioMobile = "16/9",
-                              $titleType = 1
+                              $titleType = 1,
+                              $videoLoop = false,
+                              $videoAutoplay = false,
+                              $videoMuted = false,
+                              $videoControls = false,
   )
   {
       $this->sectionClass = $sectionClass;
@@ -110,6 +118,10 @@ class BreadcrumbCustom extends Component
       $this->imageAspectRatioMobile = $imageAspectRatioMobile;
       $this->titleType = $titleType;
       $this->getItem($item,$viewParams);
+      $this->videoLoop = $videoLoop;
+      $this->videoAutoplay = $videoAutoplay;
+      $this->videoMuted = $videoMuted;
+      $this->videoControls = $videoControls;
   }
 
   /**
@@ -147,7 +159,7 @@ class BreadcrumbCustom extends Component
       }
 
   }
-  
+
   /**
    * Get the view / contents that represent the component.
    *

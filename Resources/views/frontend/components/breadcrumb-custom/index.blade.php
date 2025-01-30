@@ -52,6 +52,8 @@
                     :mediaFiles="$item->mediaFiles()"
                     zone="breadcrumbimage"
                     imgClasses="b-image {{$imageClass}}"
+                    :withVideoControls="$videoControls" :loopVideo="$videoLoop"
+                    :autoplayVideo="$videoAutoplay" :mutedVideo="$videoMuted"
             />
             @else
                 <div class="b-image {{$imageClass}}"></div>
