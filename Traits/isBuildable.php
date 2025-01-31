@@ -106,16 +106,11 @@ trait isBuildable
     $data = $params["data"]["buildable"] ?? null;
     if ($data) {
       // Update or create a new Buildable model instance with the provided data.
-      if ($data['layout_id'] && $data["type"]) {
+      if ($data["type"]) {
         Buildable::updateOrCreate(
           ['entity_type' => $this->getMorphClass(), 'entity_id' => $this->id],
-          ['layout_id' => $data["layout_id"], 'type' => $data["type"]]
+          ['layout_id' => $data["layout_id"] ?? null, 'type' => $data["type"]]
         );
-      }
-      //Remove the buildable
-      if (is_null($data['layout_id'])) {
-        Buildable::where('entity_type', $this->getMorphClass())
-          ->where('entity_id', $this->id)->forceDelete();
       }
     }
   }
