@@ -1349,7 +1349,48 @@ return [
           ],
         ]
       ],
-    ]
+      "video"=>[
+        "title" => "video",
+        "fields" => [
+        "videoLoop" => [
+          "name" => "videoLoop",
+          "value" => "0",
+          "type" => "select",
+          "props" => [
+            "label" => "Loop",
+            "options" => $vAttributes["validation"]
+          ]
+        ],
+        "videoAutoplay" => [
+          "name" => "videoAutoplay",
+          "value" => "0",
+          "type" => "select",
+          "props" => [
+            "label" => "Autoplay",
+            "options" => $vAttributes["validation"]
+          ]
+        ],
+        "videoMuted" => [
+          "name" => "videoMuted",
+          "value" => "0",
+          "type" => "select",
+          "props" => [
+            "label" => "Muted",
+            "options" => $vAttributes["validation"]
+          ]
+        ],
+        "videoControls" => [
+          "name" => "videoControls",
+          "value" => "0",
+          "type" => "select",
+          "props" => [
+            "label" => "Controls",
+            "options" => $vAttributes["validation"]
+          ]
+        ],
+        ]
+      ]
+    ],
   ],
   "contentCustom" => [
     "title" => "Contenido Custom",
