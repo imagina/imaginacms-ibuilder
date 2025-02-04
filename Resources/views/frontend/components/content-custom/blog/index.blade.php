@@ -128,7 +128,7 @@
                     @if($withShare)
                         <div class="{{$orderClasses["share"] ?? 'order-6'}} custom-item-share">
                             <div class="share {{$shareClass}}">
-                                <div class="{{$shareFontClass}}">{{trans('iblog::common.social.share')}}:</div>
+                                <div class="share-text">{{trans('iblog::common.social.share')}}:</div>
                                 <div class="sharethis-inline-share-buttons"></div>
                                 <style>
                                     #st-1 {
