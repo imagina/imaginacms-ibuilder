@@ -64,8 +64,11 @@ if (!function_exists('mapBlockToRender')) {
 if (!function_exists('orderBlocksToRender')) {
   function orderBlocksToRender($blocks, $isPreview = false)
   {
+    $configs = iconfig('blocks', true);
     //Sort and map blocks
-    $blocks = collect($blocks)->map(function ($block) use ($isPreview) {
+    $blocks = collect($blocks)->filter(function ($block) use ($configs) {
+      return isBlockValidBasedOnModules($block, $configs);
+    })->map(function ($block) use ($isPreview) {
       return mapBlockToRender($block, $isPreview);
     })->sortBy('sortOrder')->toArray();
 
@@ -119,5 +122,35 @@ if (!function_exists('BlocksToArray')) {
 
     //Response
     return $response;
+  }
+}
+
+if (!function_exists('isBlockValidBasedOnModules')) {
+  function isBlockValidBasedOnModules($block, $configs)
+  {
+    // Get systemName and entityType
+    $systemName = $block['component']['systemName'] ?? null;
+    $entityType = $block['entity']['type'] ?? null;
+
+    // Look the module name in $configs
+    $moduleFromConfig = null;
+    foreach ($configs as $key => $module) {
+      if (is_array($module)) {
+        foreach ($module as $component) {
+          if ($component['systemName'] === $systemName) {
+            $moduleFromConfig = $key;
+            break 2; // Break the 2 loops
+          }
+        }
+      }
+    }
+
+    // Get the module in the entity["type"]
+    $moduleFromEntity = explode("\\", $entityType)[1] ?? null;
+
+    // Check if the module is enabled
+    $isActiveEntity = isset($moduleFromEntity) ? is_module_enabled($moduleFromEntity) : true;
+
+    return isset($moduleFromConfig) && is_module_enabled($moduleFromConfig) && $isActiveEntity;
   }
 }
