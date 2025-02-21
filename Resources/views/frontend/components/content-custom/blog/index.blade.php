@@ -63,6 +63,9 @@
                         @if($withSummary==1)
                             @include('ibuilder::frontend.components.content-custom.partials.summary')
                         @endif
+                        @if($withCategory==1)
+                           @include('ibuilder::frontend.components.content-custom.partials.category')
+                       @endif
                         @if($withDate==1)
                             @include('ibuilder::frontend.components.content-custom.partials.date')
                         @endif
@@ -80,6 +83,9 @@
                                 @if($typeContent=='post')
                                     @if($withSummary==2)
                                         @include('ibuilder::frontend.components.content-custom.partials.summary')
+                                    @endif
+                                    @if($withCategory==2)
+                                       @include('ibuilder::frontend.components.content-custom.partials.category')
                                     @endif
                                     @if($withDate==2)
                                         @include('ibuilder::frontend.components.content-custom.partials.date')
