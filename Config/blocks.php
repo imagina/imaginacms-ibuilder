@@ -1271,6 +1271,90 @@ return [
           ],
         ]
       ],
+      "ExtraContent" => [
+        "title" => "Contenido extra",
+        "fields" => [
+          "withExtraContent" => [
+            "name" => "withExtraContent",
+            "value" => "0",
+            "type" => "select",
+            "props" => [
+              "label" => "Mostrar contenido extra",
+              "options" => $vAttributes["validation"]
+            ]
+          ],
+          "extraContent" => [
+            "name" => "extraContent",
+            "type" => "input",
+            "columns" => "col-12",
+            "props" => [
+              "label" => "ExtraFields",
+            ],
+            "help" => [
+              "description" => "Ingrese los valores separados por coma ( , ) en caso que se sean más de uno",
+            ]
+          ],
+          "extraContentSize" => [
+            "name" => "extraContentSize",
+            "type" => "input",
+            "props" => [
+              "label" => "Tamaño de fuente",
+              "type" => "number"
+            ]
+          ],
+          "extraContentColorClass" => [
+            "name" => "extraContentColorClass",
+            "type" => "select",
+            "props" => [
+              "label" => "Color Class",
+              "options" => $vAttributes["textColors"]
+            ]
+          ],
+          "extraContentColor" => [
+            "name" => "extraContentColor",
+            "type" => "inputColor",
+            "props" => [
+              "label" => "Color Custom",
+            ],
+            "help" => [
+              "description" => "Selecciona el color Custom en Color Class para activarlo",
+            ]
+          ],
+          "extraContentPosition" => [
+            "name" => "extraContentPosition",
+            "value" => "1",
+            "type" => "select",
+            "props" => [
+              "label" => "Posición",
+              "options" => $vAttributes["textAlign"],
+            ],
+            "help" => [
+              "description" => "Funciona cuando el breadcrumb esta dentro de la imagen",
+            ]
+          ],
+          "extraContentClass" => [
+            "name" => "extraContentClass",
+            "type" => "input",
+            "columns" => "col-12",
+            "props" => [
+              "label" => "Clases",
+            ],
+          ],
+          "extraContentStyle" => [
+            "name" => "extraContentStyle",
+            "type" => "input",
+            "columns" => "col-12",
+            "props" => [
+              "label" => "Estilos",
+              'type' => 'textarea',
+              'rows' => 5,
+            ],
+            "help" => [
+              "description" => "Permite agregar estilos adicionales en titulo",
+            ]
+          ],
+        ]
+      ],
       "image" => [
         "title" => "Imagen",
         "fields" => [

@@ -26,6 +26,14 @@ class BreadcrumbCustom extends Component
     public $fontSizeTitle;
     public $colorTitle;
     public $colorTitleByClass;
+    public $extraContent;
+    public $withExtraContent;
+    public $extraContentColor;
+    public  $extraContentColorClass;
+    public $extraContentPosition;
+    public $extraContentClass;
+    public $extraContentSize;
+    public $extraContentStyle;
     public $withImage;
     public $imageClass;
     public $imageStyle;
@@ -69,6 +77,14 @@ class BreadcrumbCustom extends Component
                               $fontSizeTitle = "24",
                               $colorTitle = null,
                               $colorTitleByClass = "text-white",
+                              $extraContent = "",
+                              $withExtraContent = true,
+                              $extraContentColor = null,
+                              $extraContentColorClass = "text-white",
+                              $extraContentPosition = "text-center",
+                              $extraContentClass = "text-center",
+                              $extraContentSize = '18',
+                              $extraContentStyle = null,
                               $withImage = false,
                               $imageClass = "",
                               $imageStyle = "",
@@ -84,7 +100,7 @@ class BreadcrumbCustom extends Component
                               $videoLoop = false,
                               $videoAutoplay = false,
                               $videoMuted = false,
-                              $videoControls = false,
+                              $videoControls = false
   )
   {
       $this->sectionClass = $sectionClass;
@@ -105,6 +121,14 @@ class BreadcrumbCustom extends Component
       $this->fontSizeTitle = $fontSizeTitle;
       $this->colorTitle = $colorTitle;
       $this->colorTitleByClass = $colorTitleByClass;
+      $this->extraContent =  $extraContent;
+      $this->withExtraContent = $withExtraContent;
+      $this->extraContentColor =  $extraContentColor;
+      $this->extraContentColorClass =$extraContentColorClass;
+      $this->extraContentPosition = $extraContentPosition;
+      $this->extraContentClass = $extraContentClass;
+      $this->extraContentSize = $extraContentSize;
+      $this->extraContentStyle = $extraContentStyle;
       $this->withImage = $withImage;
       $this->imageClass = $imageClass;
       $this->imageStyle = $imageStyle;
@@ -122,6 +146,15 @@ class BreadcrumbCustom extends Component
       $this->videoAutoplay = $videoAutoplay;
       $this->videoMuted = $videoMuted;
       $this->videoControls = $videoControls;
+
+    //  Covert to array extra fields
+    if (!empty($extraContent)) {
+      if (strpos($extraContent, ',') !== false) {
+        $this->extraContent = explode(",", $extraContent);
+      } else {
+        $this->extraContent = array($extraContent);
+      }
+    }
   }
 
   /**
