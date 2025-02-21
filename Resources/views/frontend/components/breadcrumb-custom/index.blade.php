@@ -39,6 +39,10 @@
                             @endif
                         </div>
                         @endif
+
+                        @if($withExtraContent && $extraContent)
+                              @include('ibuilder::frontend.components.breadcrumb-custom.partials.extraContent')
+                        @endif
                     </div>
                 </div>
             </div>
@@ -92,6 +96,12 @@
     @endif
     z-index: 3;
 }
+#breadcrumbSection .extra-content{
+    @if($extraContentColorClass=="text-custom")  color: {{$extraContentColor}}; @endif
+    font-size: {{$extraContentSize}}px;
+    @if(!empty($extraContentStyle))  {!!$extraContentStyle!!} @endif
+}
+
 @if($withImage)
 #breadcrumbSection .breadcrumb-overlay {
     position: absolute;
