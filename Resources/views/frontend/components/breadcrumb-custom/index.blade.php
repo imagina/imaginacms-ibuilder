@@ -20,6 +20,9 @@
                             <div class="title-section {{$colorTitleByClass}} {{$titleClass}}">
                                 @if($typeContent=='post' && $titleType==2)
                                     {{$item->category->title}}
+                                @elseif($typeContent=='post' && $titleType==3)
+                                    @php($padre=get_categories(['include' => [$item->category->parent_id],'take'=>1]))
+                                    {{$padre[0]->title ?? ''}}
                                 @else
                                     {{$item->title}}
                                 @endif
@@ -34,6 +37,9 @@
                         <div class="title-section  {{$colorTitleByClass}} {{$titleClass}}">
                             @if($typeContent=='post' && $titleType==2)
                                 {{$item->category->title}}
+                            @elseif($typeContent=='post' && $titleType==3)
+                              @php($padre=get_categories(['include' => [$item->category->parent_id],'take'=>1]))
+                              {{$padre[0]->title ?? ''}}
                             @else
                                 {{$item->title}}
                             @endif

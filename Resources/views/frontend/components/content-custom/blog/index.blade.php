@@ -168,7 +168,7 @@
                             repository="Modules\Iblog\Repositories\PostRepository"
                             :params="['take' => $carouselAttr['take'] ?? 20,'filter' => $filterBlog]"
                             :margin="$carouselAttr['margin'] ?? 25"
-                            :loops="$carouselAttr['loops'] ?? false"
+                            :loop="$carouselAttr['loops'] ?? false"
                             :dots="$carouselAttr['dots'] ?? false"
                             :mediaImage="$carouselAttr['mediaImage'] ?? mainimage"
                             :autoplay="$carouselAttr['autoplay'] ?? false"

@@ -1242,6 +1242,7 @@ return [
               "options" => [
                 ["label" => "Post", "value" => "1"],
                 ["label" => "Categoria Principal", "value" => "2"],
+                ["label" => "Categoria Padre", "value" => "3"],
               ],
             ],
             "help" => [
