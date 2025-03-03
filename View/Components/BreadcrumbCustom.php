@@ -178,7 +178,7 @@ class BreadcrumbCustom extends Component
     }
     elseif($typeContent=='category' && $titleType==3) {
       $parent = get_categories(['include' => [$this->item->parent_id ?? null], 'take' => 1]);
-      $title = $parent[0]->title;
+      $title = $parent[0]->title ?? $this->item->category->title  ?? $this->item->title;
     }
     else {
       $title = $this->item->title;
