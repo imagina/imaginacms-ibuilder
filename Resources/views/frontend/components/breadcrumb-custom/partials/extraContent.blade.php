@@ -1,11 +1,10 @@
 @foreach($extraContent as $extra)
-    @php
-        $data = null;
-
-         if(isset($item->options->{$extra})) $data = $item->options->{$extra};
-         if(!$data && method_exists($item, 'formatFillableToModel')) $data = $item->getFieldByName($extra);
-
-    @endphp
+  @php
+    $data = $item->{$extra}
+      ?? $item->options->{$extra}
+      ?? (method_exists($item, 'formatFillableToModel')
+         ? $item->getFieldByName($extra) : null);
+  @endphp
 
     {{--  Return extra fields if exist--}}
     @if($data)
