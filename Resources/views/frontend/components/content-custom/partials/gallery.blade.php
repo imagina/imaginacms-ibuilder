@@ -19,6 +19,8 @@
                     :navText="$navText"
                     :mediaFiles="$item->mediaFiles()"
                     :margin="$galleryMarginItems"
+                    :controlsVideo="$videoControls" :loopVideo="$videoLoop"
+                    :autoplayVideo="$videoAutoplay" :mutedVideo="$videoMuted"
             />
         </div>
     </div>
