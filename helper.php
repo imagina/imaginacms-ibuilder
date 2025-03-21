@@ -128,9 +128,10 @@ if (!function_exists('BlocksToArray')) {
 if (!function_exists('isBlockValidBasedOnModules')) {
   function isBlockValidBasedOnModules($block, $configs)
   {
+    $block = json_decode(json_encode($block));
     // Get systemName and entityType
-    $systemName = $block['component']['systemName'] ?? null;
-    $entityType = $block['entity']['type'] ?? null;
+    $systemName = $block->component->systemName ??  null;
+    $entityType = $block->entity->type ?? null;
 
     // Look the module name in $configs
     $moduleFromConfig = null;
