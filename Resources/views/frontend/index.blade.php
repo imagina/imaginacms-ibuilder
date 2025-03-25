@@ -8,11 +8,17 @@
 
 @section('content')
   @if(isset($header))
-    @include('ibuilder::frontend.partials.blockGrid', ['blocks' => $header])
+    @include('ibuilder::frontend.partials.blockGrid', [
+      'blocks' => $header,
+      'layout' => json_decode(json_encode(['type' => 'header']))
+    ])
   @endif
   @include('ibuilder::frontend.partials.blockGrid')
   @if(isset($footer))
-    @include('ibuilder::frontend.partials.blockGrid', ['blocks' => $footer])
+    @include('ibuilder::frontend.partials.blockGrid', [
+      'blocks' => $footer,
+      'layout' => json_decode(json_encode(['type' => 'footer']))
+    ])
   @endif
 @stop
 
