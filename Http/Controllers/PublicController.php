@@ -32,7 +32,7 @@ class PublicController extends BaseApiController
     {
       $requestParams = $request->all();
       $repositoryLayout = app("Modules\Ibuilder\Repositories\LayoutRepository");
-      $params = ['include' => []];
+      $params = ['include' => ['blocks']];
       $layout = $repositoryLayout->getItem($layoutId, json_decode(json_encode($params)));
 
       if ($layout) {

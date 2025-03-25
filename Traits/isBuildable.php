@@ -60,7 +60,8 @@ trait isBuildable
         "field" => "entity_type",
         "type" => $layoutType,
         "default" => 1
-      ]
+      ],
+      "include" => ["blocks"]
     ]));
     // Fetch the layout from the repository based on the type of the buildable entity.
     return $layoutRepositoy->getItem($this->getMorphClass(), $params);
