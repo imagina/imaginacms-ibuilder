@@ -1,21 +1,21 @@
 <?php
 
 return [
-    //Media Fillables
-    'mediaFillable' => [
-        'layout' => [
-            'internalimage' => 'single'
-        ],
-        'block' => [
-            'internalimage' => 'single',
-            'blockbgimage' => 'single',
-            'custommainimage' => 'single',
-            'customgallery' => 'multiple',
-            'backgroundimg' => 'single',
-        ],
+  //Media Fillables
+  'mediaFillable' => [
+    'layout' => [
+      'internalimage' => 'single'
     ],
-    //Url of the iadmin to manage the blocks themes for clients
-    'urlEditBlockTheme' => 'iadmin/#/builder/blocks?edit={blockId}',
+    'block' => [
+      'internalimage' => 'single',
+      'blockbgimage' => 'single',
+      'custommainimage' => 'single',
+      'customgallery' => 'multiple',
+      'backgroundimg' => 'single',
+    ],
+  ],
+  //Url of the iadmin to manage the blocks themes for clients
+  'urlEditBlockTheme' => 'iadmin/#/builder/blocks?edit={blockId}',
   // Builder
   'builder' => [
     'layout' => [
@@ -27,5 +27,9 @@ return [
         ]
       ]
     ]
+  ],
+  //Tenant
+  'tenant' => [
+    'dbPrefix' => 'ibuilder'
   ]
 ];
