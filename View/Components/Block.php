@@ -369,6 +369,16 @@ class Block extends Component
           case 'ibuilder::lw-content-custom':
             $this->componentConfig["attributes"]["item"] = $this->getInheritcontent($entity);
             break;
+          case 'isite::items-tabs':
+            $this->componentConfig['attributes']['repository'] = $entity->type;
+            // Replace the itemComponentAttributes for IcommerceItem
+            if ($entity->type == "Modules\Icommerce\Repositories\ProductRepository") {
+              if (isset($this->componentConfig['attributes']['productItemComponentAttributes'])) {
+                $this->componentConfig['attributes']['componentItemComponentAttributes'] = $this->componentConfig['attributes']['productItemComponentAttributes'];
+                unset($this->componentConfig['attributes']['productItemComponentAttributes']);
+              }
+            }
+            break;
         }
       }
     }
