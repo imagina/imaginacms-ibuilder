@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+  @include('ibuilder::frontend.partials.custom-style', ['layout' => $layout])
   @if(isset($header))
     @include('ibuilder::frontend.partials.blockGrid', [
       'blocks' => $header,
