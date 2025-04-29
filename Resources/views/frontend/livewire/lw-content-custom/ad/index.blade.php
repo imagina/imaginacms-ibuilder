@@ -1,4 +1,5 @@
-@if(!is_null($item))
+<div wire:init="refreshZoneData">
+@if($readyToLoad && !is_null($item))
 <section id="{{ $customId }}" class="custom-content">
     <div class="custom-content-row {{$row}}">
 
@@ -193,3 +194,4 @@
 
 @stop
 @endif
+</div>
