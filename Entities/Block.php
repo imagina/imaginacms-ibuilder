@@ -38,7 +38,14 @@ class Block extends CrudModel
 
   public $translatedAttributes = ['internal_title'];
 
-  protected $fillable = ['system_name', 'status', 'component', 'entity', 'attributes'];
+  protected $fillable = [
+    'system_name',
+    'status',
+    'component',
+    'entity',
+    'attributes',
+    'with_content_editable'
+  ];
 
   protected $casts = ['component' => 'array', 'entity' => 'array', 'attributes' => AsArrayObject::class];
 
