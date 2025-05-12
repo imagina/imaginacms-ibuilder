@@ -2,7 +2,7 @@
   <div class="video-external {{$videoExternalClass}}">
     @foreach($videoExternal as $external)
       @php
-        $video = $item->options->{$external};
+        $video = $item->options->{$external} ?? false;
         $exists = strpos($video, 'youtube');
         if($exists !== false) {
             $query = parse_url($video, PHP_URL_QUERY);
