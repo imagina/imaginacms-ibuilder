@@ -379,6 +379,10 @@ class Block extends Component
               }
             }
             break;
+          case 'iblog::TimeLine':
+            $this->componentConfig['attributes']['repository'] = $entity->type;
+            $this->componentConfig['attributes']['params'] = json_decode(json_encode($entity->params), true);
+            break;
         }
       }
     }
