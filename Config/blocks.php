@@ -1837,6 +1837,19 @@ return [
               ]
             ]
           ],
+          "typeMediaToShow" => [
+            "name" => "typeMediaToShow",
+            "value" => "0",
+            "type" => "select",
+            "props" => [
+              "label" => "Elemento a mostrar",
+              "options" => [
+                ["label" => "Imagen o Video", "value" => "0"],
+                ["label" => "Solo Imagen", "value" => "1"],
+                ["label" => "Solo Video", "value" => "2"],
+              ]
+            ]
+          ],
           "imageZone" => [
             "name" => "imageZone",
             "type" => "input",

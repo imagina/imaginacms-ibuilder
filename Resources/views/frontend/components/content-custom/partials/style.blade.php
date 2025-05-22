@@ -38,15 +38,15 @@
 
     @if($withMedia)
         #{{$id}} .custom-item-image .img-style,
-    #{{$id}} .custom-item-image .cover-img {
-        object-fit: {{$imageObjectFit}};
-        object-position: {{$imageObjectPosicion}};
-        aspect-ratio: {{$imageAspectRatio == 'aspect-custom' ? $imageAspectRatioCustom : $imageAspectRatio}};
-    @if(!empty($imageStyle))
-        {!!$imageStyle!!}
-    @endif
-
-
+        #{{$id}} .custom-item-video iframe,
+        #{{$id}} .custom-item-video video,
+        #{{$id}} .custom-item-image .cover-img {
+            object-fit: {{$imageObjectFit}};
+            object-position: {{$imageObjectPosicion}};
+            aspect-ratio: {{$imageAspectRatio == 'aspect-custom' ? $imageAspectRatioCustom : $imageAspectRatio}};
+            @if(!empty($imageStyle))
+            {!!$imageStyle!!}
+            @endif
     }
 
     @endif
