@@ -30,6 +30,7 @@
     public $imageZone;
 
     public $withMedia;
+    public $typeMediaToShow;
     public $withBody;
     public $withGallery;
     public $withBodyExtra;
@@ -206,6 +207,7 @@
                                 $imageAspectRatioCustom = "",
                                 $imageZone = "mainimage",
                                 $withMedia = 1,
+                                $typeMediaToShow= 0,
                                 $withBody = 1,
                                 $withGallery = 1,
                                 $withBodyExtra = 3,
@@ -355,6 +357,7 @@
       $this->imageAspectRatioCustom = $imageAspectRatioCustom;
       $this->imageZone = $imageZone;
       $this->withMedia = $withMedia;
+      $this->typeMediaToShow = $typeMediaToShow;
       $this->withBody = $withBody;
       $this->withGallery = $withGallery;
       $this->withBodyExtra = $withBodyExtra;
