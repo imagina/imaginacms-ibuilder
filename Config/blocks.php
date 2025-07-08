@@ -1118,7 +1118,7 @@ return [
           ],
           "breadcrumbOnlyMainCategory" => [
             "name" => "breadcrumbOnlyMainCategory",
-            "value" => true,
+            "value" => 1,
             "columns" => "col-12",
             "type" => "select",
             "props" => [
